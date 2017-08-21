@@ -12,8 +12,9 @@
 		0F22E1B41E8407D1004B722A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B21E8407D1004B722A /* Main.storyboard */; };
 		0F22E1B61E8407D1004B722A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B51E8407D1004B722A /* Assets.xcassets */; };
 		0F22E1B91E8407D1004B722A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B71E8407D1004B722A /* LaunchScreen.storyboard */; };
-		2248BF1D1F4A18D7002DF718 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2248BF1C1F4A18D7002DF718 /* UserController.swift */; };
-		22703F561F4A1EC40036DCBA /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 22703F551F4A1EC40036DCBA /* Images */; };
+		22D4CE201F4A6F3200AFFB04 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4CE1F1F4A6F3200AFFB04 /* User.swift */; };
+		22ED00B51F4B672B008AEA89 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED00B41F4B672B008AEA89 /* LoginController.swift */; };
+		22ED00B71F4B6A8D008AEA89 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */; };
 		749CDB62FAC047BF1F6EAAD2 /* libPods-Karma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */; };
 /* End PBXBuildFile section */
 
@@ -26,8 +27,9 @@
 		0F22E1B51E8407D1004B722A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F22E1B81E8407D1004B722A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F22E1BA1E8407D1004B722A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2248BF1C1F4A18D7002DF718 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
-		22703F551F4A1EC40036DCBA /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		22D4CE1F1F4A6F3200AFFB04 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		22ED00B41F4B672B008AEA89 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		ABEFA3D6DA2E1C5CD49339F5 /* Pods-Karma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.release.xcconfig"; sourceTree = "<group>"; };
 		C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Karma.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -69,7 +71,6 @@
 				0F22E1B21E8407D1004B722A /* Main.storyboard */,
 				22703F581F4A1FD40036DCBA /* Models */,
 				22703F571F4A1FC20036DCBA /* Controllers */,
-				22703F551F4A1EC40036DCBA /* Images */,
 				0F22E1B51E8407D1004B722A /* Assets.xcassets */,
 				0F22E1B71E8407D1004B722A /* LaunchScreen.storyboard */,
 				0F22E1BA1E8407D1004B722A /* Info.plist */,
@@ -81,7 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				0F22E1B01E8407D1004B722A /* ViewController.swift */,
-				2248BF1C1F4A18D7002DF718 /* UserController.swift */,
+				22ED00B41F4B672B008AEA89 /* LoginController.swift */,
+				22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -89,6 +91,7 @@
 		22703F581F4A1FD40036DCBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				22D4CE1F1F4A6F3200AFFB04 /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -176,7 +179,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22703F561F4A1EC40036DCBA /* Images in Resources */,
 				0F22E1B91E8407D1004B722A /* LaunchScreen.storyboard in Resources */,
 				0F22E1B61E8407D1004B722A /* Assets.xcassets in Resources */,
 				0F22E1B41E8407D1004B722A /* Main.storyboard in Resources */,
@@ -238,7 +240,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2248BF1D1F4A18D7002DF718 /* UserController.swift in Sources */,
+				22ED00B71F4B6A8D008AEA89 /* RegisterController.swift in Sources */,
+				22D4CE201F4A6F3200AFFB04 /* User.swift in Sources */,
+				22ED00B51F4B672B008AEA89 /* LoginController.swift in Sources */,
 				0F22E1B11E8407D1004B722A /* ViewController.swift in Sources */,
 				0F22E1AF1E8407D1004B722A /* AppDelegate.swift in Sources */,
 			);

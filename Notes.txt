@@ -1,0 +1,4 @@
+Future changes:
+* Change register error label to UIAlert
+* Configure the register email to be cooler
+* Require email confirmation
