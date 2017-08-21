@@ -23,16 +23,38 @@ class LoginController: UIViewController {
     }
     
     //UI Elements
-    @IBOutlet var emailTextField : UITextField!
-    @IBOutlet var passwordTextField : UITextField!
-
-    @IBAction func loginButton(sender : AnyObject) {
-        shouldPerformSegue(withIdentifier: "LoginToMain", sender: nil)
-    }
+    @IBOutlet var emailField : UITextField!
+    @IBOutlet var passwordField : UITextField!
+    @IBOutlet var errorMessage : UILabel!
     
     @IBAction func showRegister(sender : AnyObject) {
-        shouldPerformSegue(withIdentifier: "LoginToRegister", sender: nil)
+        self.performSegue(withIdentifier: "LoginToRegister", sender: nil)
     }
     
+    @IBAction func loginButton(sender : AnyObject) {
+        if (validLogin()) {
+            self.performSegue(withIdentifier: "LoginToMain", sender: self)
+        }
+    }
+    
+    //Segue handling
+    func validLogin() -> Bool {
+        return login(id: emailField.text!, password: passwordField.text!)
+    }
+    
+    //Server call
+    func login(id: String, password: String) -> Bool {
+        let backendless = Backendless.sharedInstance()!
+        
+        var valid = true
+        Types.tryblock({ () -> Void in
+            backendless.userService.login(id, password: password)
+        }, catchblock: {(exception) -> Void in
+            let error = exception as! Fault
+            self.errorMessage.text = error.message!
+            valid = false
+        })
+        return valid
+    }
 
 }

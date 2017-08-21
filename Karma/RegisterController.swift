@@ -30,13 +30,13 @@ class RegisterController: UIViewController {
     @IBOutlet var errorMessage: UILabel!
     
     @IBAction func registerButton(sender : AnyObject){
-        if (checkRegister()) {
+        if (validRegister()) {
             self.performSegue(withIdentifier: "RegisterToCircle", sender: self)
         }
     }
     
     //Segue handling
-    func checkRegister() -> Bool {
+    func validRegister() -> Bool {
         if (passwordField.text != verifyField.text) {
             errorMessage.text = "Please verify that your password matches"
             return false
@@ -50,7 +50,7 @@ class RegisterController: UIViewController {
         }
     }
     
-    //Helper functions
+    //Server call
     func register(email: String, name: String, password: String) -> Bool {
         let backendless = Backendless.sharedInstance()!
         let user = BackendlessUser()
