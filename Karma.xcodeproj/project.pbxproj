@@ -12,6 +12,8 @@
 		0F22E1B41E8407D1004B722A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B21E8407D1004B722A /* Main.storyboard */; };
 		0F22E1B61E8407D1004B722A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B51E8407D1004B722A /* Assets.xcassets */; };
 		0F22E1B91E8407D1004B722A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B71E8407D1004B722A /* LaunchScreen.storyboard */; };
+		22320AC21F4F54170032A2A5 /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22320AC11F4F54170032A2A5 /* CircleTableViewCell.swift */; };
+		22320AC41F4F63720032A2A5 /* CircleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22320AC31F4F63720032A2A5 /* CircleTableViewController.swift */; };
 		2290759F1F4CCE530085FCAD /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290759E1F4CCE520085FCAD /* Circle.swift */; };
 		22D4CE201F4A6F3200AFFB04 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4CE1F1F4A6F3200AFFB04 /* User.swift */; };
 		22ED00B51F4B672B008AEA89 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED00B41F4B672B008AEA89 /* LoginController.swift */; };
@@ -29,6 +31,8 @@
 		0F22E1B51E8407D1004B722A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F22E1B81E8407D1004B722A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F22E1BA1E8407D1004B722A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22320AC11F4F54170032A2A5 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
+		22320AC31F4F63720032A2A5 /* CircleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTableViewController.swift; sourceTree = "<group>"; };
 		2290759E1F4CCE520085FCAD /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		22D4CE1F1F4A6F3200AFFB04 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		22ED00B41F4B672B008AEA89 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -82,13 +86,31 @@
 			path = Karma;
 			sourceTree = "<group>";
 		};
+		22320AC51F4F63DD0032A2A5 /* Circle */ = {
+			isa = PBXGroup;
+			children = (
+				22ED00B81F4B8CE7008AEA89 /* CircleController.swift */,
+				22320AC31F4F63720032A2A5 /* CircleTableViewController.swift */,
+				22320AC11F4F54170032A2A5 /* CircleTableViewCell.swift */,
+			);
+			name = Circle;
+			sourceTree = "<group>";
+		};
+		22320AC61F4F63EB0032A2A5 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				22ED00B41F4B672B008AEA89 /* LoginController.swift */,
+				22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
 		22703F571F4A1FC20036DCBA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				0F22E1B01E8407D1004B722A /* ViewController.swift */,
-				22ED00B41F4B672B008AEA89 /* LoginController.swift */,
-				22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */,
-				22ED00B81F4B8CE7008AEA89 /* CircleController.swift */,
+				22320AC61F4F63EB0032A2A5 /* User */,
+				22320AC51F4F63DD0032A2A5 /* Circle */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -247,10 +269,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2290759F1F4CCE530085FCAD /* Circle.swift in Sources */,
+				22320AC21F4F54170032A2A5 /* CircleTableViewCell.swift in Sources */,
 				22ED00B71F4B6A8D008AEA89 /* RegisterController.swift in Sources */,
 				22D4CE201F4A6F3200AFFB04 /* User.swift in Sources */,
 				22ED00B51F4B672B008AEA89 /* LoginController.swift in Sources */,
 				22ED00B91F4B8CE7008AEA89 /* CircleController.swift in Sources */,
+				22320AC41F4F63720032A2A5 /* CircleTableViewController.swift in Sources */,
 				0F22E1B11E8407D1004B722A /* ViewController.swift in Sources */,
 				0F22E1AF1E8407D1004B722A /* AppDelegate.swift in Sources */,
 			);

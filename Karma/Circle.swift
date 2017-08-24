@@ -11,7 +11,7 @@ import Foundation
 class Circle : NSObject {
     
     var objectId : String?
-    let name : String?
+    let name : String
     var displayName : String?
     var Users : [BackendlessUser]
     

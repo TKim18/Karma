@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Karma/CircleController.swift"
-            timestampString = "525232919.316501"
+            filePath = "Karma/CircleTableViewController.swift"
+            timestampString = "525298680.597607"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "validCircle()"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "loadCircles()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
