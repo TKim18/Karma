@@ -12,9 +12,11 @@
 		0F22E1B41E8407D1004B722A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B21E8407D1004B722A /* Main.storyboard */; };
 		0F22E1B61E8407D1004B722A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B51E8407D1004B722A /* Assets.xcassets */; };
 		0F22E1B91E8407D1004B722A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B71E8407D1004B722A /* LaunchScreen.storyboard */; };
+		2290759F1F4CCE530085FCAD /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290759E1F4CCE520085FCAD /* Circle.swift */; };
 		22D4CE201F4A6F3200AFFB04 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4CE1F1F4A6F3200AFFB04 /* User.swift */; };
 		22ED00B51F4B672B008AEA89 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED00B41F4B672B008AEA89 /* LoginController.swift */; };
 		22ED00B71F4B6A8D008AEA89 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */; };
+		22ED00B91F4B8CE7008AEA89 /* CircleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED00B81F4B8CE7008AEA89 /* CircleController.swift */; };
 		749CDB62FAC047BF1F6EAAD2 /* libPods-Karma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */; };
 /* End PBXBuildFile section */
 
@@ -27,9 +29,11 @@
 		0F22E1B51E8407D1004B722A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F22E1B81E8407D1004B722A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F22E1BA1E8407D1004B722A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2290759E1F4CCE520085FCAD /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		22D4CE1F1F4A6F3200AFFB04 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		22ED00B41F4B672B008AEA89 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		22ED00B81F4B8CE7008AEA89 /* CircleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleController.swift; sourceTree = "<group>"; };
 		ABEFA3D6DA2E1C5CD49339F5 /* Pods-Karma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.release.xcconfig"; sourceTree = "<group>"; };
 		C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Karma.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -84,6 +88,7 @@
 				0F22E1B01E8407D1004B722A /* ViewController.swift */,
 				22ED00B41F4B672B008AEA89 /* LoginController.swift */,
 				22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */,
+				22ED00B81F4B8CE7008AEA89 /* CircleController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -92,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				22D4CE1F1F4A6F3200AFFB04 /* User.swift */,
+				2290759E1F4CCE520085FCAD /* Circle.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -240,9 +246,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2290759F1F4CCE530085FCAD /* Circle.swift in Sources */,
 				22ED00B71F4B6A8D008AEA89 /* RegisterController.swift in Sources */,
 				22D4CE201F4A6F3200AFFB04 /* User.swift in Sources */,
 				22ED00B51F4B672B008AEA89 /* LoginController.swift in Sources */,
+				22ED00B91F4B8CE7008AEA89 /* CircleController.swift in Sources */,
 				0F22E1B11E8407D1004B722A /* ViewController.swift in Sources */,
 				0F22E1AF1E8407D1004B722A /* AppDelegate.swift in Sources */,
 			);

@@ -44,7 +44,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="showRegisterWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ykd-ik-Tgb"/>
-                                    <segue destination="x8M-4o-3IS" kind="show" id="tTh-g7-CXk"/>
+                                    <segue destination="x8M-4o-3IS" kind="show" identifier="LoginToRegister" id="tTh-g7-CXk"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Naj-mA-Ufc">
@@ -68,12 +68,13 @@
                         <outlet property="emailField" destination="IcN-Yf-ngS" id="86v-U6-QIG"/>
                         <outlet property="errorMessage" destination="gDM-IE-Sys" id="M9L-eF-Bmi"/>
                         <outlet property="passwordField" destination="Naj-mA-Ufc" id="g3E-EC-ln9"/>
-                        <segue destination="vH6-13-Ibj" kind="show" identifier="LoginToMain" id="J8w-Sc-JYv"/>
+                        <segue destination="vH6-13-Ibj" kind="show" identifier="LoginToMain" id="T2I-BC-HTk"/>
+                        <segue destination="ike-AZ-j8h" kind="show" identifier="LoginNoCircle" id="cOA-1g-3sX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="63.418290854572717"/>
+            <point key="canvasLocation" x="33" y="63"/>
         </scene>
         <!--Register Controller-->
         <scene sceneID="eu8-cx-fwi">
@@ -120,7 +121,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64c-wd-bU7">
-                                <rect key="frame" x="144" y="560" width="87" height="30"/>
+                                <rect key="frame" x="72" y="560" width="231" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="registerButtonWithSender:" destination="x8M-4o-3IS" eventType="touchUpInside" id="Q6m-sp-X1h"/>
@@ -149,10 +150,10 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="788.45577211394311"/>
         </scene>
-        <!--View Controller-->
+        <!--Circle Controller-->
         <scene sceneID="ZoB-Qs-sRp">
             <objects>
-                <viewController id="ike-AZ-j8h" sceneMemberID="viewController">
+                <viewController id="ike-AZ-j8h" customClass="CircleController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5H8-Pc-uim"/>
                         <viewControllerLayoutGuide type="bottom" id="IyZ-AU-lD5"/>
@@ -165,13 +166,91 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vg-uF-6OX">
+                                <rect key="frame" x="134" y="360" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="Ve9-Uc-zpJ" kind="show" id="r16-RO-mTN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ae-hk-4R2">
+                                <rect key="frame" x="124" y="413" width="126" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="rMK-U8-jAv" kind="show" id="eRP-l7-Xh6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfi-ow-Ao8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930" y="788"/>
+            <point key="canvasLocation" x="929" y="788"/>
+        </scene>
+        <!--Circle Controller-->
+        <scene sceneID="hZ3-Lt-AKe">
+            <objects>
+                <viewController id="rMK-U8-jAv" customClass="CircleController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MKC-Hx-VJZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="oSd-F5-X0m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zTN-U6-04w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zec-sg-VxF">
+                                <rect key="frame" x="64" y="187" width="222" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Circle Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="241-Ht-i7M">
+                                <rect key="frame" x="64" y="146" width="94" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnF-12-WeZ">
+                                <rect key="frame" x="64" y="254" width="151" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create Circle!"/>
+                                <connections>
+                                    <action selector="createCircleWithSender:" destination="rMK-U8-jAv" eventType="touchUpInside" id="hif-lm-05n"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="circleNameField" destination="zec-sg-VxF" id="K38-8i-KNr"/>
+                        <segue destination="vH6-13-Ibj" kind="show" identifier="CircleToMain" id="df7-1q-cK0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gdk-GD-0wq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1874" y="788"/>
+        </scene>
+        <!--Circle Controller-->
+        <scene sceneID="aqy-vM-tjf">
+            <objects>
+                <viewController id="Ve9-Uc-zpJ" customClass="CircleController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IKb-m9-LPv"/>
+                        <viewControllerLayoutGuide type="bottom" id="9FW-iV-nuJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2iX-zB-EsS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IT2-5U-1J5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="929" y="1568"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="VH6-sj-GjM">
@@ -204,4 +283,8 @@
         <image name="MainScreen" width="375" height="667"/>
         <image name="Register" width="375" height="667"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cOA-1g-3sX"/>
+        <segue reference="T2I-BC-HTk"/>
+    </inferredMetricsTieBreakers>
 </document>

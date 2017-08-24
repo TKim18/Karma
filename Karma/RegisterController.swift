@@ -30,7 +30,7 @@ class RegisterController: UIViewController {
     @IBOutlet var errorMessage: UILabel!
     
     @IBAction func registerButton(sender : AnyObject){
-        if (validRegister()) {
+        if (validRegister() && login()) {
             self.performSegue(withIdentifier: "RegisterToCircle", sender: self)
         }
     }
@@ -70,5 +70,17 @@ class RegisterController: UIViewController {
         return valid
     }
 
-
+    func login() -> Bool {
+        let backendless = Backendless.sharedInstance()!
+        
+        var valid = true
+        Types.tryblock({ () -> Void in
+            backendless.userService.login(self.emailField.text! + "@wesleyan.edu", password: self.passwordField.text)
+        }, catchblock: {(exception) -> Void in
+            let error = exception as! Fault
+            self.errorMessage.text = error.message!
+            valid = false
+        })
+        return valid
+    }
 }

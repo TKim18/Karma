@@ -33,13 +33,21 @@ class LoginController: UIViewController {
     
     @IBAction func loginButton(sender : AnyObject) {
         if (validLogin()) {
-            self.performSegue(withIdentifier: "LoginToMain", sender: self)
+            let identifier = hasCircle() ? "LoginToMain" : "LoginNoCircle"
+            self.performSegue(withIdentifier: identifier, sender: self)
         }
     }
     
     //Segue handling
     func validLogin() -> Bool {
         return login(id: emailField.text!, password: passwordField.text!)
+    }
+    
+    func hasCircle() -> Bool {
+        let backendless = Backendless.sharedInstance()!
+        let currentUser : BackendlessUser = backendless.userService.currentUser
+        // "-1" is the default value
+        return ((currentUser.getProperty("circleId") as! String) != "-1")
     }
     
     //Server call

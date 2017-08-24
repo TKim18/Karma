@@ -3,3 +3,10 @@ Future changes:
 * Configure the register email to be cooler
 * Require email confirmation
 * Implement I forgot my username/password
+* Don't call backendless shared instance multiple times if i dont have to
+* Extrapolate user into a class on my end to generalize server calls
+* man... default value of circleId is "-1"... figure out what null is in this scenario
+* add options ot go back to the previous view
+
+Moving forward:
+* Make the list view for all the circles, make it so that clicking on the list adds you to the circle
