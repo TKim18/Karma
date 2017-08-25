@@ -266,6 +266,7 @@
                                 <connections>
                                     <outlet property="circleImage" destination="HMz-6i-8Vt" id="O9l-z0-s2J"/>
                                     <outlet property="nameLabel" destination="0DL-j2-zIH" id="uen-sg-MyR"/>
+                                    <segue destination="vH6-13-Ibj" kind="show" identifier="JoinCircleToMain" id="fws-Kc-9Ad"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -313,6 +314,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PTn-pf-fad"/>
-        <segue reference="df7-1q-cK0"/>
+        <segue reference="fws-Kc-9Ad"/>
     </inferredMetricsTieBreakers>
 </document>

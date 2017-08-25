@@ -10,7 +10,8 @@ Future changes:
 
 Moving forward:
 * Make the list view for all the circles, make it so that clicking on the list adds you to the circle
+* Probably going to have to do a prepare segue for both adding to circle and joining a current circle
 
 Bugs:
 * man... default value of circleId is "-1"... figure out what null is in this scenario
-* circle.name doesnt get pulled from the db properly, for now we're using displayName but need to use hte unique value
+* circle.name doesnt get pulled from the db properly, for now we're using displayName but need to use the unique value

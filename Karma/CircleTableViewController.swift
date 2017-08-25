@@ -31,14 +31,13 @@ class CircleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return circles.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "CircleTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CircleTableViewCell else {
-            fatalError("lol")
+            fatalError("Something's wrong with the Circle object!")
         }
         
         let circle = circles[indexPath.row]
@@ -47,6 +46,39 @@ class CircleTableViewController: UITableViewController {
         return cell
     }
 
+    //Segue Handling
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let selectedCircleCell = sender as? CircleTableViewCell else {
+            fatalError("Unexpected sender: \(String(describing: sender))")
+        }
+        
+        guard let indexPath = tableView.indexPath(for : selectedCircleCell) else {
+            fatalError("You definitely got the wrong cell")
+        }
+        
+        let backendless = Backendless.sharedInstance()!
+        let dataStore = backendless.data.of(Circle().ofClass())
+        
+        let currentUser = backendless.userService.currentUser
+        let selectedCircleId = circles[indexPath.row].objectId
+
+        Types.tryblock({ () -> Void in
+            //Update the User's circleId
+            currentUser!.updateProperties(["circleId" : selectedCircleId!])
+            backendless.userService.update(currentUser)
+            //And also add user to circle's Users column
+            dataStore!.addRelation(
+                "Users",
+                parentObjectId: selectedCircleId,
+                childObjects: [currentUser!.objectId])
+        }, catchblock: {(exception) -> Void in
+            print(exception ?? "Error")
+        })
+        
+    }
+    
     //Server call
     private func loadCircles() {
         let backendless = Backendless.sharedInstance()
