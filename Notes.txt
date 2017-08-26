@@ -29,3 +29,5 @@ Things I need on the design side:
 * Implement navigation bars on login pages?
 * Complete list of categories
 * A different picture for each of those tabs on the order1 page
+* How will the request for laundry be different from shopping and custom (do each of those types have different order pages?)
+* Request vs Order
