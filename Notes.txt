@@ -1,17 +1,31 @@
 Future changes:
 * Change register error label to UIAlert
 * Configure the register email to be cooler
+* Enable login through facebook, gmail, etc...
 * Require email confirmation
 * Implement I forgot my username/password
 * Don't call backendless shared instance multiple times if i dont have to
 * Extrapolate user into a class on my end to generalize server calls -> apparently can't do this due to serialization issues
-* add options to go back to the previous view
+* add options to go back to the previous view ( add an unwind segue between login and register )
 * implement a minimum 6 character password
 
 Moving forward:
-* Make the list view for all the circles, make it so that clicking on the list adds you to the circle
 * Probably going to have to do a prepare segue for both adding to circle and joining a current circle
+* Make a datatable for orders and show a list view of all that circle's orders
 
 Bugs:
 * man... default value of circleId is "-1"... figure out what null is in this scenario
 * circle.name doesnt get pulled from the db properly, for now we're using displayName but need to use the unique value
+
+
+Things I need on the design side:
+* Add circles page
+* Individual icons for each button on the bottom bar
+* Do we really want to split by billboard and accepted
+* What's the top left button and how will it work
+* Shouldn't the order button be much bigger?
+* Gonna need those menus... man the menus is nuts
+* Fix the new circles page
+* Implement navigation bars on login pages?
+* Complete list of categories
+* A different picture for each of those tabs on the order1 page

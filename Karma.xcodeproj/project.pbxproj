@@ -15,6 +15,7 @@
 		22320AC21F4F54170032A2A5 /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22320AC11F4F54170032A2A5 /* CircleTableViewCell.swift */; };
 		22320AC41F4F63720032A2A5 /* CircleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22320AC31F4F63720032A2A5 /* CircleTableViewController.swift */; };
 		2290759F1F4CCE530085FCAD /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290759E1F4CCE520085FCAD /* Circle.swift */; };
+		22D3E59B1F50F1D2008353F5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3E59A1F50F1D2008353F5 /* Order.swift */; };
 		22D4CE201F4A6F3200AFFB04 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4CE1F1F4A6F3200AFFB04 /* User.swift */; };
 		22ED00B51F4B672B008AEA89 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED00B41F4B672B008AEA89 /* LoginController.swift */; };
 		22ED00B71F4B6A8D008AEA89 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */; };
@@ -34,6 +35,7 @@
 		22320AC11F4F54170032A2A5 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
 		22320AC31F4F63720032A2A5 /* CircleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTableViewController.swift; sourceTree = "<group>"; };
 		2290759E1F4CCE520085FCAD /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		22D3E59A1F50F1D2008353F5 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		22D4CE1F1F4A6F3200AFFB04 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		22ED00B41F4B672B008AEA89 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				0F22E1B01E8407D1004B722A /* ViewController.swift */,
 				22320AC61F4F63EB0032A2A5 /* User */,
 				22320AC51F4F63DD0032A2A5 /* Circle */,
+				22D3E5991F50F1B8008353F5 /* Order */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -120,8 +123,16 @@
 			children = (
 				22D4CE1F1F4A6F3200AFFB04 /* User.swift */,
 				2290759E1F4CCE520085FCAD /* Circle.swift */,
+				22D3E59A1F50F1D2008353F5 /* Order.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		22D3E5991F50F1B8008353F5 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Order;
 			sourceTree = "<group>";
 		};
 		5A8163A77E6F62574C4A1FC1 /* Frameworks */ = {
@@ -270,6 +281,7 @@
 			files = (
 				2290759F1F4CCE530085FCAD /* Circle.swift in Sources */,
 				22320AC21F4F54170032A2A5 /* CircleTableViewCell.swift in Sources */,
+				22D3E59B1F50F1D2008353F5 /* Order.swift in Sources */,
 				22ED00B71F4B6A8D008AEA89 /* RegisterController.swift in Sources */,
 				22D4CE201F4A6F3200AFFB04 /* User.swift in Sources */,
 				22ED00B51F4B672B008AEA89 /* LoginController.swift in Sources */,

@@ -68,11 +68,13 @@ class CircleTableViewController: UITableViewController {
             //Update the User's circleId
             currentUser!.updateProperties(["circleId" : selectedCircleId!])
             backendless.userService.update(currentUser)
+            
             //And also add user to circle's Users column
             dataStore!.addRelation(
                 "Users",
                 parentObjectId: selectedCircleId,
-                childObjects: [currentUser!.objectId])
+                childObjects: [currentUser!.objectId]
+            )
         }, catchblock: {(exception) -> Void in
             print(exception ?? "Error")
         })
