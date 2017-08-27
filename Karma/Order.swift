@@ -11,24 +11,24 @@ import Foundation
 class Order : NSObject {
     
     enum Category: String {
-        case Food, Laundry, Shopping, Custom
+        case Summerfields, WesWings, WeShop, Custom
         
-        static let allCategories = [Food, Laundry, Shopping, Custom]
+        static let allCategories = [Summerfields, WesWings, WeShop, Custom]
         
         var description: String {
             switch self {
-            case .Food: return "Food"
-            case .Laundry: return "Laundry"
-            case .Shopping: return "Shopping"
+            case .Summerfields: return "Summerfields"
+            case .WesWings: return "WesWings"
+            case .WeShop: return "WeShop"
             case .Custom: return "Custom"
             }
         }
         
         var image: UIImage {
             switch self {
-            case .Food: return UIImage(named: "Dummy")!
-            case .Laundry: return UIImage(named: "Dummy")!
-            case .Shopping: return UIImage(named: "Dummy")!
+            case .Summerfields: return UIImage(named: "Dummy")!
+            case .WesWings: return UIImage(named: "Dummy")!
+            case .WeShop: return UIImage(named: "Dummy")!
             case .Custom: return UIImage(named: "Dummy")!
             }
         }
@@ -36,11 +36,11 @@ class Order : NSObject {
         init?(id : Int) {
             switch id {
             case 1:
-                self = .Food
+                self = .Summerfields
             case 2:
-                self = .Laundry
+                self = .WesWings
             case 3:
-                self = .Shopping
+                self = .WeShop
             case 4:
                 self = .Custom
             default:

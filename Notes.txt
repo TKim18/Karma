@@ -12,11 +12,16 @@ Future changes:
 Moving forward:
 * Probably going to have to do a prepare segue for both adding to circle and joining a current circle
 * Make a datatable for orders and show a list view of all that circle's orders
+* Display a menu looking thing, items become selectable, selecting an item adds to cart, check out button on the bottom 
+
+Short term goals:
+* Be able to place any order
+* After that, be able to view that order
+* After that, tab bar view jesus
 
 Bugs:
 * man... default value of circleId is "-1"... figure out what null is in this scenario
 * circle.name doesnt get pulled from the db properly, for now we're using displayName but need to use the unique value
-
 
 Things I need on the design side:
 * Add circles page
@@ -26,8 +31,24 @@ Things I need on the design side:
 * Shouldn't the order button be much bigger?
 * Gonna need those menus... man the menus is nuts
 * Fix the new circles page
-* Implement navigation bars on login pages?
+* Implement navigation bars on login pages? (nope)
 * Complete list of categories
 * A different picture for each of those tabs on the order1 page
 * How will the request for laundry be different from shopping and custom (do each of those types have different order pages?)
 * Request vs Order
+* Need add 2 much more cleaned up
+
+Notes:
+* Filter/search bar on top of circle join 
+* Shopping -> weshop
+* Food -> Summerfields, Weswings
+* Checkbox for pricing 
+* Menu making
+* Billboard/Pending -> Pending/Accepted
+* Karma point tap -> transaction history
+
+
+
+
+
+
