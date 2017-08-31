@@ -1,5 +1,5 @@
 //
-//  Order.swift
+//  Request.swift
 //  Karma
 //
 //  Created by Timothy Taeho Kim on 8/25/17.
@@ -56,7 +56,7 @@ class Order : NSObject {
     
     var title : String?
     var message : String?
-    var category : Category? //Maybe I want this to be :String for serializing more easily
+    var category : String?
     var origin : String?
     var destination : String?
     var cost : Double = 0.0
@@ -64,7 +64,7 @@ class Order : NSObject {
     override init () {
         self.title = ""
         self.message = ""
-        self.category = Category.Custom
+        self.category = ""
         self.origin = ""
         self.destination = ""
         self.cost = 0.0
@@ -75,7 +75,7 @@ class Order : NSObject {
     
     //Probably only going to use this one
     init (category: Category, requestingUserId: String, circleId: String) {
-        self.category = category
+        self.category = category.description
         self.requestingUserId = requestingUserId
         self.circleId = circleId
     }
@@ -84,7 +84,7 @@ class Order : NSObject {
     init (title: String, message: String, category: Category, origin: String, destination: String, cost: Double, circleId: String, requestingUserId: String, acceptingUserId: String) {
         self.title = title
         self.message = message
-        self.category = category
+        self.category = category.description
         self.origin = origin
         self.destination = destination
         self.cost = cost

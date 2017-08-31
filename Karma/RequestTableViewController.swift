@@ -39,7 +39,7 @@ class RequestTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "RequestCategoryTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? RequestCategoryTableViewCell else {
-            fatalError("Something's wrong with the Order object!")
+            fatalError("Something's wrong with the Request object!")
         }
         
         let category = categories[indexPath.row]

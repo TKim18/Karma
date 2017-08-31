@@ -22,7 +22,7 @@ class RequestDetailsViewController: UIViewController {
     }
     
     //Bit of data
-    var currentOrder : Order?
+    //var currentRequest : Request?
 
     /*
     // MARK: - Navigation

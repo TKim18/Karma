@@ -41,11 +41,10 @@ class CircleController: UIViewController {
 
         Types.tryblock({ () -> Void in
             //Save the new object, retrieve its object id, and add the relation to the Users column
-            dataStore!.save(circle)
-            let lastObj = dataStore!.findLast() as! Circle;
+            let savedCircle = dataStore!.save(circle) as! Circle;
             dataStore!.setRelation(
                 "Users",
-                parentObjectId: lastObj.objectId,
+                parentObjectId: savedCircle.objectId,
                 childObjects: [currentUser.objectId]
             )
             currentUser.updateProperties(["circleId" : lastObj.objectId!])

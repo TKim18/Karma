@@ -22,7 +22,8 @@ class CustomRequestViewController: UIViewController {
     }
 
     //Bit of data
-    var currentOrder : Order?
+    var currentCircle : Circle!
+    var currentOrder : Order!
     
     //UI Elements
     @IBOutlet var titleField : UITextField!
@@ -30,10 +31,44 @@ class CustomRequestViewController: UIViewController {
     @IBOutlet var startLocationField : UITextField!
     @IBOutlet var endLocationField : UITextField!
     @IBOutlet var requestDetailsField : UITextField!
+    @IBOutlet var errorMessage : UILabel!
     
     @IBAction func requestButton(sender : AnyObject) {
-        self.performSegue(withIdentifier: "SubmitRequest", sender: self)
+        if (validRequest()) {
+            self.performSegue(withIdentifier: "SubmitRequest", sender: self)
+        }
     }
 
+    //Server call
+    func validRequest() -> Bool {
+        let backendless = Backendless.sharedInstance()!
+        let orderDataStore = backendless.data.of(Order().ofClass())
+        let circleDataStore = backendless.data.of(Circle().ofClass())
+        let currentUser = backendless.userService.currentUser
+        
+        //Populate the attributes
+        self.currentOrder.title = titleField.text
+        self.currentOrder.message = requestDetailsField.text
+        self.currentOrder.origin = startLocationField.text
+        self.currentOrder.destination = endLocationField.text
+        
+        var valid = true
+        Types.tryblock({ () -> Void in
+            let placedOrder = orderDataStore!.save(self.currentOrder) as! Order
+            circleDataStore!.setRelation(
+                "Orders",
+                parentObjectId: currentUser!.getProperty("circleId") as! String,
+                childObjects: [placedOrder.objectId!]
+            )
+        },
+        catchblock: { (exception) -> Void in
+            let error = exception as! Fault
+            self.errorMessage.text = error.message
+            valid = false
+        })
+        
+        return valid
+
+    }
 
 }

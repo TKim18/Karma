@@ -417,15 +417,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIb-4g-8td">
+                                <rect key="frame" x="90" y="321" width="195" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="endLocationField" destination="yjw-6J-3AT" id="VTg-dh-Xeg"/>
                         <outlet property="endTimeField" destination="p3P-04-QGL" id="5yK-0N-fyp"/>
+                        <outlet property="errorMessage" destination="bIb-4g-8td" id="NZV-hQ-5Sm"/>
                         <outlet property="requestDetailsField" destination="mHS-dq-PQA" id="5tL-b3-Xnr"/>
                         <outlet property="startLocationField" destination="5dO-Xh-O74" id="56v-zO-BK3"/>
                         <outlet property="titleField" destination="rYK-Ww-ftp" id="ssb-FQ-7h2"/>
+                        <segue destination="vH6-13-Ibj" kind="showDetail" identifier="SubmitRequest" action="showViewController:sender:" id="sEv-qt-0zv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQt-5P-tdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -480,5 +489,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="PTn-pf-fad"/>
         <segue reference="fws-Kc-9Ad"/>
+        <segue reference="sEv-qt-0zv"/>
     </inferredMetricsTieBreakers>
 </document>
