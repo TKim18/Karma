@@ -33,7 +33,7 @@ class LoginController: UIViewController {
     
     @IBAction func loginButton(sender : AnyObject) {
         if (validLogin()) {
-            let identifier = hasCircle() ? "LoginToMain" : "LoginNoCircle"
+            let identifier = hasCircle() ? "LoginToTab" : "LoginNoCircle"
             self.performSegue(withIdentifier: identifier, sender: self)
         }
     }

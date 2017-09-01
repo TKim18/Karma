@@ -47,7 +47,7 @@ class CircleController: UIViewController {
                 parentObjectId: savedCircle.objectId,
                 childObjects: [currentUser.objectId]
             )
-            currentUser.updateProperties(["circleId" : lastObj.objectId!])
+            currentUser.updateProperties(["circleId" : savedCircle.objectId!])
             backendless.userService.update(currentUser)
         }, catchblock: {(exception) -> Void in
             print(exception ?? "Error")

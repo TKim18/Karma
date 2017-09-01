@@ -15,6 +15,21 @@ class Order : NSObject {
         
         static let allCategories = [Summerfields, WesWings, WeShop, Custom]
         
+        init?(id : Int) {
+            switch id {
+            case 1:
+                self = .Summerfields
+            case 2:
+                self = .WesWings
+            case 3:
+                self = .WeShop
+            case 4:
+                self = .Custom
+            default:
+                return nil
+            }
+        }
+        
         var description: String {
             switch self {
             case .Summerfields: return "Summerfields"
@@ -33,23 +48,12 @@ class Order : NSObject {
             }
         }
         
-        init?(id : Int) {
-            switch id {
-            case 1:
-                self = .Summerfields
-            case 2:
-                self = .WesWings
-            case 3:
-                self = .WeShop
-            case 4:
-                self = .Custom
-            default:
-                return nil
-            }
-        }
     }
     
     var objectId : String?
+    var created: NSDate?
+    var updated: NSDate?
+    
     var requestingUserId: String?
     var acceptingUserId: String?
     let circleId : String?
@@ -91,6 +95,16 @@ class Order : NSObject {
         self.circleId = circleId
         self.requestingUserId = requestingUserId
         self.acceptingUserId = acceptingUserId
+    }
+    
+    func fromDescription(description: String) -> Category {
+        switch description {
+        case "Summerfields": return .Summerfields
+        case "WesWings": return .WesWings
+        case "WeShop": return .WeShop
+        case "Custom": return .Custom
+        default: return .Custom
+        }
     }
     
 }
