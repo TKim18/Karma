@@ -98,6 +98,25 @@
 			path = Karma;
 			sourceTree = "<group>";
 		};
+		221A5AA61F5F328B0011ECAE /* Requesting */ = {
+			isa = PBXGroup;
+			children = (
+				227F29071F51F67E00AEE7C6 /* RequestCategoryTableViewCell.swift */,
+				227F29091F51F69C00AEE7C6 /* RequestTableViewController.swift */,
+				228A5BE11F5351AC001648CE /* CustomRequestViewController.swift */,
+			);
+			name = Requesting;
+			sourceTree = "<group>";
+		};
+		221A5AA71F5F32960011ECAE /* Viewing */ = {
+			isa = PBXGroup;
+			children = (
+				222623BB1F59F3A0009D9B47 /* ViewRequestTableViewCell.swift */,
+				222623BD1F59F3AD009D9B47 /* ViewRequestTableViewController.swift */,
+			);
+			name = Viewing;
+			sourceTree = "<group>";
+		};
 		22320AC51F4F63DD0032A2A5 /* Circle */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,11 +160,8 @@
 		22D3E5991F50F1B8008353F5 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				227F29071F51F67E00AEE7C6 /* RequestCategoryTableViewCell.swift */,
-				227F29091F51F69C00AEE7C6 /* RequestTableViewController.swift */,
-				228A5BE11F5351AC001648CE /* CustomRequestViewController.swift */,
-				222623BB1F59F3A0009D9B47 /* ViewRequestTableViewCell.swift */,
-				222623BD1F59F3AD009D9B47 /* ViewRequestTableViewController.swift */,
+				221A5AA71F5F32960011ECAE /* Viewing */,
+				221A5AA61F5F328B0011ECAE /* Requesting */,
 			);
 			name = Order;
 			sourceTree = "<group>";

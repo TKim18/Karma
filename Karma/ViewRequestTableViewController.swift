@@ -57,37 +57,42 @@ class ViewRequestTableViewController: UITableViewController {
     //Server call
     private func loadOrders() {
         let backendless = Backendless.sharedInstance()
-        let dataStore = backendless!.data.of(Circle().ofClass())
+        let dataStore = backendless!.data.of(Order().ofClass())
         
         let currentCircle = backendless!.userService.currentUser.getProperty("circleId") as! String
-        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.init(with: Order().ofClass())
-        loadRelationsQueryBuilder!.setGetRelationName("Orders")
         
-        Types.tryblock({ () -> Void in
-            dataStore?.loadRelations(
-                currentCircle,
-                queryBuilder: loadRelationsQueryBuilder
-            )
+        //TODO: Please use the update query code when backendless gets around to it
+        let queryClause = "circleId = '" + currentCircle + "'"
+        let queryBuilder = DataQueryBuilder()
+        queryBuilder!.setWhereClause(queryClause)
+        
+        Types.tryblock({() -> Void in
+            self.orders = dataStore!.find(queryBuilder) as! [Order]
         },
-            catchblock: { (exception) -> Void in
-            let error = exception as! NSException
+        catchblock: { (exception) -> Void in
+            let error = exception as! Fault
             print(error)
         })
         
-    
+        // let queryBuilder = DataQueryBuilder()
+        // queryBuilder!.setRelated(["Orders", "Orders.title"])
         
-//        dataStore?.loadRelations(
-//            currentCircle,
-//            queryBuilder: loadRelationsQueryBuilder,
-//            response: {
-//                (circleOrders) -> () in
-//                self.orders = circleOrders as! [Order]
-//            },
-//            error: {
-//                (fault : Fault?) -> () in
-//                print("Server reported an error: \(String(describing: fault))")
-//            }
-//        )
+        
+//        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.init(with: Order().ofClass())
+//        loadRelationsQueryBuilder!.setGetRelationName("Orders")
+//        loadRelationsQueryBuilder!.setGetPageSize(5)
+//        loadRelationsQueryBuilder!.setGetOffset(10)
+//
+//        Types.tryblock({ () -> Void in
+//            dataStore?.loadRelations(
+//                currentCircle,
+//                queryBuilder: loadRelationsQueryBuilder
+//            )
+//        },
+//            catchblock: { (exception) -> Void in
+//            let error = exception as! NSException
+//            print(error)
+//        })
     }
     
     /*

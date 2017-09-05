@@ -47,6 +47,10 @@ class CircleTableViewController: UITableViewController {
     }
 
     //Segue Handling
+    @IBAction func showMain(sender : AnyObject){
+        self.performSegue(withIdentifier: "RegisterToCircle", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -78,7 +82,6 @@ class CircleTableViewController: UITableViewController {
         }, catchblock: {(exception) -> Void in
             print(exception ?? "Error")
         })
-        
     }
     
     //Server call
