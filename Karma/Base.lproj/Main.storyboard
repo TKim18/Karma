@@ -188,7 +188,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="JoinCircle" translatesAutoresizingMaskIntoConstraints="NO" id="3mu-xk-f4a">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NoCircle" translatesAutoresizingMaskIntoConstraints="NO" id="3mu-xk-f4a">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -383,35 +383,6 @@
             </objects>
             <point key="canvasLocation" x="285" y="-1721"/>
         </scene>
-        <!--Your Circle's Requests-->
-        <scene sceneID="VH6-sj-GjM">
-            <objects>
-                <viewController id="vH6-13-Ibj" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VvK-8r-I2O"/>
-                        <viewControllerLayoutGuide type="bottom" id="Wo4-aE-9c0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jnb-aN-o7Y">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MainScreen" translatesAutoresizingMaskIntoConstraints="NO" id="fQu-0r-ZQK">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9E-59-s9j">
-                                <rect key="frame" x="164" y="629" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Your Circle's Requests" id="A1c-9y-HZ4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1A3-YY-aW0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2303" y="93"/>
-        </scene>
         <!--Item-->
         <scene sceneID="xPF-QY-Ftz">
             <objects>
@@ -471,10 +442,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Order2" translatesAutoresizingMaskIntoConstraints="NO" id="1JX-sF-nmJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rYK-Ww-ftp">
                                 <rect key="frame" x="16" y="168" width="153" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -599,14 +566,12 @@
     </scenes>
     <resources>
         <image name="Dummy" width="250" height="250"/>
-        <image name="JoinCircle" width="375" height="667"/>
         <image name="Login" width="375" height="667"/>
-        <image name="MainScreen" width="375" height="667"/>
-        <image name="Order2" width="375" height="667"/>
+        <image name="NoCircle" width="375" height="667"/>
         <image name="Register" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sb5-Wr-8id"/>
         <segue reference="cOA-1g-3sX"/>
+        <segue reference="d2c-Za-bVs"/>
     </inferredMetricsTieBreakers>
 </document>
