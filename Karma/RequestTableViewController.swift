@@ -14,9 +14,9 @@ class RequestTableViewController: UITableViewController {
         super.viewDidLoad()
         
         //Customize these... please
-        self.title = "Choose your category"
-        navigationController?.navigationBar.barTintColor = UIColor.blue
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        //self.title = "Choose your category"
+        //navigationController?.navigationBar.barTintColor = UIColor.blue
+        //navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
 
     override func didReceiveMemoryWarning() {

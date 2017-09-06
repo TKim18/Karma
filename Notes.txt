@@ -11,17 +11,17 @@ Future changes:
 * Change the custom order fields to accurately match their goals (time -> timefield, destination -> categoryfield)
 
 Moving forward:
-* Probably going to have to do a prepare segue for both adding to circle and joining a current circle
-* Make a datatable for orders and show a list view of all that circle's orders
 * Display a menu looking thing, items become selectable, selecting an item adds to cart, check out button on the bottom 
 
 Short term goals:
-* After that, be able to view that order
-* After that, tab bar view jesus
+* Change icons on tab bar controller 
+* add placeholders for the profile, notifications, settings pages
 
 Bugs:
 * man... default value of circleId is "-1"... figure out what null is in this scenario
 * circle.name doesnt get pulled from the db properly, for now we're using displayName but need to use the unique value
+* (HUGE PROBLEM) query with data relations doesn't work properly
+
 
 Things I need on the design side:
 * Add circles page

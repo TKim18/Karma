@@ -11,6 +11,7 @@ import UIKit
 class ViewRequestTableViewController: UITableViewController {
 
     override func viewDidLoad() {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         super.viewDidLoad()
         loadOrders()
     }
@@ -74,12 +75,12 @@ class ViewRequestTableViewController: UITableViewController {
             print(error)
         })
         
+        
+        // let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.init(with: Circle().ofClass())
+        // loadRelationsQueryBuilder!.setGetRelationName("Orders")
         // let queryBuilder = DataQueryBuilder()
         // queryBuilder!.setRelated(["Orders", "Orders.title"])
         
-        
-//        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.init(with: Order().ofClass())
-//        loadRelationsQueryBuilder!.setGetRelationName("Orders")
 //        loadRelationsQueryBuilder!.setGetPageSize(5)
 //        loadRelationsQueryBuilder!.setGetOffset(10)
 //

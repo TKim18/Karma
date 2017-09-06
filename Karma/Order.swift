@@ -42,9 +42,9 @@ class Order : NSObject {
         var image: UIImage {
             switch self {
             case .Summerfields: return UIImage(named: "Summerfields")!
-            case .WesWings: return UIImage(named: "Dummy")!
+            case .WesWings: return UIImage(named: "WeShop")!
             case .WeShop: return UIImage(named: "WeShop")!
-            case .Custom: return UIImage(named: "Dummy")!
+            case .Custom: return UIImage(named: "Summerfields")!
             }
         }
         

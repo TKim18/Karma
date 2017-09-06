@@ -12,7 +12,7 @@ class CustomRequestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        categoryImage.image = currentOrder.fromDescription(description: currentOrder.category!).image
         // Do any additional setup after loading the view.
     }
 
@@ -22,7 +22,6 @@ class CustomRequestViewController: UIViewController {
     }
 
     //Bit of data
-    var currentCircle : Circle!
     var currentOrder : Order!
     
     //UI Elements
@@ -32,6 +31,7 @@ class CustomRequestViewController: UIViewController {
     @IBOutlet var endLocationField : UITextField!
     @IBOutlet var requestDetailsField : UITextField!
     @IBOutlet var errorMessage : UILabel!
+    @IBOutlet var categoryImage: UIImageView!
     
     @IBAction func requestButton(sender : AnyObject) {
         if (validRequest()) {
