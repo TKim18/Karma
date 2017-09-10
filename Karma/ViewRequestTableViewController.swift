@@ -11,14 +11,28 @@ import UIKit
 class ViewRequestTableViewController: UITableViewController {
 
     override func viewDidLoad() {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
         super.viewDidLoad()
         loadOrders()
+        // #285398
+        //navigationController?.navigationBar.barTintColor = UIColor()
+       //navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 28.0/255.0, green: 53.0/255.0, blue: 98.0/255.0, alpha: 1.0)
+        //navigationController?.navigationBar.barTintColor = UIColor(rgb: 0x285398)
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // UIElements
+    @IBOutlet weak var pendingAcceptedControl: UISegmentedControl!
+    @IBAction func indexChanged(sender: UISegmentedControl) {
+        switch pendingAcceptedControl.selectedSegmentIndex {
+        case 0: NSLog("number 1")
+        case 1: NSLog("number 2")
+        default: break;
+        }
     }
     
     // MARK: - Table view data source
@@ -48,9 +62,12 @@ class ViewRequestTableViewController: UITableViewController {
         cell.timeLabel.text = "6:00 PM"
         cell.locationLabel.text = order.origin! + " to " + order.destination!
         
+        cell.categoryImage.image = order.fromDescription().image
+        
         //This should become a query on requesting user id and then a pull on their image attribute
-        cell.userImage.image = UIImage(named: "DummyAvatar")
-        cell.categoryImage.image = order.fromDescription(description: order.category!).image
+        let profilePicture = UIImage(named: "DummyAvatar")
+        cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
+
         
         return cell
     }

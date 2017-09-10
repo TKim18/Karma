@@ -9,13 +9,15 @@ Future changes:
 * add options to go back to the previous view ( add an unwind segue between login and register )
 * implement a minimum 6 character password
 * Change the custom order fields to accurately match their goals (time -> timefield, destination -> categoryfield)
+* when user opens text box in custom order, push the request button/bar up
 
 Moving forward:
 * Display a menu looking thing, items become selectable, selecting an item adds to cart, check out button on the bottom 
+* Make a separate tab bar option on the top for billboard and accepted
 
 Short term goals:
-* Change icons on tab bar controller 
-* add placeholders for the profile, notifications, settings pages
+* add a navigation bar item for the karma points
+* remove table view extra lines
 
 Bugs:
 * man... default value of circleId is "-1"... figure out what null is in this scenario

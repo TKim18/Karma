@@ -16,6 +16,8 @@
 		222623BE1F59F3AD009D9B47 /* ViewRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222623BD1F59F3AD009D9B47 /* ViewRequestTableViewController.swift */; };
 		22320AC21F4F54170032A2A5 /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22320AC11F4F54170032A2A5 /* CircleTableViewCell.swift */; };
 		22320AC41F4F63720032A2A5 /* CircleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22320AC31F4F63720032A2A5 /* CircleTableViewController.swift */; };
+		224E7E951F60C0B300ABEF54 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E7E941F60C0B300ABEF54 /* UIImage.swift */; };
+		224E7E971F66032000ABEF54 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E7E961F66032000ABEF54 /* UIColor.swift */; };
 		227F29081F51F67E00AEE7C6 /* RequestCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F29071F51F67E00AEE7C6 /* RequestCategoryTableViewCell.swift */; };
 		227F290A1F51F69C00AEE7C6 /* RequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F29091F51F69C00AEE7C6 /* RequestTableViewController.swift */; };
 		228A5BE21F5351AC001648CE /* CustomRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228A5BE11F5351AC001648CE /* CustomRequestViewController.swift */; };
@@ -41,6 +43,8 @@
 		222623BD1F59F3AD009D9B47 /* ViewRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewController.swift; sourceTree = "<group>"; };
 		22320AC11F4F54170032A2A5 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
 		22320AC31F4F63720032A2A5 /* CircleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTableViewController.swift; sourceTree = "<group>"; };
+		224E7E941F60C0B300ABEF54 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		224E7E961F66032000ABEF54 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		227F29071F51F67E00AEE7C6 /* RequestCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		227F29091F51F69C00AEE7C6 /* RequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewController.swift; sourceTree = "<group>"; };
 		228A5BE11F5351AC001648CE /* CustomRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRequestViewController.swift; sourceTree = "<group>"; };
@@ -150,9 +154,11 @@
 		22703F581F4A1FD40036DCBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				224E7E941F60C0B300ABEF54 /* UIImage.swift */,
 				22D4CE1F1F4A6F3200AFFB04 /* User.swift */,
 				2290759E1F4CCE520085FCAD /* Circle.swift */,
 				22D3E59A1F50F1D2008353F5 /* Order.swift */,
+				224E7E961F66032000ABEF54 /* UIColor.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -316,9 +322,11 @@
 				22D3E59B1F50F1D2008353F5 /* Order.swift in Sources */,
 				22ED00B71F4B6A8D008AEA89 /* RegisterController.swift in Sources */,
 				22D4CE201F4A6F3200AFFB04 /* User.swift in Sources */,
+				224E7E971F66032000ABEF54 /* UIColor.swift in Sources */,
 				22ED00B51F4B672B008AEA89 /* LoginController.swift in Sources */,
 				22ED00B91F4B8CE7008AEA89 /* CircleController.swift in Sources */,
 				222623BE1F59F3AD009D9B47 /* ViewRequestTableViewController.swift in Sources */,
+				224E7E951F60C0B300ABEF54 /* UIImage.swift in Sources */,
 				22320AC41F4F63720032A2A5 /* CircleTableViewController.swift in Sources */,
 				0F22E1B11E8407D1004B722A /* ViewController.swift in Sources */,
 				0F22E1AF1E8407D1004B722A /* AppDelegate.swift in Sources */,

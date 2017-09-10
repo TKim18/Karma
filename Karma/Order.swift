@@ -97,8 +97,18 @@ class Order : NSObject {
         self.acceptingUserId = acceptingUserId
     }
     
-    func fromDescription(description: String) -> Category {
-        switch description {
+//    func fromDescription(description: String) -> Category {
+//        switch description {
+//        case "Summerfields": return .Summerfields
+//        case "WesWings": return .WesWings
+//        case "WeShop": return .WeShop
+//        case "Custom": return .Custom
+//        default: return .Custom
+//        }
+//    }
+
+    func fromDescription() -> Category {
+        switch self.description {
         case "Summerfields": return .Summerfields
         case "WesWings": return .WesWings
         case "WeShop": return .WeShop
