@@ -51,6 +51,7 @@ class CustomRequestViewController: UIViewController {
         //Populate the attributes
         self.currentOrder.title = titleField.text
         self.currentOrder.message = requestDetailsField.text
+        self.currentOrder.requestedTime = endTimeField.text
         self.currentOrder.origin = startLocationField.text
         self.currentOrder.destination = endLocationField.text
         

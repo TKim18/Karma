@@ -10,9 +10,14 @@ import UIKit
 
 class ViewRequestTableViewController: UITableViewController {
 
+    let cellSpacingHeight: CGFloat = 5
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadOrders()
+        //pendingAcceptedControl.addTarget(self, action: Selector("segmentChanged:"), for: .valueChanged)
+        loadAllOrders()
+        pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
+
         // #285398
         //navigationController?.navigationBar.barTintColor = UIColor()
        //navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 28.0/255.0, green: 53.0/255.0, blue: 98.0/255.0, alpha: 1.0)
@@ -27,145 +32,116 @@ class ViewRequestTableViewController: UITableViewController {
     
     // UIElements
     @IBOutlet weak var pendingAcceptedControl: UISegmentedControl!
-    @IBAction func indexChanged(sender: UISegmentedControl) {
-        switch pendingAcceptedControl.selectedSegmentIndex {
-        case 0: NSLog("number 1")
-        case 1: NSLog("number 2")
-        default: break;
-        }
-    }
-    
+
     // MARK: - Table view data source
-    var orders = [Order]()
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return orders.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "ViewRequestTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ViewRequestTableViewCell else {
-            fatalError("Something's wrong with the Order object!")
-        }
-        
-        let order = orders[indexPath.row]
-        cell.titleLabel.text = order.title
-        cell.descriptionLabel.text = order.message
-        
-        //cell.timeLabel.text = order.created
-        cell.timeLabel.text = "6:00 PM"
-        cell.locationLabel.text = order.origin! + " to " + order.destination!
-        
-        cell.categoryImage.image = order.fromDescription().image
-        
-        //This should become a query on requesting user id and then a pull on their image attribute
-        let profilePicture = UIImage(named: "DummyAvatar")
-        cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
-
-        
-        return cell
-    }
+    private var allOrders = [Order]()
+    private var orders = [Order]()
     
+    func segmentChanged(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        //If Pending is selected, we want to show the subset of orders that have accepting userId of -1
+        case 0:
+            loadPending()
+        case 1:
+            loadAccepted()
+        default:
+            self.orders = []
+        }
+        self.tableView.reloadData()
+    }
+
     //Server call
-    private func loadOrders() {
+    private func loadAllOrders() {
         let backendless = Backendless.sharedInstance()
         let dataStore = backendless!.data.of(Order().ofClass())
         
         let currentCircle = backendless!.userService.currentUser.getProperty("circleId") as! String
         
         //TODO: Please use the update query code when backendless gets around to it
+        //TODO: Update orders to exclude the orders that you placed (maybe)
         let queryClause = "circleId = '" + currentCircle + "'"
         let queryBuilder = DataQueryBuilder()
         queryBuilder!.setWhereClause(queryClause)
         
         Types.tryblock({() -> Void in
-            self.orders = dataStore!.find(queryBuilder) as! [Order]
+            self.allOrders = dataStore!.find(queryBuilder) as! [Order]
+            self.orders = self.allOrders
         },
-        catchblock: { (exception) -> Void in
-            let error = exception as! Fault
-            print(error)
+                       catchblock: { (exception) -> Void in
+                        let error = exception as! Fault
+                        print(error)
         })
-        
-        
-        // let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.init(with: Circle().ofClass())
-        // loadRelationsQueryBuilder!.setGetRelationName("Orders")
-        // let queryBuilder = DataQueryBuilder()
-        // queryBuilder!.setRelated(["Orders", "Orders.title"])
-        
-//        loadRelationsQueryBuilder!.setGetPageSize(5)
-//        loadRelationsQueryBuilder!.setGetOffset(10)
-//
-//        Types.tryblock({ () -> Void in
-//            dataStore?.loadRelations(
-//                currentCircle,
-//                queryBuilder: loadRelationsQueryBuilder
-//            )
-//        },
-//            catchblock: { (exception) -> Void in
-//            let error = exception as! NSException
-//            print(error)
-//        })
     }
     
-    /*
+    private func loadPending() {
+        self.orders = []
+        for request in self.allOrders {
+            if (request.acceptingUserId == "-1") {
+                self.orders.append(request)
+            }
+        }
+    }
+    
+    private func loadAccepted() {
+        self.orders = []
+        let backendless = Backendless.sharedInstance()!
+        let currentUserId = backendless.userService.currentUser.objectId
+        for request in self.allOrders {
+            if (request.acceptingUserId == (currentUserId! as String)) {
+                self.orders.append(request)
+            }
+        }
+    }
+
+    //---------------------- Setting the table elements and variables ---------------------------// 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return orders.count
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    // Set the spacing between sections
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
+    }
+    
+    // Make the background color show through
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.gray
+        return headerView
+    }
+
+    // Load the data into the table cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cellIdentifier = "ViewRequestTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ViewRequestTableViewCell else {
+            fatalError("Something's wrong with the Order object!")
+        }
+        
+        let order = orders[indexPath.section]
+        
+        // Fill in cell's data components
+        cell.titleLabel.text = order.title
+        cell.descriptionLabel.text = order.message
+        
+        //cell.timeLabel.text = order.created
+        cell.timeLabel.text = order.requestedTime
+        cell.locationLabel.text = order.origin! + " to " + order.destination!
+        
+        cell.categoryImage.image = order.fromDescription().image
+        
+        // TODO: This should become a query on requesting user id and then a pull on their image attribute
+        let profilePicture = UIImage(named: "DummyAvatar")
+        cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
 
-        // Configure the cell...
-
+        //Customize its border
+        //cell.layer.borderWidth = 2.0
+        //cell.layer.borderColor = UIColor.gray.cgColor
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

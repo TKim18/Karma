@@ -60,6 +60,7 @@ class Order : NSObject {
     
     var title : String?
     var message : String?
+    var requestedTime : String?
     var category : String?
     var origin : String?
     var destination : String?
@@ -68,6 +69,7 @@ class Order : NSObject {
     override init () {
         self.title = ""
         self.message = ""
+        self.requestedTime = ""
         self.category = ""
         self.origin = ""
         self.destination = ""
@@ -85,9 +87,10 @@ class Order : NSObject {
     }
     
     //Not sure if necessary
-    init (title: String, message: String, category: Category, origin: String, destination: String, cost: Double, circleId: String, requestingUserId: String, acceptingUserId: String) {
+    init (title: String, message: String, requestedTime: String, category: Category, origin: String, destination: String, cost: Double, circleId: String, requestingUserId: String, acceptingUserId: String) {
         self.title = title
         self.message = message
+        self.requestedTime = requestedTime
         self.category = category.description
         self.origin = origin
         self.destination = destination
@@ -96,16 +99,6 @@ class Order : NSObject {
         self.requestingUserId = requestingUserId
         self.acceptingUserId = acceptingUserId
     }
-    
-//    func fromDescription(description: String) -> Category {
-//        switch description {
-//        case "Summerfields": return .Summerfields
-//        case "WesWings": return .WesWings
-//        case "WeShop": return .WeShop
-//        case "Custom": return .Custom
-//        default: return .Custom
-//        }
-//    }
 
     func fromDescription() -> Category {
         switch self.description {

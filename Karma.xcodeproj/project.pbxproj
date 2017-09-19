@@ -154,10 +154,10 @@
 		22703F581F4A1FD40036DCBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				224E7E941F60C0B300ABEF54 /* UIImage.swift */,
 				22D4CE1F1F4A6F3200AFFB04 /* User.swift */,
 				2290759E1F4CCE520085FCAD /* Circle.swift */,
 				22D3E59A1F50F1D2008353F5 /* Order.swift */,
+				224E7E941F60C0B300ABEF54 /* UIImage.swift */,
 				224E7E961F66032000ABEF54 /* UIColor.swift */,
 			);
 			name = Models;
