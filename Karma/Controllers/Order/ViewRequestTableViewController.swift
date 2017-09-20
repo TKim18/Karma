@@ -14,20 +14,19 @@ class ViewRequestTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //pendingAcceptedControl.addTarget(self, action: Selector("segmentChanged:"), for: .valueChanged)
+        
+        //Pull from the database
         loadAllOrders()
+        
+        //Enable segment control
         pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
-
-        // #285398
-        //navigationController?.navigationBar.barTintColor = UIColor()
-       //navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 28.0/255.0, green: 53.0/255.0, blue: 98.0/255.0, alpha: 1.0)
-        //navigationController?.navigationBar.barTintColor = UIColor(rgb: 0x285398)
-
+        
+        //Navbar color: #285398
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        //Dispose of any resources that can be recreated.
     }
     
     // UIElements
@@ -39,7 +38,6 @@ class ViewRequestTableViewController: UITableViewController {
     
     func segmentChanged(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        //If Pending is selected, we want to show the subset of orders that have accepting userId of -1
         case 0:
             loadPending()
         case 1:
@@ -65,7 +63,7 @@ class ViewRequestTableViewController: UITableViewController {
         
         Types.tryblock({() -> Void in
             self.allOrders = dataStore!.find(queryBuilder) as! [Order]
-            self.orders = self.allOrders
+            self.loadPending()
         },
                        catchblock: { (exception) -> Void in
                         let error = exception as! Fault
@@ -73,6 +71,7 @@ class ViewRequestTableViewController: UITableViewController {
         })
     }
     
+    //Optimize this into a filter query **functional programming**
     private func loadPending() {
         self.orders = []
         for request in self.allOrders {
@@ -82,6 +81,7 @@ class ViewRequestTableViewController: UITableViewController {
         }
     }
     
+    //Optimize this into a filter query **functional programming**
     private func loadAccepted() {
         self.orders = []
         let backendless = Backendless.sharedInstance()!
@@ -93,29 +93,32 @@ class ViewRequestTableViewController: UITableViewController {
         }
     }
 
-    //---------------------- Setting the table elements and variables ---------------------------// 
+    //---------------------- Setting the table elements and variables ---------------------------//
+    
+    //Each order has its own section
     override func numberOfSections(in tableView: UITableView) -> Int {
         return orders.count
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    // Set the spacing between sections
+    //Set the spacing between sections
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return cellSpacingHeight
     }
     
-    // Make the background color show through
+    //Make the background color show through
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = UIColor.gray
         return headerView
     }
 
-    // Load the data into the table cells
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    //Load the data into the table cells
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         let cellIdentifier = "ViewRequestTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ViewRequestTableViewCell else {
             fatalError("Something's wrong with the Order object!")
@@ -123,17 +126,16 @@ class ViewRequestTableViewController: UITableViewController {
         
         let order = orders[indexPath.section]
         
-        // Fill in cell's data components
+        //Cell text components
         cell.titleLabel.text = order.title
         cell.descriptionLabel.text = order.message
-        
-        //cell.timeLabel.text = order.created
         cell.timeLabel.text = order.requestedTime
         cell.locationLabel.text = order.origin! + " to " + order.destination!
         
+        //Cell image components
         cell.categoryImage.image = order.fromDescription().image
         
-        // TODO: This should become a query on requesting user id and then a pull on their image attribute
+        //TODO: This should become a query on requesting user id and then a pull on their image attribute
         let profilePicture = UIImage(named: "DummyAvatar")
         cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
 

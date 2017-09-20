@@ -8,25 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0F22E1AF1E8407D1004B722A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F22E1AE1E8407D1004B722A /* AppDelegate.swift */; };
-		0F22E1B11E8407D1004B722A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F22E1B01E8407D1004B722A /* ViewController.swift */; };
 		0F22E1B41E8407D1004B722A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B21E8407D1004B722A /* Main.storyboard */; };
 		0F22E1B61E8407D1004B722A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B51E8407D1004B722A /* Assets.xcassets */; };
 		0F22E1B91E8407D1004B722A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B71E8407D1004B722A /* LaunchScreen.storyboard */; };
-		222623BC1F59F3A0009D9B47 /* ViewRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222623BB1F59F3A0009D9B47 /* ViewRequestTableViewCell.swift */; };
-		222623BE1F59F3AD009D9B47 /* ViewRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222623BD1F59F3AD009D9B47 /* ViewRequestTableViewController.swift */; };
-		22320AC21F4F54170032A2A5 /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22320AC11F4F54170032A2A5 /* CircleTableViewCell.swift */; };
-		22320AC41F4F63720032A2A5 /* CircleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22320AC31F4F63720032A2A5 /* CircleTableViewController.swift */; };
-		224E7E951F60C0B300ABEF54 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E7E941F60C0B300ABEF54 /* UIImage.swift */; };
-		224E7E971F66032000ABEF54 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E7E961F66032000ABEF54 /* UIColor.swift */; };
-		227F29081F51F67E00AEE7C6 /* RequestCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F29071F51F67E00AEE7C6 /* RequestCategoryTableViewCell.swift */; };
-		227F290A1F51F69C00AEE7C6 /* RequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F29091F51F69C00AEE7C6 /* RequestTableViewController.swift */; };
-		228A5BE21F5351AC001648CE /* CustomRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228A5BE11F5351AC001648CE /* CustomRequestViewController.swift */; };
-		2290759F1F4CCE530085FCAD /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2290759E1F4CCE520085FCAD /* Circle.swift */; };
-		22D3E59B1F50F1D2008353F5 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3E59A1F50F1D2008353F5 /* Order.swift */; };
-		22D4CE201F4A6F3200AFFB04 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4CE1F1F4A6F3200AFFB04 /* User.swift */; };
-		22ED00B51F4B672B008AEA89 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED00B41F4B672B008AEA89 /* LoginController.swift */; };
-		22ED00B71F4B6A8D008AEA89 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */; };
-		22ED00B91F4B8CE7008AEA89 /* CircleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED00B81F4B8CE7008AEA89 /* CircleController.swift */; };
 		749CDB62FAC047BF1F6EAAD2 /* libPods-Karma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */; };
 /* End PBXBuildFile section */
 
@@ -34,26 +18,26 @@
 		05D99E2CD8E1D330A6C94F72 /* Pods-Karma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.debug.xcconfig"; sourceTree = "<group>"; };
 		0F22E1AB1E8407D1004B722A /* Karma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F22E1AE1E8407D1004B722A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0F22E1B01E8407D1004B722A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0F22E1B31E8407D1004B722A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F22E1B51E8407D1004B722A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F22E1B81E8407D1004B722A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F22E1BA1E8407D1004B722A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		222623BB1F59F3A0009D9B47 /* ViewRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewCell.swift; sourceTree = "<group>"; };
-		222623BD1F59F3AD009D9B47 /* ViewRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewController.swift; sourceTree = "<group>"; };
-		22320AC11F4F54170032A2A5 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
-		22320AC31F4F63720032A2A5 /* CircleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleTableViewController.swift; sourceTree = "<group>"; };
-		224E7E941F60C0B300ABEF54 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		224E7E961F66032000ABEF54 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		227F29071F51F67E00AEE7C6 /* RequestCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestCategoryTableViewCell.swift; sourceTree = "<group>"; };
-		227F29091F51F69C00AEE7C6 /* RequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewController.swift; sourceTree = "<group>"; };
-		228A5BE11F5351AC001648CE /* CustomRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRequestViewController.swift; sourceTree = "<group>"; };
-		2290759E1F4CCE520085FCAD /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
-		22D3E59A1F50F1D2008353F5 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		22D4CE1F1F4A6F3200AFFB04 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		22ED00B41F4B672B008AEA89 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
-		22ED00B81F4B8CE7008AEA89 /* CircleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleController.swift; sourceTree = "<group>"; };
+		226143291F72E11600711DEF /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Circle.swift; path = Models/Circle.swift; sourceTree = "<group>"; };
+		2261432A1F72E11600711DEF /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Order.swift; path = Models/Order.swift; sourceTree = "<group>"; };
+		2261432B1F72E11700711DEF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
+		2261432C1F72E12100711DEF /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIImage.swift; path = Extensions/UIImage.swift; sourceTree = "<group>"; };
+		2261432D1F72E12100711DEF /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = Extensions/UIColor.swift; sourceTree = "<group>"; };
+		2261432E1F72E14400711DEF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
+		2261432F1F72E14A00711DEF /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegisterController.swift; path = Controllers/User/RegisterController.swift; sourceTree = "<group>"; };
+		226143301F72E14A00711DEF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = Controllers/User/LoginController.swift; sourceTree = "<group>"; };
+		226143311F72E15200711DEF /* CircleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CircleController.swift; path = Controllers/Circle/CircleController.swift; sourceTree = "<group>"; };
+		226143321F72E15200711DEF /* CircleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CircleTableViewController.swift; path = Controllers/Circle/CircleTableViewController.swift; sourceTree = "<group>"; };
+		226143331F72E15200711DEF /* CircleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CircleTableViewCell.swift; path = Controllers/Circle/CircleTableViewCell.swift; sourceTree = "<group>"; };
+		226143341F72E16100711DEF /* CustomRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomRequestViewController.swift; path = Controllers/Order/CustomRequestViewController.swift; sourceTree = "<group>"; };
+		226143351F72E16200711DEF /* RequestCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestCategoryTableViewCell.swift; path = Controllers/Order/RequestCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		226143361F72E16200711DEF /* RequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestTableViewController.swift; path = Controllers/Order/RequestTableViewController.swift; sourceTree = "<group>"; };
+		226143371F72E17100711DEF /* ViewRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewRequestTableViewCell.swift; path = Controllers/Order/ViewRequestTableViewCell.swift; sourceTree = "<group>"; };
+		226143381F72E17100711DEF /* ViewRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewRequestTableViewController.swift; path = Controllers/Order/ViewRequestTableViewController.swift; sourceTree = "<group>"; };
 		ABEFA3D6DA2E1C5CD49339F5 /* Pods-Karma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.release.xcconfig"; sourceTree = "<group>"; };
 		C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Karma.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -94,6 +78,7 @@
 				0F22E1AE1E8407D1004B722A /* AppDelegate.swift */,
 				0F22E1B21E8407D1004B722A /* Main.storyboard */,
 				22703F581F4A1FD40036DCBA /* Models */,
+				226143281F72E0B300711DEF /* Extensions */,
 				22703F571F4A1FC20036DCBA /* Controllers */,
 				0F22E1B51E8407D1004B722A /* Assets.xcassets */,
 				0F22E1B71E8407D1004B722A /* LaunchScreen.storyboard */,
@@ -105,9 +90,9 @@
 		221A5AA61F5F328B0011ECAE /* Requesting */ = {
 			isa = PBXGroup;
 			children = (
-				227F29071F51F67E00AEE7C6 /* RequestCategoryTableViewCell.swift */,
-				227F29091F51F69C00AEE7C6 /* RequestTableViewController.swift */,
-				228A5BE11F5351AC001648CE /* CustomRequestViewController.swift */,
+				226143351F72E16200711DEF /* RequestCategoryTableViewCell.swift */,
+				226143361F72E16200711DEF /* RequestTableViewController.swift */,
+				226143341F72E16100711DEF /* CustomRequestViewController.swift */,
 			);
 			name = Requesting;
 			sourceTree = "<group>";
@@ -115,8 +100,8 @@
 		221A5AA71F5F32960011ECAE /* Viewing */ = {
 			isa = PBXGroup;
 			children = (
-				222623BB1F59F3A0009D9B47 /* ViewRequestTableViewCell.swift */,
-				222623BD1F59F3AD009D9B47 /* ViewRequestTableViewController.swift */,
+				226143371F72E17100711DEF /* ViewRequestTableViewCell.swift */,
+				226143381F72E17100711DEF /* ViewRequestTableViewController.swift */,
 			);
 			name = Viewing;
 			sourceTree = "<group>";
@@ -124,9 +109,9 @@
 		22320AC51F4F63DD0032A2A5 /* Circle */ = {
 			isa = PBXGroup;
 			children = (
-				22ED00B81F4B8CE7008AEA89 /* CircleController.swift */,
-				22320AC11F4F54170032A2A5 /* CircleTableViewCell.swift */,
-				22320AC31F4F63720032A2A5 /* CircleTableViewController.swift */,
+				226143311F72E15200711DEF /* CircleController.swift */,
+				226143331F72E15200711DEF /* CircleTableViewCell.swift */,
+				226143321F72E15200711DEF /* CircleTableViewController.swift */,
 			);
 			name = Circle;
 			sourceTree = "<group>";
@@ -134,16 +119,25 @@
 		22320AC61F4F63EB0032A2A5 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				22ED00B41F4B672B008AEA89 /* LoginController.swift */,
-				22ED00B61F4B6A8D008AEA89 /* RegisterController.swift */,
+				226143301F72E14A00711DEF /* LoginController.swift */,
+				2261432F1F72E14A00711DEF /* RegisterController.swift */,
 			);
 			name = User;
+			sourceTree = "<group>";
+		};
+		226143281F72E0B300711DEF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2261432D1F72E12100711DEF /* UIColor.swift */,
+				2261432C1F72E12100711DEF /* UIImage.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		22703F571F4A1FC20036DCBA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0F22E1B01E8407D1004B722A /* ViewController.swift */,
+				2261432E1F72E14400711DEF /* ViewController.swift */,
 				22320AC61F4F63EB0032A2A5 /* User */,
 				22320AC51F4F63DD0032A2A5 /* Circle */,
 				22D3E5991F50F1B8008353F5 /* Order */,
@@ -154,11 +148,9 @@
 		22703F581F4A1FD40036DCBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				22D4CE1F1F4A6F3200AFFB04 /* User.swift */,
-				2290759E1F4CCE520085FCAD /* Circle.swift */,
-				22D3E59A1F50F1D2008353F5 /* Order.swift */,
-				224E7E941F60C0B300ABEF54 /* UIImage.swift */,
-				224E7E961F66032000ABEF54 /* UIColor.swift */,
+				226143291F72E11600711DEF /* Circle.swift */,
+				2261432A1F72E11600711DEF /* Order.swift */,
+				2261432B1F72E11700711DEF /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -316,23 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				222623BC1F59F3A0009D9B47 /* ViewRequestTableViewCell.swift in Sources */,
-				2290759F1F4CCE530085FCAD /* Circle.swift in Sources */,
-				22320AC21F4F54170032A2A5 /* CircleTableViewCell.swift in Sources */,
-				22D3E59B1F50F1D2008353F5 /* Order.swift in Sources */,
-				22ED00B71F4B6A8D008AEA89 /* RegisterController.swift in Sources */,
-				22D4CE201F4A6F3200AFFB04 /* User.swift in Sources */,
-				224E7E971F66032000ABEF54 /* UIColor.swift in Sources */,
-				22ED00B51F4B672B008AEA89 /* LoginController.swift in Sources */,
-				22ED00B91F4B8CE7008AEA89 /* CircleController.swift in Sources */,
-				222623BE1F59F3AD009D9B47 /* ViewRequestTableViewController.swift in Sources */,
-				224E7E951F60C0B300ABEF54 /* UIImage.swift in Sources */,
-				22320AC41F4F63720032A2A5 /* CircleTableViewController.swift in Sources */,
-				0F22E1B11E8407D1004B722A /* ViewController.swift in Sources */,
 				0F22E1AF1E8407D1004B722A /* AppDelegate.swift in Sources */,
-				227F290A1F51F69C00AEE7C6 /* RequestTableViewController.swift in Sources */,
-				227F29081F51F67E00AEE7C6 /* RequestCategoryTableViewCell.swift in Sources */,
-				228A5BE21F5351AC001648CE /* CustomRequestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
