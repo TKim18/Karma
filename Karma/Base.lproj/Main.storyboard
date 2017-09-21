@@ -205,7 +205,7 @@
                                 <rect key="frame" x="124" y="460" width="126" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="rMK-U8-jAv" kind="show" id="eRP-l7-Xh6"/>
+                                    <segue destination="FCG-S8-DIx" kind="show" id="Kt9-12-7QE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -216,52 +216,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfi-ow-Ao8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="33" y="1620"/>
-        </scene>
-        <!--Circle Controller-->
-        <scene sceneID="hZ3-Lt-AKe">
-            <objects>
-                <viewController id="rMK-U8-jAv" customClass="CircleController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MKC-Hx-VJZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="oSd-F5-X0m"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zTN-U6-04w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zec-sg-VxF">
-                                <rect key="frame" x="64" y="187" width="222" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Circle Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="241-Ht-i7M">
-                                <rect key="frame" x="64" y="146" width="94" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnF-12-WeZ">
-                                <rect key="frame" x="64" y="254" width="151" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create Circle!"/>
-                                <connections>
-                                    <action selector="createCircleWithSender:" destination="rMK-U8-jAv" eventType="touchUpInside" id="hif-lm-05n"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="circleNameField" destination="zec-sg-VxF" id="K38-8i-KNr"/>
-                        <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="CircleToMain" action="showViewController:sender:" id="Tbs-mk-HP0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gdk-GD-0wq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="874" y="1620"/>
         </scene>
         <!--Circle Controller-->
         <scene sceneID="1FK-gr-IHB">
@@ -294,6 +248,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="createCircleWithSender:" destination="FCG-S8-DIx" eventType="touchUpInside" id="1gd-d0-IYr"/>
                                     <action selector="requestButtonWithSender:" destination="PdG-hk-wVj" eventType="touchUpInside" id="foP-cD-RNF"/>
                                 </connections>
                             </button>
@@ -316,11 +271,12 @@
                     </view>
                     <connections>
                         <outlet property="circleNameField" destination="1Bc-fq-Mta" id="uq2-m5-pnz"/>
+                        <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="CircleToMain" action="showViewController:sender:" id="nBb-ZS-A0d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9z-jb-OPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="848.79999999999995" y="2352.7736131934034"/>
+            <point key="canvasLocation" x="870" y="1620"/>
         </scene>
         <!--Circle Table View Controller-->
         <scene sceneID="ysa-DP-ihV">
@@ -755,8 +711,8 @@
         <image name="UserSettingsIcon" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cf5-I6-kF9"/>
+        <segue reference="IW7-Cd-7CT"/>
         <segue reference="PTn-pf-fad"/>
-        <segue reference="Tbs-mk-HP0"/>
+        <segue reference="nBb-ZS-A0d"/>
     </inferredMetricsTieBreakers>
 </document>
