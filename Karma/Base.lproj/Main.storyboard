@@ -263,6 +263,65 @@
             </objects>
             <point key="canvasLocation" x="874" y="1620"/>
         </scene>
+        <!--Circle Controller-->
+        <scene sceneID="1FK-gr-IHB">
+            <objects>
+                <viewController id="FCG-S8-DIx" customClass="CircleController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pTx-KW-9RX"/>
+                        <viewControllerLayoutGuide type="bottom" id="zMi-69-j1A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wq1-du-YWV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ClassicBackdrop" translatesAutoresizingMaskIntoConstraints="NO" id="BMU-Pq-4VI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create a Circle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U13-Rb-cI5">
+                                <rect key="frame" x="85" y="210" width="205" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8z-MW-1pD">
+                                <rect key="frame" x="85" y="395" width="205" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Create Circle" backgroundImage="BlueBar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="requestButtonWithSender:" destination="PdG-hk-wVj" eventType="touchUpInside" id="foP-cD-RNF"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Circle Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Bc-fq-Mta">
+                                <rect key="frame" x="152" y="281" width="137" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Invite: Add your friends" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dNS-gj-Gwf">
+                                <rect key="frame" x="85" y="336" width="205" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="circleNameField" destination="1Bc-fq-Mta" id="uq2-m5-pnz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v9z-jb-OPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="848.79999999999995" y="2352.7736131934034"/>
+        </scene>
         <!--Circle Table View Controller-->
         <scene sceneID="ysa-DP-ihV">
             <objects>
@@ -681,6 +740,7 @@
     </scenes>
     <resources>
         <image name="BlueBar" width="375" height="52"/>
+        <image name="ClassicBackdrop" width="375" height="667"/>
         <image name="Dummy" width="250" height="250"/>
         <image name="Friends" width="375" height="667"/>
         <image name="FriendsIcon" width="27" height="27"/>
@@ -696,7 +756,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Cf5-I6-kF9"/>
-        <segue reference="cOA-1g-3sX"/>
-        <segue reference="sb5-Wr-8id"/>
+        <segue reference="PTn-pf-fad"/>
+        <segue reference="Tbs-mk-HP0"/>
     </inferredMetricsTieBreakers>
 </document>
