@@ -15,6 +15,8 @@
 		2229C08B1F744D9E0083C215 /* RequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0881F744D9E0083C215 /* RequestTableViewController.swift */; };
 		2229C08C1F744D9E0083C215 /* CustomRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0891F744D9E0083C215 /* CustomRequestViewController.swift */; };
 		2229C08D1F744D9E0083C215 /* RequestCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C08A1F744D9E0083C215 /* RequestCategoryTableViewCell.swift */; };
+		2237FF1A1F7460A000593BFA /* CircleMemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2237FF191F7460A000593BFA /* CircleMemberTableViewController.swift */; };
+		2237FF1C1F74611300593BFA /* CircleMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2237FF1B1F74611300593BFA /* CircleMemberTableViewCell.swift */; };
 		2261433D1F72E5FB00711DEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226143391F72E5FA00711DEF /* AppDelegate.swift */; };
 		2277E0671F744B5F00AC53CB /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0641F744B5F00AC53CB /* Circle.swift */; };
 		2277E0681F744B5F00AC53CB /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0651F744B5F00AC53CB /* Order.swift */; };
@@ -42,6 +44,8 @@
 		2229C0881F744D9E0083C215 /* RequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewController.swift; sourceTree = "<group>"; };
 		2229C0891F744D9E0083C215 /* CustomRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRequestViewController.swift; sourceTree = "<group>"; };
 		2229C08A1F744D9E0083C215 /* RequestCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		2237FF191F7460A000593BFA /* CircleMemberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleMemberTableViewController.swift; sourceTree = "<group>"; };
+		2237FF1B1F74611300593BFA /* CircleMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleMemberTableViewCell.swift; sourceTree = "<group>"; };
 		226143391F72E5FA00711DEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2277E0641F744B5F00AC53CB /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		2277E0651F744B5F00AC53CB /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 				2277E07C1F744C9000AC53CB /* CircleController.swift */,
 				2277E07D1F744C9000AC53CB /* CircleTableViewCell.swift */,
 				2277E07B1F744C9000AC53CB /* CircleTableViewController.swift */,
+				2237FF1B1F74611300593BFA /* CircleMemberTableViewCell.swift */,
+				2237FF191F7460A000593BFA /* CircleMemberTableViewController.swift */,
 			);
 			path = Circle;
 			sourceTree = "<group>";
@@ -294,13 +300,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Karma-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD0E521EAECE7CD1705D52CE /* [CP] Copy Pods Resources */ = {
@@ -336,12 +345,14 @@
 				2277E06D1F744BA400AC53CB /* UIImage.swift in Sources */,
 				2229C08D1F744D9E0083C215 /* RequestCategoryTableViewCell.swift in Sources */,
 				2277E0681F744B5F00AC53CB /* Order.swift in Sources */,
+				2237FF1C1F74611300593BFA /* CircleMemberTableViewCell.swift in Sources */,
 				2277E0761F744C6300AC53CB /* ViewController.swift in Sources */,
 				2277E0791F744C7800AC53CB /* LoginController.swift in Sources */,
 				2261433D1F72E5FB00711DEF /* AppDelegate.swift in Sources */,
 				2229C08C1F744D9E0083C215 /* CustomRequestViewController.swift in Sources */,
 				2277E0671F744B5F00AC53CB /* Circle.swift in Sources */,
 				2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */,
+				2237FF1A1F7460A000593BFA /* CircleMemberTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

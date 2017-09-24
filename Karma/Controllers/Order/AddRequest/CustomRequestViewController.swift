@@ -31,7 +31,7 @@ class CustomRequestViewController: UIViewController {
     @IBOutlet var endTimeField : UITextField!
     @IBOutlet var startLocationField : UITextField!
     @IBOutlet var endLocationField : UITextField!
-    @IBOutlet var requestDetailsField : UITextField!
+    @IBOutlet var requestDetailsField : UITextView!
     @IBOutlet var errorMessage : UILabel!
     @IBOutlet var categoryImage: UIImageView!
     
@@ -58,7 +58,7 @@ class CustomRequestViewController: UIViewController {
         var valid = true
         Types.tryblock({ () -> Void in
             let placedOrder = orderDataStore!.save(self.currentOrder) as! Order
-            circleDataStore!.setRelation(
+            circleDataStore!.addRelation(
                 "Orders",
                 parentObjectId: currentUser!.getProperty("circleId") as! String,
                 childObjects: [placedOrder.objectId!]

@@ -10,10 +10,12 @@ Future changes:
 * implement a minimum 6 character password
 * Change the custom order fields to accurately match their goals (time -> timefield, destination -> categoryfield)
 * when user opens text box in custom order, push the request button/bar up
+* correct the color scheme and design on the segment control
+* implement an administrator (with authorities) for each circle
 
 Moving forward:
 * Display a menu looking thing, items become selectable, selecting an item adds to cart, check out button on the bottom 
-* Make a separate tab bar option on the top for billboard and accepted
+* Add a no orders :( screen
 
 Short term goals:
 * add a navigation bar item for the karma points
@@ -26,19 +28,11 @@ Bugs:
 
 
 Things I need on the design side:
-* Add circles page
-* Individual icons for each button on the bottom bar
-* Do we really want to split by billboard and accepted
-* What's the top left button and how will it work
 * Shouldn't the order button be much bigger?
 * Gonna need those menus... man the menus is nuts
-* Fix the new circles page
-* Implement navigation bars on login pages? (nope)
-* Complete list of categories
 * A different picture for each of those tabs on the order1 page
 * How will the request for laundry be different from shopping and custom (do each of those types have different order pages?)
 * Request vs Order
-* Need add 2 much more cleaned up
 
 Notes:
 * Filter/search bar on top of circle join 

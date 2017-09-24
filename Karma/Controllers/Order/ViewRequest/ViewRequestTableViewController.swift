@@ -14,7 +14,7 @@ class ViewRequestTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //Pull from the database
         loadAllOrders()
         
@@ -36,7 +36,7 @@ class ViewRequestTableViewController: UITableViewController {
     private var allOrders = [Order]()
     private var orders = [Order]()
     
-    func segmentChanged(sender: UISegmentedControl) {
+    @objc func segmentChanged(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             loadPending()
