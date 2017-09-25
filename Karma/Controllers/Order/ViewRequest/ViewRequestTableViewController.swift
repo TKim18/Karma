@@ -51,24 +51,50 @@ class ViewRequestTableViewController: UITableViewController {
     //Server call
     private func loadAllOrders() {
         let backendless = Backendless.sharedInstance()
-        let dataStore = backendless!.data.of(Order().ofClass())
+        let dataStore = backendless!.data.of(Circle.ofClass())
+        let circleId = backendless!.userService.currentUser.getProperty("circleId") as! String
+
+        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(Order.ofClass())
+        loadRelationsQueryBuilder!.setRelationName("Orders")
         
-        let currentCircle = backendless!.userService.currentUser.getProperty("circleId") as! String
+        Types.tryblock({() -> Void in
+            self.allOrders = dataStore!.loadRelations(circleId, queryBuilder: loadRelationsQueryBuilder) as! [Order]
+            self.loadPending()
+        },
+            catchblock: { (exception) -> Void in
+            let error = exception as! Fault
+            print(error)
+        })
+
+        
+//        dataStore!.loadRelations(
+//            circleId,
+//            queryBuilder: loadRelationsQueryBuilder,
+//            response: { orders in
+//                self.allOrders = orders as! [Order]
+//                self.loadPending()
+//            },
+//            error: {
+//                fault in
+//                print("Server reported an error: \(fault!.message)")
+//            }
+//        )
+
         
         //TODO: Please use the update query code when backendless gets around to it
         //TODO: Update orders to exclude the orders that you placed (maybe)
-        let queryClause = "circleId = '" + currentCircle + "'"
-        let queryBuilder = DataQueryBuilder()
-        queryBuilder!.setWhereClause(queryClause)
-        
-        Types.tryblock({() -> Void in
-            self.allOrders = dataStore!.find(queryBuilder) as! [Order]
-            self.loadPending()
-        },
-                       catchblock: { (exception) -> Void in
-                        let error = exception as! Fault
-                        print(error)
-        })
+//        let queryClause = "circleId = '" + currentCircle + "'"
+//        let queryBuilder = DataQueryBuilder()
+//        queryBuilder!.setWhereClause(queryClause)
+//
+//        Types.tryblock({() -> Void in
+//            self.allOrders = dataStore!.find(queryBuilder) as! [Order]
+//            self.loadPending()
+//        },
+//                       catchblock: { (exception) -> Void in
+//                        let error = exception as! Fault
+//                        print(error)
+//        })
     }
     
     //Optimize this into a filter query **functional programming**
