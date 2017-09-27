@@ -84,6 +84,7 @@ class ViewRequestTableViewController: UITableViewController {
     }
     
     //Optimize this into a filter query **functional programming**
+    //Either do the reordering here or when you first declare allOrders
     private func loadPending() {
         self.orders = []
         for request in self.allOrders {
@@ -150,4 +151,53 @@ class ViewRequestTableViewController: UITableViewController {
         return cell
     }
 
+    ///---------------------- Accepting a request handling ---------------------------//
+    //At some point, make this a swipe rather than a click
+    @IBAction func acceptRequest(sender : AnyObject){
+        self.performSegue(withIdentifier: "AcceptRequest", sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        //Check for mess ups
+        guard let selectedOrderCell = sender as? ViewRequestTableViewCell else {
+            fatalError("Unexpected sender: \(String(describing: sender))")
+        }
+        
+        guard let indexPath = tableView.indexPath(for : selectedOrderCell) else {
+            fatalError("You definitely got the wrong cell")
+        }
+        
+        let backendless = Backendless.sharedInstance()!
+        let dataStore = backendless.data.of(Order().ofClass())
+        let currentUserId = backendless.userService.currentUser.objectId
+        
+        let selectedOrder = orders[indexPath.row]
+//        if (selectedOrder.requestingUserId == currentUserId) {
+//            return;
+//        }
+        
+        selectedOrder.acceptingUserId = currentUserId! as String
+        
+        dataStore?.save(
+            selectedOrder,
+            response: {
+                (order) -> () in
+                print("Order saved")
+            },
+            error: {
+                (fault : Fault?) -> () in
+                print("Server reported an error: \(String(describing: fault))")
+            }
+        )
+        
+//        Types.tryblock({ () -> Void in
+//            //Update the Order object to reflect the acceptingUserId
+//
+//        }, catchblock: {(exception) -> Void in
+//            print(exception ?? "Error")
+//        })
+    }
+    
 }

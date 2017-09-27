@@ -385,6 +385,7 @@
                                     <outlet property="timeLabel" destination="GW2-ge-ff2" id="UD9-bk-sRO"/>
                                     <outlet property="titleLabel" destination="14q-AB-BfY" id="uNy-TC-TqL"/>
                                     <outlet property="userImage" destination="9aO-kh-OWc" id="EBb-V0-evc"/>
+                                    <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="AcceptRequest" id="MYP-am-xAB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -472,7 +473,7 @@
             </objects>
             <point key="canvasLocation" x="693.60000000000002" y="-1668.2158920539732"/>
         </scene>
-        <!--New Request-->
+        <!--Choose a Category-->
         <scene sceneID="xPF-QY-Ftz">
             <objects>
                 <tableViewController id="S69-SH-7rZ" customClass="RequestTableViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
@@ -513,7 +514,7 @@
                             <outlet property="delegate" destination="S69-SH-7rZ" id="muV-S3-5Na"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Request" id="gLF-K9-EWA"/>
+                    <navigationItem key="navigationItem" title="Choose a Category" id="gLF-K9-EWA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3V-2t-o7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -801,8 +802,7 @@
         <image name="UserSettingsIcon" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5oT-NM-lk9"/>
         <segue reference="PTn-pf-fad"/>
-        <segue reference="slo-0J-Efm"/>
+        <segue reference="MYP-am-xAB"/>
     </inferredMetricsTieBreakers>
 </document>
