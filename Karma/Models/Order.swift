@@ -58,6 +58,7 @@ class Order : NSObject {
     var acceptingUserId: String?
     let circleId : String?
     
+    var completed : Bool = false
     var title : String?
     var message : String?
     var requestedTime : String?
@@ -67,6 +68,7 @@ class Order : NSObject {
     var cost : Double = 0.0
     
     override init () {
+        self.completed = false
         self.title = ""
         self.message = ""
         self.requestedTime = ""
@@ -88,6 +90,7 @@ class Order : NSObject {
     
     //Not sure if necessary
     init (title: String, message: String, requestedTime: String, category: Category, origin: String, destination: String, cost: Double, circleId: String, requestingUserId: String, acceptingUserId: String) {
+        self.completed = false
         self.title = title
         self.message = message
         self.requestedTime = requestedTime
