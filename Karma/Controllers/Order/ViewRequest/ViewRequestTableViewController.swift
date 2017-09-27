@@ -18,8 +18,11 @@ class ViewRequestTableViewController: UITableViewController {
         //Pull from the database
         loadAllOrders()
         
+        //Configure background color
+        self.tableView.backgroundColor = UIColor.lightGray
+        
         //Enable segment control
-        pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
+        self.pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
         
         //Navbar color: #285398
     }
@@ -66,12 +69,11 @@ class ViewRequestTableViewController: UITableViewController {
             print(error)
         })
 
-        
 //        dataStore!.loadRelations(
 //            circleId,
 //            queryBuilder: loadRelationsQueryBuilder,
-//            response: { orders in
-//                self.allOrders = orders as! [Order]
+//            response: { pulledOrders in
+//                self.allOrders = pulledOrders as! [Order]
 //                self.loadPending()
 //            },
 //            error: {
@@ -79,22 +81,6 @@ class ViewRequestTableViewController: UITableViewController {
 //                print("Server reported an error: \(fault!.message)")
 //            }
 //        )
-
-        
-        //TODO: Please use the update query code when backendless gets around to it
-        //TODO: Update orders to exclude the orders that you placed (maybe)
-//        let queryClause = "circleId = '" + currentCircle + "'"
-//        let queryBuilder = DataQueryBuilder()
-//        queryBuilder!.setWhereClause(queryClause)
-//
-//        Types.tryblock({() -> Void in
-//            self.allOrders = dataStore!.find(queryBuilder) as! [Order]
-//            self.loadPending()
-//        },
-//                       catchblock: { (exception) -> Void in
-//                        let error = exception as! Fault
-//                        print(error)
-//        })
     }
     
     //Optimize this into a filter query **functional programming**
@@ -132,16 +118,14 @@ class ViewRequestTableViewController: UITableViewController {
     
     //Set the spacing between sections
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return cellSpacingHeight
+        return (section == 0) ? 0 : cellSpacingHeight
     }
     
-    //Make the background color show through
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.gray
-        return headerView
+    //Set the table insides as white
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.white
     }
-
+    
     //Load the data into the table cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -157,17 +141,11 @@ class ViewRequestTableViewController: UITableViewController {
         cell.descriptionLabel.text = order.message
         cell.timeLabel.text = order.requestedTime
         cell.locationLabel.text = order.origin! + " to " + order.destination!
-        
-        //Cell image components
         cell.categoryImage.image = order.fromDescription().image
         
         //TODO: This should become a query on requesting user id and then a pull on their image attribute
         let profilePicture = UIImage(named: "DummyAvatar")
         cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
-
-        //Customize its border
-        //cell.layer.borderWidth = 2.0
-        //cell.layer.borderColor = UIColor.gray.cgColor
         
         return cell
     }

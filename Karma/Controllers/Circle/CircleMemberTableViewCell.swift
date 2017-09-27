@@ -23,6 +23,6 @@ class CircleMemberTableViewCell: UITableViewCell {
 
     //UI Elements
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var circleImage: UIImageView!
+    @IBOutlet weak var userImage: UIImageView!
     
 }

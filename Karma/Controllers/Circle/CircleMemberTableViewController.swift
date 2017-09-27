@@ -13,6 +13,8 @@ class CircleMemberTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tableView.backgroundColor = UIColor.lightGray
+        
         // Load data
         loadMembers()
     }
@@ -33,6 +35,10 @@ class CircleMemberTableViewController: UITableViewController {
         return members.count
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.white
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "CircleMemberTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CircleMemberTableViewCell else {
@@ -41,6 +47,13 @@ class CircleMemberTableViewController: UITableViewController {
         
         let member = members[indexPath.row]
         cell.nameLabel.text = member.name! as String
+        
+        //TODO: This should become a query on requesting user id and then a pull on their image attribute
+        let profilePicture = UIImage(named: "DummyAvatar")
+        cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
+        
+        cell.layer.borderWidth = 10.0
+        cell.layer.borderColor = UIColor.lightGray.cgColor
         
         return cell
     }
