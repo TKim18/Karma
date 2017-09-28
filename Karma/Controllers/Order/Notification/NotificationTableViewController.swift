@@ -24,12 +24,17 @@ class NotificationTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // One section for pending, one for completed
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notifications.count
+        return (section == 0) ? notifications.count : 0
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return (section == 0) ? "PENDING" : "COMPLETED"
     }
     
     //Load the data into the table cells
@@ -42,7 +47,9 @@ class NotificationTableViewController: UITableViewController {
         
         let notification = notifications[indexPath.row]
         
-        cell.notificationLabel.text = notification.acceptingUserId! + "requests 10 pts for completing your request!"
+        
+        
+        cell.notificationLabel.text = notification.acceptingUserId! + " requests 10 pts for completing your request!"
         cell.personalMessage.text = notification.title
         
         //TODO: This should become a query on requesting user id and then a pull on their image attribute
@@ -51,9 +58,8 @@ class NotificationTableViewController: UITableViewController {
         
         return cell
     }
-    
-    //
-    
+
+    // Server Call
     private func loadNotifications() {
         let backendless = Backendless.sharedInstance()
         let dataStore = backendless!.data.of(Circle.ofClass())

@@ -12,6 +12,7 @@ class NotificationTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        notificationLabel.font = UIFont.boldSystemFont(ofSize: 11.0)
         // Initialization code
     }
 
