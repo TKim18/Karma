@@ -69,6 +69,7 @@ class ViewRequestTableViewController: UITableViewController {
             print(error)
         })
 
+        // Asynchronous Call:
 //        dataStore!.loadRelations(
 //            circleId,
 //            queryBuilder: loadRelationsQueryBuilder,
@@ -152,11 +153,12 @@ class ViewRequestTableViewController: UITableViewController {
     }
 
     ///---------------------- Accepting a request handling ---------------------------//
+    
     //At some point, make this a swipe rather than a click
     @IBAction func acceptRequest(sender : AnyObject){
         self.performSegue(withIdentifier: "AcceptRequest", sender: self)
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -174,9 +176,11 @@ class ViewRequestTableViewController: UITableViewController {
         let currentUserId = backendless.userService.currentUser.objectId
         
         let selectedOrder = orders[indexPath.row]
-//        if (selectedOrder.requestingUserId == currentUserId) {
-//            return;
-//        }
+        
+        //TODO: Move this to a shouldPerformSegue rather than a prepare
+        if (selectedOrder.requestingUserId == (currentUserId! as String) ) {
+            return;
+        }
         
         selectedOrder.acceptingUserId = currentUserId! as String
         
@@ -192,12 +196,12 @@ class ViewRequestTableViewController: UITableViewController {
             }
         )
         
-//        Types.tryblock({ () -> Void in
-//            //Update the Order object to reflect the acceptingUserId
-//
-//        }, catchblock: {(exception) -> Void in
-//            print(exception ?? "Error")
-//        })
+        // Synchronous
+        //        Types.tryblock({ () -> Void in
+        //            //Update the Order object to reflect the acceptingUserId
+        //
+        //        }, catchblock: {(exception) -> Void in
+        //            print(exception ?? "Error")
+        //        })
     }
-    
 }

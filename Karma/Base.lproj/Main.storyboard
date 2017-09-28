@@ -419,13 +419,13 @@
         <!--Notifications-->
         <scene sceneID="MJs-8Q-MDm">
             <objects>
-                <tableViewController id="vdr-Jx-gdD" customClass="RespondRequestTableViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="vdr-Jx-gdD" customClass="NotificationTableViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fK9-ZS-07w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RespondRequestTableViewCell" rowHeight="109" id="nnM-BJ-LfK" customClass="RespondRequestTableViewCell" customModule="Karma" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" rowHeight="109" id="nnM-BJ-LfK" customClass="NotificationTableViewCell" customModule="Karma" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="109"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nnM-BJ-LfK" id="FnX-2I-Gf2">

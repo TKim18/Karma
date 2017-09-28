@@ -53,7 +53,7 @@ class CustomRequestViewController: UIViewController {
         self.currentOrder.message = requestDetailsField.text
         self.currentOrder.requestedTime = endTimeField.text
         self.currentOrder.origin = startLocationField.text
-        self.currentOrder.destination = endLocationField.text]
+        self.currentOrder.destination = endLocationField.text
         
         var valid = true
         Types.tryblock({ () -> Void in

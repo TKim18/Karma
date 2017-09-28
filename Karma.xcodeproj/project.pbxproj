@@ -29,8 +29,8 @@
 		2277E0761F744C6300AC53CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0751F744C6300AC53CB /* ViewController.swift */; };
 		2277E0791F744C7800AC53CB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0771F744C7800AC53CB /* LoginController.swift */; };
 		2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0781F744C7800AC53CB /* RegisterController.swift */; };
-		22B9167D1F7B367D002FCDD6 /* RespondRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167C1F7B367D002FCDD6 /* RespondRequestTableViewCell.swift */; };
-		22B9167F1F7B3690002FCDD6 /* RespondRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167E1F7B3690002FCDD6 /* RespondRequestTableViewController.swift */; };
+		22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */; };
+		22B9167F1F7B3690002FCDD6 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167E1F7B3690002FCDD6 /* NotificationTableViewController.swift */; };
 		749CDB62FAC047BF1F6EAAD2 /* libPods-Karma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */; };
 /* End PBXBuildFile section */
 
@@ -60,8 +60,8 @@
 		2277E0751F744C6300AC53CB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2277E0771F744C7800AC53CB /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2277E0781F744C7800AC53CB /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
-		22B9167C1F7B367D002FCDD6 /* RespondRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondRequestTableViewCell.swift; sourceTree = "<group>"; };
-		22B9167E1F7B3690002FCDD6 /* RespondRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondRequestTableViewController.swift; sourceTree = "<group>"; };
+		22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		22B9167E1F7B3690002FCDD6 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
 		ABEFA3D6DA2E1C5CD49339F5 /* Pods-Karma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.release.xcconfig"; sourceTree = "<group>"; };
 		C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Karma.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -192,20 +192,20 @@
 		2277E0741F744C3800AC53CB /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				228CA9541F7B34180039B250 /* RespondRequest */,
+				228CA9541F7B34180039B250 /* Notification */,
 				2229C0821F744D6E0083C215 /* ViewRequest */,
 				2229C0871F744D860083C215 /* AddRequest */,
 			);
 			path = Order;
 			sourceTree = "<group>";
 		};
-		228CA9541F7B34180039B250 /* RespondRequest */ = {
+		228CA9541F7B34180039B250 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				22B9167C1F7B367D002FCDD6 /* RespondRequestTableViewCell.swift */,
-				22B9167E1F7B3690002FCDD6 /* RespondRequestTableViewController.swift */,
+				22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */,
+				22B9167E1F7B3690002FCDD6 /* NotificationTableViewController.swift */,
 			);
-			path = RespondRequest;
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		5A8163A77E6F62574C4A1FC1 /* Frameworks */ = {
@@ -356,7 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B9167F1F7B3690002FCDD6 /* RespondRequestTableViewController.swift in Sources */,
+				22B9167F1F7B3690002FCDD6 /* NotificationTableViewController.swift in Sources */,
 				22302AFF1F7B376A0046E757 /* CircleMemberTableViewCell.swift in Sources */,
 				2229C0861F744D820083C215 /* ViewRequestTableViewCell.swift in Sources */,
 				2277E0691F744B5F00AC53CB /* User.swift in Sources */,
@@ -369,7 +369,7 @@
 				2277E0681F744B5F00AC53CB /* Order.swift in Sources */,
 				22302B051F7B37790046E757 /* CircleTableViewController.swift in Sources */,
 				2277E0761F744C6300AC53CB /* ViewController.swift in Sources */,
-				22B9167D1F7B367D002FCDD6 /* RespondRequestTableViewCell.swift in Sources */,
+				22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */,
 				2277E0791F744C7800AC53CB /* LoginController.swift in Sources */,
 				2261433D1F72E5FB00711DEF /* AppDelegate.swift in Sources */,
 				22302B061F7B37790046E757 /* CircleTableViewCell.swift in Sources */,

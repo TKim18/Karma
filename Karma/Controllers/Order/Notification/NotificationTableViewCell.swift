@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RespondRequestTableViewCell: UITableViewCell {
+class NotificationTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
