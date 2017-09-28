@@ -62,49 +62,25 @@ class ViewRequestTableViewController: UITableViewController {
         
         Types.tryblock({() -> Void in
             self.allOrders = dataStore!.loadRelations(circleId, queryBuilder: loadRelationsQueryBuilder) as! [Order]
+            //Sort all the orders by their created date
+            self.allOrders.sort { return ($0.created! as Date) < ($1.created! as Date) }
             self.loadPending()
         },
             catchblock: { (exception) -> Void in
             let error = exception as! Fault
             print(error)
         })
-
-        // Asynchronous Call:
-//        dataStore!.loadRelations(
-//            circleId,
-//            queryBuilder: loadRelationsQueryBuilder,
-//            response: { pulledOrders in
-//                self.allOrders = pulledOrders as! [Order]
-//                self.loadPending()
-//            },
-//            error: {
-//                fault in
-//                print("Server reported an error: \(fault!.message)")
-//            }
-//        )
     }
     
-    //Optimize this into a filter query **functional programming**
     //Either do the reordering here or when you first declare allOrders
     private func loadPending() {
-        self.orders = []
-        for request in self.allOrders {
-            if (request.acceptingUserId == "-1") {
-                self.orders.append(request)
-            }
-        }
+        self.orders = self.allOrders.filter { $0.acceptingUserId == "-1" }
     }
     
-    //Optimize this into a filter query **functional programming**
     private func loadAccepted() {
-        self.orders = []
         let backendless = Backendless.sharedInstance()!
         let currentUserId = backendless.userService.currentUser.objectId
-        for request in self.allOrders {
-            if (request.acceptingUserId == (currentUserId! as String)) {
-                self.orders.append(request)
-            }
-        }
+        self.orders = self.allOrders.filter { $0.acceptingUserId == (currentUserId! as String) }
     }
 
     //---------------------- Setting the table elements and variables ---------------------------//
@@ -195,13 +171,26 @@ class ViewRequestTableViewController: UITableViewController {
                 print("Server reported an error: \(String(describing: fault))")
             }
         )
-        
-        // Synchronous
-        //        Types.tryblock({ () -> Void in
-        //            //Update the Order object to reflect the acceptingUserId
-        //
-        //        }, catchblock: {(exception) -> Void in
-        //            print(exception ?? "Error")
-        //        })
     }
 }
+
+// Asynchronous Call:
+//        dataStore!.loadRelations(
+//            circleId,
+//            queryBuilder: loadRelationsQueryBuilder,
+//            response: { pulledOrders in
+//                self.allOrders = pulledOrders as! [Order]
+//                self.loadPending()
+//            },
+//            error: {
+//                fault in
+//                print("Server reported an error: \(fault!.message)")
+//            }
+//        )
+// Synchronous Call:
+//        Types.tryblock({ () -> Void in
+//            //Update the Order object to reflect the acceptingUserId
+//
+//        }, catchblock: {(exception) -> Void in
+//            print(exception ?? "Error")
+//        })

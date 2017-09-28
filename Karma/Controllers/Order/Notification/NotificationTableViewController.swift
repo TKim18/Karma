@@ -11,6 +11,8 @@ import UIKit
 class NotificationTableViewController: UITableViewController {
 
     //TODO: ENABLE PUSH NOTIFICATIONS
+    var notifications = [Order]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,24 +24,37 @@ class NotificationTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-    var notifications = [Order]()
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-        //return notifications.count
+        return notifications.count
     }
     
-    private func loadNotifications() {
-        //For any particular user, we want to get all the orders of their circle
-        //And from all those orders, we want to get all those that have requestingUserId as the user
-        //So now we have all the user's requests, and then filter those down to those that have an
-        //AcceptingUserId that is not -1. and then filter those down to those that have completed = false
+    //Load the data into the table cells
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cellIdentifier = "NotificationTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NotificationTableViewCell else {
+            fatalError("Something's wrong with the Order object!")
+        }
         
+        let notification = notifications[indexPath.row]
+        
+        cell.notificationLabel.text = notification.acceptingUserId! + "requests 10 pts for completing your request!"
+        cell.personalMessage.text = notification.title
+        
+        //TODO: This should become a query on requesting user id and then a pull on their image attribute
+        let profilePicture = UIImage(named: "DummyAvatar")
+        cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
+        
+        return cell
+    }
+    
+    //
+    
+    private func loadNotifications() {
         let backendless = Backendless.sharedInstance()
         let dataStore = backendless!.data.of(Circle.ofClass())
         let currentUser = backendless!.userService.currentUser
@@ -53,8 +68,12 @@ class NotificationTableViewController: UITableViewController {
                 circleId,
                 queryBuilder: loadRelationsQueryBuilder
             ) as! [Order]
+            //Filter down all orders to include just the current user's requests
+            //That have been accepted by someone else but not yet completed
             self.notifications = allOrders.filter {
-                $0.requestingUserId == (currentUser!.objectId! as String) && $0.acceptingUserId != "-1"
+                $0.requestingUserId == (currentUser!.objectId! as String) &&
+                $0.acceptingUserId != "-1" &&
+                !($0.completed)
             }
         },
            catchblock: { (exception) -> Void in
