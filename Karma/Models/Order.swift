@@ -55,7 +55,9 @@ class Order : NSObject {
     var updated: NSDate?
     
     var requestingUserId: String?
+    var requestingUserName: String?
     var acceptingUserId: String?
+    var acceptingUserName: String?
     let circleId : String?
     
     var completed : Bool = false
@@ -78,30 +80,33 @@ class Order : NSObject {
         self.cost = 0.0
         self.circleId = "-1"
         self.requestingUserId = "-1"
+        self.requestingUserName = "-1"
         self.acceptingUserId = "-1"
+        self.acceptingUserName = "-1"
     }
     
     //Probably only going to use this one
-    init (category: Category, requestingUserId: String, circleId: String) {
+    init (category: Category, requestingUserId: String, requestingUserName: String, circleId: String) {
         self.category = category.description
         self.requestingUserId = requestingUserId
+        self.requestingUserName = requestingUserName
         self.circleId = circleId
     }
     
     //Not sure if necessary
-    init (title: String, message: String, requestedTime: String, category: Category, origin: String, destination: String, cost: Double, circleId: String, requestingUserId: String, acceptingUserId: String) {
-        self.completed = false
-        self.title = title
-        self.message = message
-        self.requestedTime = requestedTime
-        self.category = category.description
-        self.origin = origin
-        self.destination = destination
-        self.cost = cost
-        self.circleId = circleId
-        self.requestingUserId = requestingUserId
-        self.acceptingUserId = acceptingUserId
-    }
+//    init (title: String, message: String, requestedTime: String, category: Category, origin: String, destination: String, cost: Double, circleId: String, requestingUserId: String, acceptingUserId: String) {
+//        self.completed = false
+//        self.title = title
+//        self.message = message
+//        self.requestedTime = requestedTime
+//        self.category = category.description
+//        self.origin = origin
+//        self.destination = destination
+//        self.cost = cost
+//        self.circleId = circleId
+//        self.requestingUserId = requestingUserId
+//        self.acceptingUserId = acceptingUserId
+//    }
 
     func fromDescription() -> Category {
         switch self.description {

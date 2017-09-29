@@ -149,16 +149,17 @@ class ViewRequestTableViewController: UITableViewController {
         
         let backendless = Backendless.sharedInstance()!
         let dataStore = backendless.data.of(Order().ofClass())
-        let currentUserId = backendless.userService.currentUser.objectId
+        let currentUser = backendless.userService.currentUser
         
         let selectedOrder = orders[indexPath.row]
         
         //TODO: Move this to a shouldPerformSegue rather than a prepare
-        if (selectedOrder.requestingUserId == (currentUserId! as String) ) {
+        if (selectedOrder.requestingUserId == (currentUser!.objectId as String) ) {
             return;
         }
         
-        selectedOrder.acceptingUserId = currentUserId! as String
+        selectedOrder.acceptingUserId = currentUser!.objectId as String
+        selectedOrder.acceptingUserName = currentUser!.name as String
         
         dataStore?.save(
             selectedOrder,

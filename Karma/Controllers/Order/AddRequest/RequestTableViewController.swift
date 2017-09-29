@@ -81,6 +81,7 @@ class RequestTableViewController: UITableViewController {
                 let currentOrder = Order(
                     category: currentCategory,
                     requestingUserId: currentUser!.objectId as String,
+                    requestingUserName: currentUser!.name as String,
                     circleId: currentUser?.getProperty("circleId") as! String)
                 destination.currentOrder = currentOrder
             }

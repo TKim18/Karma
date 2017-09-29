@@ -47,7 +47,7 @@ class NotificationTableViewController: UITableViewController {
         
         let notification = notifications[indexPath.row]
         
-        
+        //cell.notificationLabel.text = notification.acceptingUserName! + " requests 10 pts for completing your request!"
         
         cell.notificationLabel.text = notification.acceptingUserId! + " requests 10 pts for completing your request!"
         cell.personalMessage.text = notification.title
