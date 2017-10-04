@@ -47,9 +47,7 @@ class NotificationTableViewController: UITableViewController {
         
         let notification = notifications[indexPath.row]
         
-        //cell.notificationLabel.text = notification.acceptingUserName! + " requests 10 pts for completing your request!"
-        
-        cell.notificationLabel.text = notification.acceptingUserId! + " requests 10 pts for completing your request!"
+        cell.notificationLabel.text = notification.acceptingUserName! + " requests 10 pts for accepting your request!"
         cell.personalMessage.text = notification.title
         
         //TODO: This should become a query on requesting user id and then a pull on their image attribute
@@ -87,14 +85,4 @@ class NotificationTableViewController: UITableViewController {
                 print(error)
         })
     }
-
-//    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let vw = UIView()
-//        vw.backgroundColor = UIColor.red
-//
-//        return vw
-//    }
-    
- 
-
 }

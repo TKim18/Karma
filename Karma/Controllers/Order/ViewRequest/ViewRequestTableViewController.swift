@@ -80,7 +80,7 @@ class ViewRequestTableViewController: UITableViewController {
     private func loadAccepted() {
         let backendless = Backendless.sharedInstance()!
         let currentUserId = backendless.userService.currentUser.objectId
-        self.orders = self.allOrders.filter { $0.acceptingUserId == (currentUserId! as String) }
+        self.orders = self.allOrders.filter { $0.acceptingUserId == (currentUserId! as String) && !$0.completed }
     }
 
     //---------------------- Setting the table elements and variables ---------------------------//
