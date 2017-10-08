@@ -131,9 +131,9 @@ class ViewRequestTableViewController: UITableViewController {
     ///---------------------- Accepting a request handling ---------------------------//
     
     //At some point, make this a swipe rather than a click
-    @IBAction func acceptRequest(sender : AnyObject){
-        self.performSegue(withIdentifier: "AcceptRequest", sender: self)
-    }
+//    @IBAction func acceptRequest(sender : AnyObject){
+//        self.performSegue(withIdentifier: "AcceptRequest", sender: self)
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)

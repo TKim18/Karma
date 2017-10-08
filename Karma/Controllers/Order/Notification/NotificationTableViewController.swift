@@ -23,7 +23,7 @@ class NotificationTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // One section for pending, one for completed
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -53,8 +53,32 @@ class NotificationTableViewController: UITableViewController {
         //TODO: This should become a query on requesting user id and then a pull on their image attribute
         let profilePicture = UIImage(named: "DummyAvatar")
         cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
-        
+        cell.payButton.addTarget(self, action: #selector(self.completeTransaction), for: UIControlEvents.touchUpInside)
         return cell
+    }
+    
+    // Segue preparation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "CompleteTransaction") {
+            let indexPath : NSIndexPath
+            if let button = sender as? UIButton {
+                let cell = button.superview?.superview as! UITableViewCell
+                indexPath = self.tableView.indexPath(for: cell)! as NSIndexPath
+                
+                // now that i have the order, i want to update the two user objects
+                // to reflect the transfer of karma points
+                // and i also want to set that order object's completed boolean to true
+                
+                let selectedRequest = notifications[indexPath.row]
+                
+                
+
+            }
+        }
+    }
+    
+    @objc func completeTransaction(button : UIButton) {
+        self.performSegue(withIdentifier: "CompleteTransaction", sender: button)
     }
 
     // Server Call

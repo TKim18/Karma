@@ -5,7 +5,6 @@ Future changes:
 * Require email confirmation
 * Implement I forgot my username/password
 * Don't call backendless shared instance multiple times if i dont have to
-* Extrapolate user into a class on my end to generalize server calls -> apparently can't do this due to serialization issues
 * add options to go back to the previous view ( add an unwind segue between login and register )
 * implement a minimum 6 character password
 * Change the custom order fields to accurately match their goals (time -> timefield, destination -> categoryfield)
@@ -19,12 +18,12 @@ Moving forward:
 
 Short term goals:
 * add a navigation bar item for the karma points
-* remove table view extra lines
+* add functionality to complete request
+* give people images **** important to do early ****
 
 Bugs:
 * man... default value of circleId is "-1"... figure out what null is in this scenario
 * circle.name doesnt get pulled from the db properly, for now we're using displayName but need to use the unique value
-* (HUGE PROBLEM) query with data relations doesn't work properly
 
 
 Things I need on the design side:

@@ -403,9 +403,6 @@
                                 <segment title="Pending"/>
                                 <segment title="Accepted"/>
                             </segments>
-                            <connections>
-                                <action selector="indexChangedWithSender:" destination="Oqi-dr-ZlU" eventType="touchUpInside" id="RQU-zp-y0C"/>
-                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
@@ -439,6 +436,9 @@
                                             <state key="normal" title="Pay">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="CompleteTransaction" id="W7Z-Wg-xHQ"/>
+                                            </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lCW-Xh-5x8">
                                             <rect key="frame" x="16" y="20" width="69" height="69"/>
@@ -461,6 +461,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="notificationLabel" destination="eQR-5e-a6n" id="mux-Fa-h4l"/>
+                                    <outlet property="payButton" destination="pE2-BW-rRL" id="W6f-dM-TvI"/>
                                     <outlet property="personalMessage" destination="Fr1-NT-hFB" id="iRs-LX-vGn"/>
                                     <outlet property="userImage" destination="lCW-Xh-5x8" id="bgm-XE-OTC"/>
                                 </connections>
@@ -806,7 +807,7 @@
         <image name="UserSettingsIcon" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PTn-pf-fad"/>
-        <segue reference="MYP-am-xAB"/>
+        <segue reference="cOA-1g-3sX"/>
+        <segue reference="W7Z-Wg-xHQ"/>
     </inferredMetricsTieBreakers>
 </document>
