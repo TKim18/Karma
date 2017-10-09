@@ -57,6 +57,10 @@ class NotificationTableViewController: UITableViewController {
         return cell
     }
     
+    @objc func completeTransaction(button : UIButton) {
+        self.performSegue(withIdentifier: "CompleteTransaction", sender: button)
+    }
+    
     // Segue preparation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "CompleteTransaction") {
@@ -65,20 +69,43 @@ class NotificationTableViewController: UITableViewController {
                 let cell = button.superview?.superview as! UITableViewCell
                 indexPath = self.tableView.indexPath(for: cell)! as NSIndexPath
                 
-                // now that i have the order, i want to update the two user objects
-                // to reflect the transfer of karma points
-                // and i also want to set that order object's completed boolean to true
-                
-                let selectedRequest = notifications[indexPath.row]
-                
-                
-
+                performServerTransaction(selectedRequest: notifications[indexPath.row])
             }
         }
     }
     
-    @objc func completeTransaction(button : UIButton) {
-        self.performSegue(withIdentifier: "CompleteTransaction", sender: button)
+    private func performServerTransaction(selectedRequest : Order) {
+        let backendless = Backendless.sharedInstance()
+        
+        let orderDataStore = backendless!.data.of(Order().ofClass())
+        let userDataStore = backendless!.data.of(BackendlessUser.ofClass())
+        
+        // Set the current request to be completed
+        selectedRequest.completed = true;
+        orderDataStore!.save(
+            selectedRequest,
+            response: {
+                (updatedRequest) -> () in
+                print("Completed the request")
+        },
+            error: {
+                (fault : Fault?) -> () in
+                print("Something went wrong trying to complete the request: \(String(describing: fault))")
+        })
+        
+        // Update the people's karma points according to their service
+        let acceptingUser = userDataStore!.find(byId: selectedRequest.acceptingUserId!) as!  BackendlessUser
+        let requestingUser = userDataStore!.find(byId: selectedRequest.requestingUserId!) as! BackendlessUser
+        
+        acceptingUser.setProperty(
+            "karmaPoints",
+            object: ((acceptingUser.getProperty("karmaPoints") as! Double) + selectedRequest.cost)
+        )
+        requestingUser.setProperty(
+            "karmaPoints",
+            object: ((requestingUser.getProperty("karmaPoints") as! Double) + selectedRequest.cost)
+        )
+        
     }
 
     // Server Call
@@ -91,17 +118,17 @@ class NotificationTableViewController: UITableViewController {
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(Order.ofClass())
         loadRelationsQueryBuilder!.setRelationName("Orders")
         
+        // Filter down all orders to include just the current user's requests
+        // that have been accepted by someone else but not yet completed
         Types.tryblock({() -> Void in
             let allOrders = dataStore!.loadRelations(
                 circleId,
                 queryBuilder: loadRelationsQueryBuilder
             ) as! [Order]
-            //Filter down all orders to include just the current user's requests
-            //That have been accepted by someone else but not yet completed
             self.notifications = allOrders.filter {
-                $0.requestingUserId == (currentUser!.objectId! as String) &&
+                !($0.completed) &&
                 $0.acceptingUserId != "-1" &&
-                !($0.completed)
+                $0.requestingUserId == (currentUser!.objectId! as String)
             }
         },
            catchblock: { (exception) -> Void in
