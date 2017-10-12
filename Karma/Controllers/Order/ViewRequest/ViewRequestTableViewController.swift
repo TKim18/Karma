@@ -41,12 +41,9 @@ class ViewRequestTableViewController: UITableViewController {
     
     @objc func segmentChanged(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0:
-            loadPending()
-        case 1:
-            loadAccepted()
-        default:
-            self.orders = []
+            case 0: loadPending()
+            case 1: loadAccepted()
+            default: self.orders = []
         }
         self.tableView.reloadData()
     }

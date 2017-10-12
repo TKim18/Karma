@@ -34,6 +34,7 @@ class CustomRequestViewController: UIViewController {
     @IBOutlet var requestDetailsField : UITextView!
     @IBOutlet var errorMessage : UILabel!
     @IBOutlet var categoryImage: UIImageView!
+    @IBOutlet var costField : UILabel!
     
     @IBAction func requestButton(sender : AnyObject) {
         if (validRequest()) {
@@ -54,6 +55,9 @@ class CustomRequestViewController: UIViewController {
         self.currentOrder.requestedTime = endTimeField.text
         self.currentOrder.origin = startLocationField.text
         self.currentOrder.destination = endLocationField.text
+
+        //TODO: Add safety measures to this
+        self.currentOrder.cost = (costField.text! as NSString).doubleValue
         
         var valid = true
         Types.tryblock({ () -> Void in

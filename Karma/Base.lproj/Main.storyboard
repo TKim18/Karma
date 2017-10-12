@@ -644,11 +644,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cost" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NpF-09-naz">
+                                <rect key="frame" x="16" y="426" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="categoryImage" destination="ea9-ko-fBG" id="uJz-Rv-Iqg"/>
+                        <outlet property="costField" destination="NpF-09-naz" id="CVf-Zh-qtG"/>
                         <outlet property="endLocationField" destination="yjw-6J-3AT" id="VTg-dh-Xeg"/>
                         <outlet property="endTimeField" destination="p3P-04-QGL" id="5yK-0N-fyp"/>
                         <outlet property="errorMessage" destination="bIb-4g-8td" id="NZV-hQ-5Sm"/>
@@ -808,6 +816,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cOA-1g-3sX"/>
-        <segue reference="W7Z-Wg-xHQ"/>
+        <segue reference="slo-0J-Efm"/>
     </inferredMetricsTieBreakers>
 </document>

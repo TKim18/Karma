@@ -47,13 +47,14 @@ class NotificationTableViewController: UITableViewController {
         
         let notification = notifications[indexPath.row]
         
-        cell.notificationLabel.text = notification.acceptingUserName! + " requests 10 pts for accepting your request!"
+        cell.notificationLabel.text = notification.acceptingUserName! + " requests " + String(notification.cost) + " points for completing your request!"
         cell.personalMessage.text = notification.title
         
         //TODO: This should become a query on requesting user id and then a pull on their image attribute
         let profilePicture = UIImage(named: "DummyAvatar")
         cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
         cell.payButton.addTarget(self, action: #selector(self.completeTransaction), for: UIControlEvents.touchUpInside)
+        
         return cell
     }
     
@@ -130,6 +131,7 @@ class NotificationTableViewController: UITableViewController {
                 $0.acceptingUserId != "-1" &&
                 $0.requestingUserId == (currentUser!.objectId! as String)
             }
+            self.notifications.sort { return ($0.updated! as Date) < ($1.updated! as Date) }
         },
            catchblock: { (exception) -> Void in
                 let error = exception as! Fault

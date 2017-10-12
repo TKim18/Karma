@@ -25,6 +25,7 @@ Bugs:
 * man... default value of circleId is "-1"... figure out what null is in this scenario
 * circle.name doesnt get pulled from the db properly, for now we're using displayName but need to use the unique value
 * on first login, there's a space above table views
+* point transfer is not being registered by server
 
 
 Things I need on the design side:
