@@ -63,7 +63,7 @@ class CustomRequestViewController: UIViewController {
             let placedOrder = orderDataStore!.save(self.currentOrder) as! Order
             circleDataStore!.addRelation(
                 "Orders",
-                parentObjectId: UserHelper.getCurrentUserProperty(key: "circleId") as! String,
+                parentObjectId: User.getCurrentUserProperty(key: "circleId") as! String,
                 childObjects: [placedOrder.objectId!]
             )
         },

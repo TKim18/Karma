@@ -13,10 +13,6 @@ class RequestTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Customize these... please
-        //self.title = "Choose your category"
-        //navigationController?.navigationBar.barTintColor = UIColor.blue
-        //navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,7 +68,7 @@ class RequestTableViewController: UITableViewController {
         }
         
         let currentCategory = categories[indexPath.row]
-        let currentUser = UserHelper.getCurrentUser()
+        let currentUser = User.getCurrentUser()
         
         //Going to have to change this around for different views depending on category
         if segue.identifier == "ShowRequestDetails" {

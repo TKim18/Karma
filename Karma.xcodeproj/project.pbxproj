@@ -20,11 +20,10 @@
 		22302B041F7B37790046E757 /* CircleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B011F7B37790046E757 /* CircleController.swift */; };
 		22302B051F7B37790046E757 /* CircleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B021F7B37790046E757 /* CircleTableViewController.swift */; };
 		22302B061F7B37790046E757 /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B031F7B37790046E757 /* CircleTableViewCell.swift */; };
-		223BE9B81F90062000C6A8F7 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BE9B71F90062000C6A8F7 /* UserHelper.swift */; };
+		223BE9B81F90062000C6A8F7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BE9B71F90062000C6A8F7 /* User.swift */; };
 		2261433D1F72E5FB00711DEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226143391F72E5FA00711DEF /* AppDelegate.swift */; };
 		2277E0671F744B5F00AC53CB /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0641F744B5F00AC53CB /* Circle.swift */; };
 		2277E0681F744B5F00AC53CB /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0651F744B5F00AC53CB /* Order.swift */; };
-		2277E0691F744B5F00AC53CB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0661F744B5F00AC53CB /* User.swift */; };
 		2277E06D1F744BA400AC53CB /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06B1F744BA400AC53CB /* UIImage.swift */; };
 		2277E06E1F744BA400AC53CB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06C1F744BA400AC53CB /* UIColor.swift */; };
 		2277E0761F744C6300AC53CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0751F744C6300AC53CB /* ViewController.swift */; };
@@ -52,11 +51,10 @@
 		22302B011F7B37790046E757 /* CircleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleController.swift; path = Karma/Controllers/Circle/CircleController.swift; sourceTree = SOURCE_ROOT; };
 		22302B021F7B37790046E757 /* CircleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewController.swift; path = Karma/Controllers/Circle/CircleTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		22302B031F7B37790046E757 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewCell.swift; path = Karma/Controllers/Circle/CircleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		223BE9B71F90062000C6A8F7 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
+		223BE9B71F90062000C6A8F7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		226143391F72E5FA00711DEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2277E0641F744B5F00AC53CB /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		2277E0651F744B5F00AC53CB /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		2277E0661F744B5F00AC53CB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2277E06B1F744BA400AC53CB /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		2277E06C1F744BA400AC53CB /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		2277E0751F744C6300AC53CB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +153,7 @@
 		2277E05D1F744AEE00AC53CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2277E0661F744B5F00AC53CB /* User.swift */,
+				223BE9B71F90062000C6A8F7 /* User.swift */,
 				2277E0641F744B5F00AC53CB /* Circle.swift */,
 				2277E0651F744B5F00AC53CB /* Order.swift */,
 			);
@@ -167,7 +165,6 @@
 			children = (
 				2277E06C1F744BA400AC53CB /* UIColor.swift */,
 				2277E06B1F744BA400AC53CB /* UIImage.swift */,
-				223BE9B71F90062000C6A8F7 /* UserHelper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -359,11 +356,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				223BE9B81F90062000C6A8F7 /* UserHelper.swift in Sources */,
+				223BE9B81F90062000C6A8F7 /* User.swift in Sources */,
 				22B9167F1F7B3690002FCDD6 /* NotificationTableViewController.swift in Sources */,
 				22302AFF1F7B376A0046E757 /* CircleMemberTableViewCell.swift in Sources */,
 				2229C0861F744D820083C215 /* ViewRequestTableViewCell.swift in Sources */,
-				2277E0691F744B5F00AC53CB /* User.swift in Sources */,
 				22302B041F7B37790046E757 /* CircleController.swift in Sources */,
 				2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */,
 				2277E06E1F744BA400AC53CB /* UIColor.swift in Sources */,

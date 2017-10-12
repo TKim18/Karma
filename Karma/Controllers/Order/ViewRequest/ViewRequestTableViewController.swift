@@ -114,7 +114,7 @@ class ViewRequestTableViewController: UITableViewController {
     
     private func loadAccepted() {
         self.orders = self.allOrders.filter {
-            $0.acceptingUserId == UserHelper.getCurrentUserId() && !$0.completed
+            $0.acceptingUserId == User.getCurrentUserId() && !$0.completed
         }
     }
 
@@ -182,9 +182,8 @@ class ViewRequestTableViewController: UITableViewController {
             fatalError("You definitely got the wrong cell")
         }
         
-        let backendless = Backendless.sharedInstance()!
-        let dataStore = backendless.data.of(Order().ofClass())
-        let currentUser = UserHelper.getCurrentUser()
+        let dataStore = Order.getOrderDataStore()
+        let currentUser = User.getCurrentUser()
         
         let selectedOrder = orders[indexPath.row]
         
@@ -194,7 +193,7 @@ class ViewRequestTableViewController: UITableViewController {
         selectedOrder.acceptingUserId = currentUser.objectId as String
         selectedOrder.acceptingUserName = currentUser.name as String
         
-        dataStore?.save(
+        dataStore.save(
             selectedOrder,
             response: {
                 (order) -> () in

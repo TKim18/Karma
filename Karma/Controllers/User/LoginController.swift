@@ -44,7 +44,7 @@ class LoginController: UIViewController {
     }
     
     func hasCircle() -> Bool {
-        return ((UserHelper.getCurrentUserProperty(key: "circleId") as! String) != "-1")
+        return ((User.getCurrentUserProperty(key: "circleId") as! String) != "-1")
     }
     
     //Server call

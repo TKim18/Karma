@@ -95,8 +95,8 @@ class NotificationTableViewController: UITableViewController {
         
         // Update the people's karma points according to their service
         
-        let acceptingUser = UserHelper.getUserWithId(userId: selectedRequest.acceptingUserId!)
-        let requestingUser = UserHelper.getUserWithId(userId: selectedRequest.requestingUserId!)
+        let acceptingUser = User.getUserWithId(userId: selectedRequest.acceptingUserId!)
+        let requestingUser = User.getUserWithId(userId: selectedRequest.requestingUserId!)
         
         acceptingUser.setProperty(
             "karmaPoints",
@@ -121,13 +121,13 @@ class NotificationTableViewController: UITableViewController {
         // that have been accepted by someone else but not yet completed
         Types.tryblock({() -> Void in
             let allOrders = dataStore!.loadRelations(
-                UserHelper.getCurrentUserProperty(key: "circleId") as! String,
+                User.getCurrentUserProperty(key: "circleId") as! String,
                 queryBuilder: loadRelationsQueryBuilder
             ) as! [Order]
             self.notifications = allOrders.filter {
                 !($0.completed) &&
                 $0.acceptingUserId != "-1" &&
-                $0.requestingUserId == UserHelper.getCurrentUserId()
+                $0.requestingUserId == User.getCurrentUserId()
             }
             self.notifications.sort { return ($0.updated! as Date) < ($1.updated! as Date) }
         },

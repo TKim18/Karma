@@ -93,20 +93,9 @@ class Order : NSObject {
         self.circleId = circleId
     }
     
-    //Not sure if necessary
-//    init (title: String, message: String, requestedTime: String, category: Category, origin: String, destination: String, cost: Double, circleId: String, requestingUserId: String, acceptingUserId: String) {
-//        self.completed = false
-//        self.title = title
-//        self.message = message
-//        self.requestedTime = requestedTime
-//        self.category = category.description
-//        self.origin = origin
-//        self.destination = destination
-//        self.cost = cost
-//        self.circleId = circleId
-//        self.requestingUserId = requestingUserId
-//        self.acceptingUserId = acceptingUserId
-//    }
+    static func getOrderDataStore() -> IDataStore {
+        return Backendless.sharedInstance().data.of(Order().ofClass())
+    }
 
     func fromDescription() -> Category {
         switch self.description {
