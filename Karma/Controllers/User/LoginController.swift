@@ -13,7 +13,7 @@ class LoginController: UIViewController {
     //Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 

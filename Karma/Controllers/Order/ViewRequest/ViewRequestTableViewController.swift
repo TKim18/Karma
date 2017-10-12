@@ -18,13 +18,12 @@ class ViewRequestTableViewController: UITableViewController {
         //Pull from the database
         loadAllOrders()
         
-        //Configure background color
-        self.tableView.backgroundColor = UIColor.lightGray
+        //Configure the view
+        configureTableView()
         
-        //Enable segment control
-        self.pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
-        
-        //Navbar color: #285398
+        //Configure the navigation bar
+        inititalizeNavBar()
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,10 +33,46 @@ class ViewRequestTableViewController: UITableViewController {
     
     // UIElements
     @IBOutlet weak var pendingAcceptedControl: UISegmentedControl!
-
+    
     // MARK: - Table view data source
     private var allOrders = [Order]()
     private var orders = [Order]()
+    
+    private func configureTableView() {
+        //Configure background color
+        self.tableView.backgroundColor = UIColor.lightGray
+        
+        //Enable segment control
+        self.pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
+    }
+    
+    private func inititalizeNavBar() {
+        //Navbar color: #285398
+        self.navigationController?.navigationBar.barTintColor = UIColor(rgb: 285398)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        var rightShift : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+        rightShift.width = -10;
+        
+        let backendless = Backendless.sharedInstance()!
+        let currentUsersPoints = backendless.userService.currentUser.getProperty("karmaPoints") as! Double
+        
+        let button = UIButton.init(type: .custom)
+        let karmaIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        karmaIcon.image = UIImage(named: "KarmaPointsIcon")
+        let karmaPoints = UILabel(frame : CGRect(x: 35, y: 0, width: 50, height: 30))
+        karmaPoints.text = String(currentUsersPoints)
+        let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 30))
+        button.frame = buttonView.frame
+        buttonView.addSubview(button)
+        buttonView.addSubview(karmaIcon)
+        buttonView.addSubview(karmaPoints)
+        let barButton = UIBarButtonItem.init(customView: buttonView)
+        //self.navigationItem.rightBarButtonItem = barButton
+        
+        self.navigationItem.rightBarButtonItems = [rightShift, barButton]
+//        navigationItem.rightBarButtonItem!.image = UIImage(named:"KarmaPointsIcon")!.withRenderingMode(.alwaysOriginal)
+    }
     
     @objc func segmentChanged(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -48,7 +83,6 @@ class ViewRequestTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
-    //Server call
     private func loadAllOrders() {
         let backendless = Backendless.sharedInstance()
         let dataStore = backendless!.data.of(Circle.ofClass())
@@ -69,7 +103,6 @@ class ViewRequestTableViewController: UITableViewController {
         })
     }
     
-    //Either do the reordering here or when you first declare allOrders
     private func loadPending() {
         self.orders = self.allOrders.filter { $0.acceptingUserId == "-1" }
     }
@@ -170,6 +203,9 @@ class ViewRequestTableViewController: UITableViewController {
             }
         )
     }
+    //------------------------------------ Helper Functions ------------------------------------//
+    // private func getCurrentUser()
+    
 }
 
 // Asynchronous Call:

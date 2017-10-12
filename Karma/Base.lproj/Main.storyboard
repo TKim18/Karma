@@ -397,7 +397,7 @@
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="qht-wV-o7Z">
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ARC-r2-a7u">
-                            <rect key="frame" x="73" y="7" width="229" height="30"/>
+                            <rect key="frame" x="115" y="7" width="145" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Pending"/>
@@ -816,6 +816,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cOA-1g-3sX"/>
-        <segue reference="slo-0J-Efm"/>
+        <segue reference="MYP-am-xAB"/>
     </inferredMetricsTieBreakers>
 </document>
