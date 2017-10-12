@@ -44,10 +44,7 @@ class LoginController: UIViewController {
     }
     
     func hasCircle() -> Bool {
-        let backendless = Backendless.sharedInstance()!
-        let currentUser : BackendlessUser = backendless.userService.currentUser
-        // "-1" is the default value
-        return ((currentUser.getProperty("circleId") as! String) != "-1")
+        return ((UserHelper.getCurrentUserProperty(key: "circleId") as! String) != "-1")
     }
     
     //Server call

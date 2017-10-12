@@ -51,27 +51,32 @@ class ViewRequestTableViewController: UITableViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(rgb: 285398)
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
-        var rightShift : UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
-        rightShift.width = -10;
-        
         let backendless = Backendless.sharedInstance()!
         let currentUsersPoints = backendless.userService.currentUser.getProperty("karmaPoints") as! Double
         
         let button = UIButton.init(type: .custom)
+        
+        let rightShift = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
+        rightShift.width = -10;
+        
         let karmaIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         karmaIcon.image = UIImage(named: "KarmaPointsIcon")
         let karmaPoints = UILabel(frame : CGRect(x: 35, y: 0, width: 50, height: 30))
         karmaPoints.text = String(currentUsersPoints)
         let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 30))
         button.frame = buttonView.frame
+        
         buttonView.addSubview(button)
         buttonView.addSubview(karmaIcon)
         buttonView.addSubview(karmaPoints)
+        
         let barButton = UIBarButtonItem.init(customView: buttonView)
         //self.navigationItem.rightBarButtonItem = barButton
+    
+        //let barItem : UIBarButtonItem = UIImage(named:"KarmaPointsIcon")!.withRenderingMode(.alwaysOriginal)
         
         self.navigationItem.rightBarButtonItems = [rightShift, barButton]
-//        navigationItem.rightBarButtonItem!.image = UIImage(named:"KarmaPointsIcon")!.withRenderingMode(.alwaysOriginal)
+
     }
     
     @objc func segmentChanged(sender: UISegmentedControl) {
@@ -108,9 +113,9 @@ class ViewRequestTableViewController: UITableViewController {
     }
     
     private func loadAccepted() {
-        let backendless = Backendless.sharedInstance()!
-        let currentUserId = backendless.userService.currentUser.objectId
-        self.orders = self.allOrders.filter { $0.acceptingUserId == (currentUserId! as String) && !$0.completed }
+        self.orders = self.allOrders.filter {
+            $0.acceptingUserId == UserHelper.getCurrentUserId() && !$0.completed
+        }
     }
 
     //---------------------- Setting the table elements and variables ---------------------------//
@@ -179,17 +184,15 @@ class ViewRequestTableViewController: UITableViewController {
         
         let backendless = Backendless.sharedInstance()!
         let dataStore = backendless.data.of(Order().ofClass())
-        let currentUser = backendless.userService.currentUser
+        let currentUser = UserHelper.getCurrentUser()
         
         let selectedOrder = orders[indexPath.row]
         
         //TODO: Move this to a shouldPerformSegue rather than a prepare
-        if (selectedOrder.requestingUserId == (currentUser!.objectId as String) ) {
-            return;
-        }
+        if (selectedOrder.requestingUserId == (currentUser.objectId as String)) { return }
         
-        selectedOrder.acceptingUserId = currentUser!.objectId as String
-        selectedOrder.acceptingUserName = currentUser!.name as String
+        selectedOrder.acceptingUserId = currentUser.objectId as String
+        selectedOrder.acceptingUserName = currentUser.name as String
         
         dataStore?.save(
             selectedOrder,
@@ -203,9 +206,6 @@ class ViewRequestTableViewController: UITableViewController {
             }
         )
     }
-    //------------------------------------ Helper Functions ------------------------------------//
-    // private func getCurrentUser()
-    
 }
 
 // Asynchronous Call:

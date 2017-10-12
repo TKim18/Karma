@@ -404,6 +404,7 @@
                                 <segment title="Accepted"/>
                             </segments>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" id="64e-FN-W3E" customClass="KarmaPointsButton" customModule="Karma" customModuleProvider="target"/>
                     </navigationItem>
                     <connections>
                         <outlet property="pendingAcceptedControl" destination="ARC-r2-a7u" id="KiI-N5-OfJ"/>

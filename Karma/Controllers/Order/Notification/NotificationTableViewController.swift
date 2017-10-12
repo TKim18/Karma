@@ -79,7 +79,6 @@ class NotificationTableViewController: UITableViewController {
         let backendless = Backendless.sharedInstance()
         
         let orderDataStore = backendless!.data.of(Order().ofClass())
-        let userDataStore = backendless!.data.of(BackendlessUser.ofClass())
         
         // Set the current request to be completed
         selectedRequest.completed = true;
@@ -95,8 +94,9 @@ class NotificationTableViewController: UITableViewController {
         })
         
         // Update the people's karma points according to their service
-        let acceptingUser = userDataStore!.find(byId: selectedRequest.acceptingUserId!) as!  BackendlessUser
-        let requestingUser = userDataStore!.find(byId: selectedRequest.requestingUserId!) as! BackendlessUser
+        
+        let acceptingUser = UserHelper.getUserWithId(userId: selectedRequest.acceptingUserId!)
+        let requestingUser = UserHelper.getUserWithId(userId: selectedRequest.requestingUserId!)
         
         acceptingUser.setProperty(
             "karmaPoints",
@@ -113,8 +113,6 @@ class NotificationTableViewController: UITableViewController {
     private func loadNotifications() {
         let backendless = Backendless.sharedInstance()
         let dataStore = backendless!.data.of(Circle.ofClass())
-        let currentUser = backendless!.userService.currentUser
-        let circleId = currentUser!.getProperty("circleId") as! String
         
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(Order.ofClass())
         loadRelationsQueryBuilder!.setRelationName("Orders")
@@ -123,13 +121,13 @@ class NotificationTableViewController: UITableViewController {
         // that have been accepted by someone else but not yet completed
         Types.tryblock({() -> Void in
             let allOrders = dataStore!.loadRelations(
-                circleId,
+                UserHelper.getCurrentUserProperty(key: "circleId") as! String,
                 queryBuilder: loadRelationsQueryBuilder
             ) as! [Order]
             self.notifications = allOrders.filter {
                 !($0.completed) &&
                 $0.acceptingUserId != "-1" &&
-                $0.requestingUserId == (currentUser!.objectId! as String)
+                $0.requestingUserId == UserHelper.getCurrentUserId()
             }
             self.notifications.sort { return ($0.updated! as Date) < ($1.updated! as Date) }
         },

@@ -47,7 +47,6 @@ class CustomRequestViewController: UIViewController {
         let backendless = Backendless.sharedInstance()!
         let orderDataStore = backendless.data.of(Order().ofClass())
         let circleDataStore = backendless.data.of(Circle().ofClass())
-        let currentUser = backendless.userService.currentUser
         
         //Populate the attributes
         self.currentOrder.title = titleField.text
@@ -64,7 +63,7 @@ class CustomRequestViewController: UIViewController {
             let placedOrder = orderDataStore!.save(self.currentOrder) as! Order
             circleDataStore!.addRelation(
                 "Orders",
-                parentObjectId: currentUser!.getProperty("circleId") as! String,
+                parentObjectId: UserHelper.getCurrentUserProperty(key: "circleId") as! String,
                 childObjects: [placedOrder.objectId!]
             )
         },

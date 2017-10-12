@@ -36,7 +36,7 @@ class CircleController: UIViewController {
         let dataStore = backendless.data.of(Circle().ofClass())
         
         let circle = Circle(name: circleNameField.text!)
-        let currentUser : BackendlessUser = backendless.userService.currentUser
+        let currentUser = UserHelper.getCurrentUser()
         var valid = true
 
         Types.tryblock({ () -> Void in

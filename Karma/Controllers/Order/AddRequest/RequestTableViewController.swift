@@ -71,18 +71,17 @@ class RequestTableViewController: UITableViewController {
             fatalError("You definitely got the wrong cell")
         }
         
-        let backendless = Backendless.sharedInstance()!
         let currentCategory = categories[indexPath.row]
-        let currentUser = backendless.userService.currentUser
+        let currentUser = UserHelper.getCurrentUser()
         
         //Going to have to change this around for different views depending on category
         if segue.identifier == "ShowRequestDetails" {
             if let destination = segue.destination as? CustomRequestViewController {
                 let currentOrder = Order(
                     category: currentCategory,
-                    requestingUserId: currentUser!.objectId as String,
-                    requestingUserName: currentUser!.name as String,
-                    circleId: currentUser?.getProperty("circleId") as! String)
+                    requestingUserId: currentUser.objectId as String,
+                    requestingUserName: currentUser.name as String,
+                    circleId: currentUser.getProperty("circleId") as! String)
                 destination.currentOrder = currentOrder
             }
         }

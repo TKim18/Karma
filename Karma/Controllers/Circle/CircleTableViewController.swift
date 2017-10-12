@@ -65,19 +65,19 @@ class CircleTableViewController: UITableViewController {
         let backendless = Backendless.sharedInstance()!
         let dataStore = backendless.data.of(Circle().ofClass())
         
-        let currentUser = backendless.userService.currentUser
+        let currentUser = UserHelper.getCurrentUser()
         let selectedCircleId = circles[indexPath.row].objectId
 
         Types.tryblock({ () -> Void in
             //Update the User's circleId
-            currentUser!.updateProperties(["circleId" : selectedCircleId!])
+            currentUser.updateProperties(["circleId" : selectedCircleId!])
             backendless.userService.update(currentUser)
             
             //And also add user to circle's Users column
             dataStore!.addRelation(
                 "Users",
                 parentObjectId: selectedCircleId,
-                childObjects: [currentUser!.objectId]
+                childObjects: [currentUser.objectId]
             )
         }, catchblock: {(exception) -> Void in
             print(exception ?? "Error")

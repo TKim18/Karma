@@ -61,12 +61,11 @@ class CircleMemberTableViewController: UITableViewController {
     private func loadMembers() {
         let backendless = Backendless.sharedInstance()
         let dataStore = backendless!.data.of(Circle.ofClass())
-        let currentUser = backendless!.userService.currentUser
         
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(BackendlessUser.ofClass())
         loadRelationsQueryBuilder!.setRelationName("Users")
         
-        let circleId = currentUser!.getProperty("circleId") as! String
+        let circleId = UserHelper.getCurrentUserProperty(key: "circleId") as! String
         
         members = dataStore!.loadRelations(circleId, queryBuilder: loadRelationsQueryBuilder) as! [BackendlessUser]
         
