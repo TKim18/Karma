@@ -17,9 +17,13 @@ class User {
         return getCurrentUser().getProperty(key)
     }
     
+    static func getUserDataStore() -> IDataStore {
+        return Backendless.sharedInstance().data.of(BackendlessUser.ofClass())
+    }
+    
     static func getUserWithId(userId: String) -> BackendlessUser {
-        let userDataStore = Backendless.sharedInstance().data.of(BackendlessUser.ofClass())
-        return userDataStore!.find(byId: userId) as! BackendlessUser
+        let userDataStore = getUserDataStore()
+        return userDataStore.find(byId: userId) as! BackendlessUser
     }
     
     static func getUserProperty(key: String, userId: String) -> Any {

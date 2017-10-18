@@ -76,13 +76,13 @@ class NotificationTableViewController: UITableViewController {
     }
     
     private func performServerTransaction(selectedRequest : Order) {
-        let backendless = Backendless.sharedInstance()
-        
-        let orderDataStore = backendless!.data.of(Order().ofClass())
+        let userService = Backendless.sharedInstance().userService
+        // let userDataStore = User.getUserDataStore()
+        let orderDataStore = Order.getOrderDataStore()
         
         // Set the current request to be completed
         selectedRequest.completed = true;
-        orderDataStore!.save(
+        orderDataStore.save(
             selectedRequest,
             response: {
                 (updatedRequest) -> () in
@@ -94,7 +94,6 @@ class NotificationTableViewController: UITableViewController {
         })
         
         // Update the people's karma points according to their service
-        
         let acceptingUser = User.getUserWithId(userId: selectedRequest.acceptingUserId!)
         let requestingUser = User.getUserWithId(userId: selectedRequest.requestingUserId!)
         
@@ -104,7 +103,30 @@ class NotificationTableViewController: UITableViewController {
         )
         requestingUser.setProperty(
             "karmaPoints",
-            object: ((requestingUser.getProperty("karmaPoints") as! Double) + selectedRequest.cost)
+            object: ((requestingUser.getProperty("karmaPoints") as! Double) - selectedRequest.cost)
+        )
+        
+        userService!.update(
+            acceptingUser,
+            response: {
+                (updatedUser : BackendlessUser?) -> Void in
+                print("User has been updated")
+            },
+            error: {
+                (fault : Fault?) -> Void in
+                print("Server reported an error: \(String(describing: fault))")
+            }
+        )
+        userService!.update(
+            requestingUser,
+            response: {
+                (updatedUser : BackendlessUser?) -> Void in
+                print("User has been updated")
+        },
+            error: {
+                (fault : Fault?) -> Void in
+                print("Server reported an error: \(String(describing: fault))")
+            }
         )
         
     }

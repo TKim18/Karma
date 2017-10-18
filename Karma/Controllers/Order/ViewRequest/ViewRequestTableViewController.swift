@@ -75,7 +75,7 @@ class ViewRequestTableViewController: UITableViewController {
     
         //let barItem : UIBarButtonItem = UIImage(named:"KarmaPointsIcon")!.withRenderingMode(.alwaysOriginal)
         
-        self.navigationItem.rightBarButtonItems = [rightShift, barButton]
+        // self.navigationItem.rightBarButtonItems = [rightShift, barButton]
 
     }
     

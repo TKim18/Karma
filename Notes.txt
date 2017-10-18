@@ -16,6 +16,8 @@ Moving forward:
 * Display a menu looking thing, items become selectable, selecting an item adds to cart, check out button on the bottom 
 * Add a no orders :( screen
 
+uibarbuttonitem
+
 Short term goals:
 * add a navigation bar item for the karma points
 * add functionality to complete request

@@ -5,7 +5,8 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -404,7 +405,18 @@
                                 <segment title="Accepted"/>
                             </segments>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" id="64e-FN-W3E" customClass="KarmaPointsButton" customModule="Karma" customModuleProvider="target"/>
+                        <rightBarButtonItems>
+                            <barButtonItem id="64e-FN-W3E" customClass="KarmaPointsButton" customModule="Karma" customModuleProvider="target"/>
+                            <barButtonItem title="Pts" id="GEq-48-yyk">
+                                <inset key="imageInsets" minX="-10" minY="0.0" maxX="10" maxY="0.0"/>
+                            </barButtonItem>
+                            <barButtonItem image="KarmaPointsIcon" id="CrA-xf-pee">
+                                <inset key="imageInsets" minX="15" minY="0.0" maxX="-15" maxY="0.0"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                        <connections>
+                            <outlet property="rightBarButtonItem" destination="GEq-48-yyk" id="gCz-fd-v17"/>
+                        </connections>
                     </navigationItem>
                     <connections>
                         <outlet property="pendingAcceptedControl" destination="ARC-r2-a7u" id="KiI-N5-OfJ"/>
@@ -806,6 +818,7 @@
         <image name="ClassicBackdrop" width="375" height="667"/>
         <image name="Dummy" width="250" height="250"/>
         <image name="FriendsIcon" width="27" height="27"/>
+        <image name="KarmaPointsIcon" width="21" height="25"/>
         <image name="Login" width="375" height="667"/>
         <image name="MainBoardIcon" width="27" height="27"/>
         <image name="NewRequestIcon" width="27" height="27"/>
