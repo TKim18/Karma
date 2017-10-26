@@ -77,18 +77,6 @@ class NotificationTableViewController: UITableViewController {
         return false;
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if (segue.identifier == "CompleteTransaction") {
-//            let indexPath : NSIndexPath
-//            if let button = sender as? UIButton {
-//                let cell = button.superview?.superview as! UITableViewCell
-//                indexPath = self.tableView.indexPath(for: cell)! as NSIndexPath
-//
-//                performServerTransaction(selectedRequest: notifications[indexPath.row])
-//            }
-//        }
-//    }
-    
     private func performServerTransaction(selectedRequest : Order) -> Bool {
         let userService = Backendless.sharedInstance().userService
         let orderDataStore = Order.getOrderDataStore()
@@ -108,26 +96,20 @@ class NotificationTableViewController: UITableViewController {
         
         // Update the people's karma points according to their service
         let acceptingUser = User.getUserWithId(userId: selectedRequest.acceptingUserId!)
-        //let requestingUser = User.getUserWithId(userId: selectedRequest.requestingUserId!)
-        let currUser = Backendless.sharedInstance().userService.currentUser
+        let requestingUser = User.getCurrentUser()
         
         acceptingUser.setProperty(
             "karmaPoints",
             object: ((acceptingUser.getProperty("karmaPoints") as! Double) + selectedRequest.cost)
         )
-        let camt = currUser!.getProperty("karmaPoints") as! Double
+        let camt = requestingUser.getProperty("karmaPoints") as! Double
         let amt = camt - selectedRequest.cost
-        
-//        requestingUser.setProperty(
-//            "karmaPoints",
-//            object: ((requestingUser.getProperty("karmaPoints") as! Double) - selectedRequest.cost)
-//        )
         
         var status = false
         
         Types.tryblock({() -> Void in
             userService!.update(acceptingUser)
-            currUser!.setProperty("karmaPoints", object: amt)
+            requestingUser.setProperty("karmaPoints", object: amt)
             status = true
             //userService!.update(requestingUser)
         },
