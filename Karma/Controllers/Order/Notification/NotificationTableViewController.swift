@@ -63,21 +63,34 @@ class NotificationTableViewController: UITableViewController {
     }
     
     // Segue preparation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "CompleteTransaction") {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if (identifier == "CompleteTransaction") {
             let indexPath : NSIndexPath
             if let button = sender as? UIButton {
                 let cell = button.superview?.superview as! UITableViewCell
                 indexPath = self.tableView.indexPath(for: cell)! as NSIndexPath
                 
-                performServerTransaction(selectedRequest: notifications[indexPath.row])
+                return performServerTransaction(selectedRequest: notifications[indexPath.row])
             }
+            return false;
         }
+        return false;
     }
     
-    private func performServerTransaction(selectedRequest : Order) {
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "CompleteTransaction") {
+//            let indexPath : NSIndexPath
+//            if let button = sender as? UIButton {
+//                let cell = button.superview?.superview as! UITableViewCell
+//                indexPath = self.tableView.indexPath(for: cell)! as NSIndexPath
+//
+//                performServerTransaction(selectedRequest: notifications[indexPath.row])
+//            }
+//        }
+//    }
+    
+    private func performServerTransaction(selectedRequest : Order) -> Bool {
         let userService = Backendless.sharedInstance().userService
-        // let userDataStore = User.getUserDataStore()
         let orderDataStore = Order.getOrderDataStore()
         
         // Set the current request to be completed
@@ -95,40 +108,35 @@ class NotificationTableViewController: UITableViewController {
         
         // Update the people's karma points according to their service
         let acceptingUser = User.getUserWithId(userId: selectedRequest.acceptingUserId!)
-        let requestingUser = User.getUserWithId(userId: selectedRequest.requestingUserId!)
+        //let requestingUser = User.getUserWithId(userId: selectedRequest.requestingUserId!)
+        let currUser = Backendless.sharedInstance().userService.currentUser
         
         acceptingUser.setProperty(
             "karmaPoints",
             object: ((acceptingUser.getProperty("karmaPoints") as! Double) + selectedRequest.cost)
         )
-        requestingUser.setProperty(
-            "karmaPoints",
-            object: ((requestingUser.getProperty("karmaPoints") as! Double) - selectedRequest.cost)
-        )
+        let camt = currUser!.getProperty("karmaPoints") as! Double
+        let amt = camt - selectedRequest.cost
         
-        userService!.update(
-            acceptingUser,
-            response: {
-                (updatedUser : BackendlessUser?) -> Void in
-                print("User has been updated")
-            },
-            error: {
-                (fault : Fault?) -> Void in
-                print("Server reported an error: \(String(describing: fault))")
-            }
-        )
-        userService!.update(
-            requestingUser,
-            response: {
-                (updatedUser : BackendlessUser?) -> Void in
-                print("User has been updated")
+//        requestingUser.setProperty(
+//            "karmaPoints",
+//            object: ((requestingUser.getProperty("karmaPoints") as! Double) - selectedRequest.cost)
+//        )
+        
+        var status = false
+        
+        Types.tryblock({() -> Void in
+            userService!.update(acceptingUser)
+            currUser!.setProperty("karmaPoints", object: amt)
+            status = true
+            //userService!.update(requestingUser)
         },
-            error: {
-                (fault : Fault?) -> Void in
-                print("Server reported an error: \(String(describing: fault))")
-            }
-        )
+           catchblock: { (exception) -> Void in
+            let error = exception as! Fault
+            print(error)
+        })
         
+        return status
     }
 
     // Server Call

@@ -33,10 +33,23 @@ class ViewRequestTableViewController: UITableViewController {
     
     // UIElements
     @IBOutlet weak var pendingAcceptedControl: UISegmentedControl!
+    @IBOutlet weak var karmaPointsButton: UIBarButtonItem!
     
     // MARK: - Table view data source
     private var allOrders = [Order]()
     private var orders = [Order]()
+    
+    private func inititalizeNavBar() {
+        //Navbar color: #285398
+        self.navigationController?.navigationBar.barTintColor = UIColor(rgb: 285398)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        let currUser = Backendless.sharedInstance().userService.currentUser
+        
+        let val = currUser!.getProperty("karmaPoints") as! Double
+        
+        karmaPointsButton.title = String(val)
+    }
     
     private func configureTableView() {
         //Configure background color
@@ -45,40 +58,7 @@ class ViewRequestTableViewController: UITableViewController {
         //Enable segment control
         self.pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
     }
-    
-    private func inititalizeNavBar() {
-        //Navbar color: #285398
-        self.navigationController?.navigationBar.barTintColor = UIColor(rgb: 285398)
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        
-        let backendless = Backendless.sharedInstance()!
-        let currentUsersPoints = backendless.userService.currentUser.getProperty("karmaPoints") as! Double
-        
-        let button = UIButton.init(type: .custom)
-        
-        let rightShift = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
-        rightShift.width = -10;
-        
-        let karmaIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        karmaIcon.image = UIImage(named: "KarmaPointsIcon")
-        let karmaPoints = UILabel(frame : CGRect(x: 35, y: 0, width: 50, height: 30))
-        karmaPoints.text = String(currentUsersPoints)
-        let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 30))
-        button.frame = buttonView.frame
-        
-        buttonView.addSubview(button)
-        buttonView.addSubview(karmaIcon)
-        buttonView.addSubview(karmaPoints)
-        
-        let barButton = UIBarButtonItem.init(customView: buttonView)
-        //self.navigationItem.rightBarButtonItem = barButton
-    
-        //let barItem : UIBarButtonItem = UIImage(named:"KarmaPointsIcon")!.withRenderingMode(.alwaysOriginal)
-        
-        // self.navigationItem.rightBarButtonItems = [rightShift, barButton]
 
-    }
-    
     @objc func segmentChanged(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
             case 0: loadPending()
@@ -89,15 +69,14 @@ class ViewRequestTableViewController: UITableViewController {
     }
 
     private func loadAllOrders() {
-        let backendless = Backendless.sharedInstance()
-        let dataStore = backendless!.data.of(Circle.ofClass())
-        let circleId = backendless!.userService.currentUser.getProperty("circleId") as! String
+        let dataStore = Circle.getCircleDataStore()
+        let circleId = User.getCurrentUserProperty(key: "circleId") as! String
 
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(Order.ofClass())
         loadRelationsQueryBuilder!.setRelationName("Orders")
         
         Types.tryblock({() -> Void in
-            self.allOrders = dataStore!.loadRelations(circleId, queryBuilder: loadRelationsQueryBuilder) as! [Order]
+            self.allOrders = dataStore.loadRelations(circleId, queryBuilder: loadRelationsQueryBuilder) as! [Order]
             //Sort all the orders by their created date
             self.allOrders.sort { return ($0.created! as Date) < ($1.created! as Date) }
             self.loadPending()
@@ -164,47 +143,49 @@ class ViewRequestTableViewController: UITableViewController {
     }
 
     ///---------------------- Accepting a request handling ---------------------------//
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return (identifier == "AcceptRequest" && validAccept(sender: sender))
+    }
     
-    //At some point, make this a swipe rather than a click
-//    @IBAction func acceptRequest(sender : AnyObject){
-//        self.performSegue(withIdentifier: "AcceptRequest", sender: self)
-//    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        //Check for mess ups
-        guard let selectedOrderCell = sender as? ViewRequestTableViewCell else {
-            fatalError("Unexpected sender: \(String(describing: sender))")
-        }
-        
-        guard let indexPath = tableView.indexPath(for : selectedOrderCell) else {
-            fatalError("You definitely got the wrong cell")
-        }
+    func validAccept(sender: Any?) -> Bool {
+        let selectedOrderCell = sender as! ViewRequestTableViewCell
+        let indexPath = tableView.indexPath(for: selectedOrderCell)
         
         let dataStore = Order.getOrderDataStore()
         let currentUser = User.getCurrentUser()
         
-        let selectedOrder = orders[indexPath.row]
+        let selectedOrder = orders[indexPath!.section]
         
-        //TODO: Move this to a shouldPerformSegue rather than a prepare
-        if (selectedOrder.requestingUserId == (currentUser.objectId as String)) { return }
+        if (selectedOrder.requestingUserId == (currentUser.objectId as String)
+         || selectedOrder.acceptingUserId == (currentUser.objectId as String)) { return false }
         
         selectedOrder.acceptingUserId = currentUser.objectId as String
         selectedOrder.acceptingUserName = currentUser.name as String
         
-        dataStore.save(
-            selectedOrder,
-            response: {
-                (order) -> () in
-                print("Order saved")
-            },
-            error: {
-                (fault : Fault?) -> () in
-                print("Server reported an error: \(String(describing: fault))")
-            }
-        )
+        var valid = false;
+        
+        Types.tryblock({ () -> Void in
+            dataStore.save(selectedOrder)
+            valid = true
+        }, catchblock: {(exception) -> Void in
+            print(exception ?? "Error")
+        })
+        
+        return valid;
     }
+  
+////        dataStore.save(
+////            selectedOrder,
+////            response: {
+////                (order) -> () in
+////                print("Order saved")
+////            },
+////            error: {
+////                (fault : Fault?) -> () in
+////                print("Server reported an error: \(String(describing: fault))")
+////            }
+////        )
+//    }
 }
 
 // Asynchronous Call:
@@ -220,10 +201,3 @@ class ViewRequestTableViewController: UITableViewController {
 //                print("Server reported an error: \(fault!.message)")
 //            }
 //        )
-// Synchronous Call:
-//        Types.tryblock({ () -> Void in
-//            //Update the Order object to reflect the acceptingUserId
-//
-//        }, catchblock: {(exception) -> Void in
-//            print(exception ?? "Error")
-//        })

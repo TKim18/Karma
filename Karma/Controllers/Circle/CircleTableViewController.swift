@@ -48,7 +48,7 @@ class CircleTableViewController: UITableViewController {
 
     //Segue Handling
     @IBAction func showMain(sender : AnyObject){
-        self.performSegue(withIdentifier: "RegisterToCircle", sender: self)
+        self.performSegue(withIdentifier: "JoinCircle", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

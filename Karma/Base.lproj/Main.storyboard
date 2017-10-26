@@ -311,7 +311,7 @@
                                 <connections>
                                     <outlet property="circleImage" destination="HMz-6i-8Vt" id="O9l-z0-s2J"/>
                                     <outlet property="nameLabel" destination="0DL-j2-zIH" id="uen-sg-MyR"/>
-                                    <segue destination="sJO-1I-4Tx" kind="showDetail" action="showViewController:sender:" id="d2c-Za-bVs"/>
+                                    <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="JoinCircle" action="showViewController:sender:" id="d2c-Za-bVs"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -406,7 +406,6 @@
                             </segments>
                         </segmentedControl>
                         <rightBarButtonItems>
-                            <barButtonItem id="64e-FN-W3E" customClass="KarmaPointsButton" customModule="Karma" customModuleProvider="target"/>
                             <barButtonItem title="Pts" id="GEq-48-yyk">
                                 <inset key="imageInsets" minX="-10" minY="0.0" maxX="10" maxY="0.0"/>
                             </barButtonItem>
@@ -414,11 +413,9 @@
                                 <inset key="imageInsets" minX="15" minY="0.0" maxX="-15" maxY="0.0"/>
                             </barButtonItem>
                         </rightBarButtonItems>
-                        <connections>
-                            <outlet property="rightBarButtonItem" destination="GEq-48-yyk" id="gCz-fd-v17"/>
-                        </connections>
                     </navigationItem>
                     <connections>
+                        <outlet property="karmaPointsButton" destination="GEq-48-yyk" id="A0A-tm-j2I"/>
                         <outlet property="pendingAcceptedControl" destination="ARC-r2-a7u" id="KiI-N5-OfJ"/>
                     </connections>
                 </tableViewController>
@@ -830,6 +827,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cOA-1g-3sX"/>
-        <segue reference="MYP-am-xAB"/>
+        <segue reference="W7Z-Wg-xHQ"/>
     </inferredMetricsTieBreakers>
 </document>
