@@ -43,6 +43,7 @@ class ViewRequestTableViewController: UITableViewController {
         //Navbar color: #285398
         self.navigationController?.navigationBar.barTintColor = UIColor(rgb: 285398)
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        //self.tabBarController?.tabBar.tintColor = UIColor.white
         
         let currUser = Backendless.sharedInstance().userService.currentUser
         

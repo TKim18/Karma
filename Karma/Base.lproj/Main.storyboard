@@ -702,7 +702,7 @@
         <scene sceneID="wIY-7M-fmN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cg9-80-h2H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="MainBoardIcon" id="hPg-t9-v0K">
+                    <tabBarItem key="tabBarItem" title="" image="MainBoardIcon" selectedImage="MainBoardSelectedIcon" id="hPg-t9-v0K">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -723,7 +723,7 @@
         <scene sceneID="irM-b8-A2M">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7ZM-hz-DcA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="NewRequestIcon" id="LUd-sP-bIn">
+                    <tabBarItem key="tabBarItem" title="" image="NewRequestIcon" selectedImage="NewRequestSelectedIcon" id="LUd-sP-bIn">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -759,7 +759,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="UserSettingsIcon" id="yDn-jW-ltm">
+                    <tabBarItem key="tabBarItem" title="" image="UserSettingsIcon" selectedImage="UserSettingsSelectedIcon" id="yDn-jW-ltm">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                 </viewController>
@@ -771,7 +771,7 @@
         <scene sceneID="MqK-pZ-55c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wjk-d7-lTJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="FriendsIcon" id="qxv-7q-Qhk">
+                    <tabBarItem key="tabBarItem" title="" image="FriendsIcon" selectedImage="FriendSelectedIcon" id="qxv-7q-Qhk">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -792,7 +792,7 @@
         <scene sceneID="gzT-1c-Pki">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IRR-WL-oDz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="NotificationsIcon" id="bkH-ZI-fB6">
+                    <tabBarItem key="tabBarItem" title="" image="NotificationsIcon" selectedImage="NotificationsSelectedIcon" id="bkH-ZI-fB6">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -814,18 +814,24 @@
         <image name="BlueBar" width="375" height="52"/>
         <image name="ClassicBackdrop" width="375" height="667"/>
         <image name="Dummy" width="250" height="250"/>
+        <image name="FriendSelectedIcon" width="39" height="39"/>
         <image name="FriendsIcon" width="27" height="27"/>
         <image name="KarmaPointsIcon" width="21" height="25"/>
         <image name="Login" width="375" height="667"/>
         <image name="MainBoardIcon" width="27" height="27"/>
+        <image name="MainBoardSelectedIcon" width="39" height="39"/>
         <image name="NewRequestIcon" width="27" height="27"/>
+        <image name="NewRequestSelectedIcon" width="39" height="39"/>
         <image name="NoCircle" width="375" height="667"/>
         <image name="NotificationsIcon" width="27" height="27"/>
+        <image name="NotificationsSelectedIcon" width="39" height="39"/>
         <image name="Register" width="375" height="667"/>
         <image name="UserSettings" width="375" height="667"/>
         <image name="UserSettingsIcon" width="27" height="27"/>
+        <image name="UserSettingsSelectedIcon" width="39" height="39"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="3Bc-Nc-5XC"/>
         <segue reference="cOA-1g-3sX"/>
         <segue reference="W7Z-Wg-xHQ"/>
     </inferredMetricsTieBreakers>
