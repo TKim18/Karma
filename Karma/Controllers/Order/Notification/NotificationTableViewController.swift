@@ -53,30 +53,21 @@ class NotificationTableViewController: UITableViewController {
         //TODO: This should become a query on requesting user id and then a pull on their image attribute
         let profilePicture = UIImage(named: "DummyAvatar")
         cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
-        //cell.payButton.addTarget(self, action: #selector(self.completeTransaction), for: UIControlEvents.touchUpInside)
+        
+        cell.payButton.tag = indexPath.row
+        cell.payButton.addTarget(self, action: #selector(self.completeTransaction), for: UIControlEvents.touchUpInside)
         
         return cell
     }
     
-//    @objc func completeTransaction(button : UIButton) {
-//        self.performSegue(withIdentifier: "CompleteTransaction", sender: button)
-//    }
-    
-    // Segue preparation
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if (identifier == "CompleteTransaction") {
-            let indexPath : NSIndexPath
-            if let button = sender as? UIButton {
-                let cell = button.superview?.superview as! UITableViewCell
-                indexPath = self.tableView.indexPath(for: cell)! as NSIndexPath
-                
-                return performServerTransaction(selectedRequest: notifications[indexPath.row])
-            }
-            return false;
+    func completeTransaction(button : UIButton) {
+        if (performServerTransaction(selectedRequest: notifications[button.tag])) {
+            self.loadNotifications()
+            self.tableView.reloadData()
         }
-        return false;
     }
     
+    // Segue preparation
     private func performServerTransaction(selectedRequest : Order) -> Bool {
         let userService = Backendless.sharedInstance().userService
         let orderDataStore = Order.getOrderDataStore()
@@ -101,10 +92,8 @@ class NotificationTableViewController: UITableViewController {
         let currentAccept = acceptingUser.getProperty("karmaPoints") as! Double
         let currentRequest = requestingUser.getProperty("karmaPoints") as! Double
         
-        let cost = (selectedRequest.cost).rounded(toPlaces: 2)
-        
-        let newAccept = Double(currentAccept + cost).rounded(toPlaces: 2)
-        let newRequest = Double(currentRequest - cost).rounded(toPlaces: 2)
+        let newAccept = (currentAccept + selectedRequest.cost).rounded(toPlaces: 2)
+        let newRequest = (currentRequest - selectedRequest.cost).rounded(toPlaces: 2)
         
         acceptingUser.setProperty("karmaPoints", object: newAccept)
         requestingUser.setProperty("karmaPoints", object: newRequest)
