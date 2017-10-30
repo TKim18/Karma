@@ -98,20 +98,21 @@ class NotificationTableViewController: UITableViewController {
         let acceptingUser = User.getUserWithId(userId: selectedRequest.acceptingUserId!)
         let requestingUser = User.getCurrentUser()
         
-        acceptingUser.setProperty(
-            "karmaPoints",
-            object: ((acceptingUser.getProperty("karmaPoints") as! Double) + selectedRequest.cost)
-        )
-        let camt = requestingUser.getProperty("karmaPoints") as! Double
-        let amt = camt - selectedRequest.cost
+        let currentAccept = acceptingUser.getProperty("karmaPoints") as! Double
+        let currentRequest = requestingUser.getProperty("karmaPoints") as! Double
+        
+        let newAccept = (currentAccept + selectedRequest.cost).rounded(toPlaces: 3)
+        let newRequest = (currentAccept - selectedRequest.cost).rounded(toPlaces: 3)
+        
+        acceptingUser.setProperty("karmaPoints", object: newAccept)
+        requestingUser.setProperty("karmaPoints", object: newRequest)
         
         var status = false
         
         Types.tryblock({() -> Void in
             userService!.update(acceptingUser)
-            requestingUser.setProperty("karmaPoints", object: amt)
+            userService!.update(requestingUser)
             status = true
-            //userService!.update(requestingUser)
         },
            catchblock: { (exception) -> Void in
             let error = exception as! Fault
@@ -128,6 +129,7 @@ class NotificationTableViewController: UITableViewController {
         
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(Order.ofClass())
         loadRelationsQueryBuilder!.setRelationName("Orders")
+        loadRelationsQueryBuilder!.setPageSize(20)
         
         // Filter down all orders to include just the current user's requests
         // that have been accepted by someone else but not yet completed

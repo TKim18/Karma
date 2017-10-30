@@ -45,11 +45,10 @@ class ViewRequestTableViewController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.white
         //self.tabBarController?.tabBar.tintColor = UIColor.white
         
-        let currUser = Backendless.sharedInstance().userService.currentUser
+//        let currUser = Backendless.sharedInstance().userService.currentUser
+//        let val = currUser!.getProperty("karmaPoints") as! Double
         
-        let val = currUser!.getProperty("karmaPoints") as! Double
-        
-        karmaPointsButton.title = String(val)
+        karmaPointsButton.title = String(User.getCurrentUserProperty(key: "karmaPoints") as! Double)
     }
     
     private func configureTableView() {
@@ -75,6 +74,7 @@ class ViewRequestTableViewController: UITableViewController {
 
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(Order.ofClass())
         loadRelationsQueryBuilder!.setRelationName("Orders")
+        loadRelationsQueryBuilder!.setPageSize(20)
         
         Types.tryblock({() -> Void in
             self.allOrders = dataStore.loadRelations(circleId, queryBuilder: loadRelationsQueryBuilder) as! [Order]

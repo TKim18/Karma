@@ -152,7 +152,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "530748142.766165"
+                  timestampString = "531014857.316688"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -167,7 +167,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "530748142.77229"
+                  timestampString = "531014857.321022"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -182,7 +182,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "530748142.776678"
+                  timestampString = "531014857.330589"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -197,7 +197,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "530748142.782172"
+                  timestampString = "531014857.333216"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -210,11 +210,27 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
+            timestampString = "531014857.298057"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "inititalizeNavBar()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
-            timestampString = "530749965.739241"
+            timestampString = "531014857.29851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -229,77 +245,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
-            timestampString = "530749965.740191"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "inititalizeNavBar()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/Notification/NotificationTableViewController.swift"
-            timestampString = "530748935.452203"
+            timestampString = "531014857.298813"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "loadNotifications()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Controllers/Order/Notification/NotificationTableViewController.swift"
-            timestampString = "530748935.452629"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "loadNotifications()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Controllers/Order/Notification/NotificationTableViewController.swift"
-            timestampString = "530748935.453152"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "performServerTransaction(selectedRequest:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Controllers/Order/Notification/NotificationTableViewController.swift"
-            timestampString = "530748935.453572"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "loadNotifications()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -310,27 +262,27 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/Order/Notification/NotificationTableViewController.swift"
-                  timestampString = "530748142.854992"
+                  timestampString = "531014857.388739"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "128"
-                  endingLineNumber = "128"
-                  offsetFromSymbolStart = "3838">
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "4642">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #3 () -&gt; () in Karma.NotificationTableViewController.(performServerTransaction in _8C37A3590C6503444BE104450BFAD321)(selectedRequest: Karma.Order) -&gt; Swift.Bool"
+                  symbolName = "closure #4 (Swift.Optional&lt;Any&gt;) -&gt; () in Karma.NotificationTableViewController.(performServerTransaction in _8C37A3590C6503444BE104450BFAD321)(selectedRequest: Karma.Order) -&gt; Swift.Bool"
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/Order/Notification/NotificationTableViewController.swift"
-                  timestampString = "530748142.859169"
+                  timestampString = "531014857.395417"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "28">
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "548">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -342,7 +294,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/Notification/NotificationTableViewController.swift"
-            timestampString = "530748935.453842"
+            timestampString = "531014857.298875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -354,16 +306,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/Notification/NotificationTableViewController.swift"
-            timestampString = "530748935.454087"
+            timestampString = "531014857.298923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "loadNotifications()"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "performServerTransaction(selectedRequest:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
+            timestampString = "531014857.298966"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "loadPending()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Karma.ViewRequestTableViewController.(loadPending in _DF2B2F4FCF807681F33C1FF44CCFE714)() -&gt; ()"
+                  moduleName = "Karma"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
+                  timestampString = "531013050.71034"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "21">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Karma.Order) -&gt; Swift.Bool in Karma.ViewRequestTableViewController.(loadPending in _DF2B2F4FCF807681F33C1FF44CCFE714)() -&gt; ()"
+                  moduleName = "Karma"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
+                  timestampString = "531013050.714273"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "14">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
+            timestampString = "531014857.299237"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "loadPending()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
+            timestampString = "531014857.299505"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "loadAllOrders()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
