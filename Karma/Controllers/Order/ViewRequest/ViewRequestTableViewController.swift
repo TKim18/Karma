@@ -45,9 +45,6 @@ class ViewRequestTableViewController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.white
         //self.tabBarController?.tabBar.tintColor = UIColor.white
         
-//        let currUser = Backendless.sharedInstance().userService.currentUser
-//        let val = currUser!.getProperty("karmaPoints") as! Double
-        
         karmaPointsButton.title = String(User.getCurrentUserProperty(key: "karmaPoints") as! Double)
     }
     
@@ -133,6 +130,7 @@ class ViewRequestTableViewController: UITableViewController {
         cell.titleLabel.text = order.title
         cell.descriptionLabel.text = order.message
         cell.timeLabel.text = order.requestedTime
+        //TODO: Make this location label depend on whether both fields have a value or not
         cell.locationLabel.text = order.origin! + " to " + order.destination!
         cell.categoryImage.image = order.fromDescription().image
         

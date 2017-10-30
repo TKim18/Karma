@@ -53,14 +53,14 @@ class NotificationTableViewController: UITableViewController {
         //TODO: This should become a query on requesting user id and then a pull on their image attribute
         let profilePicture = UIImage(named: "DummyAvatar")
         cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
-        cell.payButton.addTarget(self, action: #selector(self.completeTransaction), for: UIControlEvents.touchUpInside)
+        //cell.payButton.addTarget(self, action: #selector(self.completeTransaction), for: UIControlEvents.touchUpInside)
         
         return cell
     }
     
-    @objc func completeTransaction(button : UIButton) {
-        self.performSegue(withIdentifier: "CompleteTransaction", sender: button)
-    }
+//    @objc func completeTransaction(button : UIButton) {
+//        self.performSegue(withIdentifier: "CompleteTransaction", sender: button)
+//    }
     
     // Segue preparation
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -101,8 +101,10 @@ class NotificationTableViewController: UITableViewController {
         let currentAccept = acceptingUser.getProperty("karmaPoints") as! Double
         let currentRequest = requestingUser.getProperty("karmaPoints") as! Double
         
-        let newAccept = (currentAccept + selectedRequest.cost).rounded(toPlaces: 3)
-        let newRequest = (currentAccept - selectedRequest.cost).rounded(toPlaces: 3)
+        let cost = (selectedRequest.cost).rounded(toPlaces: 2)
+        
+        let newAccept = Double(currentAccept + cost).rounded(toPlaces: 2)
+        let newRequest = Double(currentRequest - cost).rounded(toPlaces: 2)
         
         acceptingUser.setProperty("karmaPoints", object: newAccept)
         requestingUser.setProperty("karmaPoints", object: newRequest)

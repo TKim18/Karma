@@ -55,7 +55,7 @@ class CustomRequestViewController: UIViewController {
         self.currentOrder.origin = startLocationField.text
         self.currentOrder.destination = endLocationField.text
 
-        //TODO: Add safety measures to this
+        //TODO: Add safety measures to this - cant be below 0.01 or not a number
         self.currentOrder.cost = (costField.text! as NSString).doubleValue
         
         var valid = true

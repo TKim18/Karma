@@ -448,7 +448,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="CompleteTransaction" id="W7Z-Wg-xHQ"/>
+                                                <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="CompleteTransaction" id="vzc-4J-tRK"/>
                                             </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lCW-Xh-5x8">
@@ -829,6 +829,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cOA-1g-3sX"/>
-        <segue reference="slo-0J-Efm"/>
+        <segue reference="vzc-4J-tRK"/>
     </inferredMetricsTieBreakers>
 </document>
