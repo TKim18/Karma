@@ -58,7 +58,6 @@ class Order : NSObject {
     var requestingUserName: String?
     var acceptingUserId: String?
     var acceptingUserName: String?
-    let circleId : String?
     
     var completed : Bool = false
     var title : String?
@@ -78,7 +77,6 @@ class Order : NSObject {
         self.origin = ""
         self.destination = ""
         self.cost = 0.0
-        self.circleId = "-1"
         self.requestingUserId = "-1"
         self.requestingUserName = "-1"
         self.acceptingUserId = "-1"
@@ -86,11 +84,10 @@ class Order : NSObject {
     }
     
     //Probably only going to use this one
-    init (category: Category, requestingUserId: String, requestingUserName: String, circleId: String) {
+    init (category: Category, requestingUserId: String, requestingUserName: String) {
         self.category = category.description
         self.requestingUserId = requestingUserId
         self.requestingUserName = requestingUserName
-        self.circleId = circleId
     }
     
     static func getOrderDataStore() -> IDataStore {

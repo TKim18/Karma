@@ -14,7 +14,7 @@ class ViewRequestTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //Pull from the database
         loadAllOrders()
         
@@ -23,9 +23,16 @@ class ViewRequestTableViewController: UITableViewController {
         
         //Configure the navigation bar
         inititalizeNavBar()
-    
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        //Pull from the database
+        loadAllOrders()
+    
+        //Configure the navigation bar
+        updateKarmaPoints()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         //Dispose of any resources that can be recreated.
@@ -39,21 +46,25 @@ class ViewRequestTableViewController: UITableViewController {
     private var allOrders = [Order]()
     private var orders = [Order]()
     
-    private func inititalizeNavBar() {
-        //Navbar color: #285398
-        self.navigationController?.navigationBar.barTintColor = UIColor(rgb: 285398)
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        //self.tabBarController?.tabBar.tintColor = UIColor.white
-        
-        karmaPointsButton.title = String(User.getCurrentUserProperty(key: "karmaPoints") as! Double)
-    }
-    
     private func configureTableView() {
         //Configure background color
         self.tableView.backgroundColor = UIColor.lightGray
         
         //Enable segment control
         self.pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
+    }
+    
+    private func inititalizeNavBar() {
+        //Navbar color: #285398
+        self.navigationController?.navigationBar.barTintColor = UIColor(rgb: 285398)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.tabBarController?.tabBar.tintColor = UIColor.white
+        
+        updateKarmaPoints()
+    }
+
+    private func updateKarmaPoints() {
+        karmaPointsButton.title = String(User.getCurrentUserProperty(key: "karmaPoints") as! Double)
     }
 
     @objc func segmentChanged(sender: UISegmentedControl) {

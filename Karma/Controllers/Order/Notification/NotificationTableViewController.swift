@@ -60,7 +60,7 @@ class NotificationTableViewController: UITableViewController {
         return cell
     }
     
-    func completeTransaction(button : UIButton) {
+    @objc func completeTransaction(button : UIButton) {
         if (performServerTransaction(selectedRequest: notifications[button.tag])) {
             self.loadNotifications()
             self.tableView.reloadData()
