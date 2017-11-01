@@ -1,5 +1,11 @@
-1. Open a Terminal window, and change the current directory to be the project's directory.
-2. Run $pod install.
-3. Run $pod update.
-Once all of the pod data is downloaded / updated, Xcode project workspace file will be created. This should be the file you use everyday to create your app.
-4.Open .xcworkspace file to launch your project, and build it.
+## Current Capability ##
+1. User Login/Register
+2. Circle creation and joining
+3. Custom order requesting and viewing
+
+## Features left to be implemented ##
+1. Menu fields
+2. User settings changes
+3. Individual requesting on the circles page
+4. Multiple circles
+5. Adding people into circles through invites and search
