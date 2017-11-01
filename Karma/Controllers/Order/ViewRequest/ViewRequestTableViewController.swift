@@ -20,9 +20,6 @@ class ViewRequestTableViewController: UITableViewController {
         
         //Configure the view
         configureTableView()
-        
-        //Configure the navigation bar
-        inititalizeNavBar()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -52,15 +49,6 @@ class ViewRequestTableViewController: UITableViewController {
         
         //Enable segment control
         self.pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
-    }
-    
-    private func inititalizeNavBar() {
-        //Navbar color: #285398
-        self.navigationController?.navigationBar.barTintColor = UIColor(rgb: 285398)
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.tabBarController?.tabBar.tintColor = UIColor.white
-        
-        updateKarmaPoints()
     }
 
     private func updateKarmaPoints() {
@@ -184,18 +172,17 @@ class ViewRequestTableViewController: UITableViewController {
         return valid;
     }
   
-////        dataStore.save(
-////            selectedOrder,
-////            response: {
-////                (order) -> () in
-////                print("Order saved")
-////            },
-////            error: {
-////                (fault : Fault?) -> () in
-////                print("Server reported an error: \(String(describing: fault))")
-////            }
-////        )
-//    }
+//        dataStore.save(
+//            selectedOrder,
+//            response: {
+//                (order) -> () in
+//                print("Order saved")
+//            },
+//            error: {
+//                (fault : Fault?) -> () in
+//                print("Server reported an error: \(String(describing: fault))")
+//            }
+//        )
 }
 
 // Asynchronous Call:

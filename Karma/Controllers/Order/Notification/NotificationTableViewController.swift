@@ -112,7 +112,7 @@ class NotificationTableViewController: UITableViewController {
         
         return status
     }
-
+    
     // Server Call
     private func loadNotifications() {
         let backendless = Backendless.sharedInstance()
