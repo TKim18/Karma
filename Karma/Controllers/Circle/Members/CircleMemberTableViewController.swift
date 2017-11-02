@@ -10,10 +10,13 @@ import UIKit
 
 class CircleMemberTableViewController: UITableViewController {
 
+    let viewColor = UIColor(red: 242, green: 242, blue: 242)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.backgroundColor = UIColor.lightGray
+        self.tableView.backgroundColor = viewColor
+        self.tableView.separatorColor = viewColor
         
         // Load data
         loadMembers()
@@ -53,7 +56,7 @@ class CircleMemberTableViewController: UITableViewController {
         cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
         
         cell.layer.borderWidth = 10.0
-        cell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.layer.borderColor = viewColor.cgColor
         
         return cell
     }

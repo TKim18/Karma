@@ -17,6 +17,8 @@ class NotificationTableViewController: UITableViewController {
         super.viewDidLoad()
 
         loadNotifications();
+        
+        // self.tabBarController?.tabBar.items![1].badgeValue = String(notifications.count)
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +31,10 @@ class NotificationTableViewController: UITableViewController {
         return 2
     }
 
+//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 4
+//    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (section == 0) ? notifications.count : 0
     }

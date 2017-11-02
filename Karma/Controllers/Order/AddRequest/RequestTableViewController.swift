@@ -13,6 +13,7 @@ class RequestTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.lightGray
     }
 
     override func didReceiveMemoryWarning() {
