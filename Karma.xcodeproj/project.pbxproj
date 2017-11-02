@@ -31,6 +31,7 @@
 		2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0781F744C7800AC53CB /* RegisterController.swift */; };
 		22A139131FA69AD700B21CD2 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A139121FA69AD700B21CD2 /* Util.swift */; };
 		22A139151FA6A60A00B21CD2 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A139141FA6A60A00B21CD2 /* Double.swift */; };
+		22ABA8691FABAB370043AB4E /* CircleCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */; };
 		22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */; };
 		22B9167F1F7B3690002FCDD6 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167E1F7B3690002FCDD6 /* NotificationTableViewController.swift */; };
 		749CDB62FAC047BF1F6EAAD2 /* libPods-Karma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */; };
@@ -64,6 +65,7 @@
 		2277E0781F744C7800AC53CB /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		22A139121FA69AD700B21CD2 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		22A139141FA6A60A00B21CD2 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCreateViewController.swift; sourceTree = "<group>"; };
 		22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		22B9167E1F7B3690002FCDD6 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
 		ABEFA3D6DA2E1C5CD49339F5 /* Pods-Karma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				22302B011F7B37790046E757 /* CircleController.swift */,
+				22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */,
 				22302B031F7B37790046E757 /* CircleTableViewCell.swift */,
 				22302B021F7B37790046E757 /* CircleTableViewController.swift */,
 				22302AFC1F7B37210046E757 /* Members */,
@@ -362,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22ABA8691FABAB370043AB4E /* CircleCreateViewController.swift in Sources */,
 				223BE9B81F90062000C6A8F7 /* User.swift in Sources */,
 				22B9167F1F7B3690002FCDD6 /* NotificationTableViewController.swift in Sources */,
 				22302AFF1F7B376A0046E757 /* CircleMemberTableViewCell.swift in Sources */,

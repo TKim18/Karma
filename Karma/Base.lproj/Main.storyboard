@@ -219,10 +219,10 @@
             </objects>
             <point key="canvasLocation" x="694" y="788"/>
         </scene>
-        <!--Circle Controller-->
+        <!--Circle Create View Controller-->
         <scene sceneID="1FK-gr-IHB">
             <objects>
-                <viewController id="FCG-S8-DIx" customClass="CircleController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FCG-S8-DIx" customClass="CircleCreateViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pTx-KW-9RX"/>
                         <viewControllerLayoutGuide type="bottom" id="zMi-69-j1A"/>
@@ -236,7 +236,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create a Circle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U13-Rb-cI5">
-                                <rect key="frame" x="85" y="210" width="205" height="21"/>
+                                <rect key="frame" x="85" y="210" width="205" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -278,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9z-jb-OPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1670" y="788"/>
+            <point key="canvasLocation" x="1669.5999999999999" y="787.55622188905556"/>
         </scene>
         <!--Circle Table View Controller-->
         <scene sceneID="ysa-DP-ihV">
@@ -873,6 +873,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PTn-pf-fad"/>
-        <segue reference="sb5-Wr-8id"/>
+        <segue reference="MYP-am-xAB"/>
     </inferredMetricsTieBreakers>
 </document>
