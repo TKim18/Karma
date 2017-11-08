@@ -21,6 +21,8 @@ class DirectTransferViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Bit of data
+    var currentTransfer : DirectTransfer!
 
     /*
     // MARK: - Navigation

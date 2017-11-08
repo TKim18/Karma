@@ -11,17 +11,23 @@ import Foundation
 class DirectTransfer : NSObject {
     
     var objectId : String?
-    let name : String?
-    var displayName : String?
+    var title : String?
+    
+    var requestingUser : BackendlessUser
+    var acceptingUser : BackendlessUser
+    
+    var completed : Bool = false
+    var cost : Double = 0.0
     
     override init () {
-        self.name = ""
-        self.displayName = ""
+        self.requestingUser = User.getCurrentUser()
+        self.acceptingUser = User.getCurrentUser()
     }
     
-    init (name: String) {
-        self.name = name
-        self.displayName = name
+    
+    init (requestingUser : BackendlessUser, acceptingUser : BackendlessUser) {
+        self.requestingUser = requestingUser
+        self.acceptingUser = acceptingUser
     }
     
 }

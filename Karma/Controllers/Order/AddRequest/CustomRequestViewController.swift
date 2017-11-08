@@ -12,10 +12,8 @@ class CustomRequestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         categoryImage.image = currentOrder.fromDescription().image
-
-        //categoryImage.image = currentOrder.fromDescription(description: currentOrder.category!).image
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

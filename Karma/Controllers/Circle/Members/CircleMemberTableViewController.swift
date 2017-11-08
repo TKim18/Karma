@@ -97,11 +97,13 @@ class CircleMemberTableViewController: UITableViewController {
             fatalError("You definitely got the wrong cell")
         }
         
-        let selectedMember = members[indexPath.row]
+        let selectedUser = members[indexPath.row]
         
         if (segue.identifier == "ShowDirectTransfer") {
             if let destination = segue.destination as? DirectTransferViewController {
-                let currentTransfer = DirectTransfer()
+                let currentTransfer = DirectTransfer(
+                    requestingUser : User.getCurrentUser(),
+                    acceptingUser : selectedUser)
                 destination.currentTransfer = currentTransfer
             }
         }
