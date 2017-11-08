@@ -34,6 +34,8 @@
 		22ABA8691FABAB370043AB4E /* CircleCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */; };
 		22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */; };
 		22B9167F1F7B3690002FCDD6 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167E1F7B3690002FCDD6 /* NotificationTableViewController.swift */; };
+		22D31D8B1FB2B28400014892 /* DirectTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D31D8A1FB2B28400014892 /* DirectTransferViewController.swift */; };
+		22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */; };
 		749CDB62FAC047BF1F6EAAD2 /* libPods-Karma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,8 @@
 		22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCreateViewController.swift; sourceTree = "<group>"; };
 		22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		22B9167E1F7B3690002FCDD6 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
+		22D31D8A1FB2B28400014892 /* DirectTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransferViewController.swift; sourceTree = "<group>"; };
+		22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransfer.swift; sourceTree = "<group>"; };
 		ABEFA3D6DA2E1C5CD49339F5 /* Pods-Karma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.release.xcconfig"; sourceTree = "<group>"; };
 		C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Karma.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -153,6 +157,7 @@
 			children = (
 				22302AFD1F7B376A0046E757 /* CircleMemberTableViewCell.swift */,
 				22302AFE1F7B376A0046E757 /* CircleMemberTableViewController.swift */,
+				22D31D8A1FB2B28400014892 /* DirectTransferViewController.swift */,
 			);
 			path = Members;
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				223BE9B71F90062000C6A8F7 /* User.swift */,
 				2277E0641F744B5F00AC53CB /* Circle.swift */,
 				2277E0651F744B5F00AC53CB /* Order.swift */,
+				22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 				2229C08D1F744D9E0083C215 /* RequestCategoryTableViewCell.swift in Sources */,
 				2277E0681F744B5F00AC53CB /* Order.swift in Sources */,
 				22A139151FA6A60A00B21CD2 /* Double.swift in Sources */,
+				22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */,
 				22A139131FA69AD700B21CD2 /* Util.swift in Sources */,
 				22302B051F7B37790046E757 /* CircleTableViewController.swift in Sources */,
 				2277E0761F744C6300AC53CB /* ViewController.swift in Sources */,
@@ -387,6 +394,7 @@
 				22302B061F7B37790046E757 /* CircleTableViewCell.swift in Sources */,
 				2229C08C1F744D9E0083C215 /* CustomRequestViewController.swift in Sources */,
 				2277E0671F744B5F00AC53CB /* Circle.swift in Sources */,
+				22D31D8B1FB2B28400014892 /* DirectTransferViewController.swift in Sources */,
 				2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */,
 				22302B001F7B376A0046E757 /* CircleMemberTableViewController.swift in Sources */,
 			);

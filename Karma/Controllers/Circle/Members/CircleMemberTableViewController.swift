@@ -85,4 +85,27 @@ class CircleMemberTableViewController: UITableViewController {
         //        )
     }
     
+    //In preparation for direct transferring
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let selectedCircleCell = sender as? CircleMemberTableViewCell else {
+            fatalError("Unexpected sender: \(String(describing: sender))")
+        }
+        
+        guard let indexPath = tableView.indexPath(for : selectedCircleCell) else {
+            fatalError("You definitely got the wrong cell")
+        }
+        
+        let selectedMember = members[indexPath.row]
+        
+        if (segue.identifier == "ShowDirectTransfer") {
+            if let destination = segue.destination as? DirectTransferViewController {
+                let currentTransfer = DirectTransfer()
+                destination.currentTransfer = currentTransfer
+            }
+        }
+    }
+    
+    
 }
