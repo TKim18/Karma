@@ -1,51 +1,33 @@
-Future changes:
-* Change register error label to UIAlert
-* Configure the register email to be cooler
-* Enable login through facebook, gmail, etc...
-* Require email confirmation
+Current Goals:
+* Functionality to direct transfer
+* Functionality to change user settings like password, name, picture
+* Adding user images
+
+Quick Wins/Design changes:
+* Change the unselected tab bar icon to be white, not grey
+* Fix up the custom order pages (when keyboard appears, push request button up)
+* Settings page buttons should have the icon included (and edges should be rounded (or ask isaac))
+* Sleeken segmented control on main screen
+* Eliminate thin bar on the bottom on main screen
+
+Big Change Icebox:
+* Add a menu
+* Multiple circles
+* Push notifications
+* Adding people through invites and search
+* Open transaction history on Karma point button
+
+Small Change Icebox:
+* Add a no orders :( screen
+* Error label migration to UIAlert
+* Email confirmation on registration
+* Upgrade registration email
 * Implement I forgot my username/password
-* Don't call backendless shared instance multiple times if i dont have to
-* add options to go back to the previous view ( add an unwind segue between login and register )
 * implement a minimum 6 character password
-* Change the custom order fields to accurately match their goals (time -> timefield, destination -> categoryfield)
-* when user opens text box in custom order, push the request button/bar up
-* correct the color scheme and design on the segment control
 * implement an administrator (with authorities) for each circle
 
-Moving forward:
-* Display a menu looking thing, items become selectable, selecting an item adds to cart, check out button on the bottom 
-* Add a no orders :( screen
-
-uibarbuttonitem
-
-Short term goals:
-* add a navigation bar item for the karma points
-* add functionality to complete request
-* give people images **** important to do early ****
-
-Bugs:
-* man... default value of circleId is "-1"... figure out what null is in this scenario
-* circle.name doesnt get pulled from the db properly, for now we're using displayName but need to use the unique value
-* on first login, there's a space above table views
-* point transfer is not being registered by server
-
-
-Things I need on the design side:
-* Shouldn't the order button be much bigger?
-* Gonna need those menus... man the menus is nuts
-* A different picture for each of those tabs on the order1 page
-* How will the request for laundry be different from shopping and custom (do each of those types have different order pages?)
-* Request vs Order
-
-Notes:
-* Filter/search bar on top of circle join 
-* Checkbox for pricing 
-* Menu making
-* Billboard/Pending -> Pending/Accepted
-* Karma point tap -> transaction history
-
-
-
+Bugs/Hacks:
+* Circle.displayName is being used instead of Circle.name
 
 
 

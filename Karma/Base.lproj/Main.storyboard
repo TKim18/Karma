@@ -81,7 +81,7 @@
         <scene sceneID="6eh-qz-fhT">
             <objects>
                 <tabBarController id="sJO-1I-4Tx" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="BlueBar" selectionIndicatorImage="MainBoardSelectedIcon" id="1Ux-s4-dHf">
+                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="BlueBar" selectionIndicatorImage="SelectedIconIndicator" id="1Ux-s4-dHf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -793,7 +793,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EeI-Xx-xBj">
                                 <rect key="frame" x="16" y="125" width="350" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="     Profile" image="FriendSelectedIcon">
+                                <state key="normal" title="     Profile" image="FriendSelectedIcon" backgroundImage="SettingsButton">
                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -803,7 +803,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixk-WO-D0D">
                                 <rect key="frame" x="16" y="184" width="350" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="     Notifications" image="NotificationsSelectedIcon">
+                                <state key="normal" title="     Notifications" image="NotificationsSelectedIcon" backgroundImage="SettingsButton">
                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -813,7 +813,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akq-z1-tlQ">
                                 <rect key="frame" x="16" y="348" width="350" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="     Security" image="UserSettingsSelectedIcon">
+                                <state key="normal" title="     Security" image="UserSettingsSelectedIcon" backgroundImage="SettingsButton">
                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -957,17 +957,19 @@
         <image name="KarmaPointsIcon" width="21" height="25"/>
         <image name="Login" width="375" height="667"/>
         <image name="MainBoardIcon" width="27" height="27"/>
-        <image name="MainBoardSelectedIcon" width="39" height="39"/>
         <image name="NewRequestIcon" width="27" height="27"/>
         <image name="NoCircle" width="375" height="667"/>
         <image name="NotificationsIcon" width="27" height="27"/>
         <image name="NotificationsSelectedIcon" width="39" height="39"/>
         <image name="PencilIcon" width="14" height="14"/>
         <image name="Register" width="375" height="667"/>
+        <image name="SelectedIconIndicator" width="39" height="39"/>
+        <image name="SettingsButton" width="375" height="39"/>
         <image name="UserSettingsIcon" width="27" height="27"/>
         <image name="UserSettingsSelectedIcon" width="39" height="39"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="IW7-Cd-7CT"/>
         <segue reference="PTn-pf-fad"/>
         <segue reference="MYP-am-xAB"/>
     </inferredMetricsTieBreakers>
