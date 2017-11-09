@@ -12,10 +12,8 @@ class DirectTransferViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        cost.becomeFirstResponder()
         selectedUser.text = "Hello!"
-        cost.inputView = 
-    
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

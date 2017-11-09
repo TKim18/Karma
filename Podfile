@@ -6,7 +6,7 @@ target 'Karma' do
   # use_frameworks!
 
   # Pods for Karma
-pod 'Backendless', '~> 4.0b' 
+pod 'Backendless', '~> 4.0b'
 
 end
         
