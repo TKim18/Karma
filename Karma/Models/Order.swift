@@ -15,21 +15,6 @@ class Order : NSObject {
         
         static let allCategories = [Summerfields, WesWings, WeShop, Custom]
         
-        init?(id : Int) {
-            switch id {
-            case 1:
-                self = .Summerfields
-            case 2:
-                self = .WesWings
-            case 3:
-                self = .WeShop
-            case 4:
-                self = .Custom
-            default:
-                return nil
-            }
-        }
-        
         var description: String {
             switch self {
             case .Summerfields: return "Summerfields"
@@ -76,7 +61,6 @@ class Order : NSObject {
         self.category = ""
         self.origin = ""
         self.destination = ""
-        self.cost = 0.0
         self.requestingUserId = "-1"
         self.requestingUserName = "-1"
         self.acceptingUserId = "-1"

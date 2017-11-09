@@ -15,11 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         backendless?.initApp(APP_ID, apiKey:API_Key)
         
+        // TODO: Split these into their own functions
+        // Sets the universal navigation bar color, tint color, and text color across the whole app
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.barTintColor = UIColor(rgb: 285398)
         navigationBarAppearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         
+        // Changes the selected tab bar icon to white
         UITabBar.appearance().tintColor = UIColor.white
         
         return true

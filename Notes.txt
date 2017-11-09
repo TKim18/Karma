@@ -2,6 +2,7 @@ Current Goals:
 * Functionality to direct transfer
 * Functionality to change user settings like password, name, picture
 * Adding user images
+* Figure out how paging works
 
 Quick Wins/Design changes:
 * Change the unselected tab bar icon to be white, not grey
@@ -9,6 +10,7 @@ Quick Wins/Design changes:
 * Settings page buttons should have the icon included (and edges should be rounded (or ask isaac))
 * Sleeken segmented control on main screen
 * Eliminate thin bar on the bottom on main screen
+* Guard value of cost
 
 Big Change Icebox:
 * Add a menu
@@ -28,6 +30,7 @@ Small Change Icebox:
 
 Bugs/Hacks:
 * Circle.displayName is being used instead of Circle.name
+* "-1" is used as the null value rather than just null
 
 
 

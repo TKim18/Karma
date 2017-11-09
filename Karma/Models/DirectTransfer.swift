@@ -13,21 +13,26 @@ class DirectTransfer : NSObject {
     var objectId : String?
     var title : String?
     
-    var requestingUser : BackendlessUser
-    var acceptingUser : BackendlessUser
+    var requestingUserId: String?
+    var requestingUserName: String?
+    var acceptingUserId: String?
+    var acceptingUserName: String?
     
     var completed : Bool = false
     var cost : Double = 0.0
     
     override init () {
-        self.requestingUser = User.getCurrentUser()
-        self.acceptingUser = User.getCurrentUser()
+        self.requestingUserId = ""
+        self.requestingUserName = ""
+        self.acceptingUserId = ""
+        self.acceptingUserName = ""
     }
     
-    
     init (requestingUser : BackendlessUser, acceptingUser : BackendlessUser) {
-        self.requestingUser = requestingUser
-        self.acceptingUser = acceptingUser
+        self.requestingUserId = requestingUser.name! as String
+        self.requestingUserName = requestingUser.objectId! as String
+        self.acceptingUserId = acceptingUser.name! as String
+        self.acceptingUserName = requestingUser.objectId! as String
     }
     
 }
