@@ -12,7 +12,7 @@ class DirectTransferViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        selectedUser.text = "Hello!"
         // Do any additional setup after loading the view.
     }
 
@@ -24,14 +24,9 @@ class DirectTransferViewController: UIViewController {
     //Bit of data
     var currentTransfer : DirectTransfer!
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    //UI Elements
+    @IBOutlet var cost : UITextField!
+    @IBOutlet var selectedUser : UILabel!
+    
+    
 }

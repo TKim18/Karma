@@ -687,10 +687,10 @@
             </objects>
             <point key="canvasLocation" x="1670" y="-2419"/>
         </scene>
-        <!--View Controller-->
+        <!--Direct Transfer View Controller-->
         <scene sceneID="FAi-SX-0KR">
             <objects>
-                <viewController id="N7W-wu-JGK" sceneMemberID="viewController">
+                <viewController id="N7W-wu-JGK" customClass="DirectTransferViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ggN-uH-D4N"/>
                         <viewControllerLayoutGuide type="bottom" id="4uh-oK-itz"/>
@@ -698,12 +698,32 @@
                     <view key="view" contentMode="scaleToFill" id="AmE-ZB-rNs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jvU-KT-amv">
+                                <rect key="frame" x="262" y="72" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selected Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZE8-RI-gHJ">
+                                <rect key="frame" x="16" y="70" width="174" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="cost" destination="jvU-KT-amv" id="e29-jn-HcF"/>
+                        <outlet property="selectedUser" destination="ZE8-RI-gHJ" id="RWT-0L-u3B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTC-UI-OxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2646" y="-2419"/>
+            <point key="canvasLocation" x="2645.5999999999999" y="-2419.3403298350827"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="p3d-L0-nsT">

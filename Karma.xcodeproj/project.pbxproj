@@ -355,9 +355,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Karma/Pods-Karma-resources.sh",
+				"${PODS_ROOT}/VENCalculatorInputView/VENCalculatorInputView/Images/VENCalculatorIconBackspace.png",
+				"${PODS_ROOT}/VENCalculatorInputView/VENCalculatorInputView/Images/VENCalculatorIconBackspace@2x.png",
+				"${PODS_ROOT}/VENCalculatorInputView/VENCalculatorInputView/VENCalculatorInputView.xib",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

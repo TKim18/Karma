@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'FA01CC51EEE4823B4AA8EE1CD1CA8A51'
-               BlueprintName = 'Pods-Karma'
+               BlueprintIdentifier = 'E85C448A5C37E0BB8ECD3841FEB0B57C'
+               BlueprintName = 'VENCalculatorInputView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-Karma.a'>
+               BuildableName = 'libVENCalculatorInputView.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
