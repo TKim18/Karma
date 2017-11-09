@@ -83,16 +83,6 @@ EOM
       ;;
   esac
 }
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_ROOT}/VENCalculatorInputView/VENCalculatorInputView/Images/VENCalculatorIconBackspace.png"
-  install_resource "${PODS_ROOT}/VENCalculatorInputView/VENCalculatorInputView/Images/VENCalculatorIconBackspace@2x.png"
-  install_resource "${PODS_ROOT}/VENCalculatorInputView/VENCalculatorInputView/VENCalculatorInputView.xib"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_ROOT}/VENCalculatorInputView/VENCalculatorInputView/Images/VENCalculatorIconBackspace.png"
-  install_resource "${PODS_ROOT}/VENCalculatorInputView/VENCalculatorInputView/Images/VENCalculatorIconBackspace@2x.png"
-  install_resource "${PODS_ROOT}/VENCalculatorInputView/VENCalculatorInputView/VENCalculatorInputView.xib"
-fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

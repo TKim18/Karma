@@ -13,6 +13,8 @@ class DirectTransferViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedUser.text = "Hello!"
+        cost.inputView = 
+    
         // Do any additional setup after loading the view.
     }
 

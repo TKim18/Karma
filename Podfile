@@ -7,7 +7,6 @@ target 'Karma' do
 
   # Pods for Karma
 pod 'Backendless', '~> 4.0b' 
-pod 'VENCalculatorInputView', '~> 1.5'
 
 end
         
