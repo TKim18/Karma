@@ -45,4 +45,16 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
 
+    func loadInterface() {
+        let calculatorNib = UINib(nibName: "CostCalculator", bundle: nil)
+    
+        let calculatorView = calculatorNib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        
+        // Add the interface to the main view
+        view.addSubview(calculatorView)
+        
+        // Copy the background color
+        view.backgroundColor = calculatorView.backgroundColor
+    }
+    
 }

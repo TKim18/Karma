@@ -22,6 +22,7 @@
 		22302B061F7B37790046E757 /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B031F7B37790046E757 /* CircleTableViewCell.swift */; };
 		223BE9B81F90062000C6A8F7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BE9B71F90062000C6A8F7 /* User.swift */; };
 		2261433D1F72E5FB00711DEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226143391F72E5FA00711DEF /* AppDelegate.swift */; };
+		226270DC1FB5369100690600 /* RoundedButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226270DB1FB5369100690600 /* RoundedButtonController.swift */; };
 		2277E0671F744B5F00AC53CB /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0641F744B5F00AC53CB /* Circle.swift */; };
 		2277E0681F744B5F00AC53CB /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0651F744B5F00AC53CB /* Order.swift */; };
 		2277E06D1F744BA400AC53CB /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06B1F744BA400AC53CB /* UIImage.swift */; };
@@ -85,6 +86,7 @@
 		22302B031F7B37790046E757 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewCell.swift; path = Karma/Controllers/Circle/CircleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		223BE9B71F90062000C6A8F7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		226143391F72E5FA00711DEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		226270DB1FB5369100690600 /* RoundedButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonController.swift; sourceTree = "<group>"; };
 		2277E0641F744B5F00AC53CB /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		2277E0651F744B5F00AC53CB /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		2277E06B1F744BA400AC53CB /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				2287A33D1FB507ED0035C685 /* KeyboardViewController.swift */,
 				2287A33F1FB507ED0035C685 /* Info.plist */,
 				2287A3471FB508410035C685 /* CostCalculator.xib */,
+				226270DB1FB5369100690600 /* RoundedButtonController.swift */,
 			);
 			path = CostCalculator;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2287A33E1FB507ED0035C685 /* KeyboardViewController.swift in Sources */,
+				226270DC1FB5369100690600 /* RoundedButtonController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
