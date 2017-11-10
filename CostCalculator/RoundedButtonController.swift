@@ -13,10 +13,11 @@ class RoundedButtonController: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        backgroundColor = .white
+        //backgroundColor = .clear
         layer.cornerRadius = 5
         layer.borderWidth = 0
         layer.borderColor = UIColor.black.cgColor
+        setTitleColor(.black, for: .normal)
     }
     
 }
