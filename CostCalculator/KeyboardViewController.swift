@@ -56,6 +56,10 @@ class KeyboardViewController: UIInputViewController {
 
     @IBAction func clearDisplay() {
         display.text = "0"
+        resetParams()
+    }
+    
+    func resetParams() {
         shouldClearDisplayBeforeInserting = true
         containsOp = false
         op = Operation.None
@@ -117,7 +121,7 @@ class KeyboardViewController: UIInputViewController {
                 output = "\(Int(result))"
             }
             
-            // Get rid of superfluous digits
+            // Cut down the output to two decimal points
             var components = output.components(separatedBy: ".")
             if components.count >= 2 {
                 let beforePoint = components[0]
@@ -129,17 +133,9 @@ class KeyboardViewController: UIInputViewController {
                 output = beforePoint + "." + afterPoint
             }
             
-            // Update the text
+            // Update the text and internal parameters
             display.text = output
-            
-            containsOp = false
-            op = Operation.None
-            
-//            // save the result
-//            internalMemory = result
-//
-//            // remember to clear the display before inserting a new number
-//            shouldClearDisplayBeforeInserting = true
+            resetParams()
         }
     }
     
@@ -161,10 +157,11 @@ class KeyboardViewController: UIInputViewController {
     }
     
     @IBAction func didTapOperation(operation: UIButton) {
+        if (containsOp) { computeOperation() }
         if let opString = operation.titleLabel?.text {
             if let oldDisplay = display?.text {
                 //Make sure there is only one
-                if (containsOp || oldDisplay.isEmpty) { return }
+                if (oldDisplay.isEmpty) { return }
                 
                 switch opString {
                     case "+":
@@ -184,6 +181,7 @@ class KeyboardViewController: UIInputViewController {
                         op = Operation.None
                 }
                 containsOp = true
+                shouldClearDisplayBeforeInserting = false
             }
         }
     }
