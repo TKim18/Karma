@@ -8,11 +8,22 @@
 
 import UIKit
 
-class DirectTransferViewController: UIViewController {
+class DirectTransferViewController: UIViewController, KeyboardDelegate {
 
+    //UI Elements
+    @IBOutlet weak var cost : UITextField!
+    @IBOutlet weak var selectedUser : UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cost.becomeFirstResponder()
+        
+       //cost.text =
+        let numPad = NumPadCalculator()
+        numPad.delegate = self
+        
+        cost.inputView = numPad
+        
         selectedUser.text = "Hello!"
     }
 
@@ -24,9 +35,6 @@ class DirectTransferViewController: UIViewController {
     //Bit of data
     var currentTransfer : DirectTransfer!
 
-    //UI Elements
-    @IBOutlet var cost : UITextField!
-    @IBOutlet var selectedUser : UILabel!
     
     
 }

@@ -10,6 +10,7 @@
 		0F22E1B41E8407D1004B722A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B21E8407D1004B722A /* Main.storyboard */; };
 		0F22E1B61E8407D1004B722A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B51E8407D1004B722A /* Assets.xcassets */; };
 		0F22E1B91E8407D1004B722A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B71E8407D1004B722A /* LaunchScreen.storyboard */; };
+		220FE6DC1FBB9AD7006C257E /* NumPadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */; };
 		2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */; };
 		2229C0861F744D820083C215 /* ViewRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */; };
 		2229C08B1F744D9E0083C215 /* RequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0881F744D9E0083C215 /* RequestTableViewController.swift */; };
@@ -31,7 +32,6 @@
 		2277E0761F744C6300AC53CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0751F744C6300AC53CB /* ViewController.swift */; };
 		2277E0791F744C7800AC53CB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0771F744C7800AC53CB /* LoginController.swift */; };
 		2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0781F744C7800AC53CB /* RegisterController.swift */; };
-		2287A33E1FB507ED0035C685 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2287A33D1FB507ED0035C685 /* KeyboardViewController.swift */; };
 		2287A3421FB507ED0035C685 /* CostCalculator.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2287A33B1FB507ED0035C685 /* CostCalculator.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2287A3481FB508410035C685 /* CostCalculator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2287A3471FB508410035C685 /* CostCalculator.xib */; };
 		22A139131FA69AD700B21CD2 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A139121FA69AD700B21CD2 /* Util.swift */; };
@@ -75,6 +75,7 @@
 		0F22E1B51E8407D1004B722A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F22E1B81E8407D1004B722A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F22E1BA1E8407D1004B722A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumPadCalculator.swift; sourceTree = "<group>"; };
 		2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewController.swift; sourceTree = "<group>"; };
 		2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewCell.swift; sourceTree = "<group>"; };
 		2229C0881F744D9E0083C215 /* RequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 		2277E0771F744C7800AC53CB /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2277E0781F744C7800AC53CB /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		2287A33B1FB507ED0035C685 /* CostCalculator.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CostCalculator.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		2287A33D1FB507ED0035C685 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		2287A33F1FB507ED0035C685 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2287A3471FB508410035C685 /* CostCalculator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CostCalculator.xib; sourceTree = "<group>"; };
 		22A139121FA69AD700B21CD2 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -264,10 +264,10 @@
 			isa = PBXGroup;
 			children = (
 				226270DD1FB53E7E00690600 /* CostCalculator.entitlements */,
-				2287A33D1FB507ED0035C685 /* KeyboardViewController.swift */,
 				2287A33F1FB507ED0035C685 /* Info.plist */,
 				2287A3471FB508410035C685 /* CostCalculator.xib */,
 				226270DB1FB5369100690600 /* RoundedButtonController.swift */,
+				220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */,
 			);
 			path = CostCalculator;
 			sourceTree = "<group>";
@@ -511,8 +511,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2287A33E1FB507ED0035C685 /* KeyboardViewController.swift in Sources */,
 				226270DC1FB5369100690600 /* RoundedButtonController.swift in Sources */,
+				220FE6DC1FBB9AD7006C257E /* NumPadCalculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

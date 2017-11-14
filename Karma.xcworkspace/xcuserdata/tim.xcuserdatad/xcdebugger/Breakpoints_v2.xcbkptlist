@@ -152,7 +152,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "532384990.815532"
+                  timestampString = "532390577.074168"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -167,7 +167,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "532384990.81789"
+                  timestampString = "532390577.078048"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -182,7 +182,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "532384990.820736"
+                  timestampString = "532390577.081312"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -197,7 +197,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "532384990.823063"
+                  timestampString = "532390577.084994"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -332,6 +332,38 @@
             startingLineNumber = "115"
             endingLineNumber = "115"
             landmarkName = "performServerTransaction(selectedRequest:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CostCalculator/KeyboardViewController.swift"
+            timestampString = "532386852.005429"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "init(coder:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CostCalculator/KeyboardViewController.swift"
+            timestampString = "532386853.276713"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "updateViewConstraints()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
