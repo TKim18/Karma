@@ -22,16 +22,9 @@ enum Operation {
 class KeyboardViewController: UIInputViewController {
     
     private var shouldClearDisplayBeforeInserting = true
-    private var internalMemory = 0.0
-    private var nextOperation = Operation.None
-    private var readyToCompute = false
-    private var shouldCompute = false
     
-    let letters = CharacterSet.letters
-    let digits = CharacterSet.decimalDigits
-
-    
-    private var containsOp = false
+    private var firstExp = ""
+    private var secondExp = ""
     private var op = Operation.None
     
     @IBOutlet var display: UILabel!
@@ -56,37 +49,25 @@ class KeyboardViewController: UIInputViewController {
 
     @IBAction func clearDisplay() {
         display.text = "0"
+        firstExp = ""
+        secondExp = ""
         resetParams()
     }
     
     func resetParams() {
         shouldClearDisplayBeforeInserting = true
-        containsOp = false
         op = Operation.None
     }
     
-    func evalExp (exp : String) -> Double {
-        var firstNumString : String = ""
-        var currNumString : String = ""
-        
-        for c in exp.unicodeScalars {
-            if (digits.contains(c) || c == ".") {
-                currNumString += String(c)
-            }
-            else {
-                firstNumString = currNumString
-                currNumString = ""
-            }
-        }
-        
-        let firstNum : Double = (firstNumString as NSString).doubleValue
-        let secondNum : Double = (currNumString as NSString).doubleValue
+    func evalExp () -> Double {
+        let firstNum : Double = (firstExp as NSString).doubleValue
+        let secondNum : Double = (secondExp as NSString).doubleValue
         
         return eval(x: firstNum, y: secondNum)
     }
     
     
-    func eval (x : Double, y : Double) -> Double {
+    func eval (x: Double, y: Double) -> Double {
         var result = 0.0
         switch op {
             case .Addition:
@@ -107,36 +88,39 @@ class KeyboardViewController: UIInputViewController {
     }
     
     @IBAction func computeOperation() {
-        if (op == Operation.None || !containsOp) { return }
-        
-        if let input = display?.text {
-            // Evaluate the expression
-            let result = evalExp(exp: input)
-            
-            // Stringify it
-            var output = "\(result)"
-            
-            // If the result is an integer don't show the decimal point
-            if output.hasSuffix(".0") {
-                output = "\(Int(result))"
-            }
-            
-            // Cut down the output to two decimal points
-            var components = output.components(separatedBy: ".")
-            if components.count >= 2 {
-                let beforePoint = components[0]
-                var afterPoint = components[1]
-                if afterPoint.lengthOfBytes(using: String.Encoding.utf8) > 2 {
-                    let index: String.Index = afterPoint.index(afterPoint.startIndex, offsetBy: 2)
-                    afterPoint = String(afterPoint[..<index])
-                }
-                output = beforePoint + "." + afterPoint
-            }
-            
-            // Update the text and internal parameters
-            display.text = output
-            resetParams()
+        if (op == Operation.None) { return }
+        if (op != Operation.None && secondExp == "") {
+            display.text = firstExp
+            return
         }
+        
+        // Evaluate the expression
+        let result = evalExp()
+        
+        // The result will become the next firstExp and secondExp will be cleared
+        firstExp = "\(result)"
+        secondExp = ""
+        
+        // If the result is an integer don't show the decimal point
+        if firstExp.hasSuffix(".0") {
+            firstExp = "\(Int(result))"
+        }
+        
+        // Cut down the output to two decimal points
+        var components = firstExp.components(separatedBy: ".")
+        if components.count >= 2 {
+            let beforePoint = components[0]
+            var afterPoint = components[1]
+            if afterPoint.lengthOfBytes(using: String.Encoding.utf8) > 2 {
+                let index: String.Index = afterPoint.index(afterPoint.startIndex, offsetBy: 2)
+                afterPoint = String(afterPoint[..<index])
+            }
+            firstExp = beforePoint + "." + afterPoint
+        }
+        
+        // Update the text and internal parameters
+        display.text = firstExp
+        resetParams()
     }
     
     @IBAction func didTapNumber(number: UIButton) {
@@ -147,6 +131,16 @@ class KeyboardViewController: UIInputViewController {
         
         if let numberAsString = number.titleLabel?.text {
             let numberAsNSString = numberAsString as NSString
+            
+            // There is no operation specified
+            if (op == Operation.None) {
+                firstExp += numberAsString
+            }
+            // When there is already an operation in the text field
+            else {
+                secondExp += numberAsString
+            }
+            
             if let oldDisplay = display?.text {
                 display.text = "\(oldDisplay)\(numberAsNSString.intValue)"
             }
@@ -157,49 +151,69 @@ class KeyboardViewController: UIInputViewController {
     }
     
     @IBAction func didTapOperation(operation: UIButton) {
-        if (containsOp) { computeOperation() }
+        if (op != Operation.None && firstExp != "" && secondExp != "") { computeOperation() }
+        
         if let opString = operation.titleLabel?.text {
-            if let oldDisplay = display?.text {
-                //Make sure there is only one
+            if var oldDisplay = display?.text {
                 if (oldDisplay.isEmpty) { return }
+                if (op != Operation.None && secondExp == "") {
+                    oldDisplay.remove(at: oldDisplay.index(before: oldDisplay.endIndex))
+                }
                 
                 switch opString {
-                    case "+":
-                        display.text = oldDisplay + "+"
-                        op = Operation.Addition
-                    case "−":
-                        display.text = oldDisplay + "−"
-                        op = Operation.Subtraction
-                    case "×":
-                        display.text = oldDisplay + "×"
-                        op = Operation.Multiplication
-                    case "÷":
-                        display.text = oldDisplay + "÷"
-                        op = Operation.Division
-                    default:
-                        display.text = oldDisplay
-                        op = Operation.None
+                case "+":
+                    display.text = oldDisplay + "+"
+                    op = Operation.Addition
+                case "−":
+                    display.text = oldDisplay + "−"
+                    op = Operation.Subtraction
+                case "×":
+                    display.text = oldDisplay + "×"
+                    op = Operation.Multiplication
+                case "÷":
+                    display.text = oldDisplay + "÷"
+                    op = Operation.Division
+                default:
+                    display.text = oldDisplay
+                    op = Operation.None
                 }
-                containsOp = true
                 shouldClearDisplayBeforeInserting = false
             }
         }
     }
     
+    private func hasDot(exp: String) -> Bool {
+        for ch in exp.unicodeScalars {
+            if ch == "." {
+                return true
+            }
+        }
+        return false
+    }
+    
     @IBAction func didTapDot() {
+        if (shouldClearDisplayBeforeInserting) {
+            display.text = "0."
+            shouldClearDisplayBeforeInserting = false
+            firstExp += "."
+            return
+        }
+        
+        if ((secondExp == "" && hasDot(exp: firstExp) && op == Operation.None)
+            || (secondExp != "" && hasDot(exp: secondExp))) {
+            return
+        }
+        
+        if (secondExp == "" && op == Operation.None) {
+            firstExp += "."
+        }
+        else {
+            secondExp += "."
+        }
+        
         if let input = display?.text {
             if input.isEmpty { return }
-            var hasDot = false
-            //Split the two numbers on either side of hte operator
-            for ch in input.unicodeScalars {
-                if ch == "." {
-                    hasDot = true
-                    break
-                }
-            }
-            if hasDot == false {
-                display.text = "\(input)."
-            }
+            display.text = "\(input)."
         }
     }
     
