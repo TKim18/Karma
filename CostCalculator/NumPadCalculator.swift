@@ -8,9 +8,10 @@
 
 import UIKit
 
-protocol KeyboardDelegate: class {
+public protocol KeyboardDelegate: class {
     func addText(character: String)
     func setText(text: String)
+    func deleteText()
 }
 
 enum Operation {
@@ -21,10 +22,10 @@ enum Operation {
     case None
 }
 
-class NumPadCalculator: UIView {
+public class NumPadCalculator: UIView {
     var delegate: KeyboardDelegate?
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializeSubviews()
     }
@@ -48,8 +49,9 @@ class NumPadCalculator: UIView {
     private var secondExp = ""
     private var op = Operation.None
     private var shouldClearDisplayBeforeInserting = true
+    private var internalText = ""
 
-    @IBOutlet var display: UILabel!
+    //@IBOutlet var display: UILabel!
     
     // Keyboard Actions/Key Taps
     
@@ -68,9 +70,10 @@ class NumPadCalculator: UIView {
         if (op == Operation.None) { return }
 
         // If there is an operator but no secondExp
-        // Ex: eval("4+")
+        // Ex: eval("4+") => "4"
         if (op != Operation.None && secondExp == "") {
             setText(text: firstExp)
+            op = Operation.None
             return
         }
 
@@ -115,18 +118,11 @@ class NumPadCalculator: UIView {
             if (op == Operation.None) {
                 firstExp += numberAsString
             }
-                // When there is already an operation in the text field
+            // When there is already an operation in the text field
             else {
                 secondExp += numberAsString
             }
-
-            if let oldDisplay = display?.text {
-                addText(char: numberAsString, prev: oldDisplay)
-                //setText(text: "\(oldDisplay)\(numberAsNSString.intValue)")
-            }
-            else {
-                setText(text: numberAsString)
-            }
+            addText(char: numberAsString, prev: internalText)
         }
     }
 
@@ -136,33 +132,31 @@ class NumPadCalculator: UIView {
         if (op != Operation.None && firstExp != "" && secondExp != "") { computeOperation() }
 
         if let opString = operation.titleLabel?.text {
-            if var oldDisplay = display?.text {
-                if (oldDisplay.isEmpty) { return }
-                
-                //Ex: 4 + - => 4 -
-                if (op != Operation.None && secondExp == "") {
-                    oldDisplay.remove(at: oldDisplay.index(before: oldDisplay.endIndex))
-                }
+            if (internalText.isEmpty) { return }
 
-                switch opString {
-                case "+":
-                    addText(char: "+", prev: oldDisplay)
-                    op = Operation.Addition
-                case "−":
-                    addText(char: "−", prev: oldDisplay)
-                    op = Operation.Subtraction
-                case "×":
-                    addText(char: "×", prev: oldDisplay)
-                    op = Operation.Multiplication
-                case "÷":
-                    addText(char: "÷", prev: oldDisplay)
-                    op = Operation.Division
-                default:
-                    addText(char: "", prev: oldDisplay)
-                    op = Operation.None
-                }
-                shouldClearDisplayBeforeInserting = false
+            //Ex: 4 + - => 4 -
+            if (op != Operation.None && secondExp == "") {
+                deleteText()
             }
+
+            switch opString {
+            case "+":
+                addText(char: "+", prev: internalText)
+                op = Operation.Addition
+            case "−":
+                addText(char: "−", prev: internalText)
+                op = Operation.Subtraction
+            case "×":
+                addText(char: "×", prev: internalText)
+                op = Operation.Multiplication
+            case "÷":
+                addText(char: "÷", prev: internalText)
+                op = Operation.Division
+            default:
+                addText(char: "", prev: internalText)
+                op = Operation.None
+            }
+            shouldClearDisplayBeforeInserting = false
         }
     }
 
@@ -183,10 +177,8 @@ class NumPadCalculator: UIView {
         if (secondExp == "" && op == Operation.None) { firstExp += "." }
         else { secondExp += "." }
 
-        if let input = display?.text {
-            if input.isEmpty { return }
-            addText(char: ".", prev: input)
-        }
+        if (internalText.isEmpty) { return }
+        addText(char: ".", prev: internalText)
     }
 
     //----------- Helper Functions -------------//
@@ -197,13 +189,18 @@ class NumPadCalculator: UIView {
     }
     
     private func addText(char: String, prev: String) {
-        display.text = prev + char
+        internalText = prev + char
         self.delegate?.addText(character: char)
     }
     
     private func setText(text: String) {
-        display.text = text
+        internalText = text
         self.delegate?.setText(text: text)
+    }
+    
+    private func deleteText() {
+        internalText.remove(at: internalText.index(before: internalText.endIndex))
+        self.delegate?.deleteText()
     }
     
     private func evalExp () -> Double {

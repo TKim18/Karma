@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     
     let APPLICATION_ID = "4E2E1A3D-FFCD-0343-FF47-1C589EC9B700"
     let API_KEY = "FA7EA74D-684C-9B00-FF57-36FE9F512200"

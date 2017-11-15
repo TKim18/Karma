@@ -1,270 +1,226 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NumPadCalculator" customModule="CostCalculator" customModuleProvider="target">
-            <connections>
-                <outlet property="display" destination="4h7-m6-fAY" id="1ai-Uh-QBL"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NumPadCalculator" customModule="CostCalculator" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="213"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twq-AH-Ynu" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="4" y="46" width="95" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twq-AH-Ynu" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="4" y="45" width="95" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="95" id="F2Y-oV-fzz"/>
-                        <constraint firstAttribute="height" constant="38" id="iGa-kY-bJe"/>
-                    </constraints>
-                    <state key="normal" title="1"/>
+                    <state key="normal" title="1">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapNumberWithNumber:" destination="-1" eventType="touchUpInside" id="L5Q-Hu-ozj"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KB-0b-59L" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="4" y="89" width="95" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KB-0b-59L" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="4" y="88" width="95" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="38" id="SeD-ld-rQj"/>
-                    </constraints>
-                    <state key="normal" title="4"/>
+                    <state key="normal" title="4">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapNumberWithNumber:" destination="-1" eventType="touchUpInside" id="8Jw-p5-mcO"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrC-g7-PJJ" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="4" y="131" width="95" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrC-g7-PJJ" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="4" y="130" width="95" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="38" id="EHM-W0-i2q"/>
-                    </constraints>
-                    <state key="normal" title="7"/>
+                    <state key="normal" title="7">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapNumberWithNumber:" destination="-1" eventType="touchUpInside" id="v7m-cM-GYk"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tbw-Lb-qdO" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="4" y="173" width="95" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tbw-Lb-qdO" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="4" y="172" width="95" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="C"/>
+                    <state key="normal" title="C">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="clearDisplay" destination="-1" eventType="touchUpInside" id="0fj-L1-jX3"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOq-H7-1R9" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="107" y="46" width="100" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOq-H7-1R9" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="107" y="45" width="100" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="FDk-tx-5Jr"/>
-                    </constraints>
-                    <state key="normal" title="2"/>
+                    <state key="normal" title="2">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapNumberWithNumber:" destination="-1" eventType="touchUpInside" id="UHi-u3-C7f"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-ma-ubq" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="107" y="89" width="100" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-ma-ubq" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="107" y="88" width="100" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="5"/>
+                    <state key="normal" title="5">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapNumberWithNumber:" destination="-1" eventType="touchUpInside" id="WYT-vY-Jev"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35M-bM-EHM" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="107" y="131" width="100" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35M-bM-EHM" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="107" y="130" width="100" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="8"/>
+                    <state key="normal" title="8">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapNumberWithNumber:" destination="-1" eventType="touchUpInside" id="sfH-0c-ltb"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7w-xs-vVH" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="107" y="173" width="100" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7w-xs-vVH" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="107" y="172" width="100" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="0"/>
+                    <state key="normal" title="0">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapNumberWithNumber:" destination="-1" eventType="touchUpInside" id="VU7-Uh-Bq2"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zr-yg-0W5" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="215" y="46" width="100" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zr-yg-0W5" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="215" y="45" width="100" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="3"/>
+                    <state key="normal" title="3">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapNumberWithNumber:" destination="-1" eventType="touchUpInside" id="B9r-HL-vZr"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSw-EV-EvL" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="215" y="131" width="100" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSw-EV-EvL" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="215" y="130" width="100" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="9"/>
+                    <state key="normal" title="9">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapNumberWithNumber:" destination="-1" eventType="touchUpInside" id="0VX-CC-Ylu"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upi-3T-uXG" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="215" y="173" width="100" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upi-3T-uXG" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="215" y="172" width="100" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="."/>
+                    <state key="normal" title=".">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapDot" destination="-1" eventType="touchUpInside" id="NMF-m3-mqX"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQU-rb-iSc" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="323" y="46" width="47" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQU-rb-iSc" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="323" y="45" width="47" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="÷"/>
+                    <state key="normal" title="÷">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapOperationWithOperation:" destination="-1" eventType="touchUpInside" id="62w-o8-zgb"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZH-lX-YMn" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="323" y="89" width="47" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZH-lX-YMn" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="323" y="88" width="47" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="×"/>
+                    <state key="normal" title="×">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapOperationWithOperation:" destination="-1" eventType="touchUpInside" id="YTv-7X-Ioh"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcB-yw-GU3" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="323" y="131" width="47" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcB-yw-GU3" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="323" y="130" width="47" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="−"/>
+                    <state key="normal" title="−">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapOperationWithOperation:" destination="-1" eventType="touchUpInside" id="cb4-8r-wtk"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dt-js-zuY" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="323" y="173" width="47" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dt-js-zuY" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="323" y="172" width="47" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="+"/>
+                    <state key="normal" title="+">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapOperationWithOperation:" destination="-1" eventType="touchUpInside" id="khT-Hm-ARI"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s3m-sT-N4C" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s3m-sT-N4C" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
                     <rect key="frame" x="163" y="3" width="152" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.25779617952143197" green="0.60103525158461868" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" title="Request"/>
+                    <state key="normal" title="Request">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4U-Zf-Z29" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4U-Zf-Z29" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
                     <rect key="frame" x="323" y="3" width="47" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="47" id="iQ6-VX-HOD"/>
-                    </constraints>
-                    <state key="normal" title="="/>
+                    <state key="normal" title="=">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="computeOperation" destination="-1" eventType="touchUpInside" id="TT9-LO-iSE"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CurrentValue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4h7-m6-fAY">
-                    <rect key="frame" x="4" y="12" width="151" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="151" id="VYu-eO-cVX"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeI-2z-5QX" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
-                    <rect key="frame" x="215" y="89" width="100" height="38"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeI-2z-5QX" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="215" y="88" width="100" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="6"/>
+                    <state key="normal" title="6">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="didTapNumberWithNumber:" destination="-1" eventType="touchUpInside" id="FQz-eA-U6E"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHD-ot-Rrm" customClass="RoundedButtonController" customModule="CostCalculator" customModuleProvider="target">
+                    <rect key="frame" x="4" y="3" width="152" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.2577961795" green="0.60103525160000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Pay">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.8076375723" green="0.81175845859999995" blue="0.81579482560000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="cSw-EV-EvL" firstAttribute="leading" secondItem="35M-bM-EHM" secondAttribute="trailing" constant="8" symbolic="YES" id="04i-aV-Xec"/>
-                <constraint firstItem="4h7-m6-fAY" firstAttribute="centerY" secondItem="s3m-sT-N4C" secondAttribute="centerY" id="0GA-Ep-PLp"/>
-                <constraint firstItem="wcB-yw-GU3" firstAttribute="leading" secondItem="cSw-EV-EvL" secondAttribute="trailing" constant="8" symbolic="YES" id="1tO-1o-yBt"/>
-                <constraint firstItem="CQU-rb-iSc" firstAttribute="baseline" secondItem="8zr-yg-0W5" secondAttribute="firstBaseline" id="2x4-Wh-tF7"/>
-                <constraint firstItem="eeI-2z-5QX" firstAttribute="leading" secondItem="hT4-ma-ubq" secondAttribute="trailing" constant="8" symbolic="YES" id="3Jc-3N-IMD"/>
-                <constraint firstItem="Twq-AH-Ynu" firstAttribute="baseline" secondItem="cOq-H7-1R9" secondAttribute="firstBaseline" id="3gd-lU-DL3"/>
-                <constraint firstItem="eeI-2z-5QX" firstAttribute="top" secondItem="eZH-lX-YMn" secondAttribute="top" id="5Z0-Uu-KKl"/>
-                <constraint firstItem="4h7-m6-fAY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="AHc-sk-XFC"/>
-                <constraint firstItem="6KB-0b-59L" firstAttribute="baseline" secondItem="hT4-ma-ubq" secondAttribute="firstBaseline" id="C5v-1T-pNU"/>
-                <constraint firstItem="35M-bM-EHM" firstAttribute="leading" secondItem="U7w-xs-vVH" secondAttribute="leading" id="CKi-EX-OCR"/>
-                <constraint firstItem="2dt-js-zuY" firstAttribute="baseline" secondItem="upi-3T-uXG" secondAttribute="firstBaseline" id="CRo-do-URx"/>
-                <constraint firstItem="CQU-rb-iSc" firstAttribute="trailing" secondItem="eZH-lX-YMn" secondAttribute="trailing" id="DE2-tb-dwV"/>
-                <constraint firstItem="cSw-EV-EvL" firstAttribute="leading" secondItem="upi-3T-uXG" secondAttribute="leading" id="Dos-WK-iWs"/>
-                <constraint firstItem="eZH-lX-YMn" firstAttribute="leading" secondItem="wcB-yw-GU3" secondAttribute="leading" id="GYZ-7M-qoV"/>
-                <constraint firstItem="cOq-H7-1R9" firstAttribute="top" secondItem="s3m-sT-N4C" secondAttribute="bottom" constant="5" id="I7Q-Tf-3bx"/>
-                <constraint firstItem="35M-bM-EHM" firstAttribute="leading" secondItem="hrC-g7-PJJ" secondAttribute="trailing" constant="8" symbolic="YES" id="INt-W6-GoE"/>
-                <constraint firstItem="8zr-yg-0W5" firstAttribute="leading" secondItem="cOq-H7-1R9" secondAttribute="trailing" constant="8" symbolic="YES" id="IaA-kk-5bj"/>
-                <constraint firstItem="6KB-0b-59L" firstAttribute="top" secondItem="hT4-ma-ubq" secondAttribute="top" id="JA7-zI-khR"/>
-                <constraint firstItem="upi-3T-uXG" firstAttribute="baseline" secondItem="2dt-js-zuY" secondAttribute="firstBaseline" id="JmD-by-jUE"/>
-                <constraint firstItem="8zr-yg-0W5" firstAttribute="baseline" secondItem="CQU-rb-iSc" secondAttribute="firstBaseline" id="LGC-rH-dHi"/>
-                <constraint firstItem="Tbw-Lb-qdO" firstAttribute="baseline" secondItem="U7w-xs-vVH" secondAttribute="firstBaseline" id="LUg-LB-MsG"/>
-                <constraint firstItem="35M-bM-EHM" firstAttribute="top" secondItem="cSw-EV-EvL" secondAttribute="top" id="Lbr-ca-5xW"/>
-                <constraint firstItem="wcB-yw-GU3" firstAttribute="trailing" secondItem="2dt-js-zuY" secondAttribute="trailing" id="NUd-Zi-L7x"/>
-                <constraint firstItem="CQU-rb-iSc" firstAttribute="leading" secondItem="8zr-yg-0W5" secondAttribute="trailing" constant="8" symbolic="YES" id="NZ7-ky-yne"/>
-                <constraint firstItem="6KB-0b-59L" firstAttribute="top" secondItem="Twq-AH-Ynu" secondAttribute="bottom" constant="5" id="NxN-tW-63K"/>
-                <constraint firstItem="2dt-js-zuY" firstAttribute="leading" secondItem="upi-3T-uXG" secondAttribute="trailing" constant="8" symbolic="YES" id="OVa-0n-5xS"/>
-                <constraint firstItem="4h7-m6-fAY" firstAttribute="leading" secondItem="Twq-AH-Ynu" secondAttribute="leading" id="Qbd-dO-OO4"/>
-                <constraint firstItem="eeI-2z-5QX" firstAttribute="leading" secondItem="cSw-EV-EvL" secondAttribute="leading" id="Qx5-c1-YLx"/>
-                <constraint firstItem="eZH-lX-YMn" firstAttribute="leading" secondItem="eeI-2z-5QX" secondAttribute="trailing" constant="8" symbolic="YES" id="Rfm-rN-y74"/>
-                <constraint firstItem="wcB-yw-GU3" firstAttribute="baseline" secondItem="cSw-EV-EvL" secondAttribute="firstBaseline" id="SFS-h8-3sn"/>
-                <constraint firstItem="upi-3T-uXG" firstAttribute="leading" secondItem="U7w-xs-vVH" secondAttribute="trailing" constant="8" symbolic="YES" id="UAb-kv-T5c"/>
-                <constraint firstItem="cOq-H7-1R9" firstAttribute="leading" secondItem="Twq-AH-Ynu" secondAttribute="trailing" constant="8" symbolic="YES" id="V8n-FF-P3U"/>
-                <constraint firstItem="CQU-rb-iSc" firstAttribute="leading" secondItem="eZH-lX-YMn" secondAttribute="leading" id="Wdx-dw-HEW"/>
-                <constraint firstItem="35M-bM-EHM" firstAttribute="baseline" secondItem="cSw-EV-EvL" secondAttribute="baseline" id="Ws2-df-bTj"/>
-                <constraint firstItem="W4U-Zf-Z29" firstAttribute="leading" secondItem="CQU-rb-iSc" secondAttribute="leading" id="XMZ-yB-nAb"/>
-                <constraint firstItem="Twq-AH-Ynu" firstAttribute="leading" secondItem="6KB-0b-59L" secondAttribute="leading" id="ZIq-0w-53I"/>
-                <constraint firstItem="hrC-g7-PJJ" firstAttribute="baseline" secondItem="35M-bM-EHM" secondAttribute="firstBaseline" id="ZtV-EU-tAa"/>
-                <constraint firstItem="cOq-H7-1R9" firstAttribute="leading" secondItem="hT4-ma-ubq" secondAttribute="leading" id="aou-1a-NBT"/>
-                <constraint firstItem="8zr-yg-0W5" firstAttribute="leading" secondItem="eeI-2z-5QX" secondAttribute="leading" id="bAp-QD-wTH"/>
-                <constraint firstItem="hT4-ma-ubq" firstAttribute="top" secondItem="eeI-2z-5QX" secondAttribute="top" id="bJc-ZW-z59"/>
-                <constraint firstItem="Tbw-Lb-qdO" firstAttribute="top" secondItem="U7w-xs-vVH" secondAttribute="top" id="brk-b7-fZz"/>
-                <constraint firstItem="hrC-g7-PJJ" firstAttribute="top" secondItem="6KB-0b-59L" secondAttribute="bottom" constant="4" id="byU-Yf-8Oy"/>
-                <constraint firstItem="W4U-Zf-Z29" firstAttribute="leading" secondItem="s3m-sT-N4C" secondAttribute="trailing" constant="8" symbolic="YES" id="byr-vX-trp"/>
-                <constraint firstItem="s3m-sT-N4C" firstAttribute="top" secondItem="W4U-Zf-Z29" secondAttribute="top" id="drO-q4-H0z"/>
-                <constraint firstItem="eZH-lX-YMn" firstAttribute="baseline" secondItem="eeI-2z-5QX" secondAttribute="firstBaseline" id="eaZ-Gs-NJe"/>
-                <constraint firstItem="Twq-AH-Ynu" firstAttribute="top" secondItem="cOq-H7-1R9" secondAttribute="top" id="gIq-I0-5Zl"/>
-                <constraint firstItem="hT4-ma-ubq" firstAttribute="baseline" secondItem="eeI-2z-5QX" secondAttribute="baseline" id="gTx-nV-sSd"/>
-                <constraint firstItem="cOq-H7-1R9" firstAttribute="top" secondItem="8zr-yg-0W5" secondAttribute="top" id="gqe-CD-Cjs"/>
-                <constraint firstItem="hT4-ma-ubq" firstAttribute="leading" secondItem="35M-bM-EHM" secondAttribute="leading" id="i43-pk-ncA"/>
-                <constraint firstItem="W4U-Zf-Z29" firstAttribute="trailing" secondItem="CQU-rb-iSc" secondAttribute="trailing" id="iBA-uC-cso"/>
-                <constraint firstItem="cSw-EV-EvL" firstAttribute="top" secondItem="wcB-yw-GU3" secondAttribute="top" id="iCa-54-h0y"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Tbw-Lb-qdO" secondAttribute="bottom" constant="3" id="iHN-YK-9QP"/>
-                <constraint firstItem="s3m-sT-N4C" firstAttribute="baseline" secondItem="W4U-Zf-Z29" secondAttribute="firstBaseline" id="ijK-Ep-vNj"/>
-                <constraint firstItem="U7w-xs-vVH" firstAttribute="leading" secondItem="Tbw-Lb-qdO" secondAttribute="trailing" constant="8" symbolic="YES" id="jiY-GO-XoM"/>
-                <constraint firstItem="U7w-xs-vVH" firstAttribute="top" secondItem="upi-3T-uXG" secondAttribute="top" id="k1N-uB-0SD"/>
-                <constraint firstItem="upi-3T-uXG" firstAttribute="top" secondItem="2dt-js-zuY" secondAttribute="top" id="kbg-6O-9pY"/>
-                <constraint firstItem="cSw-EV-EvL" firstAttribute="baseline" secondItem="wcB-yw-GU3" secondAttribute="firstBaseline" id="m4H-h6-Xey"/>
-                <constraint firstItem="hT4-ma-ubq" firstAttribute="leading" secondItem="6KB-0b-59L" secondAttribute="trailing" constant="8" symbolic="YES" id="mug-bA-aCi"/>
-                <constraint firstItem="s3m-sT-N4C" firstAttribute="leading" secondItem="4h7-m6-fAY" secondAttribute="trailing" constant="8" symbolic="YES" id="nUy-cS-Dgo"/>
-                <constraint firstItem="Tbw-Lb-qdO" firstAttribute="top" secondItem="hrC-g7-PJJ" secondAttribute="bottom" constant="4" id="oGf-Od-0kf"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="W4U-Zf-Z29" secondAttribute="trailing" constant="5" id="pgM-3b-Dch"/>
-                <constraint firstItem="hrC-g7-PJJ" firstAttribute="top" secondItem="35M-bM-EHM" secondAttribute="top" id="pud-eC-3Zr"/>
-                <constraint firstItem="U7w-xs-vVH" firstAttribute="baseline" secondItem="upi-3T-uXG" secondAttribute="baseline" id="rwt-p5-57k"/>
-                <constraint firstItem="eZH-lX-YMn" firstAttribute="trailing" secondItem="wcB-yw-GU3" secondAttribute="trailing" id="s3z-cE-o4U"/>
-                <constraint firstItem="4h7-m6-fAY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="4" id="s5N-0A-qUR"/>
-                <constraint firstItem="hrC-g7-PJJ" firstAttribute="leading" secondItem="Tbw-Lb-qdO" secondAttribute="leading" id="seg-5R-yRN"/>
-                <constraint firstItem="s3m-sT-N4C" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="3" id="tNb-y5-ULR"/>
-                <constraint firstItem="wcB-yw-GU3" firstAttribute="leading" secondItem="2dt-js-zuY" secondAttribute="leading" id="u59-2D-CX0"/>
-                <constraint firstItem="eeI-2z-5QX" firstAttribute="baseline" secondItem="eZH-lX-YMn" secondAttribute="firstBaseline" id="uq2-s6-zx7"/>
-                <constraint firstItem="8zr-yg-0W5" firstAttribute="top" secondItem="CQU-rb-iSc" secondAttribute="top" id="vd1-ob-YeZ"/>
-                <constraint firstItem="6KB-0b-59L" firstAttribute="leading" secondItem="hrC-g7-PJJ" secondAttribute="leading" id="wNR-BA-u8m"/>
-                <constraint firstItem="cOq-H7-1R9" firstAttribute="baseline" secondItem="8zr-yg-0W5" secondAttribute="baseline" id="xES-vs-BoC"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="25.5" y="84"/>
+            <point key="canvasLocation" x="19" y="47"/>
         </view>
     </objects>
 </document>

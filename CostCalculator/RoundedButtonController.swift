@@ -9,8 +9,8 @@
 import UIKit
 
 @IBDesignable
-class RoundedButtonController: UIButton {
-    override func layoutSubviews() {
+public class RoundedButtonController: UIButton {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         //backgroundColor = .clear

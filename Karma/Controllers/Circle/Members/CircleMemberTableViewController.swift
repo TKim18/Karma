@@ -104,7 +104,7 @@ class CircleMemberTableViewController: UITableViewController {
                 let currentTransfer = DirectTransfer(
                     requestingUser : User.getCurrentUser(),
                     acceptingUser : selectedUser)
-                destination.currentTransfer = currentTransfer
+                //destination.currentTransfer = currentTransfer
             }
         }
     }
