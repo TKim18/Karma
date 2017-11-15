@@ -16,11 +16,15 @@ class NotificationTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadNotifications();
+        loadNotifications()
         
         // self.tabBarController?.tabBar.items![1].badgeValue = String(notifications.count)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        loadNotifications()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -31,10 +35,6 @@ class NotificationTableViewController: UITableViewController {
         return 2
     }
 
-//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 4
-//    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (section == 0) ? notifications.count : 0
     }

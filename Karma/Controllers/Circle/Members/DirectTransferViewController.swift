@@ -58,7 +58,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate {
     }
     
     func setText(text: String) {
-        costField.text = text
+        costField.text = "$" + text
     }
     
     func deleteText() {

@@ -572,6 +572,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="nc5-x9-VRM" id="KJp-Td-ps4"/>
+                                    <outlet property="pencilIcon" destination="n2P-5B-ePq" id="TeL-vl-WIP"/>
                                     <outlet property="userImage" destination="Few-0w-XKC" id="r9H-o1-u7C"/>
                                     <segue destination="N7W-wu-JGK" kind="show" identifier="ShowDirectSegue" id="U97-dy-uUA"/>
                                 </connections>
@@ -703,7 +704,7 @@
                                 <rect key="frame" x="262" y="72" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selected Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZE8-RI-gHJ">
@@ -982,7 +983,7 @@
         <image name="NoCircle" width="375" height="667"/>
         <image name="NotificationsIcon" width="27" height="27"/>
         <image name="NotificationsSelectedIcon" width="39" height="39"/>
-        <image name="PencilIcon" width="14" height="14"/>
+        <image name="PencilIcon" width="15" height="15"/>
         <image name="Register" width="375" height="667"/>
         <image name="SelectedIconIndicator" width="39" height="39"/>
         <image name="SettingsButton" width="375" height="39"/>

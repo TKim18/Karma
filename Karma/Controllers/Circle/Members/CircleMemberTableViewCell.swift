@@ -24,5 +24,6 @@ class CircleMemberTableViewCell: UITableViewCell {
     //UI Elements
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var pencilIcon: UIImageView!
     
 }

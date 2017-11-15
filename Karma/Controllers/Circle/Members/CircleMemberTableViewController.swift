@@ -45,7 +45,7 @@ class CircleMemberTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "CircleMemberTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CircleMemberTableViewCell else {
-            fatalError("Something's wrong with the Circle object!")
+            fatalError("Something's wrong with the Circle Member object!")
         }
         
         let member = members[indexPath.row]
@@ -53,10 +53,16 @@ class CircleMemberTableViewController: UITableViewController {
         
         //TODO: This should become a query on requesting user id and then a pull on their image attribute
         let profilePicture = UIImage(named: "DummyAvatar")
+        
         cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
         
         cell.layer.borderWidth = 10.0
         cell.layer.borderColor = viewColor.cgColor
+        
+        if (indexPath.row == 0) {
+            cell.isUserInteractionEnabled = false
+            cell.pencilIcon.isHidden = true
+        }
         
         return cell
     }
@@ -71,6 +77,15 @@ class CircleMemberTableViewController: UITableViewController {
         let circleId = User.getCurrentUserProperty(key: "circleId") as! String
         
         members = dataStore!.loadRelations(circleId, queryBuilder: loadRelationsQueryBuilder) as! [BackendlessUser]
+        
+        let userId = User.getCurrentUserId()
+        let currIndex = members.index(where: {($0.objectId as String) == userId })
+       
+        // Make the current user to be the first on the list
+        let temp = members[0]
+        members[0] = members[currIndex!]
+        members[currIndex!] = temp
+        
         
         //Asynchronous call:
         //        dataStore!.loadRelations(
