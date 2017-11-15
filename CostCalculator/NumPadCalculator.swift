@@ -12,6 +12,7 @@ public protocol KeyboardDelegate: class {
     func addText(character: String)
     func setText(text: String)
     func deleteText()
+    func sendRequest(direction: String)
 }
 
 enum Operation {
@@ -64,7 +65,14 @@ public class NumPadCalculator: UIView {
     }
 
     // =
-    @IBAction func computeOperation() {
+    @IBAction func requestOrPay(button: UIButton) {
+        computeOperation()
+        if let direction = button.titleLabel?.text {
+            sendRequest(flag: direction)
+        }
+    }
+    
+    func computeOperation() {
         // Can't evaluate when there's no operator
         // Ex: eval("4")
         if (op == Operation.None) { return }
@@ -140,22 +148,22 @@ public class NumPadCalculator: UIView {
             }
 
             switch opString {
-            case "+":
-                addText(char: "+", prev: internalText)
-                op = Operation.Addition
-            case "−":
-                addText(char: "−", prev: internalText)
-                op = Operation.Subtraction
-            case "×":
-                addText(char: "×", prev: internalText)
-                op = Operation.Multiplication
-            case "÷":
-                addText(char: "÷", prev: internalText)
-                op = Operation.Division
-            default:
-                addText(char: "", prev: internalText)
-                op = Operation.None
-            }
+                case "+":
+                    addText(char: "+", prev: internalText)
+                    op = Operation.Addition
+                case "−":
+                    addText(char: "−", prev: internalText)
+                    op = Operation.Subtraction
+                case "×":
+                    addText(char: "×", prev: internalText)
+                    op = Operation.Multiplication
+                case "÷":
+                    addText(char: "÷", prev: internalText)
+                    op = Operation.Division
+                default:
+                    addText(char: "", prev: internalText)
+                    op = Operation.None
+                }
             shouldClearDisplayBeforeInserting = false
         }
     }
@@ -201,6 +209,10 @@ public class NumPadCalculator: UIView {
     private func deleteText() {
         internalText.remove(at: internalText.index(before: internalText.endIndex))
         self.delegate?.deleteText()
+    }
+    
+    private func sendRequest(flag: String) {
+        self.delegate?.sendRequest(direction: flag)
     }
     
     private func evalExp () -> Double {

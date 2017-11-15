@@ -12,17 +12,19 @@ import UIKit
 class DirectTransferViewController: UIViewController, KeyboardDelegate {
 
     //UI Elements
-    @IBOutlet weak var cost : UITextField!
+    @IBOutlet weak var costField : UITextField!
     @IBOutlet weak var selectedUser : UILabel!
     var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 213))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cost.becomeFirstResponder()
-        
+        costField.becomeFirstResponder()
+    }
+    
+    func setupKeyboard() {
         numPad.delegate = self
         
-        cost.inputView = numPad
+        costField.inputView = numPad
         
         selectedUser.text = "Hello!"
         
@@ -48,15 +50,28 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate {
     //var currentTransfer : DirectTransfer!
 
     func addText(character: String) {
-        cost.insertText(character)
+        costField.insertText(character)
     }
     
     func setText(text: String) {
-        cost.text = text
+        costField.text = text
     }
     
     func deleteText() {
-        cost.deleteBackward()
+        costField.deleteBackward()
+    }
+    
+    func sendRequest(direction: String) {
+        switch direction {
+            case "Pay":
+                // Fill in logic of paying money from one side to another
+                return
+            case "Request":
+                // Fill in logic of requesting money from the selected user
+                return
+            default:
+                return
+        }
     }
     
 }
