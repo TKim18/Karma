@@ -182,9 +182,9 @@
 		2229C0871F744D860083C215 /* AddRequest */ = {
 			isa = PBXGroup;
 			children = (
-				2229C0891F744D9E0083C215 /* CustomRequestViewController.swift */,
 				2229C08A1F744D9E0083C215 /* RequestCategoryTableViewCell.swift */,
 				2229C0881F744D9E0083C215 /* RequestTableViewController.swift */,
+				2229C0891F744D9E0083C215 /* CustomRequestViewController.swift */,
 			);
 			path = AddRequest;
 			sourceTree = "<group>";

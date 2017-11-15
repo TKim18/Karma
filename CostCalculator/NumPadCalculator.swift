@@ -64,54 +64,12 @@ public class NumPadCalculator: UIView {
         resetParams()
     }
 
-    // =
+    // Request/Pay
     @IBAction func requestOrPay(button: UIButton) {
         computeOperation()
         if let direction = button.titleLabel?.text {
             sendRequest(flag: direction)
         }
-    }
-    
-    func computeOperation() {
-        // Can't evaluate when there's no operator
-        // Ex: eval("4")
-        if (op == Operation.None) { return }
-
-        // If there is an operator but no secondExp
-        // Ex: eval("4+") => "4"
-        if (op != Operation.None && secondExp == "") {
-            setText(text: firstExp)
-            op = Operation.None
-            return
-        }
-
-        // Evaluate the expression
-        let result = evalExp()
-
-        // The result will become the next firstExp and secondExp will be cleared
-        firstExp = "\(result)"
-        secondExp = ""
-
-        // If the result is an integer don't show the decimal point
-        if firstExp.hasSuffix(".0") {
-            firstExp = "\(Int(result))"
-        }
-
-        // Cut down the output to two decimal points
-        var components = firstExp.components(separatedBy: ".")
-        if components.count >= 2 {
-            let beforePoint = components[0]
-            var afterPoint = components[1]
-            if afterPoint.lengthOfBytes(using: String.Encoding.utf8) > 2 {
-                let index: String.Index = afterPoint.index(afterPoint.startIndex, offsetBy: 2)
-                afterPoint = String(afterPoint[..<index])
-            }
-            firstExp = beforePoint + "." + afterPoint
-        }
-
-        // Update the text and internal parameters
-        setText(text: firstExp)
-        resetParams()
     }
 
     // 0-9
@@ -196,23 +154,46 @@ public class NumPadCalculator: UIView {
         op = Operation.None
     }
     
-    private func addText(char: String, prev: String) {
-        internalText = prev + char
-        self.delegate?.addText(character: char)
-    }
-    
-    private func setText(text: String) {
-        internalText = text
-        self.delegate?.setText(text: text)
-    }
-    
-    private func deleteText() {
-        internalText.remove(at: internalText.index(before: internalText.endIndex))
-        self.delegate?.deleteText()
-    }
-    
-    private func sendRequest(flag: String) {
-        self.delegate?.sendRequest(direction: flag)
+    func computeOperation() {
+        // Can't evaluate when there's no operator
+        // Ex: eval("4")
+        if (op == Operation.None) { return }
+        
+        // If there is an operator but no secondExp
+        // Ex: eval("4+") => "4"
+        if (op != Operation.None && secondExp == "") {
+            setText(text: firstExp)
+            op = Operation.None
+            return
+        }
+        
+        // Evaluate the expression
+        let result = evalExp()
+        
+        // The result will become the next firstExp and secondExp will be cleared
+        firstExp = "\(result)"
+        secondExp = ""
+        
+        // If the result is an integer don't show the decimal point
+        if firstExp.hasSuffix(".0") {
+            firstExp = "\(Int(result))"
+        }
+        
+        // Cut down the output to two decimal points
+        var components = firstExp.components(separatedBy: ".")
+        if components.count >= 2 {
+            let beforePoint = components[0]
+            var afterPoint = components[1]
+            if afterPoint.lengthOfBytes(using: String.Encoding.utf8) > 2 {
+                let index: String.Index = afterPoint.index(afterPoint.startIndex, offsetBy: 2)
+                afterPoint = String(afterPoint[..<index])
+            }
+            firstExp = beforePoint + "." + afterPoint
+        }
+        
+        // Update the text and internal parameters
+        setText(text: firstExp)
+        resetParams()
     }
     
     private func evalExp () -> Double {
@@ -240,6 +221,25 @@ public class NumPadCalculator: UIView {
             result = 0.0
         }
         return result
+    }
+    
+    private func addText(char: String, prev: String) {
+        internalText = prev + char
+        self.delegate?.addText(character: char)
+    }
+    
+    private func setText(text: String) {
+        internalText = text
+        self.delegate?.setText(text: text)
+    }
+    
+    private func deleteText() {
+        internalText.remove(at: internalText.index(before: internalText.endIndex))
+        self.delegate?.deleteText()
+    }
+    
+    private func sendRequest(flag: String) {
+        self.delegate?.sendRequest(direction: flag)
     }
     
     private func hasDot(exp: String) -> Bool {

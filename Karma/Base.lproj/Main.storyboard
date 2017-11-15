@@ -573,7 +573,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="nc5-x9-VRM" id="KJp-Td-ps4"/>
                                     <outlet property="userImage" destination="Few-0w-XKC" id="r9H-o1-u7C"/>
-                                    <segue destination="N7W-wu-JGK" kind="show" id="U97-dy-uUA"/>
+                                    <segue destination="N7W-wu-JGK" kind="show" identifier="ShowDirectSegue" id="U97-dy-uUA"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -717,7 +717,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="cost" destination="jvU-KT-amv" id="e29-jn-HcF"/>
+                        <outlet property="costField" destination="jvU-KT-amv" id="4Ud-YQ-6Yk"/>
                         <outlet property="selectedUser" destination="ZE8-RI-gHJ" id="RWT-0L-u3B"/>
                     </connections>
                 </viewController>

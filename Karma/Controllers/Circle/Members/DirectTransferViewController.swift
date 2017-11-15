@@ -7,26 +7,32 @@
 //
 
 import UIKit
-//import CostCalculator
 
 class DirectTransferViewController: UIViewController, KeyboardDelegate {
 
-    //UI Elements
+    // UI Elements
     @IBOutlet weak var costField : UITextField!
     @IBOutlet weak var selectedUser : UILabel!
+    
+    // Initialize the NumPad keyboard
     var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 213))
+    
+    // Pull the current user data
+    var currentTransfer : DirectTransfer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        costField.becomeFirstResponder()
+        
+        selectedUser.text = currentTransfer.selectedUserName
+        
+        setupKeyboard()
     }
     
     func setupKeyboard() {
+        costField.becomeFirstResponder()
+        
         numPad.delegate = self
-        
         costField.inputView = numPad
-        
-        selectedUser.text = "Hello!"
         
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DirectTransferViewController.dismissKeyboard))
@@ -34,9 +40,9 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate {
         view.addGestureRecognizer(tap)
     }
 
-    //Calls this function when the tap is recognized.
+    // Call this when keyboard is dismissed
     @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        // Evaluate the current state
         NumPadCalculator.computeOperation(numPad)()
         view.endEditing(true)
     }
@@ -45,10 +51,8 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //Bit of data
-    //var currentTransfer : DirectTransfer!
 
+    // KeyboardDelegate Protocol Implementation:
     func addText(character: String) {
         costField.insertText(character)
     }

@@ -99,13 +99,11 @@ class CircleMemberTableViewController: UITableViewController {
         
         let selectedUser = members[indexPath.row]
         
-        if (segue.identifier == "ShowDirectTransfer") {
-            if let destination = segue.destination as? DirectTransferViewController {
-                let currentTransfer = DirectTransfer(
-                    currentUser : User.getCurrentUser(),
-                    selectedUser : selectedUser)
-                destination.currentTransfer = currentTransfer
-            }
+        if let destination = segue.destination as? DirectTransferViewController {
+            let currentTransfer = DirectTransfer(
+                currentUser : User.getCurrentUser(),
+                selectedUser : selectedUser)
+            destination.currentTransfer = currentTransfer
         }
     }
     

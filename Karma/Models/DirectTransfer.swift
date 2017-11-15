@@ -29,10 +29,10 @@ class DirectTransfer : NSObject {
     }
     
     init (currentUser : BackendlessUser, selectedUser : BackendlessUser) {
-        self.currentUserId = currentUser.name! as String
-        self.currentUserName = currentUser.objectId! as String
-        self.selectedUserId = selectedUser.name! as String
-        self.selectedUserName = selectedUser.objectId! as String
+        self.currentUserId = currentUser.objectId! as String
+        self.currentUserName = currentUser.name! as String
+        self.selectedUserId = selectedUser.objectId! as String
+        self.selectedUserName = selectedUser.name! as String
     }
     
 }
