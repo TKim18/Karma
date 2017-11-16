@@ -13,4 +13,4 @@
 
 ## Quick Wins ##
 1. Change tab bar selection image to be generalized
-2. 
+2. Paging on orders

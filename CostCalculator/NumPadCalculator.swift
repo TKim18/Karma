@@ -63,14 +63,6 @@ public class NumPadCalculator: UIView {
         resetParams()
     }
 
-    // Request/Pay
-    @IBAction func requestOrPay(button: UIButton) {
-        computeOperation()
-        if let direction = button.titleLabel?.text {
-            sendRequest(flag: direction)
-        }
-    }
-
     // 0-9
     @IBAction func didTapNumber(number: UIButton) {
         if (shouldClearDisplayBeforeInserting) {
