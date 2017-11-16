@@ -100,7 +100,7 @@ class CircleMemberTableViewController: UITableViewController {
         //        )
     }
     
-    //In preparation for direct transferring
+    // In preparation for direct transferring
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         

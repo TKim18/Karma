@@ -16,11 +16,7 @@ class CircleCreateViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    //UI Elements
+    // UI Elements
     @IBOutlet var circleNameField : UITextField!
     
     @IBAction func createCircle(sender : AnyObject) {
@@ -29,7 +25,7 @@ class CircleCreateViewController: UIViewController {
         }
     }
     
-    //Server Call
+    // Server Call
     func validCircle() -> Bool {
         let backendless = Backendless.sharedInstance()!
         let dataStore = backendless.data.of(Circle().ofClass())

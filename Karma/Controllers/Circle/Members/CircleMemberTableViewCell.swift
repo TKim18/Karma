@@ -21,7 +21,7 @@ class CircleMemberTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    //UI Elements
+    // UI Elements
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var pencilIcon: UIImageView!

@@ -8,17 +8,61 @@
 
 import UIKit
 
-class CustomRequestViewController: UIViewController {
+class CustomRequestViewController: UIViewController, KeyboardDelegate {
 
+    var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 213))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set the category frame at the top
         categoryImage.image = currentOrder.fromDescription().image
+        
+        // Enable NumPad Calculator for cost and disable autocorrectionType
+        setupKeyboard()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func setupKeyboard() {
+        // These are added to push the Request button to appear above the keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        costField.becomeFirstResponder()
+        
+        numPad.delegate = self
+        costField.inputView = numPad
+        
+        // Tapping out of 
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CustomRequestViewController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        // Evaluate the current state
+        NumPadCalculator.computeOperation(numPad)()
+        view.endEditing(true)
+    }
+    
+    // Stop Editing on Return Key Tap. textField parameter refers to any textfield within the view
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // when keyboard is about to show assign the height of the keyboard to bottomConstraint.constant of our button so that it will move up
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let keyBoardFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyHeight = keyBoardFrame.origin.y
+        let reqHeight = requestButton.frame.size.height
+        requestButton.frame.origin.y = keyHeight - reqHeight
+    }
+    
+    // When keyboard is hidden, move the button to the bottom of the view
+    @objc func keyboardWillHide(notification: NSNotification) {
+        // TODO implement math logic for this
     }
 
     //Bit of data
@@ -32,9 +76,36 @@ class CustomRequestViewController: UIViewController {
     @IBOutlet var requestDetailsField : UITextView!
     @IBOutlet var errorMessage : UILabel!
     @IBOutlet var categoryImage: UIImageView!
-    @IBOutlet var costField : UILabel!
+    @IBOutlet var costField : UITextField!
+    @IBOutlet var requestButton : UIButton!
     
-    @IBAction func requestButton(sender : AnyObject) {
+    // KeyboardDelegate Protocol Implementation:
+    func addText(character: String) {
+        costField.insertText(character)
+    }
+    
+    func setText(text: String) {
+        costField.text = "$" + text
+    }
+    
+    func deleteText() {
+        costField.deleteBackward()
+    }
+    
+    func sendRequest(direction: String) {
+        switch direction {
+        case "Pay":
+            // Fill in logic of paying money from one side to another
+            return
+        case "Request":
+            // Fill in logic of requesting money from the selected user
+            return
+        default:
+            return
+        }
+    }
+    
+    @IBAction func request(sender : AnyObject) {
         if (validRequest()) {
             self.performSegue(withIdentifier: "SubmitRequest", sender: self)
         }

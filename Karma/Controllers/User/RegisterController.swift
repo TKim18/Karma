@@ -10,19 +10,14 @@ import UIKit
 
 class RegisterController: UIViewController {
 
-    //Override functions
+    // Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //UI Elements
+    // UI Elements
     @IBOutlet var nameField : UITextField!
     @IBOutlet var emailField : UITextField!
     @IBOutlet var passwordField : UITextField!
@@ -35,7 +30,7 @@ class RegisterController: UIViewController {
         }
     }
     
-    //Segue handling
+    // Segue handling
     func validRegister() -> Bool {
         if (passwordField.text != verifyField.text) {
             errorMessage.text = "Please verify that your password matches"
@@ -50,7 +45,7 @@ class RegisterController: UIViewController {
         }
     }
     
-    //Server call
+    // Server call
     func register(email: String, name: String, password: String) -> Bool {
         let backendless = Backendless.sharedInstance()!
         let user = BackendlessUser()

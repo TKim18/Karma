@@ -10,19 +10,14 @@ import UIKit
 
 class LoginController: UIViewController {
 
-    //Override functions
+    // Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    //UI Elements
+    // UI Elements
     @IBOutlet var emailField : UITextField!
     @IBOutlet var passwordField : UITextField!
     @IBOutlet var errorMessage : UILabel!
@@ -38,7 +33,7 @@ class LoginController: UIViewController {
         }
     }
     
-    //Segue handling
+    // Segue handling
     func validLogin() -> Bool {
         return login(id: emailField.text!, password: passwordField.text!)
     }
@@ -47,7 +42,7 @@ class LoginController: UIViewController {
         return ((User.getCurrentUserProperty(key: "circleId") as! String) != "-1")
     }
     
-    //Server call
+    // Server call
     func login(id: String, password: String) -> Bool {
         let backendless = Backendless.sharedInstance()!
         
