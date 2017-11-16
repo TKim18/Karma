@@ -12,7 +12,6 @@ public protocol KeyboardDelegate: class {
     func addText(character: String)
     func setText(text: String)
     func deleteText()
-    func sendRequest(direction: String)
 }
 
 enum Operation {
@@ -236,10 +235,6 @@ public class NumPadCalculator: UIView {
     private func deleteText() {
         internalText.remove(at: internalText.index(before: internalText.endIndex))
         self.delegate?.deleteText()
-    }
-    
-    private func sendRequest(flag: String) {
-        self.delegate?.sendRequest(direction: flag)
     }
     
     private func hasDot(exp: String) -> Bool {

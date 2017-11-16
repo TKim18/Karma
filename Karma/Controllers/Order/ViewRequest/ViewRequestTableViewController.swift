@@ -10,7 +10,14 @@ import UIKit
 
 class ViewRequestTableViewController: UITableViewController {
 
+    // Local Variables
     let cellSpacingHeight: CGFloat = 5
+    private var allOrders = [Order]()
+    private var orders = [Order]()
+    
+    // UIElements
+    @IBOutlet weak var pendingAcceptedControl: UISegmentedControl!
+    @IBOutlet weak var karmaPointsButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,19 +36,6 @@ class ViewRequestTableViewController: UITableViewController {
         //Configure the navigation bar
         updateKarmaPoints()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        //Dispose of any resources that can be recreated.
-    }
-    
-    // UIElements
-    @IBOutlet weak var pendingAcceptedControl: UISegmentedControl!
-    @IBOutlet weak var karmaPointsButton: UIBarButtonItem!
-    
-    // MARK: - Table view data source
-    private var allOrders = [Order]()
-    private var orders = [Order]()
     
     private func configureTableView() {
         //Configure background color

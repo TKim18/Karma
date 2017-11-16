@@ -10,15 +10,13 @@ import UIKit
 
 class DirectTransferViewController: UIViewController, KeyboardDelegate {
 
+    // Local Variables
+    var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 213))
+    var currentTransfer : DirectTransfer!
+    
     // UI Elements
     @IBOutlet weak var costField : UITextField!
     @IBOutlet weak var selectedUser : UILabel!
-    
-    // Initialize the NumPad keyboard
-    var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 213))
-    
-    // Pull the current user data
-    var currentTransfer : DirectTransfer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +44,6 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate {
         NumPadCalculator.computeOperation(numPad)()
         view.endEditing(true)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // KeyboardDelegate Protocol Implementation:
     func addText(character: String) {
@@ -63,19 +56,6 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate {
     
     func deleteText() {
         costField.deleteBackward()
-    }
-    
-    func sendRequest(direction: String) {
-        switch direction {
-            case "Pay":
-                // Fill in logic of paying money from one side to another
-                return
-            case "Request":
-                // Fill in logic of requesting money from the selected user
-                return
-            default:
-                return
-        }
     }
     
 }

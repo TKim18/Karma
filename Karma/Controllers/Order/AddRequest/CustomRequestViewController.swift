@@ -10,11 +10,12 @@ import UIKit
 
 class CustomRequestViewController: UIViewController, KeyboardDelegate {
 
+    // Local Variables
     var currentOrder : Order!
     var reqButtonPosition : CGFloat!
     var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 216))
     
-    //UI Elements
+    // UI Elements
     @IBOutlet var categoryImage: UIImageView!
     @IBOutlet var titleField : UITextField!
     @IBOutlet var endTimeField : UITextField!
@@ -28,13 +29,17 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the category frame at the top
-        categoryImage.image = currentOrder.fromDescription().image
+        // Set miscellaneous view configurations
+        setupView()
         
-        // Enable NumPad Calculator for cost and disable autocorrectionType
+        // Configure the various keyboard types
         setupKeyboard()
-        
+    }
+    
+    func setupView() {
+        titleField.becomeFirstResponder()
         self.reqButtonPosition = requestButton.frame.origin.y
+        categoryImage.image = currentOrder.fromDescription().image
     }
     
     func setupKeyboard() {
@@ -43,7 +48,6 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         // Adding costField to use the numPad view
-        costField.becomeFirstResponder()
         numPad.delegate = self
         costField.inputView = numPad
         
@@ -109,17 +113,11 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         let keyBoardFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let keyHeight = keyBoardFrame.origin.y
-        let reqHeight = requestButton.frame.size.height
-        // keyboard height = 216
-        // keyboard height = 213
-        requestButton.frame.origin.y = keyHeight - reqHeight
+        requestButton.frame.origin.y = keyBoardFrame.origin.y - requestButton.frame.size.height
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        // TODO implement math logic for this
         requestButton.frame.origin.y = reqButtonPosition
-        
     }
     
     // KeyboardDelegate Protocol Implementation:
@@ -133,19 +131,6 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate {
     
     func deleteText() {
         costField.deleteBackward()
-    }
-    
-    func sendRequest(direction: String) {
-        switch direction {
-        case "Pay":
-            // Fill in logic of paying money from one side to another
-            return
-        case "Request":
-            // Fill in logic of requesting money from the selected user
-            return
-        default:
-            return
-        }
     }
     
 }

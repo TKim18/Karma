@@ -25,11 +25,6 @@ class NotificationTableViewController: UITableViewController {
         loadNotifications()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // One section for pending, one for completed
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
