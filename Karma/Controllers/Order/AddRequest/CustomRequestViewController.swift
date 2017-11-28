@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomRequestViewController: UIViewController, KeyboardDelegate {
+class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextViewDelegate {
 
     // Local Variables
     var currentOrder : Order!
@@ -19,10 +19,10 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate {
     @IBOutlet var categoryImage: UIImageView!
     @IBOutlet var titleField : UITextField!
     @IBOutlet var endTimeField : UITextField!
-    @IBOutlet var startLocationField : UITextField!
-    @IBOutlet var endLocationField : UITextField!
+    @IBOutlet var locationField : UITextField!
     @IBOutlet var costField : UITextField!
     @IBOutlet var requestDetailsField : UITextView!
+    var placeholderLabel : UILabel!
     @IBOutlet var errorMessage : UILabel!
     @IBOutlet var requestButton : UIButton!
     
@@ -34,6 +34,9 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate {
         
         // Configure the various keyboard types
         setupKeyboard()
+        
+        // Set there to be gray text on the request details field
+        setupDetails()
     }
     
     func setupView() {
@@ -58,9 +61,24 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate {
         // Turn off autocorrect/auto predict for the other text fields
         titleField.autocorrectionType = .no
         endTimeField.autocorrectionType = .no
-        startLocationField.autocorrectionType = .no
-        endLocationField.autocorrectionType = .no
+        locationField.autocorrectionType = .no
         requestDetailsField.autocorrectionType = .no
+    }
+    
+    func setupDetails() {
+        requestDetailsField.delegate = self
+        placeholderLabel = UILabel()
+        placeholderLabel.text = "Any other details you want to include?"
+        placeholderLabel.font = UIFont.italicSystemFont(ofSize: (requestDetailsField.font?.pointSize)!)
+        placeholderLabel.sizeToFit()
+        requestDetailsField.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: (requestDetailsField.font?.pointSize)! / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = !requestDetailsField.text.isEmpty
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !requestDetailsField.text.isEmpty
     }
     
     // Segue handling
@@ -80,8 +98,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate {
         self.currentOrder.title = titleField.text
         self.currentOrder.message = requestDetailsField.text
         self.currentOrder.requestedTime = endTimeField.text
-        self.currentOrder.origin = startLocationField.text
-        self.currentOrder.destination = endLocationField.text
+        self.currentOrder.destination = locationField.text
 
         // TODO: Add safety measures to this - cant be below 0.01 or not a number
         self.currentOrder.cost = (costField.text! as NSString).doubleValue

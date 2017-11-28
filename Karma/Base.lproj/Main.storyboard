@@ -600,8 +600,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Item Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lNO-2H-Q35">
-                                <rect key="frame" x="16" y="245" width="343" height="87"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lNO-2H-Q35">
+                                <rect key="frame" x="13" y="245" width="353" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -629,14 +629,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="99"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End Location" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yjw-6J-3AT">
-                                <rect key="frame" x="220" y="207" width="146" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5dO-Xh-O74">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5dO-Xh-O74">
                                 <rect key="frame" x="16" y="207" width="153" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -657,8 +650,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cost" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NpF-09-naz">
-                                <rect key="frame" x="262" y="245" width="97" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cost" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Nu-lg-WDb">
+                                <rect key="frame" x="269" y="209" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -669,8 +662,7 @@
                     </view>
                     <connections>
                         <outlet property="categoryImage" destination="ea9-ko-fBG" id="uJz-Rv-Iqg"/>
-                        <outlet property="costField" destination="NpF-09-naz" id="CVf-Zh-qtG"/>
-                        <outlet property="endLocationField" destination="yjw-6J-3AT" id="VTg-dh-Xeg"/>
+                        <outlet property="costField" destination="0Nu-lg-WDb" id="DLR-Fe-Yku"/>
                         <outlet property="endTimeField" destination="p3P-04-QGL" id="5yK-0N-fyp"/>
                         <outlet property="errorMessage" destination="bIb-4g-8td" id="NZV-hQ-5Sm"/>
                         <outlet property="requestButton" destination="ZZ6-GX-HZI" id="1wh-6e-m44"/>
@@ -697,10 +689,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="233-mX-YO7">
-                                <rect key="frame" x="16" y="110" width="343" height="211"/>
+                                <rect key="frame" x="16" y="110" width="343" height="229"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -756,7 +747,7 @@
                     </view>
                     <connections>
                         <outlet property="costField" destination="jvU-KT-amv" id="4Ud-YQ-6Yk"/>
-                        <outlet property="descriptionField" destination="233-mX-YO7" id="B1H-5I-HP8"/>
+                        <outlet property="descriptionField" destination="233-mX-YO7" id="tYh-IV-PXt"/>
                         <outlet property="dividerLabel" destination="kIi-Je-r6v" id="h0F-AP-LJV"/>
                         <outlet property="payButton" destination="poR-X1-Z6M" id="sy6-hW-zVY"/>
                         <outlet property="requestButton" destination="Us5-0q-Ors" id="IgV-V7-npY"/>
@@ -1033,6 +1024,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PTn-pf-fad"/>
-        <segue reference="1Jd-yf-mph"/>
+        <segue reference="slo-0J-Efm"/>
     </inferredMetricsTieBreakers>
 </document>

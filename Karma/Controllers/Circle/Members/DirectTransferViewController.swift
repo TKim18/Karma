@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DirectTransferViewController: UIViewController, KeyboardDelegate {
+class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextViewDelegate {
 
     // Local Variables
     var currentTransfer : DirectTransfer!
@@ -19,6 +19,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate {
     @IBOutlet weak var costField : UITextField!
     @IBOutlet weak var selectedUser : UILabel!
     @IBOutlet weak var descriptionField : UITextView!
+    var placeholderLabel : UILabel!
     @IBOutlet weak var requestButton : UIButton!
     @IBOutlet weak var payButton : UIButton!
     @IBOutlet weak var dividerLabel : UILabel!
@@ -29,9 +30,12 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate {
         setupView()
         
         setupKeyboard()
+        
+        setupDetails()
     }
     
     func setupView() {
+        // Set the text of the user label
         selectedUser.text = currentTransfer.selectedUserName
         self.origButtonPosition = requestButton.frame.origin.y
         costField.becomeFirstResponder()
@@ -47,11 +51,28 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate {
         costField.inputView = numPad
         
         // Dismissing numPad should evaluate the current expression
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CustomRequestViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DirectTransferViewController.finishCompute))
         view.addGestureRecognizer(tap)
 
         // Turn off autocorrect/auto predict for the description field
         descriptionField.autocorrectionType = .no
+    }
+    
+    func setupDetails() {
+        // Add ghost text to the details field
+        descriptionField!.delegate = self
+        placeholderLabel = UILabel()
+        placeholderLabel.text = "Any other details you want to include?"
+        //placeholderLabel.font = UIFont.italicSystemFont(ofSize: (descriptionField.font?.pointSize)!)
+        placeholderLabel.sizeToFit()
+        descriptionField.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: (descriptionField.font?.pointSize)! / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = !descriptionField.text.isEmpty
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !descriptionField.text.isEmpty
     }
     
     // Pay/Request Handling
@@ -69,7 +90,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate {
 //    }
 
     // Helper Functions
-    @objc func dismissKeyboard() {
+    @objc func finishCompute() {
         NumPadCalculator.computeOperation(numPad)()
         view.endEditing(true)
     }

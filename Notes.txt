@@ -11,6 +11,7 @@ Quick Wins/Design changes:
 * Sleeken segmented control on main screen
 * Eliminate thin bar on the bottom on main screen
 * Guard value of cost
+* Add a superclass of direct transfer and custom request to avoid redundancy
 
 Big Change Icebox:
 * Add a menu
