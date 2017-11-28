@@ -19,10 +19,11 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     @IBOutlet weak var costField : UITextField!
     @IBOutlet weak var selectedUser : UILabel!
     @IBOutlet weak var descriptionField : UITextView!
-    var placeholderLabel : UILabel!
     @IBOutlet weak var requestButton : UIButton!
     @IBOutlet weak var payButton : UIButton!
     @IBOutlet weak var dividerLabel : UILabel!
+    @IBOutlet weak var errorMessage : UILabel!
+    var placeholderLabel : UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +63,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
         // Add ghost text to the details field
         descriptionField!.delegate = self
         placeholderLabel = UILabel()
-        placeholderLabel.text = "Any other details you want to include?"
-        //placeholderLabel.font = UIFont.italicSystemFont(ofSize: (descriptionField.font?.pointSize)!)
+        placeholderLabel.text = "What is this for?"
         placeholderLabel.sizeToFit()
         descriptionField.addSubview(placeholderLabel)
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (descriptionField.font?.pointSize)! / 2)
@@ -76,19 +76,29 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     }
     
     // Pay/Request Handling
-    // TODO: Implement these
-//    @IBAction func request(sender : AnyObject) {
-//        if (validRequest()) {
-//            self.performSegue(withIdentifier: "SubmitRequest", sender: self)
-//        }
-//    }
-//
-//    @IBAction func pay(sender : AnyObject) {
-//        if (validPay()) {
-//            self.performSegue(withIdentifier: "SubmitRequest", sender: self)
-//        }
-//    }
+    @IBAction func request(sender : AnyObject) {
+        if (validRequest()) {
+            self.performSegue(withIdentifier: "SubmitRequest", sender: self)
+        }
+    }
 
+    @IBAction func pay(sender : AnyObject) {
+        if (validPay()) {
+            self.performSegue(withIdentifier: "SubmitRequest", sender: self)
+        }
+    }
+
+    // TODO: Implement these
+    func validRequest() -> Bool {
+        
+        return true
+    }
+    
+    func validPay() -> Bool {
+        
+        return true
+    }
+    
     // Helper Functions
     @objc func finishCompute() {
         NumPadCalculator.computeOperation(numPad)()

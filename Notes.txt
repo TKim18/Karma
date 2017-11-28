@@ -33,6 +33,13 @@ Bugs/Hacks:
 * Circle.displayName is being used instead of Circle.name
 * "-1" is used as the null value rather than just null
 
-
+Things I need done by the end of the week:
+* Get Karma's logo up and running
+* Add a no orders picture
+* Test app on multiple devices and add constraints
+* Finish up direct transfer
+* Reroute orders to just custom orders
+* Add validation on custom orders
+* Fix bug on cost field
 
 

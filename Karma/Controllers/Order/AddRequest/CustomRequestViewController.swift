@@ -22,9 +22,9 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     @IBOutlet var locationField : UITextField!
     @IBOutlet var costField : UITextField!
     @IBOutlet var requestDetailsField : UITextView!
-    var placeholderLabel : UILabel!
     @IBOutlet var errorMessage : UILabel!
     @IBOutlet var requestButton : UIButton!
+    var placeholderLabel : UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +69,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
         requestDetailsField.delegate = self
         placeholderLabel = UILabel()
         placeholderLabel.text = "Any other details you want to include?"
-        placeholderLabel.font = UIFont.italicSystemFont(ofSize: (requestDetailsField.font?.pointSize)!)
+        placeholderLabel.font = UIFont(name: (requestDetailsField.font?.fontName)!, size: (requestDetailsField.font?.pointSize)!)
         placeholderLabel.sizeToFit()
         requestDetailsField.addSubview(placeholderLabel)
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (requestDetailsField.font?.pointSize)! / 2)
@@ -101,7 +101,11 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
         self.currentOrder.destination = locationField.text
 
         // TODO: Add safety measures to this - cant be below 0.01 or not a number
-        self.currentOrder.cost = (costField.text! as NSString).doubleValue
+        var cost = costField.text!
+        if cost.characters.contains("$") {
+            cost.remove(at: cost.startIndex)
+        }
+        self.currentOrder.cost = (cost as NSString).doubleValue
         
         var valid = true
         Types.tryblock({ () -> Void in

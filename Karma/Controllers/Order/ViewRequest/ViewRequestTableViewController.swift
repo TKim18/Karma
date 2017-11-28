@@ -120,11 +120,11 @@ class ViewRequestTableViewController: UITableViewController {
         let order = orders[indexPath.section]
         
         //Cell text components
-        cell.titleLabel.text = order.title
+        cell.titleLabel.text = order.title! + " for $" + String(order.cost)
         cell.descriptionLabel.text = order.message
         cell.timeLabel.text = order.requestedTime
         //TODO: Make this location label depend on whether both fields have a value or not
-        cell.locationLabel.text = order.origin! + " to " + order.destination!
+        cell.locationLabel.text = order.destination!
         cell.categoryImage.image = order.fromDescription().image
         
         //TODO: This should become a query on requesting user id and then a pull on their image attribute
