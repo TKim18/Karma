@@ -13,11 +13,15 @@ class LoginController: UIViewController {
     @IBOutlet var emailField : UITextField!
     @IBOutlet var passwordField : UITextField!
     @IBOutlet var errorMessage : UILabel!
+    @IBOutlet var registerButton : UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        registerButton.titleLabel?.textAlignment = NSTextAlignment.center
+        
         setupTap()
+        
     }
     
     private func setupTap() {

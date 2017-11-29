@@ -42,7 +42,7 @@ class ViewRequestTableViewController: UITableViewController {
     
     private func noOrders() {
         if (orders.isEmpty) {
-            let backgroundImage = UIImage(named: "ClassicBackdrop")
+            let backgroundImage = UIImage(named: "NoOrders")
             self.tableView.backgroundView = UIImageView(image: backgroundImage)
         }
     }

@@ -52,15 +52,18 @@ class CircleTableViewController: UITableViewController {
     }
 
     //Segue Handling
-    @IBAction func showMain(sender : AnyObject){
-        self.performSegue(withIdentifier: "JoinCircle", sender: self)
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if validAccept(indexPath: indexPath as NSIndexPath) {
+//            orders.remove(at: indexPath.section)
+//            self.tableView.reloadData()
+//        }
+//    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return (validCircle(sender: sender) && identifier == "JoinCircle")
     }
-    
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
         
+    func validCircle(sender: Any?) -> Bool {
         guard let selectedCircleCell = sender as? CircleTableViewCell else {
             fatalError("Unexpected sender: \(String(describing: sender))")
         }
@@ -71,10 +74,12 @@ class CircleTableViewController: UITableViewController {
         
         let backendless = Backendless.sharedInstance()!
         let dataStore = backendless.data.of(Circle().ofClass())
-
+        
         let currentUser = User.getCurrentUser()
         let selectedCircleId = circles[indexPath.row].objectId
-
+        
+        var status = true
+        
         Types.tryblock({ () -> Void in
             //Update the User's circleId
             currentUser.updateProperties(["circleId" : selectedCircleId!])
@@ -88,7 +93,8 @@ class CircleTableViewController: UITableViewController {
             )
         }, catchblock: {(exception) -> Void in
             print(exception ?? "Error")
+            status = false
         })
+        return status
     }
-    
 }
