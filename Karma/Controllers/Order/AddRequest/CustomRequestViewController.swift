@@ -105,7 +105,26 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
         if cost.characters.contains("$") {
             cost.remove(at: cost.startIndex)
         }
+        
         self.currentOrder.cost = (cost as NSString).doubleValue
+        
+        // Validify the values and set defaults
+        if (self.currentOrder.title!.isEmpty) {
+            self.errorMessage.text = "Please give this request a title!"
+            return false
+        }
+        else if (costField.text!.isEmpty) {
+            self.errorMessage.text = "Please specify the amount of Karma!"
+            return false
+        }
+        
+        if (self.currentOrder.destination!.isEmpty) {
+            self.currentOrder.destination = User.getCurrentUserProperty(key: "homeLocation") as? String
+        }
+        
+        if (self.currentOrder.requestedTime!.isEmpty) {
+            self.currentOrder.requestedTime = "ASAP"
+        }
         
         var valid = true
         Types.tryblock({ () -> Void in

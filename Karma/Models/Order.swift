@@ -32,7 +32,6 @@ class Order : NSObject {
             case .Custom: return UIImage(named: "Summerfields")!
             }
         }
-        
     }
     
     var objectId : String?
@@ -54,7 +53,6 @@ class Order : NSObject {
     var cost : Double = 0.0
     
     override init () {
-        self.completed = false
         self.title = ""
         self.message = ""
         self.requestedTime = ""

@@ -40,6 +40,5 @@ Things I need done by the end of the week:
 * Finish up direct transfer
 * Reroute orders to just custom orders
 * Add validation on custom orders
-* Fix bug on cost field
 
 

@@ -88,7 +88,40 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
         }
     }
 
-    // TODO: Implement these
+    func validValues() -> Bool {
+        let DTDataStore = DirectTransfer.getDTDataStore()
+        self.currentTransfer.title = descriptionField.text
+
+        var cost = costField.text!
+        if cost.characters.contains("$") {
+            cost.remove(at: cost.startIndex)
+        }
+        
+        self.currentTransfer.cost = (cost as NSString).doubleValue
+        
+        // Validify the values and set defaults
+        if (self.currentTransfer.title!.isEmpty) {
+            let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
+        }
+        else if (costField.text!.isEmpty) {
+            self.errorMessage.text = "Please specify the amount of Karma!"
+            return false
+        }
+        
+        var valid = true
+        Types.tryblock({ () -> Void in
+            orderDataStore!.save(self.currentOrder) as! Order
+        },
+        catchblock: { (exception) -> Void in
+            let error = exception as! Fault
+            self.errorMessage.text = error.message
+            valid = false
+        })
+    }
+    
     func validRequest() -> Bool {
         
         return true

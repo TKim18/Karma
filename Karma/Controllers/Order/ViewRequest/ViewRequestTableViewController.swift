@@ -33,8 +33,18 @@ class ViewRequestTableViewController: UITableViewController {
         //Pull from the database
         loadAllOrders()
     
+        //Show no orders picture if orders is empty
+        noOrders()
+        
         //Configure the navigation bar
         updateKarmaPoints()
+    }
+    
+    private func noOrders() {
+        if (orders.isEmpty) {
+            let backgroundImage = UIImage(named: "ClassicBackdrop")
+            self.tableView.backgroundView = UIImageView(image: backgroundImage)
+        }
     }
     
     private func configureTableView() {
@@ -58,6 +68,8 @@ class ViewRequestTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
+    //--------------------------------- Pull Order Data -------------------------------------//
+    
     private func loadAllOrders() {
         let dataStore = Circle.getCircleDataStore()
         let circleId = User.getCurrentUserProperty(key: "circleId") as! String
@@ -135,18 +147,18 @@ class ViewRequestTableViewController: UITableViewController {
     }
 
     ///---------------------- Accepting a request handling ---------------------------//
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return (identifier == "AcceptRequest" && validAccept(sender: sender))
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if validAccept(indexPath: indexPath as NSIndexPath) {
+            orders.remove(at: indexPath.section)
+            self.tableView.reloadData()
+        }
     }
-    
-    func validAccept(sender: Any?) -> Bool {
-        let selectedOrderCell = sender as! ViewRequestTableViewCell
-        let indexPath = tableView.indexPath(for: selectedOrderCell)
-        
+
+    func validAccept(indexPath: NSIndexPath) -> Bool {
         let dataStore = Order.getOrderDataStore()
         let currentUser = User.getCurrentUser()
         
-        let selectedOrder = orders[indexPath!.section]
+        let selectedOrder = orders[indexPath.section]
         
         if (selectedOrder.requestingUserId == (currentUser.objectId as String)
          || selectedOrder.acceptingUserId == (currentUser.objectId as String)) { return false }
@@ -154,29 +166,30 @@ class ViewRequestTableViewController: UITableViewController {
         selectedOrder.acceptingUserId = currentUser.objectId as String
         selectedOrder.acceptingUserName = currentUser.name as String
         
-        var valid = false;
+        dataStore.save(
+            selectedOrder,
+            response: {
+                (order) -> () in
+                print("Order saved")
+            },
+            error: {
+                (fault : Fault?) -> () in
+                print("Server reported an error: \(String(describing: fault))")
+            }
+        )
         
-        Types.tryblock({ () -> Void in
-            dataStore.save(selectedOrder)
-            valid = true
-        }, catchblock: {(exception) -> Void in
-            print(exception ?? "Error")
-        })
-        
-        return valid;
+        return true;
     }
   
-//        dataStore.save(
-//            selectedOrder,
-//            response: {
-//                (order) -> () in
-//                print("Order saved")
-//            },
-//            error: {
-//                (fault : Fault?) -> () in
-//                print("Server reported an error: \(String(describing: fault))")
-//            }
-//        )
+//    var valid = false;
+//
+//    Types.tryblock({ () -> Void in
+//    dataStore.save(selectedOrder)
+//    valid = true
+//    }, catchblock: {(exception) -> Void in
+//    print(exception ?? "Error")
+//    })
+
 }
 
 // Asynchronous Call:

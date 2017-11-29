@@ -37,7 +37,6 @@
 		2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0781F744C7800AC53CB /* RegisterController.swift */; };
 		2287A3421FB507ED0035C685 /* CostCalculator.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2287A33B1FB507ED0035C685 /* CostCalculator.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2287A3481FB508410035C685 /* CostCalculator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2287A3471FB508410035C685 /* CostCalculator.xib */; };
-		22A139131FA69AD700B21CD2 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A139121FA69AD700B21CD2 /* Util.swift */; };
 		22A139151FA6A60A00B21CD2 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A139141FA6A60A00B21CD2 /* Double.swift */; };
 		22ABA8691FABAB370043AB4E /* CircleCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */; };
 		22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */; };
@@ -104,7 +103,6 @@
 		2287A33B1FB507ED0035C685 /* CostCalculator.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CostCalculator.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2287A33F1FB507ED0035C685 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2287A3471FB508410035C685 /* CostCalculator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CostCalculator.xib; sourceTree = "<group>"; };
-		22A139121FA69AD700B21CD2 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		22A139141FA6A60A00B21CD2 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCreateViewController.swift; sourceTree = "<group>"; };
 		22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -228,7 +226,6 @@
 				2277E06C1F744BA400AC53CB /* UIColor.swift */,
 				2277E06B1F744BA400AC53CB /* UIImage.swift */,
 				22A139141FA6A60A00B21CD2 /* Double.swift */,
-				22A139121FA69AD700B21CD2 /* Util.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -498,7 +495,6 @@
 				2277E0681F744B5F00AC53CB /* Order.swift in Sources */,
 				22A139151FA6A60A00B21CD2 /* Double.swift in Sources */,
 				22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */,
-				22A139131FA69AD700B21CD2 /* Util.swift in Sources */,
 				22302B051F7B37790046E757 /* CircleTableViewController.swift in Sources */,
 				2277E0761F744C6300AC53CB /* ViewController.swift in Sources */,
 				22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */,

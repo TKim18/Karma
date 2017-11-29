@@ -200,7 +200,7 @@ public class NumPadCalculator: UIView {
         case .Addition:
             result = x + y
         case .Subtraction:
-            result = x - y
+            result = (x - y < 0) ? 0 : (x - y)
         case .Multiplication:
             result = x * y
         case .Division:
@@ -211,6 +211,7 @@ public class NumPadCalculator: UIView {
         default:
             result = 0.0
         }
+        if (result > 0 && result < 0.001) { result = 0.0 }
         return result
     }
     

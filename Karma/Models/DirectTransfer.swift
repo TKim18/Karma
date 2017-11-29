@@ -22,6 +22,7 @@ class DirectTransfer : NSObject {
     var cost : Double = 0.0
     
     override init () {
+        self.title = ""
         self.currentUserId = ""
         self.currentUserName = ""
         self.selectedUserId = ""
@@ -33,6 +34,10 @@ class DirectTransfer : NSObject {
         self.currentUserName = currentUser.name! as String
         self.selectedUserId = selectedUser.objectId! as String
         self.selectedUserName = selectedUser.name! as String
+    }
+    
+    static func getDTDataStore() -> IDataStore {
+        return Backendless.sharedInstance().data.of(DirectTransfer().ofClass())
     }
     
 }
