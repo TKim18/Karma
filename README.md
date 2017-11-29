@@ -12,5 +12,5 @@
 6. Enable push notifications on inputted orders
 
 ## Quick Wins ##
-1. Change tab bar selection image to be generalized
-2. Paging on orders
+1. Paging on orders
+

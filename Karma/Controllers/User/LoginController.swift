@@ -18,15 +18,15 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerButton.titleLabel?.textAlignment = NSTextAlignment.center
-        
-        setupTap()
+        setupView()
         
     }
     
-    private func setupTap() {
+    private func setupView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        registerButton.titleLabel?.textAlignment = NSTextAlignment.center
     }
     
     @objc func dismissKeyboard() {
