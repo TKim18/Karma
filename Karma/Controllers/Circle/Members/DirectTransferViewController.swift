@@ -22,7 +22,6 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     @IBOutlet weak var requestButton : UIButton!
     @IBOutlet weak var payButton : UIButton!
     @IBOutlet weak var dividerLabel : UILabel!
-    @IBOutlet weak var errorMessage : UILabel!
     var placeholderLabel : UILabel!
     
     override func viewDidLoad() {
@@ -77,19 +76,18 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     
     // Pay/Request Handling
     @IBAction func request(sender : AnyObject) {
-        if (validRequest()) {
-            self.performSegue(withIdentifier: "SubmitRequest", sender: self)
+        if (validValues() && validRequest()) {
+            self.performSegue(withIdentifier: "SubmitDirectTransfer", sender: self)
         }
     }
 
     @IBAction func pay(sender : AnyObject) {
-        if (validPay()) {
-            self.performSegue(withIdentifier: "SubmitRequest", sender: self)
+        if (validValues() && validPay()) {
+            self.performSegue(withIdentifier: "SubmitDirectTransfer", sender: self)
         }
     }
 
     func validValues() -> Bool {
-        let DTDataStore = DirectTransfer.getDTDataStore()
         self.currentTransfer.title = descriptionField.text
 
         var cost = costField.text!
@@ -99,37 +97,65 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
         
         self.currentTransfer.cost = (cost as NSString).doubleValue
         
-        // Validify the values and set defaults
+        // Validify the values
         if (self.currentTransfer.title!.isEmpty) {
-            let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Please enter a description.", message: "e.g., 'For that chicken parm I got you'", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return false
         }
-        else if (costField.text!.isEmpty) {
-            self.errorMessage.text = "Please specify the amount of Karma!"
+        else if (costField.text!.isEmpty || self.currentTransfer.cost < 0.01) {
+            let alert = UIAlertController(title: "Please enter a valid amount.", message: "Anything greater than $0.00 is fine!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             return false
         }
         
-        var valid = true
-        Types.tryblock({ () -> Void in
-            orderDataStore!.save(self.currentOrder) as! Order
-        },
-        catchblock: { (exception) -> Void in
-            let error = exception as! Fault
-            self.errorMessage.text = error.message
-            valid = false
-        })
+        return true
     }
     
     func validRequest() -> Bool {
-        
         return true
     }
     
     func validPay() -> Bool {
+        let DTDataStore = DirectTransfer.getDTDataStore()
+        let backendless = Backendless.sharedInstance()!
+        let userService = Backendless.sharedInstance().userService
         
-        return true
+        // Update the people's karma points according to their service
+        // So if this is a pay
+        // Then the selected user will GAIN points while the current user will lose their points/be requester
+        
+        let selectedUser = User.getUserWithId(userId: self.currentTransfer.selectedUserId)
+        let currentUser = User.getCurrentUser()
+        
+        let selectedUserPoints = selectedUser.getProperty("karmaPoints") as! Double
+        let currentUserPoints = currentUser.getProperty("karmaPoints") as! Double
+        
+        let newSelectedUserPoints = (selectedUserPoints + self.currentTransfer.cost).rounded(toPlaces: 2)
+        let newCurrentUserPoints = (currentUserPoints - self.currentTransfer.cost).rounded(toPlaces: 2)
+        
+       // backendless.data.of(BackendlessUser.ofClass()).find(byId: self.currentTransfer.selectedUserId) as! BackendlessUser
+        
+        
+        var valid = true
+        
+        Types.tryblock({() -> Void in
+            currentUser.updateProperties(["karmaPoints" : 50.00])
+            //selectedUser.setProperty("karmaPoints", object: newSelectedUserPoints)
+            //currentUser.setProperty("karmaPoints", object: newCurrentUserPoints)
+            backendless.userService.update(currentUser)
+            backendless.userService.update(selectedUser)
+            //DTDataStore.save(self.currentTransfer)
+            valid = true
+        },
+        catchblock: { (exception) -> Void in
+            let error = exception as! Fault
+            print(error)
+        })
+        
+        return valid
     }
     
     // Helper Functions

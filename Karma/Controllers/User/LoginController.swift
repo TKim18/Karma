@@ -9,18 +9,25 @@
 import UIKit
 
 class LoginController: UIViewController {
-
-    // Override functions
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
-    
     // UI Elements
     @IBOutlet var emailField : UITextField!
     @IBOutlet var passwordField : UITextField!
     @IBOutlet var errorMessage : UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupTap()
+    }
+    
+    private func setupTap() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
     @IBAction func showRegister(sender : AnyObject) {
         self.performSegue(withIdentifier: "LoginToRegister", sender: nil)

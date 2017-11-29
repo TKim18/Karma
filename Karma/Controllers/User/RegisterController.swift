@@ -9,14 +9,6 @@
 import UIKit
 
 class RegisterController: UIViewController {
-
-    // Override functions
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
     // UI Elements
     @IBOutlet var nameField : UITextField!
     @IBOutlet var emailField : UITextField!
@@ -24,10 +16,25 @@ class RegisterController: UIViewController {
     @IBOutlet var verifyField : UITextField!
     @IBOutlet var errorMessage: UILabel!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupTap()
+    }
+    
     @IBAction func registerButton(sender : AnyObject){
         if (validRegister() && login()) {
             self.performSegue(withIdentifier: "RegisterToCircle", sender: self)
         }
+    }
+    
+    private func setupTap() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     // Segue handling

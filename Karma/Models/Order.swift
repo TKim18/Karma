@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 class Order : NSObject {
     
     enum Category: String {

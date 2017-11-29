@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 class Circle : NSObject {
     
     var objectId : String?

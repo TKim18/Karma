@@ -703,8 +703,8 @@
                                     <color key="titleColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="payWithSender:" destination="N7W-wu-JGK" eventType="touchUpInside" id="xUg-MH-Cgq"/>
                                     <action selector="requestWithSender:" destination="PdG-hk-wVj" eventType="touchUpInside" id="PsJ-93-gNT"/>
-                                    <segue destination="sJO-1I-4Tx" kind="showDetail" id="KfY-Sb-Wnz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Us5-0q-Ors">
@@ -717,7 +717,7 @@
                                 </state>
                                 <connections>
                                     <action selector="requestWithSender:" destination="PdG-hk-wVj" eventType="touchUpInside" id="5HK-rU-blu"/>
-                                    <segue destination="sJO-1I-4Tx" kind="showDetail" id="1Jd-yf-mph"/>
+                                    <action selector="requestWithSender:" destination="N7W-wu-JGK" eventType="touchUpInside" id="Xc2-jV-1OQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selected Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZE8-RI-gHJ">
@@ -741,13 +741,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekl-Mj-WUC">
-                                <rect key="frame" x="91" y="302" width="195" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -758,6 +751,7 @@
                         <outlet property="payButton" destination="poR-X1-Z6M" id="sy6-hW-zVY"/>
                         <outlet property="requestButton" destination="Us5-0q-Ors" id="IgV-V7-npY"/>
                         <outlet property="selectedUser" destination="ZE8-RI-gHJ" id="RWT-0L-u3B"/>
+                        <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="SubmitDirectTransfer" id="ruZ-Ha-ylM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTC-UI-OxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1030,6 +1024,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PTn-pf-fad"/>
-        <segue reference="slo-0J-Efm"/>
+        <segue reference="d2c-Za-bVs"/>
     </inferredMetricsTieBreakers>
 </document>

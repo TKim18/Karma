@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 class DirectTransfer : NSObject {
     
     var objectId : String?
