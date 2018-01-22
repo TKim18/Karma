@@ -86,8 +86,6 @@ class NotificationTableViewController: UITableViewController {
                 print("Something went wrong trying to complete the request: \(String(describing: fault))")
         })
         
-        print(selectedRequest.acceptingUserId)
-        
         // Update the people's karma points according to their service
         let acceptingUser = User.getUserWithId(userId: selectedRequest.acceptingUserId!)
         let requestingUser = User.getCurrentUser()

@@ -119,37 +119,34 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     }
     
     func validPay() -> Bool {
-        let backendless = Backendless.sharedInstance()
-        let userService = backendless!.userService
-        let userDataStore = backendless!.data.of(BackendlessUser.ofClass())
-
-        print(self.currentTransfer.selectedUserId)
+        let userService = Backendless.sharedInstance().userService
         
-//        let selectedUser = userDataStore?.find(byId: self.currentTransfer.selectedUserId) as! BackendlessUser
-//
-//        let selectedPoints = selectedUser.getProperty("karmaPoints") as! Double
-//        let currentPoints = currentUser!.getProperty("karmaPoints") as! Double
-//
-//        let cost = self.currentTransfer.cost
-//        let newSelectedPoints = (selectedPoints + cost).rounded(toPlaces: 2)
-//        let newCurrentPoints = (currentPoints - cost).rounded(toPlaces: 2)
-//
-//        selectedUser.updateProperties(["karmaPoints" : newSelectedPoints])
-//        currentUser?.updateProperties(["karmaPoints" : newCurrentPoints])
-//
-//        var valid = false
-//
-//        Types.tryblock({() -> Void in
-//            userService!.update(currentUser)
-//            userDataStore!.save(selectedUser)
-//            valid = true
-//        },
-//        catchblock: { (exception) -> Void in
-//            let error = exception as! Fault
-//            print(error)
-//        })
-
-        return true
+        let selectedUser = User.getUserWithId(userId: self.currentTransfer.selectedUserId)
+        let currentUser = User.getCurrentUser()
+        
+        let selectedPoints = selectedUser.getProperty("karmaPoints") as! Double
+        let currentPoints = currentUser.getProperty("karmaPoints") as! Double
+        
+        let cost = self.currentTransfer.cost
+        let newSelectedPoints = (selectedPoints + cost).rounded(toPlaces: 2)
+        let newCurrentPoints = (currentPoints - cost).rounded(toPlaces: 2)
+        
+        selectedUser.setProperty("karmaPoints", object: newSelectedPoints)
+        currentUser.setProperty("karmaPoints", object: newCurrentPoints)
+        
+        var status = false
+        
+        Types.tryblock({() -> Void in
+            userService!.update(selectedUser)
+            userService!.update(currentUser)
+            status = true
+        },
+        catchblock: { (exception) -> Void in
+            let error = exception as! Fault
+            print(error)
+        })
+        
+        return status
     }
     
     // Helper Functions
