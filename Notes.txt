@@ -41,4 +41,27 @@ Things I need done by the end of the week:
 * Reroute orders to just custom orders
 * Add validation on custom orders
 
+Process by which people join a circle:
+a circle is made
+the person trying to join searches for the created circle by the display name
+once they find, the person is added to a list within the group that is accessible to everyone else there
+this list is the wait list and anyone in the group can accept the person
+meanwhile, the person who tried to join will have a circle id of -2 so their screen when they log in will be a
+"waiting for the circle to accept or join a different circle"
+once someone accepts the person,
+the person is assigned a circle id and all is well
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
