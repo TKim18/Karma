@@ -152,7 +152,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "533629154.460524"
+                  timestampString = "538346085.440648"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -167,7 +167,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "533629154.463177"
+                  timestampString = "538346085.44754"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -182,7 +182,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "533629154.466399"
+                  timestampString = "538346085.452878"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -197,7 +197,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "533629154.469594"
+                  timestampString = "538346085.455706"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -356,156 +356,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Circle/Members/DirectTransferViewController.swift"
-            timestampString = "533623764.092433"
+            timestampString = "538346085.411691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
             endingLineNumber = "101"
             landmarkName = "validValues()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Controllers/Circle/Members/DirectTransferViewController.swift"
-            timestampString = "533623764.092543"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "validPay()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Controllers/Circle/Members/DirectTransferViewController.swift"
-            timestampString = "533623764.092616"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "validPay()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Controllers/Circle/Members/DirectTransferViewController.swift"
-            timestampString = "533623764.092682"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "validPay()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Controllers/Circle/Members/DirectTransferViewController.swift"
-            timestampString = "533623764.092726"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "validPay()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Controllers/Circle/Members/DirectTransferViewController.swift"
-            timestampString = "533623764.092767"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "validPay()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Controllers/Circle/Members/DirectTransferViewController.swift"
-            timestampString = "533623764.092807"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
-            landmarkName = "validPay()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Karma.DirectTransferViewController.validPay() -&gt; Swift.Bool"
-                  moduleName = "Karma"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/Circle/Members/DirectTransferViewController.swift"
-                  timestampString = "533629154.538994"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "142"
-                  endingLineNumber = "142"
-                  offsetFromSymbolStart = "3741">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Karma.DirectTransferViewController.validPay() -&gt; Swift.Bool"
-                  moduleName = "Karma"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/Circle/Members/DirectTransferViewController.swift"
-                  timestampString = "533629154.541635"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "142"
-                  endingLineNumber = "142"
-                  offsetFromSymbolStart = "23">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Controllers/Circle/Members/DirectTransferViewController.swift"
-            timestampString = "533623764.092848"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "validPay()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -521,8 +377,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
             endingLineNumber = "63"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "shouldPerformSegue(withIdentifier:sender:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -537,8 +393,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
             endingLineNumber = "66"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "validCircle(sender:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

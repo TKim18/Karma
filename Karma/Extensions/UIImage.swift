@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 //Probably shouldn't be under here
 extension UIImage {

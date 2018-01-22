@@ -86,6 +86,8 @@ class NotificationTableViewController: UITableViewController {
                 print("Something went wrong trying to complete the request: \(String(describing: fault))")
         })
         
+        print(selectedRequest.acceptingUserId)
+        
         // Update the people's karma points according to their service
         let acceptingUser = User.getUserWithId(userId: selectedRequest.acceptingUserId!)
         let requestingUser = User.getCurrentUser()
@@ -96,11 +98,12 @@ class NotificationTableViewController: UITableViewController {
         let newAccept = (currentAccept + selectedRequest.cost).rounded(toPlaces: 2)
         let newRequest = (currentRequest - selectedRequest.cost).rounded(toPlaces: 2)
         
+        acceptingUser.setProperty("karmaPoints", object: newAccept)
+        requestingUser.setProperty("karmaPoints", object: newRequest)
+        
         var status = false
         
         Types.tryblock({() -> Void in
-            acceptingUser.setProperty("karmaPoints", object: newAccept)
-            requestingUser.setProperty("karmaPoints", object: newRequest)
             userService!.update(acceptingUser)
             userService!.update(requestingUser)
             status = true

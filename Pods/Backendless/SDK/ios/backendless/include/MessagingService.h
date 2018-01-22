@@ -22,9 +22,6 @@
 #import <Foundation/Foundation.h>
 #import "HashMap.h"
 #import "DeviceRegistration.h"
-#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-#import <UserNotifications/UserNotifications.h>
-#endif
 
 @class UIUserNotificationCategory;
 @class MessageStatus, PublishOptions, DeliveryOptions, SubscriptionOptions, BESubscription, BodyParts, Message, Fault;
@@ -54,7 +51,7 @@
 -(id)sendHTMLEmail:(NSString *)subject body:(NSString *)messageBody to:(NSArray<NSString*> *)recipients;
 -(id)sendEmail:(NSString *)subject body:(BodyParts *)bodyParts to:(NSArray<NSString*> *)recipients;
 -(id)sendEmail:(NSString *)subject body:(BodyParts *)bodyParts to:(NSArray<NSString*> *)recipients attachment:(NSArray *)attachments;
--(MessageStatus*)getMessageStatus:(NSString*)messageId;
+-(MessageStatus *)getMessageStatus:(NSString*)messageId;
 
 // async methods with block-based callbacks
 -(void)registerDevice:(NSData *)deviceToken response:(void(^)(NSString *))responseBlock error:(void(^)(Fault *))errorBlock;
@@ -82,8 +79,5 @@
 // utilites
 -(DeviceRegistration *)currentDevice;
 -(NSString *)deviceTokenAsString:(NSData *)token;
-#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
--(void)attachmentProcessing:(UNNotificationRequest *_Nonnull)request withContentHandler:(void (^_Nonnull)(UNNotificationContent *_Nonnull))contentHandler;
-#endif
 
 @end

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -276,14 +276,14 @@
                                 <rect key="frame" x="134" y="407" width="106" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="tLJ-rD-yQf" kind="showDetail" action="showViewController:sender:" id="dXm-u5-XDN"/>
+                                    <segue destination="tLJ-rD-yQf" kind="show" id="dXm-u5-XDN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ae-hk-4R2">
                                 <rect key="frame" x="124" y="460" width="126" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="FCG-S8-DIx" kind="showDetail" action="showViewController:sender:" id="Kt9-12-7QE"/>
+                                    <segue destination="FCG-S8-DIx" kind="show" id="Kt9-12-7QE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1099,6 +1099,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PTn-pf-fad"/>
-        <segue reference="d2c-Za-bVs"/>
+        <segue reference="ruZ-Ha-ylM"/>
     </inferredMetricsTieBreakers>
 </document>

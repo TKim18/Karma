@@ -91,7 +91,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
         self.currentTransfer.title = descriptionField.text
 
         var cost = costField.text!
-        if cost.characters.contains("$") {
+        if cost.contains("$") {
             cost.remove(at: cost.startIndex)
         }
         
@@ -119,43 +119,37 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     }
     
     func validPay() -> Bool {
-        let DTDataStore = DirectTransfer.getDTDataStore()
-        let backendless = Backendless.sharedInstance()!
-        let userService = Backendless.sharedInstance().userService
+        let backendless = Backendless.sharedInstance()
+        let userService = backendless!.userService
+        let userDataStore = backendless!.data.of(BackendlessUser.ofClass())
+
+        print(self.currentTransfer.selectedUserId)
         
-        // Update the people's karma points according to their service
-        // So if this is a pay
-        // Then the selected user will GAIN points while the current user will lose their points/be requester
-        
-        let selectedUser = User.getUserWithId(userId: self.currentTransfer.selectedUserId)
-        let currentUser = User.getCurrentUser()
-        
-        let selectedUserPoints = selectedUser.getProperty("karmaPoints") as! Double
-        let currentUserPoints = currentUser.getProperty("karmaPoints") as! Double
-        
-        let newSelectedUserPoints = (selectedUserPoints + self.currentTransfer.cost).rounded(toPlaces: 2)
-        let newCurrentUserPoints = (currentUserPoints - self.currentTransfer.cost).rounded(toPlaces: 2)
-        
-       // backendless.data.of(BackendlessUser.ofClass()).find(byId: self.currentTransfer.selectedUserId) as! BackendlessUser
-        
-        
-        var valid = true
-        
-        Types.tryblock({() -> Void in
-            currentUser.updateProperties(["karmaPoints" : 50.00])
-            //selectedUser.setProperty("karmaPoints", object: newSelectedUserPoints)
-            //currentUser.setProperty("karmaPoints", object: newCurrentUserPoints)
-            backendless.userService.update(currentUser)
-            backendless.userService.update(selectedUser)
-            //DTDataStore.save(self.currentTransfer)
-            valid = true
-        },
-        catchblock: { (exception) -> Void in
-            let error = exception as! Fault
-            print(error)
-        })
-        
-        return valid
+//        let selectedUser = userDataStore?.find(byId: self.currentTransfer.selectedUserId) as! BackendlessUser
+//
+//        let selectedPoints = selectedUser.getProperty("karmaPoints") as! Double
+//        let currentPoints = currentUser!.getProperty("karmaPoints") as! Double
+//
+//        let cost = self.currentTransfer.cost
+//        let newSelectedPoints = (selectedPoints + cost).rounded(toPlaces: 2)
+//        let newCurrentPoints = (currentPoints - cost).rounded(toPlaces: 2)
+//
+//        selectedUser.updateProperties(["karmaPoints" : newSelectedPoints])
+//        currentUser?.updateProperties(["karmaPoints" : newCurrentPoints])
+//
+//        var valid = false
+//
+//        Types.tryblock({() -> Void in
+//            userService!.update(currentUser)
+//            userDataStore!.save(selectedUser)
+//            valid = true
+//        },
+//        catchblock: { (exception) -> Void in
+//            let error = exception as! Fault
+//            print(error)
+//        })
+
+        return true
     }
     
     // Helper Functions
