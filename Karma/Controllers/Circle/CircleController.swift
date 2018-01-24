@@ -17,18 +17,29 @@ class CircleController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // setBackground()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    func validValues() -> Bool {
+        if (circleNameField.text.isEmpty) {
+            let alert = UIAlertController(title: "Please enter a name.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addaction(uIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
+        }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
+
+//    func setBackground() {
+//        let backgroundImage = UIImage(named: "ClassicBackground")
+//
+//        var imageView : UIImageView!
+//        imageView = UIImageView(frame: view.bounds)
+//        imageView.contentMode =  UIViewContentMode.ScaleAspectFill
+//        imageView.clipsToBounds = true
+//        imageView.image = backgroundImage
+//        imageView.center = view.center
+//        view.addSubview(imageView)
+//        self.view.sendSubviewToBack(imageView)
+//    }
 
 }

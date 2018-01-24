@@ -17,7 +17,7 @@ class CircleCreateViewController: CircleController {
     }
     
     @IBAction func createCircle(sender : AnyObject) {
-        if (validCircle()) {
+        if (self.validValues && validCircle()) {
             self.performSegue(withIdentifier: "CircleToMain", sender: self)
         }
     }
