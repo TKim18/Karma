@@ -10,24 +10,25 @@ import UIKit
 
 class CircleCreateViewController: CircleController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
     @IBAction func createCircle(sender : AnyObject) {
-        if (self.validValues && validCircle()) {
-            self.performSegue(withIdentifier: "CircleToMain", sender: self)
+        if (self.validValues() && validCircle()) {
+            self.performSegue(withIdentifier: "CreateCircle", sender: self)
         }
     }
     
+    // Helper Function
+    func notifyDup() {
+        let alert = UIAlertController(title: "Sorry, that name is taken", message: "Please choose an equally cool name!",  preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // Server Call
-    func validCircle() -> Bool {
+    override func validCircle() -> Bool {
         let backendless = Backendless.sharedInstance()!
         let dataStore = backendless.data.of(Circle().ofClass())
         
-        let circle = Circle(name: circleNameField.text!)
+        let circle = Circle(name: circleNameField.text!, password: circleKeyField.text!)
         let currentUser = User.getCurrentUser()
         var valid = true
         
@@ -42,6 +43,7 @@ class CircleCreateViewController: CircleController {
             currentUser.updateProperties(["circleId" : savedCircle.objectId!])
             backendless.userService.update(currentUser)
         }, catchblock: {(exception) -> Void in
+            self.notifyDup()
             print(exception ?? "Error")
             valid = false
         })

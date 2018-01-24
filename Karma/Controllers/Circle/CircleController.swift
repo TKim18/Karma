@@ -21,12 +21,22 @@ class CircleController: UIViewController {
     }
     
     func validValues() -> Bool {
-        if (circleNameField.text.isEmpty) {
-            let alert = UIAlertController(title: "Please enter a name.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addaction(uIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+        if (circleNameField.text!.isEmpty || circleKeyField.text!.isEmpty) {
+            let (title, message) = circleNameField.text!.isEmpty ? ("Please enter a name", "e.g., League of Draven") : ("Please enter a key", "e.g., coolcool123")
+            let alert = UIAlertController(title: title, message: message,  preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
             self.present(alert, animated: true, completion: nil)
             return false
         }
+        return true
+    }
+    
+//    func circleExists() -> Bool {
+//
+//    }
+    
+    func validCircle() -> Bool {
+        return false
     }
 
 //    func setBackground() {

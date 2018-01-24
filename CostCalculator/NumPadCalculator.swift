@@ -177,7 +177,7 @@ public class NumPadCalculator: UIView {
             var afterPoint = components[1]
             if afterPoint.lengthOfBytes(using: String.Encoding.utf8) > 2 {
                 let index: String.Index = afterPoint.index(afterPoint.startIndex, offsetBy: 2)
-                //afterPoint = String(afterPoint[..<index])
+                afterPoint = String(afterPoint[..<index])
             }
             firstExp = beforePoint + "." + afterPoint
         }

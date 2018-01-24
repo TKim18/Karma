@@ -102,7 +102,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
 
         // TODO: Add safety measures to this - cant be below 0.01 or not a number
         var cost = costField.text!
-        if cost.characters.contains("$") {
+        if cost.contains("$") {
             cost.remove(at: cost.startIndex)
         }
         

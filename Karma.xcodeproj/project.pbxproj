@@ -87,8 +87,8 @@
 		22302AFD1F7B376A0046E757 /* CircleMemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleMemberTableViewCell.swift; path = Karma/Controllers/Circle/Members/CircleMemberTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		22302AFE1F7B376A0046E757 /* CircleMemberTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleMemberTableViewController.swift; path = Karma/Controllers/Circle/Members/CircleMemberTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		22302B011F7B37790046E757 /* CircleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleController.swift; path = Karma/Controllers/Circle/CircleController.swift; sourceTree = SOURCE_ROOT; };
-		22302B021F7B37790046E757 /* CircleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewController.swift; path = Karma/Controllers/Circle/CircleTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		22302B031F7B37790046E757 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewCell.swift; path = Karma/Controllers/Circle/CircleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		22302B021F7B37790046E757 /* CircleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewController.swift; path = Karma/Controllers/Circle/Deprecated/CircleTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		22302B031F7B37790046E757 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewCell.swift; path = Karma/Controllers/Circle/Deprecated/CircleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		223BE9B71F90062000C6A8F7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		226143391F72E5FA00711DEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		226270DB1FB5369100690600 /* RoundedButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonController.swift; sourceTree = "<group>"; };
@@ -170,6 +170,15 @@
 			path = Karma;
 			sourceTree = "<group>";
 		};
+		220E95472019306A00B8E2E5 /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				22302B031F7B37790046E757 /* CircleTableViewCell.swift */,
+				22302B021F7B37790046E757 /* CircleTableViewController.swift */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
 		2229C0821F744D6E0083C215 /* ViewRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,8 +204,7 @@
 				22302B011F7B37790046E757 /* CircleController.swift */,
 				22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */,
 				227BBC9D2018DC80005314DF /* CircleJoinViewController.swift */,
-				22302B031F7B37790046E757 /* CircleTableViewCell.swift */,
-				22302B021F7B37790046E757 /* CircleTableViewController.swift */,
+				220E95472019306A00B8E2E5 /* Deprecated */,
 				22302AFC1F7B37210046E757 /* Members */,
 			);
 			path = Circle;
@@ -670,7 +678,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pods/Backendless/SDK/ios/backendless/include/Backendless-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -689,7 +697,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pods/Backendless/SDK/ios/backendless/include/Backendless-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -710,7 +718,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Karma.CostCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -732,7 +740,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Karma.CostCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1114" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -387,7 +387,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="createCircleWithSender:" destination="FCG-S8-DIx" eventType="touchUpInside" id="1gd-d0-IYr"/>
+                                    <action selector="createCircleWithSender:" destination="FCG-S8-DIx" eventType="touchUpInside" id="Oz5-V3-UID"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -396,7 +396,7 @@
                     <connections>
                         <outlet property="circleKeyField" destination="dNS-gj-Gwf" id="wVj-qz-RMU"/>
                         <outlet property="circleNameField" destination="1Bc-fq-Mta" id="lLT-Am-lAP"/>
-                        <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="CircleToMain" action="showViewController:sender:" id="nBb-ZS-A0d"/>
+                        <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="CreateCircle" id="PPI-hW-TY2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9z-jb-OPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -428,7 +428,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="createCircleWithSender:" destination="FCG-S8-DIx" eventType="touchUpInside" id="HLC-Kc-QEq"/>
+                                    <action selector="joinCircleWithSender:" destination="yiM-DP-HbK" eventType="touchUpInside" id="QST-O0-8Al"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Join a Circle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEq-wf-6De">
@@ -475,6 +475,7 @@
                     <connections>
                         <outlet property="circleKeyField" destination="zHI-KS-f3e" id="I26-uK-otl"/>
                         <outlet property="circleNameField" destination="zOq-bT-zN1" id="lbw-FU-Xpv"/>
+                        <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="JoinCircle" id="7UW-ov-f9O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2KF-Zw-QMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -637,7 +638,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nnM-BJ-LfK" id="FnX-2I-Gf2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pE2-BW-rRL">
@@ -746,7 +747,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z2A-AQ-xPG" id="UB3-YD-ZW4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Few-0w-XKC">
@@ -1203,9 +1204,9 @@
         <image name="UserSettingsSelectedIcon" width="39" height="39"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nBb-ZS-A0d"/>
-        <segue reference="Obl-Wj-qaW"/>
+        <segue reference="7fL-I0-nA8"/>
+        <segue reference="IhG-KY-8Wu"/>
         <segue reference="r0E-Gv-G2T"/>
-        <segue reference="ESN-d1-xsN"/>
+        <segue reference="7UW-ov-f9O"/>
     </inferredMetricsTieBreakers>
 </document>
