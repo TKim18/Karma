@@ -8,16 +8,13 @@
 
 import UIKit
 
-class CircleCreateViewController: UIViewController {
+class CircleCreateViewController: CircleController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
-    // UI Elements
-    @IBOutlet var circleNameField : UITextField!
     
     @IBAction func createCircle(sender : AnyObject) {
         if (validCircle()) {

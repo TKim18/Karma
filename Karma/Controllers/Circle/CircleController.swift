@@ -10,10 +10,13 @@ import UIKit
 
 class CircleController: UIViewController {
 
+    // UI Elements
+    @IBOutlet var circleNameField : UITextField!
+    @IBOutlet var circleKeyField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.navigationController?.setNavigationBarHidden(true, animated: false)
-        // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

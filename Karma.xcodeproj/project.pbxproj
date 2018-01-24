@@ -35,6 +35,7 @@
 		2277E0761F744C6300AC53CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0751F744C6300AC53CB /* ViewController.swift */; };
 		2277E0791F744C7800AC53CB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0771F744C7800AC53CB /* LoginController.swift */; };
 		2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0781F744C7800AC53CB /* RegisterController.swift */; };
+		227BBC9E2018DC80005314DF /* CircleJoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227BBC9D2018DC80005314DF /* CircleJoinViewController.swift */; };
 		2287A3421FB507ED0035C685 /* CostCalculator.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2287A33B1FB507ED0035C685 /* CostCalculator.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2287A3481FB508410035C685 /* CostCalculator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2287A3471FB508410035C685 /* CostCalculator.xib */; };
 		22A139151FA6A60A00B21CD2 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A139141FA6A60A00B21CD2 /* Double.swift */; };
@@ -100,6 +101,7 @@
 		2277E0751F744C6300AC53CB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2277E0771F744C7800AC53CB /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2277E0781F744C7800AC53CB /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		227BBC9D2018DC80005314DF /* CircleJoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleJoinViewController.swift; sourceTree = "<group>"; };
 		2287A33B1FB507ED0035C685 /* CostCalculator.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CostCalculator.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2287A33F1FB507ED0035C685 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2287A3471FB508410035C685 /* CostCalculator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CostCalculator.xib; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			children = (
 				22302B011F7B37790046E757 /* CircleController.swift */,
 				22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */,
+				227BBC9D2018DC80005314DF /* CircleJoinViewController.swift */,
 				22302B031F7B37790046E757 /* CircleTableViewCell.swift */,
 				22302B021F7B37790046E757 /* CircleTableViewController.swift */,
 				22302AFC1F7B37210046E757 /* Members */,
@@ -489,6 +492,7 @@
 				22302B041F7B37790046E757 /* CircleController.swift in Sources */,
 				2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */,
 				2277E06E1F744BA400AC53CB /* UIColor.swift in Sources */,
+				227BBC9E2018DC80005314DF /* CircleJoinViewController.swift in Sources */,
 				2229C08B1F744D9E0083C215 /* RequestTableViewController.swift in Sources */,
 				2277E06D1F744BA400AC53CB /* UIImage.swift in Sources */,
 				2229C08D1F744D9E0083C215 /* RequestCategoryTableViewCell.swift in Sources */,

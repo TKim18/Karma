@@ -13,15 +13,18 @@ class Circle : NSObject {
     
     var objectId : String?
     let name : String?
+    let password : String?
     var displayName : String?
     
     override init () {
         self.name = ""
+        self.password = ""
         self.displayName = ""
     }
     
-    init (name: String) {
+    init (name: String, password: String) {
         self.name = name
+        self.password = password
         self.displayName = name
     }
     
