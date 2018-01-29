@@ -12,19 +12,19 @@ import Foundation
 class Circle : NSObject {
     
     var objectId : String?
-    let name : String?
-    let password : String?
+    let joinName : String?
+    let joinKey : String?
     var displayName : String?
     
     override init () {
-        self.name = ""
-        self.password = ""
+        self.joinName = ""
+        self.joinKey = ""
         self.displayName = ""
     }
     
     init (name: String, password: String) {
-        self.name = name
-        self.password = password
+        self.joinName = name
+        self.joinKey = password
         self.displayName = name
     }
     

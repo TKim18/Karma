@@ -25,8 +25,7 @@ class CircleCreateViewController: CircleController {
     
     // Server Call
     override func validCircle() -> Bool {
-        let backendless = Backendless.sharedInstance()!
-        let dataStore = backendless.data.of(Circle().ofClass())
+        let dataStore = self.backendless.data.of(Circle().ofClass())
         
         let circle = Circle(name: circleNameField.text!, password: circleKeyField.text!)
         let currentUser = User.getCurrentUser()
@@ -34,14 +33,14 @@ class CircleCreateViewController: CircleController {
         
         Types.tryblock({ () -> Void in
             //Save the new object, retrieve its object id, and add the relation to the Users column
-            let savedCircle = dataStore!.save(circle) as! Circle;
+            let savedCircle = dataStore!.save(circle) as! Circle
             dataStore!.setRelation(
                 "Users",
                 parentObjectId: savedCircle.objectId,
                 childObjects: [currentUser.objectId]
             )
             currentUser.updateProperties(["circleId" : savedCircle.objectId!])
-            backendless.userService.update(currentUser)
+            self.backendless.userService.update(currentUser)
         }, catchblock: {(exception) -> Void in
             self.notifyDup()
             print(exception ?? "Error")
