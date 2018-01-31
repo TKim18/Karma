@@ -17,7 +17,7 @@ class CircleCreateViewController: CircleController {
     }
     
     // Helper Function
-    func notifyDup() {
+    func alertExistDup() {
         let alert = UIAlertController(title: "Sorry, that name is taken", message: "Please choose an equally cool name!",  preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
         self.present(alert, animated: true, completion: nil)
@@ -42,7 +42,7 @@ class CircleCreateViewController: CircleController {
             currentUser.updateProperties(["circleId" : savedCircle.objectId!])
             self.backendless.userService.update(currentUser)
         }, catchblock: {(exception) -> Void in
-            self.notifyDup()
+            self.alertExistDup()
             print(exception ?? "Error")
             valid = false
         })

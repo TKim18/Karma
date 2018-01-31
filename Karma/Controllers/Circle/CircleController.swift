@@ -13,6 +13,11 @@ class CircleController: UIViewController {
     // UI Elements
     @IBOutlet var circleNameField : UITextField!
     @IBOutlet var circleKeyField: UITextField!
+    @IBOutlet var titleLabel : UILabel!
+    @IBOutlet var messageLabel : UILabel!
+    @IBOutlet var submitButton : UIButton!
+    @IBOutlet var swapButton : UIButton!
+    
     let backendless = Backendless.sharedInstance()!
     
     override func viewDidLoad() {
@@ -34,14 +39,6 @@ class CircleController: UIViewController {
         return true
     }
     
-//    func circleExists() -> Bool {
-//
-//    }
-    
-    func validCircle() -> Bool {
-        return false
-    }
-
 //    func setBackground() {
 //        let backgroundImage = UIImage(named: "ClassicBackground")
 //
