@@ -337,7 +337,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ClassicBackground" translatesAutoresizingMaskIntoConstraints="NO" id="BMU-Pq-4VI">
-                                <rect key="frame" x="-1" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="-1" y="0.0" width="376" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create a Circle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U13-Rb-cI5">
@@ -481,52 +481,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2KF-Zw-QMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2645.5999999999999" y="787.55622188905556"/>
-        </scene>
-        <!--Circle Table View Controller-->
-        <scene sceneID="ysa-DP-ihV">
-            <objects>
-                <tableViewController id="tLJ-rD-yQf" customClass="CircleTableViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="N1r-MF-d3e">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CircleTableViewCell" rowHeight="90" id="4yQ-5H-WBK" customClass="CircleTableViewCell" customModule="Karma" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4yQ-5H-WBK" id="U7f-pu-nyh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Dummy" translatesAutoresizingMaskIntoConstraints="NO" id="HMz-6i-8Vt">
-                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0DL-j2-zIH">
-                                            <rect key="frame" x="98" y="0.0" width="269" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="circleImage" destination="HMz-6i-8Vt" id="O9l-z0-s2J"/>
-                                    <outlet property="nameLabel" destination="0DL-j2-zIH" id="uen-sg-MyR"/>
-                                    <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="JoinCircle" action="showViewController:sender:" id="d2c-Za-bVs"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="tLJ-rD-yQf" id="aUX-Z9-35S"/>
-                            <outlet property="delegate" destination="tLJ-rD-yQf" id="fbv-Kc-gXg"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6JH-pY-C3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3420" y="63"/>
         </scene>
         <!--View Request Table View Controller-->
         <scene sceneID="HpV-ua-zuL">
@@ -1189,7 +1143,6 @@
     <resources>
         <image name="BlueBar" width="375" height="52"/>
         <image name="ClassicBackground" width="375" height="667"/>
-        <image name="Dummy" width="250" height="250"/>
         <image name="FriendSelectedIcon" width="39" height="39"/>
         <image name="FriendsIcon" width="27" height="27"/>
         <image name="KarmaPointsIcon" width="21" height="25"/>
@@ -1207,6 +1160,6 @@
         <segue reference="7fL-I0-nA8"/>
         <segue reference="IhG-KY-8Wu"/>
         <segue reference="r0E-Gv-G2T"/>
-        <segue reference="7UW-ov-f9O"/>
+        <segue reference="PPI-hW-TY2"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,11 +17,7 @@ class CircleController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // setBackground()
     }
-    
-    
     
     func validValues() -> Bool {
         if (circleNameField.text!.isEmpty || circleKeyField.text!.isEmpty) {
@@ -33,26 +29,4 @@ class CircleController: UIViewController {
         }
         return true
     }
-    
-//    func circleExists() -> Bool {
-//
-//    }
-    
-    func validCircle() -> Bool {
-        return false
-    }
-
-//    func setBackground() {
-//        let backgroundImage = UIImage(named: "ClassicBackground")
-//
-//        var imageView : UIImageView!
-//        imageView = UIImageView(frame: view.bounds)
-//        imageView.contentMode =  UIViewContentMode.ScaleAspectFill
-//        imageView.clipsToBounds = true
-//        imageView.image = backgroundImage
-//        imageView.center = view.center
-//        view.addSubview(imageView)
-//        self.view.sendSubviewToBack(imageView)
-//    }
-
 }
