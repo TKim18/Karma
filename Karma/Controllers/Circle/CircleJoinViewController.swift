@@ -17,9 +17,15 @@ class CircleJoinViewController: CircleController {
         validCircle()
     }
     
+    func alertNoExist() {
+        let alert = UIAlertController(title: "Sorry, those are not valid credentials", message: "",  preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // Server Call
     override func validCircle() -> Bool {
-        let query = "joinName = " + self.circleNameField.text! + " and joinKey = " + self.circleKeyField.text!
+        let query = "joinName = '" + self.circleNameField.text! + "' and joinKey = '" + self.circleKeyField.text! + "'"
         print(query)
         let queryBuilder = DataQueryBuilder()
         queryBuilder!.setWhereClause(query)
@@ -28,11 +34,16 @@ class CircleJoinViewController: CircleController {
         let dataStore = self.backendless.data.of(Circle().ofClass())
         let currentUser = User.getCurrentUser()
         
-        dataStore?.findFirst(
+        dataStore?.find(
             queryBuilder,
             response: {
                 (foundCircle) -> () in
-                let circle = foundCircle as! Circle
+                let circles = foundCircle as! [Circle]
+                if (circles.isEmpty) {
+                    self.alertNoExist()
+                    return;
+                }
+                let circle = circles[0]
                 print ("Circle has been successfully found")
                 dataStore?.addRelation(
                     "Users",

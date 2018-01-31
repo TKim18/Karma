@@ -21,6 +21,8 @@ class CircleController: UIViewController {
         // setBackground()
     }
     
+    
+    
     func validValues() -> Bool {
         if (circleNameField.text!.isEmpty || circleKeyField.text!.isEmpty) {
             let (title, message) = circleNameField.text!.isEmpty ? ("Please enter a name", "e.g., League of Draven") : ("Please enter a key", "e.g., coolbeans123")
