@@ -11,8 +11,8 @@ import UIKit
 class CircleCreateViewController: CircleController {
 
     @IBAction func createCircle(sender : AnyObject) {
-        if (self.validValues() && validCircle()) {
-            self.performSegue(withIdentifier: "CreateCircle", sender: self)
+        if (self.validValues()) {
+            createCircle()
         }
     }
     
@@ -24,12 +24,11 @@ class CircleCreateViewController: CircleController {
     }
     
     // Server Call
-    override func validCircle() -> Bool {
+    func createCircle() {
         let dataStore = self.backendless.data.of(Circle().ofClass())
         
         let circle = Circle(name: circleNameField.text!, password: circleKeyField.text!)
         let currentUser = User.getCurrentUser()
-        var valid = true
         
         Types.tryblock({ () -> Void in
             //Save the new object, retrieve its object id, and add the relation to the Users column
@@ -41,12 +40,10 @@ class CircleCreateViewController: CircleController {
             )
             currentUser.updateProperties(["circleId" : savedCircle.objectId!])
             self.backendless.userService.update(currentUser)
+            self.performSegue(withIdentifier: "CreateCircle", sender: self)
         }, catchblock: {(exception) -> Void in
             self.notifyDup()
             print(exception ?? "Error")
-            valid = false
         })
-        
-        return valid
     }
 }
