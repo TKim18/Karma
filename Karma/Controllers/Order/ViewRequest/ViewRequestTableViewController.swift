@@ -15,6 +15,7 @@ class ViewRequestTableViewController: UITableViewController {
     let cellSpacingHeight: CGFloat = 5
     private var allOrders = [Order]()
     private var orders = [Order]()
+    private let refreshCont = UIRefreshControl()
     
     // UIElements
     @IBOutlet weak var pendingAcceptedControl: UISegmentedControl!
@@ -57,8 +58,22 @@ class ViewRequestTableViewController: UITableViewController {
         
         //Enable segment control
         self.pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
+        
+        //Enable pull to refresh
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshCont
+        } else {
+            tableView.addSubview(refreshCont)
+        }
+        refreshCont.addTarget(self, action: #selector(self.refreshOrders), for: .valueChanged)
+        refreshCont.attributedTitle = NSAttributedString(string: "Fetching new orders ...")
     }
 
+    @objc private func refreshOrders(_sender : Any) {
+        self.tableView.reloadData()
+        self.refreshCont.endRefreshing()
+    }
+    
     private func updateKarmaPoints() {
         karmaPointsButton.title = String(User.getCurrentUserProperty(key: "karmaPoints") as! Double)
     }
