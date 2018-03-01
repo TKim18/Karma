@@ -122,18 +122,6 @@ class ViewRequestTableViewController: UITableViewController {
         cell.backgroundColor = UIColor.white
     }
     
-//    func loadUserImage(id : String) -> UIImage {
-//        let imagePath = User.getUserWithId(userId: id).getProperty("imagePath") as! String
-//
-//        let url = URL(string: imagePath)
-//        DispatchQueue.global().async {
-//            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-//            DispatchQueue.main.async {
-//                self.imageView.image = UIImage(data: data!)
-//            }
-//        }
-//    }
-    
     //Load the data into the table cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
@@ -144,28 +132,38 @@ class ViewRequestTableViewController: UITableViewController {
         
         let order = orders[indexPath.section]
         
-        //Cell text components
+        // Cell components
         cell.titleLabel.text = order.title! + " for $" + String(order.cost)
         cell.descriptionLabel.text = order.message
         cell.timeLabel.text = order.requestedTime
-        //TODO: Make this location label depend on whether both fields have a value or not
         cell.locationLabel.text = order.destination!
         cell.categoryImage.image = order.fromDescription().image
         
-        //TODO: This should become a query on requesting user id and then a pull on their image attribute
-        let imagePath = User.getUserWithId(userId: order.requestingUserId!).getProperty("imagePath") as! String
-        
+        let requestId = order.requestingUserId!
+        let imagePath = User.getUserWithId(userId: requestId).getProperty("imagePath") as! String
         if imagePath == "default" {
-            cell.userImage.image = UIImage(named: "DefaultAvatar")
+            cell.userImage.image = UIImage(named: "DefaultAvatar")!
         }
         else {
-            let url = URL(string: imagePath)
-            cell.userImage.kf.setImage(with: url)
+            ImageCache.default.retrieveImage(forKey: requestId, options: nil) {
+                image, cacheType in
+                if let image = image {
+                    cell.userImage.image = image
+                } else {
+                    let url = URL(string: imagePath)
+                    cell.userImage.kf.setImage(with: url, completionHandler: {
+                        (image, error, cacheType, imageUrl) in
+                        self.saveImageToCache(image: image!, id: requestId)
+                    })
+                }
+            }
         }
         
-        // cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
-        
         return cell
+    }
+    
+    private func saveImageToCache (image: UIImage, id: String) {
+        ImageCache.default.store(image, forKey: id)
     }
 
     ///---------------------- Accepting a request handling ---------------------------//

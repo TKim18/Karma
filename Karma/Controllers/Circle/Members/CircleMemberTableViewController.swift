@@ -67,6 +67,8 @@ class CircleMemberTableViewController: UITableViewController {
         return cell
     }
     
+    
+    
     private func loadMembers() {
         let backendless = Backendless.sharedInstance()
         let dataStore = backendless!.data.of(Circle.ofClass())

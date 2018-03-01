@@ -44,8 +44,9 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     private func saveImageToCache (image: UIImage) {
-        let id = User.getCurrentUserId()
-        ImageCache.default.store(image, forKey: id as String)
+        let id = User.getCurrentUserId() as String
+        ImageCache.default.removeImage(forKey: id)
+        ImageCache.default.store(image, forKey: id)
     }
     
     private func displayUserPicture() {
