@@ -152,7 +152,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "541573236.929247"
+                  timestampString = "541574950.848052"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -167,7 +167,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "541573236.9318939"
+                  timestampString = "541574950.85353"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -182,7 +182,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "541573236.9345061"
+                  timestampString = "541574950.857216"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -197,7 +197,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "541573236.938624"
+                  timestampString = "541574950.860476"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -214,7 +214,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
-            timestampString = "541573759.046322"
+            timestampString = "541574950.511022"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -262,7 +262,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
-            timestampString = "541573759.047031"
+            timestampString = "541574950.5111279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
@@ -278,7 +278,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
-            timestampString = "541573759.047437"
+            timestampString = "541574950.5112031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -452,13 +452,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/User/UserProfileViewController.swift"
-            timestampString = "541573759.048274"
+            timestampString = "541574950.511381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "getUserProfile()"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "displayUserPicture()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Karma/Controllers/User/UserProfileViewController.swift"
+            timestampString = "541574950.511777"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "displayUserPicture()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Karma/Controllers/User/UserProfileViewController.swift"
+            timestampString = "541574950.512063"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "displayUserPicture()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__ObjC.UIImage&gt;, Kingfisher.CacheType) -&gt; () in Karma.UserProfileViewController.(displayUserPicture in _7962C113F735F257E60056ABE11835F5)() -&gt; ()"
+                  moduleName = "Karma"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/User/UserProfileViewController.swift"
+                  timestampString = "541574950.896813"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "607">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;__ObjC.UIImage&gt;, Kingfisher.CacheType) -&gt; () in Karma.UserProfileViewController.(displayUserPicture in _7962C113F735F257E60056ABE11835F5)() -&gt; ()"
+                  moduleName = "Karma"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/User/UserProfileViewController.swift"
+                  timestampString = "541574950.901127"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "27">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
