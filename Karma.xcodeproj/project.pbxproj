@@ -45,7 +45,7 @@
 		22B9167F1F7B3690002FCDD6 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167E1F7B3690002FCDD6 /* NotificationTableViewController.swift */; };
 		22D31D8B1FB2B28400014892 /* DirectTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D31D8A1FB2B28400014892 /* DirectTransferViewController.swift */; };
 		22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */; };
-		749CDB62FAC047BF1F6EAAD2 /* libPods-Karma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */; };
+		9953D19A5A0FD783C9755C42 /* Pods_Karma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,8 +113,8 @@
 		22B9167E1F7B3690002FCDD6 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
 		22D31D8A1FB2B28400014892 /* DirectTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransferViewController.swift; sourceTree = "<group>"; };
 		22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransfer.swift; sourceTree = "<group>"; };
+		2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Karma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEFA3D6DA2E1C5CD49339F5 /* Pods-Karma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.release.xcconfig"; sourceTree = "<group>"; };
-		C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Karma.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				749CDB62FAC047BF1F6EAAD2 /* libPods-Karma.a in Frameworks */,
+				9953D19A5A0FD783C9755C42 /* Pods_Karma.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +298,7 @@
 		5A8163A77E6F62574C4A1FC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */,
+				2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -439,9 +439,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Karma/Pods-Karma-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

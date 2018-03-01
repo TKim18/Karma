@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ViewRequestTableViewController: UITableViewController {
 
@@ -159,12 +160,7 @@ class ViewRequestTableViewController: UITableViewController {
         }
         else {
             let url = URL(string: imagePath)
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                DispatchQueue.main.async {
-                    cell.userImage.image = UIImage(data: data!)
-                }
-            }
+            cell.userImage.kf.setImage(with: url)
         }
         
         // cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
