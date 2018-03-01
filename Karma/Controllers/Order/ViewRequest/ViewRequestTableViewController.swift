@@ -28,6 +28,9 @@ class ViewRequestTableViewController: UITableViewController {
         
         //Configure the view
         configureTableView()
+        
+        //Configure the cache to expire
+        configureCache()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +61,10 @@ class ViewRequestTableViewController: UITableViewController {
 
     private func updateKarmaPoints() {
         karmaPointsButton.title = String(User.getCurrentUserProperty(key: "karmaPoints") as! Double)
+    }
+    
+    private func configureCache() {
+        ImageCache.default.maxCachePeriodInSecond = 60 * 3
     }
 
     @objc func segmentChanged(sender: UISegmentedControl) {

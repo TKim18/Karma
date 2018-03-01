@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CircleMemberTableViewController: UITableViewController {
 
@@ -51,10 +52,25 @@ class CircleMemberTableViewController: UITableViewController {
         let member = members[indexPath.row]
         cell.nameLabel.text = member.name! as String
         
-        //TODO: This should become a query on requesting user id and then a pull on their image attribute
-        let profilePicture = UIImage(named: "DummyAvatar")
-        
-        cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
+        let memberId = member.objectId! as String
+        let imagePath = member.getProperty("imagePath") as! String
+        if imagePath == "default" {
+            cell.userImage.image = UIImage(named: "DefaultAvatar")!
+        }
+        else {
+            ImageCache.default.retrieveImage(forKey: memberId, options: nil) {
+                image, cacheType in
+                if let image = image {
+                    cell.userImage.image = image
+                } else {
+                    let url = URL(string: imagePath)
+                    cell.userImage.kf.setImage(with: url, completionHandler: {
+                        (image, error, cacheType, imageUrl) in
+                        self.saveImageToCache(image: image!, id: memberId)
+                    })
+                }
+            }
+        }
         
         cell.layer.borderWidth = 10.0
         cell.layer.borderColor = viewColor.cgColor
@@ -67,7 +83,9 @@ class CircleMemberTableViewController: UITableViewController {
         return cell
     }
     
-    
+    private func saveImageToCache (image: UIImage, id: String) {
+        ImageCache.default.store(image, forKey: id)
+    }
     
     private func loadMembers() {
         let backendless = Backendless.sharedInstance()
