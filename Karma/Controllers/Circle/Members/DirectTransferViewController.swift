@@ -115,12 +115,65 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     }
     
     func validRequest() -> Bool {
-        // Make an order in addition to a direct transfer
+        let orderStore = Order.getOrderDataStore()
+        let circleStore = Circle.getCircleDataStore()
+        let directStore = DirectTransfer.getDTDataStore()
+        
+        let order = Order()
+        
+        order.completed = false
+        order.title = self.currentTransfer.title
+        order.cost = self.currentTransfer.cost
+        order.acceptingUserId = self.currentTransfer.currentUserId
+        order.acceptingUserName = self.currentTransfer.currentUserName
+        order.requestingUserId = self.currentTransfer.selectedUserId
+        order.requestingUserName = self.currentTransfer.selectedUserName
+        
+        orderStore.save(
+            order,
+            response: {
+                (updatedOrder) -> () in
+                let newOrder = updatedOrder as! Order
+                circleStore.addRelation(
+                    "Orders",
+                    parentObjectId: User.getCurrentUserProperty(key: "circleId") as! String,
+                    childObjects: [newOrder.objectId!],
+                    response: {(num) -> () in ()},
+                    error: {(fault : Fault?) -> () in print("Something went wrong adding the order")})
+                print("Making a new order object")
+        },
+            error: { (fault : Fault?) -> () in
+                print("Something went wrong trying to make the order object: \(String(describing: fault))")
+        })
+        
+        directStore.save(
+            self.currentTransfer,
+            response: {
+                (updatedRequest) -> () in
+                print("Making a new direct transfer object")
+        },
+            error: {
+                (fault : Fault?) -> () in
+                print("Something went wrong trying to make the direct transfer: \(String(describing: fault))")
+        })
+        
         return true
     }
     
     func validPay() -> Bool {
         let userService = Backendless.sharedInstance().userService
+        let directStore = DirectTransfer.getDTDataStore()
+        
+        directStore.save(
+            self.currentTransfer,
+            response: {
+                (updatedRequest) -> () in
+                print("Making a new direct transfer object")
+        },
+            error: {
+                (fault : Fault?) -> () in
+                print("Something went wrong trying to make the direct transfer: \(String(describing: fault))")
+        })
         
         let selectedUser = User.getUserWithId(userId: self.currentTransfer.selectedUserId)
         let currentUser = User.getCurrentUser()
