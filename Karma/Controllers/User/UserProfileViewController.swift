@@ -26,7 +26,8 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         imagePicker.delegate = self
         
-        imageView.image = getUserProfile()
+        // imageView.image = getUserProfile()
+        _ = getUserProfile()
     }
     
     @objc
@@ -43,22 +44,24 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     private func getUserProfile() -> UIImage {
         let imagePath = (User.getCurrentUserProperty(key: "imagePath") as! String)
         if (imagePath == "default") {
-            return UIImage(named: "DefaultAvatar")!
+            imageView.image = UIImage(named: "DefaultAvatar")!
         }
         else {
-            // Make an HTTP get request for the path
             let url = URL(string: imagePath)
-            let request: NSMutableURLRequest = NSMutableURLRequest(url: url!)
-            request.httpMethod = "GET"
-            request.timeoutInterval = 60
-            let queue: OperationQueue = OperationQueue()
             
-            NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: queue, completionHandler:{ (response: URLResponse?, data: Data?, error: Error?) -> Void in
-                return UIImage(data: data!, scale: 1.0)
-                
-            })
-            return UIImage(named: "DummyAvatar")!
+            // Asynch call
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: data!)
+                }
+            }
+//            let url = URL(string: imagePath)
+//            let data = try? Data(contentsOf: url!)
+//            imageView.image = UIImage(data: data!)
         }
+        
+        return UIImage(named: "DummyAvatar")!
     }
     
     private func uploadImageToServer(image: UIImage) {
