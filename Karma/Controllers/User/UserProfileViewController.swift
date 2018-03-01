@@ -23,31 +23,70 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         imagePicker.delegate = self
+        
+        imageView.image = getUserProfile()
     }
     
     @objc
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             uploadImageToServer(image: pickedImage)
+            imageView.image = pickedImage.maskInCircle(image: pickedImage, radius: 78)
             imageView.contentMode = .scaleAspectFit
-            imageView.image = pickedImage
         }
         
         dismiss(animated: true, completion: nil)
     }
     
+    private func getUserProfile() -> UIImage {
+        let imagePath = (User.getCurrentUserProperty(key: "imagePath") as! String)
+        if (imagePath == "default") {
+            return UIImage(named: "DefaultAvatar")!
+        }
+        else {
+            // Make an HTTP get request for the path
+            let url = URL(string: imagePath)
+            let request: NSMutableURLRequest = NSMutableURLRequest(url: url!)
+            request.httpMethod = "GET"
+            request.timeoutInterval = 60
+            let queue: OperationQueue = OperationQueue()
+            
+            NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue: queue, completionHandler:{ (response: URLResponse?, data: Data?, error: Error?) -> Void in
+                return UIImage(data: data!, scale: 1.0)
+                
+            })
+            return UIImage(named: "DummyAvatar")!
+        }
+    }
+    
     private func uploadImageToServer(image: UIImage) {
-        let imageData: Data = UIImagePNGRepresentation(image)!
-        let fileName = String(User.getCurrentUser().email) + ".png"
-        let path = "userImages/" + fileName
+        let backendless = Backendless.sharedInstance()
         
-        Backendless.sharedInstance().file.saveFile(
+        let imageData: Data = image.jpeg(.low)!
+        let path = "userImages/" + String(User.getCurrentUser().email) + ".png"
+        let currentUser = backendless!.userService.currentUser
+        
+        backendless!.file.saveFile(
             path,
             content: imageData,
+            overwriteIfExist: true,
             response: {
                 (savedFile: BackendlessFile?) -> Void in
+                // Upload the current user's image path attribute
+                let imagePath = "https://api.backendless.com/4E2E1A3D-FFCD-0343-FF47-1C589EC9B700/FA7EA74D-684C-9B00-FF57-36FE9F512200/files/userImages/" + String(currentUser!.email) + ".png"
+                currentUser!.updateProperties(["imagePath" : imagePath])
+                backendless!.userService.update(
+                    currentUser,
+                    response: {
+                        (updatedUser: BackendlessUser?) -> Void in
+                        print ("User image has been updated")
+                },
+                    error: {
+                        (fault : Fault?) -> () in
+                        print("Server reported an error: \(String(describing: fault))")
+                })
                 print("New image saved to server")
             },
             error: {

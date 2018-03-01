@@ -62,6 +62,7 @@ class RegisterController: UIViewController {
         user.setProperty("email", object: email + "@wesleyan.edu")
         user.setProperty("name", object: name)
         user.setProperty("password", object: password)
+        user.setProperty("imagePath", object: "default")
         
         var valid = true
         Types.tryblock({ () -> Void in

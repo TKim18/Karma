@@ -140,7 +140,8 @@ class ViewRequestTableViewController: UITableViewController {
         cell.categoryImage.image = order.fromDescription().image
         
         //TODO: This should become a query on requesting user id and then a pull on their image attribute
-        let profilePicture = UIImage(named: "DummyAvatar")
+        let profilePicture = UIImage(named: "DefaultAvatar")
+        
         cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
         
         return cell

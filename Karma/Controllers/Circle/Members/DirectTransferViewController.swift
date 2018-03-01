@@ -115,6 +115,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     }
     
     func validRequest() -> Bool {
+        // Make an order in addition to a direct transfer
         return true
     }
     

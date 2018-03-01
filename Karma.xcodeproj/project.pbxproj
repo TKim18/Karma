@@ -31,8 +31,8 @@
 		227330A41FBBC0C6002D4026 /* RoundedButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226270DB1FB5369100690600 /* RoundedButtonController.swift */; };
 		2277E0671F744B5F00AC53CB /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0641F744B5F00AC53CB /* Circle.swift */; };
 		2277E0681F744B5F00AC53CB /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0651F744B5F00AC53CB /* Order.swift */; };
-		2277E06D1F744BA400AC53CB /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06B1F744BA400AC53CB /* UIImage.swift */; };
-		2277E06E1F744BA400AC53CB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06C1F744BA400AC53CB /* UIColor.swift */; };
+		2277E06D1F744BA400AC53CB /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06B1F744BA400AC53CB /* Image.swift */; };
+		2277E06E1F744BA400AC53CB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06C1F744BA400AC53CB /* Color.swift */; };
 		2277E0761F744C6300AC53CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0751F744C6300AC53CB /* ViewController.swift */; };
 		2277E0791F744C7800AC53CB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0771F744C7800AC53CB /* LoginController.swift */; };
 		2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0781F744C7800AC53CB /* RegisterController.swift */; };
@@ -98,8 +98,8 @@
 		226270DE1FB53EC700690600 /* Karma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Karma.entitlements; sourceTree = "<group>"; };
 		2277E0641F744B5F00AC53CB /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		2277E0651F744B5F00AC53CB /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		2277E06B1F744BA400AC53CB /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		2277E06C1F744BA400AC53CB /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		2277E06B1F744BA400AC53CB /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		2277E06C1F744BA400AC53CB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2277E0751F744C6300AC53CB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2277E0771F744C7800AC53CB /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2277E0781F744C7800AC53CB /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -236,8 +236,8 @@
 		2277E06A1F744B7000AC53CB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2277E06C1F744BA400AC53CB /* UIColor.swift */,
-				2277E06B1F744BA400AC53CB /* UIImage.swift */,
+				2277E06C1F744BA400AC53CB /* Color.swift */,
+				2277E06B1F744BA400AC53CB /* Image.swift */,
 				22A139141FA6A60A00B21CD2 /* Double.swift */,
 			);
 			path = Extensions;
@@ -502,11 +502,11 @@
 				227330A21FBBA88E002D4026 /* NumPadCalculator.swift in Sources */,
 				22302B041F7B37790046E757 /* CircleController.swift in Sources */,
 				2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */,
-				2277E06E1F744BA400AC53CB /* UIColor.swift in Sources */,
+				2277E06E1F744BA400AC53CB /* Color.swift in Sources */,
 				224158CA2027BE3F00C8DE2F /* UserProfileViewController.swift in Sources */,
 				227BBC9E2018DC80005314DF /* CircleJoinViewController.swift in Sources */,
 				2229C08B1F744D9E0083C215 /* RequestTableViewController.swift in Sources */,
-				2277E06D1F744BA400AC53CB /* UIImage.swift in Sources */,
+				2277E06D1F744BA400AC53CB /* Image.swift in Sources */,
 				2229C08D1F744D9E0083C215 /* RequestCategoryTableViewCell.swift in Sources */,
 				2277E0681F744B5F00AC53CB /* Order.swift in Sources */,
 				22A139151FA6A60A00B21CD2 /* Double.swift in Sources */,
