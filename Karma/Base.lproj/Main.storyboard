@@ -14,7 +14,7 @@
         <!--Login Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginScreen" id="BYZ-38-t0r" customClass="LoginController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -119,7 +119,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="6eh-qz-fhT">
             <objects>
-                <tabBarController id="sJO-1I-4Tx" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTab" id="sJO-1I-4Tx" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="BlueBar" selectionIndicatorImage="SelectedIconIndicator" id="1Ux-s4-dHf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1035,14 +1035,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upload your user image here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5au-Rz-VIj">
-                                <rect key="frame" x="72" y="189" width="240" height="21"/>
+                                <rect key="frame" x="72" y="101" width="240" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9x-UH-yL8">
-                                <rect key="frame" x="50" y="486" width="300" height="30"/>
+                                <rect key="frame" x="25" y="521" width="334" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Load Image"/>
                                 <connections>
@@ -1050,7 +1050,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Be-IB-EuF">
-                                <rect key="frame" x="67" y="292" width="240" height="128"/>
+                                <rect key="frame" x="62" y="208" width="250" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -1183,7 +1183,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="7fL-I0-nA8"/>
         <segue reference="IhG-KY-8Wu"/>
-        <segue reference="r0E-Gv-G2T"/>
-        <segue reference="ruZ-Ha-ylM"/>
+        <segue reference="rOi-oM-HQC"/>
+        <segue reference="sb5-Wr-8id"/>
     </inferredMetricsTieBreakers>
 </document>

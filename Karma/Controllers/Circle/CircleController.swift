@@ -17,6 +17,17 @@ class CircleController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupView()
+    }
+    
+    private func setupView() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CircleController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func validValues() -> Bool {

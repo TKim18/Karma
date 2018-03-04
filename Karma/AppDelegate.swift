@@ -12,8 +12,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Override pointfor customization after application launch.
         backendless?.initApp(APP_ID, apiKey:API_Key)
+        backendless?.userService.setStayLoggedIn(true)
         
         // TODO: Split these into their own functions
         // Sets the universal navigation bar color, tint color, and text color across the whole app
@@ -24,6 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Changes the selected tab bar icon to white
         UITabBar.appearance().tintColor = UIColor.white
+        
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        let controller = storyBoard.instantiateViewController(withIdentifier: "MainTab") as! ViewController
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window?.rootViewController = controller
+//        self.window?.makeKeyAndVisible()
         
         return true
     }
