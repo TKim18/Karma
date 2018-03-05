@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F22E1B41E8407D1004B722A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B21E8407D1004B722A /* Main.storyboard */; };
-		0F22E1B61E8407D1004B722A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B51E8407D1004B722A /* Assets.xcassets */; };
-		0F22E1B91E8407D1004B722A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B71E8407D1004B722A /* LaunchScreen.storyboard */; };
 		220FE6DC1FBB9AD7006C257E /* NumPadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */; };
 		2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */; };
 		2229C0861F744D820083C215 /* ViewRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */; };
@@ -22,10 +19,14 @@
 		22302B051F7B37790046E757 /* CircleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B021F7B37790046E757 /* CircleTableViewController.swift */; };
 		22302B061F7B37790046E757 /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B031F7B37790046E757 /* CircleTableViewCell.swift */; };
 		223BE9B81F90062000C6A8F7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BE9B71F90062000C6A8F7 /* User.swift */; };
+		224006A7204CEDDD003CE920 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224006A6204CEDDD003CE920 /* AppDelegate.swift */; };
+		224006AB204CEE0D003CE920 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 224006AA204CEE0D003CE920 /* Info.plist */; };
+		224006AF204CEE20003CE920 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224006AD204CEE20003CE920 /* LaunchScreen.storyboard */; };
+		224006B0204CEE20003CE920 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224006AE204CEE20003CE920 /* Main.storyboard */; };
+		224006B3204CEE34003CE920 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224006B2204CEE34003CE920 /* Assets.xcassets */; };
+		224006B5204CEF31003CE920 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224006B4204CEF31003CE920 /* Login.storyboard */; };
 		224158CA2027BE3F00C8DE2F /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */; };
-		2261433D1F72E5FB00711DEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226143391F72E5FA00711DEF /* AppDelegate.swift */; };
 		226270DC1FB5369100690600 /* RoundedButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226270DB1FB5369100690600 /* RoundedButtonController.swift */; };
-		226270DF1FB5412700690600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B51E8407D1004B722A /* Assets.xcassets */; };
 		227330A21FBBA88E002D4026 /* NumPadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */; };
 		227330A31FBBA894002D4026 /* CostCalculator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2287A3471FB508410035C685 /* CostCalculator.xib */; };
 		227330A41FBBC0C6002D4026 /* RoundedButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226270DB1FB5369100690600 /* RoundedButtonController.swift */; };
@@ -75,10 +76,6 @@
 /* Begin PBXFileReference section */
 		05D99E2CD8E1D330A6C94F72 /* Pods-Karma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.debug.xcconfig"; sourceTree = "<group>"; };
 		0F22E1AB1E8407D1004B722A /* Karma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karma.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F22E1B31E8407D1004B722A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0F22E1B51E8407D1004B722A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0F22E1B81E8407D1004B722A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		0F22E1BA1E8407D1004B722A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumPadCalculator.swift; sourceTree = "<group>"; };
 		2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewController.swift; sourceTree = "<group>"; };
 		2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewCell.swift; sourceTree = "<group>"; };
@@ -91,11 +88,16 @@
 		22302B021F7B37790046E757 /* CircleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewController.swift; path = Karma/Controllers/Circle/Deprecated/CircleTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		22302B031F7B37790046E757 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewCell.swift; path = Karma/Controllers/Circle/Deprecated/CircleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		223BE9B71F90062000C6A8F7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		224006A6204CEDDD003CE920 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		224006A9204CEE0D003CE920 /* Karma.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Karma.entitlements; sourceTree = "<group>"; };
+		224006AA204CEE0D003CE920 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		224006AD204CEE20003CE920 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		224006AE204CEE20003CE920 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		224006B2204CEE34003CE920 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		224006B4204CEF31003CE920 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		226143391F72E5FA00711DEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		226270DB1FB5369100690600 /* RoundedButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonController.swift; sourceTree = "<group>"; };
 		226270DD1FB53E7E00690600 /* CostCalculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CostCalculator.entitlements; sourceTree = "<group>"; };
-		226270DE1FB53EC700690600 /* Karma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Karma.entitlements; sourceTree = "<group>"; };
 		2277E0641F744B5F00AC53CB /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		2277E0651F744B5F00AC53CB /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		2277E06B1F744BA400AC53CB /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -159,15 +161,13 @@
 		0F22E1AD1E8407D1004B722A /* Karma */ = {
 			isa = PBXGroup;
 			children = (
-				226270DE1FB53EC700690600 /* Karma.entitlements */,
-				0F22E1B21E8407D1004B722A /* Main.storyboard */,
-				0F22E1B71E8407D1004B722A /* LaunchScreen.storyboard */,
-				226143391F72E5FA00711DEF /* AppDelegate.swift */,
+				224006A5204CEDBC003CE920 /* Application Delegate */,
+				224006AC204CEE13003CE920 /* Storyboards */,
 				2277E05D1F744AEE00AC53CB /* Models */,
 				2277E06A1F744B7000AC53CB /* Extensions */,
 				2277E0711F744C0800AC53CB /* Controllers */,
-				0F22E1B51E8407D1004B722A /* Assets.xcassets */,
-				0F22E1BA1E8407D1004B722A /* Info.plist */,
+				224006B1204CEE28003CE920 /* Resources */,
+				224006A8204CEDFD003CE920 /* Supporting Files */,
 			);
 			path = Karma;
 			sourceTree = "<group>";
@@ -220,6 +220,41 @@
 				22D31D8A1FB2B28400014892 /* DirectTransferViewController.swift */,
 			);
 			path = Members;
+			sourceTree = "<group>";
+		};
+		224006A5204CEDBC003CE920 /* Application Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				224006A6204CEDDD003CE920 /* AppDelegate.swift */,
+			);
+			path = "Application Delegate";
+			sourceTree = "<group>";
+		};
+		224006A8204CEDFD003CE920 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				224006AA204CEE0D003CE920 /* Info.plist */,
+				224006A9204CEE0D003CE920 /* Karma.entitlements */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		224006AC204CEE13003CE920 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				224006AD204CEE20003CE920 /* LaunchScreen.storyboard */,
+				224006B4204CEF31003CE920 /* Login.storyboard */,
+				224006AE204CEE20003CE920 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		224006B1204CEE28003CE920 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				224006B2204CEE34003CE920 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		2277E05D1F744AEE00AC53CB /* Models */ = {
@@ -420,10 +455,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F22E1B91E8407D1004B722A /* LaunchScreen.storyboard in Resources */,
-				0F22E1B61E8407D1004B722A /* Assets.xcassets in Resources */,
+				224006AF204CEE20003CE920 /* LaunchScreen.storyboard in Resources */,
+				224006AB204CEE0D003CE920 /* Info.plist in Resources */,
+				224006B5204CEF31003CE920 /* Login.storyboard in Resources */,
 				227330A31FBBA894002D4026 /* CostCalculator.xib in Resources */,
-				0F22E1B41E8407D1004B722A /* Main.storyboard in Resources */,
+				224006B0204CEE20003CE920 /* Main.storyboard in Resources */,
+				224006B3204CEE34003CE920 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +468,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				226270DF1FB5412700690600 /* Assets.xcassets in Resources */,
 				2287A3481FB508410035C685 /* CostCalculator.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,6 +542,7 @@
 				227330A41FBBC0C6002D4026 /* RoundedButtonController.swift in Sources */,
 				223BE9B81F90062000C6A8F7 /* User.swift in Sources */,
 				22B9167F1F7B3690002FCDD6 /* NotificationTableViewController.swift in Sources */,
+				224006A7204CEDDD003CE920 /* AppDelegate.swift in Sources */,
 				22302AFF1F7B376A0046E757 /* CircleMemberTableViewCell.swift in Sources */,
 				2229C0861F744D820083C215 /* ViewRequestTableViewCell.swift in Sources */,
 				227330A21FBBA88E002D4026 /* NumPadCalculator.swift in Sources */,
@@ -524,7 +561,6 @@
 				2277E0761F744C6300AC53CB /* ViewController.swift in Sources */,
 				22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */,
 				2277E0791F744C7800AC53CB /* LoginController.swift in Sources */,
-				2261433D1F72E5FB00711DEF /* AppDelegate.swift in Sources */,
 				22302B061F7B37790046E757 /* CircleTableViewCell.swift in Sources */,
 				2229C08C1F744D9E0083C215 /* CustomRequestViewController.swift in Sources */,
 				2277E0671F744B5F00AC53CB /* Circle.swift in Sources */,
@@ -552,25 +588,6 @@
 			targetProxy = 2287A3401FB507ED0035C685 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		0F22E1B21E8407D1004B722A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F22E1B31E8407D1004B722A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0F22E1B71E8407D1004B722A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F22E1B81E8407D1004B722A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0F22E1BB1E8407D1004B722A /* Debug */ = {
@@ -682,10 +699,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Karma/Karma.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Karma/Supporting Files/Karma.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = B4LQS9CJ47;
-				INFOPLIST_FILE = Karma/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Karma/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Karma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -701,10 +718,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Karma/Karma.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Karma/Supporting Files/Karma.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEVELOPMENT_TEAM = B4LQS9CJ47;
-				INFOPLIST_FILE = Karma/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Karma/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Karma;
 				PRODUCT_NAME = "$(TARGET_NAME)";

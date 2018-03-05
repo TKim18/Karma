@@ -21,17 +21,6 @@ class LoginController: UIViewController {
         setupView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        checkLoggedIn()
-    }
-    
-    private func checkLoggedIn() {
-        let userService = Backendless.sharedInstance().userService
-        if (userService?.isValidUserToken().boolValue)! {
-            self.performSegue(withIdentifier: "LoginToTab", sender: self)
-        }
-    }
-    
     private func setupView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginController.dismissKeyboard))
         view.addGestureRecognizer(tap)

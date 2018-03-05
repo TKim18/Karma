@@ -26,11 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Changes the selected tab bar icon to white
         UITabBar.appearance().tintColor = UIColor.white
         
-//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        let controller = storyBoard.instantiateViewController(withIdentifier: "MainTab") as! ViewController
-//        self.window = UIWindow(frame: UIScreen.main.bounds)
-//        self.window?.rootViewController = controller
-//        self.window?.makeKeyAndVisible()
+        let userService = backendless!.userService
+        if (userService?.isValidUserToken().boolValue)! {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyBoard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = controller
+            self.window?.makeKeyAndVisible()
+        }
         
         return true
     }
