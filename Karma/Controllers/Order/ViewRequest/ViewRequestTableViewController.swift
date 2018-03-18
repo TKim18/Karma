@@ -114,7 +114,7 @@ class ViewRequestTableViewController: UITableViewController {
     }
     
     private func loadPending() {
-        self.orders = self.allOrders.filter { $0.acceptingUserId == "-1" }
+        self.orders = self.allOrders.filter { $0.acceptingUserId == "-1" && !$0.completed }
     }
     
     private func loadAccepted() {

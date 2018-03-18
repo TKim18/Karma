@@ -51,6 +51,7 @@ class CircleMemberTableViewController: UITableViewController {
         
         let member = members[indexPath.row]
         cell.nameLabel.text = member.name! as String
+        cell.costLabel.text = String(member.getProperty("karmaPoints") as! Double)
         
         let memberId = member.objectId! as String
         let imagePath = member.getProperty("imagePath") as! String
@@ -77,7 +78,6 @@ class CircleMemberTableViewController: UITableViewController {
         
         if (indexPath.row == 0) {
             cell.isUserInteractionEnabled = false
-            cell.pencilIcon.isHidden = true
         }
         
         return cell

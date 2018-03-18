@@ -721,12 +721,19 @@
                                             <rect key="frame" x="403" y="46" width="70" height="82"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PencilIcon" translatesAutoresizingMaskIntoConstraints="NO" id="n2P-5B-ePq">
-                                            <rect key="frame" x="329" y="50" width="15" height="15"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="KarmaPointsView" translatesAutoresizingMaskIntoConstraints="NO" id="n2P-5B-ePq">
+                                            <rect key="frame" x="300" y="47" width="24" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc5-x9-VRM">
-                                            <rect key="frame" x="110" y="47" width="234" height="21"/>
+                                            <rect key="frame" x="110" y="47" width="234" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Karma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGd-HX-oOk">
+                                            <rect key="frame" x="323" y="47" width="42" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
@@ -735,8 +742,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="costLabel" destination="yGd-HX-oOk" id="Pmx-aS-VxL"/>
+                                    <outlet property="costLogo" destination="n2P-5B-ePq" id="1aT-iS-mxf"/>
                                     <outlet property="nameLabel" destination="nc5-x9-VRM" id="KJp-Td-ps4"/>
-                                    <outlet property="pencilIcon" destination="n2P-5B-ePq" id="TeL-vl-WIP"/>
                                     <outlet property="userImage" destination="Few-0w-XKC" id="r9H-o1-u7C"/>
                                     <segue destination="N7W-wu-JGK" kind="show" identifier="ShowDirectSegue" id="U97-dy-uUA"/>
                                 </connections>
@@ -1179,11 +1187,11 @@
         <image name="FriendSelectedIcon" width="39" height="39"/>
         <image name="FriendsIcon" width="27" height="27"/>
         <image name="KarmaPointsIcon" width="21" height="25"/>
+        <image name="KarmaPointsView" width="120" height="120"/>
         <image name="MainBoardIcon" width="27" height="27"/>
         <image name="NewRequestIcon" width="27" height="27"/>
         <image name="NotificationsIcon" width="27" height="27"/>
         <image name="NotificationsSelectedIcon" width="39" height="39"/>
-        <image name="PencilIcon" width="15" height="15"/>
         <image name="SelectedIconIndicator" width="39" height="39"/>
         <image name="SettingsButton" width="375" height="39"/>
         <image name="UserSettingsIcon" width="27" height="27"/>
