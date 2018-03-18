@@ -10,22 +10,23 @@ import UIKit
 
 class CircleController: UIViewController {
 
+    // UI Elements
+    @IBOutlet var circleNameField : UITextField!
+    @IBOutlet var circleKeyField: UITextField!
+    let backendless = Backendless.sharedInstance()!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.navigationController?.setNavigationBarHidden(true, animated: false)
-        // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    func validValues() -> Bool {
+        if (circleNameField.text!.isEmpty || circleKeyField.text!.isEmpty) {
+            let (title, message) = circleNameField.text!.isEmpty ? ("Please enter a name", "e.g., League of Draven") : ("Please enter a key", "e.g., coolbeans123")
+            let alert = UIAlertController(title: title, message: message,  preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
+        }
+        return true
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-
 }

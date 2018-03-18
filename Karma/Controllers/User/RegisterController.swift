@@ -14,12 +14,13 @@ class RegisterController: UIViewController {
     @IBOutlet var emailField : UITextField!
     @IBOutlet var passwordField : UITextField!
     @IBOutlet var verifyField : UITextField!
+    @IBOutlet var wesleyan : UITextField!
     @IBOutlet var errorMessage: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupTap()
+        setupView()
     }
     
     @IBAction func registerButton(sender : AnyObject){
@@ -28,9 +29,11 @@ class RegisterController: UIViewController {
         }
     }
     
-    private func setupTap() {
+    private func setupView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        self.wesleyan.text = "@wesleyan.edu"
     }
     
     @objc func dismissKeyboard() {
@@ -59,6 +62,7 @@ class RegisterController: UIViewController {
         user.setProperty("email", object: email + "@wesleyan.edu")
         user.setProperty("name", object: name)
         user.setProperty("password", object: password)
+        user.setProperty("imagePath", object: "default")
         
         var valid = true
         Types.tryblock({ () -> Void in

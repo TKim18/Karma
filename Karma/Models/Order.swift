@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 @objcMembers
 class Order : NSObject {

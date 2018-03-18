@@ -96,11 +96,12 @@ class NotificationTableViewController: UITableViewController {
         let newAccept = (currentAccept + selectedRequest.cost).rounded(toPlaces: 2)
         let newRequest = (currentRequest - selectedRequest.cost).rounded(toPlaces: 2)
         
+        acceptingUser.setProperty("karmaPoints", object: newAccept)
+        requestingUser.setProperty("karmaPoints", object: newRequest)
+        
         var status = false
         
         Types.tryblock({() -> Void in
-            acceptingUser.setProperty("karmaPoints", object: newAccept)
-            requestingUser.setProperty("karmaPoints", object: newRequest)
             userService!.update(acceptingUser)
             userService!.update(requestingUser)
             status = true

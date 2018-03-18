@@ -7,9 +7,22 @@
 //
 
 import Foundation
+import UIKit
 
 //Probably shouldn't be under here
 extension UIImage {
+    enum JPEGQuality: CGFloat {
+        case lowest = 0
+        case low = 0.25
+        case medium = 0.5
+        case high = 0.75
+        case highest = 1
+    }
+    
+    func jpeg(_ quality: JPEGQuality) -> Data? {
+        return UIImageJPEGRepresentation(self, quality.rawValue)
+    }
+    
     func maskInCircle(image: UIImage, radius: CGFloat) -> UIImage {
         let imageView: UIImageView = UIImageView(image: image)
         var layer: CALayer = CALayer()

@@ -8,47 +8,42 @@
 
 import UIKit
 
-class CircleCreateViewController: UIViewController {
+class CircleCreateViewController: CircleController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    // UI Elements
-    @IBOutlet var circleNameField : UITextField!
-    
     @IBAction func createCircle(sender : AnyObject) {
-        if (validCircle()) {
-            self.performSegue(withIdentifier: "CircleToMain", sender: self)
+        if (self.validValues()) {
+            createCircle()
         }
     }
     
+    // Helper Function
+    func notifyDup() {
+        let alert = UIAlertController(title: "Sorry, that name is taken", message: "Please choose an equally cool name!",  preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // Server Call
-    func validCircle() -> Bool {
-        let backendless = Backendless.sharedInstance()!
-        let dataStore = backendless.data.of(Circle().ofClass())
+    func createCircle() {
+        let dataStore = self.backendless.data.of(Circle().ofClass())
         
-        let circle = Circle(name: circleNameField.text!)
+        let circle = Circle(name: circleNameField.text!, password: circleKeyField.text!)
         let currentUser = User.getCurrentUser()
-        var valid = true
         
         Types.tryblock({ () -> Void in
             //Save the new object, retrieve its object id, and add the relation to the Users column
-            let savedCircle = dataStore!.save(circle) as! Circle;
+            let savedCircle = dataStore!.save(circle) as! Circle
             dataStore!.setRelation(
                 "Users",
                 parentObjectId: savedCircle.objectId,
                 childObjects: [currentUser.objectId]
             )
             currentUser.updateProperties(["circleId" : savedCircle.objectId!])
-            backendless.userService.update(currentUser)
+            self.backendless.userService.update(currentUser)
+            self.performSegue(withIdentifier: "CreateCircle", sender: self)
         }, catchblock: {(exception) -> Void in
+            self.notifyDup()
             print(exception ?? "Error")
-            valid = false
         })
-        
-        return valid
     }
 }

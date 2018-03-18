@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ViewRequestTableViewController: UITableViewController {
 
@@ -27,6 +28,9 @@ class ViewRequestTableViewController: UITableViewController {
         
         //Configure the view
         configureTableView()
+        
+        //Configure the cache to expire
+        configureCache()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -57,6 +61,10 @@ class ViewRequestTableViewController: UITableViewController {
 
     private func updateKarmaPoints() {
         karmaPointsButton.title = String(User.getCurrentUserProperty(key: "karmaPoints") as! Double)
+    }
+    
+    private func configureCache() {
+        ImageCache.default.maxCachePeriodInSecond = 60 * 3
     }
 
     @objc func segmentChanged(sender: UISegmentedControl) {
@@ -131,19 +139,38 @@ class ViewRequestTableViewController: UITableViewController {
         
         let order = orders[indexPath.section]
         
-        //Cell text components
+        // Cell components
         cell.titleLabel.text = order.title! + " for $" + String(order.cost)
         cell.descriptionLabel.text = order.message
         cell.timeLabel.text = order.requestedTime
-        //TODO: Make this location label depend on whether both fields have a value or not
         cell.locationLabel.text = order.destination!
         cell.categoryImage.image = order.fromDescription().image
         
-        //TODO: This should become a query on requesting user id and then a pull on their image attribute
-        let profilePicture = UIImage(named: "DummyAvatar")
-        cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
+        let requestId = order.requestingUserId!
+        let imagePath = User.getUserWithId(userId: requestId).getProperty("imagePath") as! String
+        if imagePath == "default" {
+            cell.userImage.image = UIImage(named: "DefaultAvatar")!
+        }
+        else {
+            ImageCache.default.retrieveImage(forKey: requestId, options: nil) {
+                image, cacheType in
+                if let image = image {
+                    cell.userImage.image = image
+                } else {
+                    let url = URL(string: imagePath)
+                    cell.userImage.kf.setImage(with: url, completionHandler: {
+                        (image, error, cacheType, imageUrl) in
+                        self.saveImageToCache(image: image!, id: requestId)
+                    })
+                }
+            }
+        }
         
         return cell
+    }
+    
+    private func saveImageToCache (image: UIImage, id: String) {
+        ImageCache.default.store(image, forKey: id)
     }
 
     ///---------------------- Accepting a request handling ---------------------------//

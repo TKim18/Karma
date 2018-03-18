@@ -22,6 +22,7 @@
 		22302B051F7B37790046E757 /* CircleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B021F7B37790046E757 /* CircleTableViewController.swift */; };
 		22302B061F7B37790046E757 /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B031F7B37790046E757 /* CircleTableViewCell.swift */; };
 		223BE9B81F90062000C6A8F7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BE9B71F90062000C6A8F7 /* User.swift */; };
+		224158CA2027BE3F00C8DE2F /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */; };
 		2261433D1F72E5FB00711DEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226143391F72E5FA00711DEF /* AppDelegate.swift */; };
 		226270DC1FB5369100690600 /* RoundedButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226270DB1FB5369100690600 /* RoundedButtonController.swift */; };
 		226270DF1FB5412700690600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F22E1B51E8407D1004B722A /* Assets.xcassets */; };
@@ -30,11 +31,12 @@
 		227330A41FBBC0C6002D4026 /* RoundedButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226270DB1FB5369100690600 /* RoundedButtonController.swift */; };
 		2277E0671F744B5F00AC53CB /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0641F744B5F00AC53CB /* Circle.swift */; };
 		2277E0681F744B5F00AC53CB /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0651F744B5F00AC53CB /* Order.swift */; };
-		2277E06D1F744BA400AC53CB /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06B1F744BA400AC53CB /* UIImage.swift */; };
-		2277E06E1F744BA400AC53CB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06C1F744BA400AC53CB /* UIColor.swift */; };
+		2277E06D1F744BA400AC53CB /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06B1F744BA400AC53CB /* Image.swift */; };
+		2277E06E1F744BA400AC53CB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06C1F744BA400AC53CB /* Color.swift */; };
 		2277E0761F744C6300AC53CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0751F744C6300AC53CB /* ViewController.swift */; };
 		2277E0791F744C7800AC53CB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0771F744C7800AC53CB /* LoginController.swift */; };
 		2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0781F744C7800AC53CB /* RegisterController.swift */; };
+		227BBC9E2018DC80005314DF /* CircleJoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227BBC9D2018DC80005314DF /* CircleJoinViewController.swift */; };
 		2287A3421FB507ED0035C685 /* CostCalculator.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2287A33B1FB507ED0035C685 /* CostCalculator.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2287A3481FB508410035C685 /* CostCalculator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2287A3471FB508410035C685 /* CostCalculator.xib */; };
 		22A139151FA6A60A00B21CD2 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A139141FA6A60A00B21CD2 /* Double.swift */; };
@@ -43,7 +45,7 @@
 		22B9167F1F7B3690002FCDD6 /* NotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167E1F7B3690002FCDD6 /* NotificationTableViewController.swift */; };
 		22D31D8B1FB2B28400014892 /* DirectTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D31D8A1FB2B28400014892 /* DirectTransferViewController.swift */; };
 		22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */; };
-		749CDB62FAC047BF1F6EAAD2 /* libPods-Karma.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */; };
+		9953D19A5A0FD783C9755C42 /* Pods_Karma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,20 +88,22 @@
 		22302AFD1F7B376A0046E757 /* CircleMemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleMemberTableViewCell.swift; path = Karma/Controllers/Circle/Members/CircleMemberTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		22302AFE1F7B376A0046E757 /* CircleMemberTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleMemberTableViewController.swift; path = Karma/Controllers/Circle/Members/CircleMemberTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		22302B011F7B37790046E757 /* CircleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleController.swift; path = Karma/Controllers/Circle/CircleController.swift; sourceTree = SOURCE_ROOT; };
-		22302B021F7B37790046E757 /* CircleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewController.swift; path = Karma/Controllers/Circle/CircleTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		22302B031F7B37790046E757 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewCell.swift; path = Karma/Controllers/Circle/CircleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		22302B021F7B37790046E757 /* CircleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewController.swift; path = Karma/Controllers/Circle/Deprecated/CircleTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		22302B031F7B37790046E757 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewCell.swift; path = Karma/Controllers/Circle/Deprecated/CircleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		223BE9B71F90062000C6A8F7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		226143391F72E5FA00711DEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		226270DB1FB5369100690600 /* RoundedButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonController.swift; sourceTree = "<group>"; };
 		226270DD1FB53E7E00690600 /* CostCalculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CostCalculator.entitlements; sourceTree = "<group>"; };
 		226270DE1FB53EC700690600 /* Karma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Karma.entitlements; sourceTree = "<group>"; };
 		2277E0641F744B5F00AC53CB /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		2277E0651F744B5F00AC53CB /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		2277E06B1F744BA400AC53CB /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		2277E06C1F744BA400AC53CB /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		2277E06B1F744BA400AC53CB /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		2277E06C1F744BA400AC53CB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2277E0751F744C6300AC53CB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2277E0771F744C7800AC53CB /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2277E0781F744C7800AC53CB /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		227BBC9D2018DC80005314DF /* CircleJoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleJoinViewController.swift; sourceTree = "<group>"; };
 		2287A33B1FB507ED0035C685 /* CostCalculator.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CostCalculator.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2287A33F1FB507ED0035C685 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2287A3471FB508410035C685 /* CostCalculator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CostCalculator.xib; sourceTree = "<group>"; };
@@ -109,8 +113,8 @@
 		22B9167E1F7B3690002FCDD6 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
 		22D31D8A1FB2B28400014892 /* DirectTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransferViewController.swift; sourceTree = "<group>"; };
 		22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransfer.swift; sourceTree = "<group>"; };
+		2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Karma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEFA3D6DA2E1C5CD49339F5 /* Pods-Karma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.release.xcconfig"; sourceTree = "<group>"; };
-		C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Karma.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				749CDB62FAC047BF1F6EAAD2 /* libPods-Karma.a in Frameworks */,
+				9953D19A5A0FD783C9755C42 /* Pods_Karma.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +172,15 @@
 			path = Karma;
 			sourceTree = "<group>";
 		};
+		220E95472019306A00B8E2E5 /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				22302B031F7B37790046E757 /* CircleTableViewCell.swift */,
+				22302B021F7B37790046E757 /* CircleTableViewController.swift */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
 		2229C0821F744D6E0083C215 /* ViewRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,8 +205,8 @@
 			children = (
 				22302B011F7B37790046E757 /* CircleController.swift */,
 				22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */,
-				22302B031F7B37790046E757 /* CircleTableViewCell.swift */,
-				22302B021F7B37790046E757 /* CircleTableViewController.swift */,
+				227BBC9D2018DC80005314DF /* CircleJoinViewController.swift */,
+				220E95472019306A00B8E2E5 /* Deprecated */,
 				22302AFC1F7B37210046E757 /* Members */,
 			);
 			path = Circle;
@@ -223,8 +236,8 @@
 		2277E06A1F744B7000AC53CB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2277E06C1F744BA400AC53CB /* UIColor.swift */,
-				2277E06B1F744BA400AC53CB /* UIImage.swift */,
+				2277E06C1F744BA400AC53CB /* Color.swift */,
+				2277E06B1F744BA400AC53CB /* Image.swift */,
 				22A139141FA6A60A00B21CD2 /* Double.swift */,
 			);
 			path = Extensions;
@@ -246,6 +259,7 @@
 			children = (
 				2277E0771F744C7800AC53CB /* LoginController.swift */,
 				2277E0781F744C7800AC53CB /* RegisterController.swift */,
+				224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -284,7 +298,7 @@
 		5A8163A77E6F62574C4A1FC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C0CF2D11B7DDA2CB77059BA0 /* libPods-Karma.a */,
+				2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -425,9 +439,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Karma/Pods-Karma-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -488,9 +505,11 @@
 				227330A21FBBA88E002D4026 /* NumPadCalculator.swift in Sources */,
 				22302B041F7B37790046E757 /* CircleController.swift in Sources */,
 				2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */,
-				2277E06E1F744BA400AC53CB /* UIColor.swift in Sources */,
+				2277E06E1F744BA400AC53CB /* Color.swift in Sources */,
+				224158CA2027BE3F00C8DE2F /* UserProfileViewController.swift in Sources */,
+				227BBC9E2018DC80005314DF /* CircleJoinViewController.swift in Sources */,
 				2229C08B1F744D9E0083C215 /* RequestTableViewController.swift in Sources */,
-				2277E06D1F744BA400AC53CB /* UIImage.swift in Sources */,
+				2277E06D1F744BA400AC53CB /* Image.swift in Sources */,
 				2229C08D1F744D9E0083C215 /* RequestCategoryTableViewCell.swift in Sources */,
 				2277E0681F744B5F00AC53CB /* Order.swift in Sources */,
 				22A139151FA6A60A00B21CD2 /* Double.swift in Sources */,
@@ -665,7 +684,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Karma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pods/Backendless/SDK/ios/backendless/include/Backendless-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -684,7 +703,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.Karma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pods/Backendless/SDK/ios/backendless/include/Backendless-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
