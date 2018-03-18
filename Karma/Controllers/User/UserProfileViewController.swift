@@ -47,6 +47,7 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         let id = User.getCurrentUserId() as String
         ImageCache.default.removeImage(forKey: id)
         ImageCache.default.store(image, forKey: id)
+        print("User image has been saved to cache")
     }
     
     private func displayUserPicture() {

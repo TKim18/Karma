@@ -119,7 +119,8 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
         }
         
         if (self.currentOrder.destination!.isEmpty) {
-            self.currentOrder.destination = User.getCurrentUserProperty(key: "homeLocation") as? String
+            self.currentOrder.destination = "Home"
+            //self.currentOrder.destination = User.getCurrentUserProperty(key: "homeLocation") as? String
         }
         
         if (self.currentOrder.requestedTime!.isEmpty) {

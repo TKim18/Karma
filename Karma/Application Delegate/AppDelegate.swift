@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Changes the selected tab bar icon to white
         UITabBar.appearance().tintColor = UIColor.white
         
+        // Automatically login when device is logged in
         let userService = backendless!.userService
         if (userService?.isValidUserToken().boolValue)! {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)

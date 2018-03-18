@@ -135,7 +135,7 @@ class NotificationTableViewController: UITableViewController {
                 $0.acceptingUserId != "-1" &&
                 $0.requestingUserId == User.getCurrentUserId()
             }
-            self.notifications.sort { return ($0.updated! as Date) < ($1.updated! as Date) }
+            self.notifications.sort { return ($0.created! as Date) < ($1.created! as Date) }
         },
            catchblock: { (exception) -> Void in
                 let error = exception as! Fault

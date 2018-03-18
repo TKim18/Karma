@@ -13,6 +13,7 @@ class LoginController: UIViewController {
     @IBOutlet var emailField : UITextField!
     @IBOutlet var passwordField : UITextField!
     @IBOutlet var errorMessage : UILabel!
+    @IBOutlet var wesleyan : UITextField!
     @IBOutlet var registerButton : UIButton!
     
     override func viewDidLoad() {
@@ -26,6 +27,8 @@ class LoginController: UIViewController {
         view.addGestureRecognizer(tap)
         
         registerButton.titleLabel?.textAlignment = NSTextAlignment.center
+        
+        self.wesleyan.text = "@wesleyan.edu"
     }
     
     @objc func dismissKeyboard() {
@@ -45,7 +48,8 @@ class LoginController: UIViewController {
     
     // Segue handling
     func validLogin() -> Bool {
-        return login(id: emailField.text!, password: passwordField.text!)
+        let email = emailField.text! + "@wesleyan.edu"
+        return login(id: email, password: passwordField.text!)
     }
     
     func hasCircle() -> Bool {

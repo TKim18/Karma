@@ -46,7 +46,7 @@ class ViewRequestTableViewController: UITableViewController {
     }
     
     private func noOrders() {
-        if (orders.isEmpty) {
+        if (orders.isEmpty && pendingAcceptedControl.selectedSegmentIndex == 0) {
             let backgroundImage = UIImage(named: "NoOrders")
             self.tableView.backgroundView = UIImageView(image: backgroundImage)
         }
