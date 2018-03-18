@@ -27,6 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor.white
         
         // Automatically login when device is logged in
+        autoLogin()
+        
+        return true
+    }
+    
+    func autoLogin() {
         let userService = backendless!.userService
         if (userService?.isValidUserToken().boolValue)! {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -35,8 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = controller
             self.window?.makeKeyAndVisible()
         }
-        
-        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

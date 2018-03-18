@@ -34,14 +34,22 @@ class ViewRequestTableViewController: UITableViewController {
         configureCache()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        //Pull from the database
-        loadAllOrders()
+//    override func viewDidAppear(_ animated: Bool) {
+//        //Pull from the database
+//        loadAllOrders()
+//
+//        //Show no orders picture if orders is empty
+//        noOrders()
+//
+//        //Configure the navigation bar
+//        updateKarmaPoints()
+//    }
     
-        //Show no orders picture if orders is empty
-        noOrders()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
         
-        //Configure the navigation bar
+        loadAllOrders()
+        
         updateKarmaPoints()
     }
     
@@ -75,7 +83,9 @@ class ViewRequestTableViewController: UITableViewController {
     }
     
     private func updateKarmaPoints() {
-        karmaPointsButton.title = String(User.getCurrentUserProperty(key: "karmaPoints") as! Double)
+        let user = Backendless.sharedInstance().userService.currentUser
+        karmaPointsButton.title = String(user?.getProperty("karmaPoints") as! Double)
+        // karmaPointsButton.title = String(User.getCurrentUserProperty(key: "karmaPoints") as! Double)
     }
     
     private func configureCache() {

@@ -21,7 +21,7 @@ class NotificationTableViewController: UITableViewController {
         // self.tabBarController?.tabBar.items![1].badgeValue = String(notifications.count)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         loadNotifications()
     }
     
