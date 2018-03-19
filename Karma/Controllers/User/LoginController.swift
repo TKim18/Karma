@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginController: UIViewController {
     // UI Elements
@@ -15,6 +16,7 @@ class LoginController: UIViewController {
     @IBOutlet var errorMessage : UILabel!
     @IBOutlet var wesleyan : UITextField!
     @IBOutlet var registerButton : UIButton!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,7 @@ class LoginController: UIViewController {
         view.addGestureRecognizer(tap)
         
         registerButton.titleLabel?.textAlignment = NSTextAlignment.center
-        
+        self.activityIndicator.hidesWhenStopped = true
         self.wesleyan.text = "@wesleyan.edu"
     }
     
@@ -39,17 +41,14 @@ class LoginController: UIViewController {
         self.performSegue(withIdentifier: "LoginToRegister", sender: nil)
     }
     
+    //
     @IBAction func loginButton(sender : AnyObject) {
-        if (validLogin()) {
-            let identifier = hasCircle() ? "LoginToTab" : "LoginNoCircle"
-            self.performSegue(withIdentifier: identifier, sender: self)
+        if let email = self.emailField.text, let password = self.passwordField.text {
+            login(email: (email + "@wesleyan.edu"), password: password)
         }
-    }
-    
-    // Segue handling
-    func validLogin() -> Bool {
-        let email = emailField.text! + "@wesleyan.edu"
-        return login(id: email, password: passwordField.text!)
+        else {
+            self.errorMessage.text = "Please enter a valid email and password"
+        }
     }
     
     func hasCircle() -> Bool {
@@ -57,18 +56,18 @@ class LoginController: UIViewController {
     }
     
     // Server call
-    func login(id: String, password: String) -> Bool {
-        let backendless = Backendless.sharedInstance()!
-        
-        var valid = true
-        Types.tryblock({ () -> Void in
-            backendless.userService.login(id, password: password)
-        }, catchblock: {(exception) -> Void in
-            let error = exception as! Fault
-            self.errorMessage.text = error.message!
-            valid = false
-        })
-        return valid
+    func login(email: String, password: String) {
+        activityIndicator.startAnimating()
+        Auth.auth().signIn(withEmail: email, password: password) {
+            (user, error) in
+            self.activityIndicator.stopAnimating()
+            if let error = error {
+                self.errorMessage.text = error.localizedDescription
+                return
+            }
+            // TODO: depending on whether they are in a circle or not, redirect them
+            // let identifier = hasCircle() ? "LoginToTab" : "LoginNoCircle"
+            self.performSegue(withIdentifier: "LoginNoCircle", sender: self)
+        }
     }
-
 }

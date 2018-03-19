@@ -41,6 +41,8 @@
 		227BBC9E2018DC80005314DF /* CircleJoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227BBC9D2018DC80005314DF /* CircleJoinViewController.swift */; };
 		2287A3421FB507ED0035C685 /* CostCalculator.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2287A33B1FB507ED0035C685 /* CostCalculator.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2287A3481FB508410035C685 /* CostCalculator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2287A3471FB508410035C685 /* CostCalculator.xib */; };
+		2296501E205EFD16008DCC2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2296501D205EFD16008DCC2C /* GoogleService-Info.plist */; };
+		2296501F205EFF00008DCC2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2296501D205EFD16008DCC2C /* GoogleService-Info.plist */; };
 		22A139151FA6A60A00B21CD2 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A139141FA6A60A00B21CD2 /* Double.swift */; };
 		22ABA8691FABAB370043AB4E /* CircleCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */; };
 		22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */; };
@@ -110,6 +112,7 @@
 		2287A33B1FB507ED0035C685 /* CostCalculator.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CostCalculator.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2287A33F1FB507ED0035C685 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2287A3471FB508410035C685 /* CostCalculator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CostCalculator.xib; sourceTree = "<group>"; };
+		2296501D205EFD16008DCC2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		22A139141FA6A60A00B21CD2 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCreateViewController.swift; sourceTree = "<group>"; };
 		22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -161,6 +164,7 @@
 		0F22E1AD1E8407D1004B722A /* Karma */ = {
 			isa = PBXGroup;
 			children = (
+				2296501D205EFD16008DCC2C /* GoogleService-Info.plist */,
 				224006A5204CEDBC003CE920 /* Application Delegate */,
 				224006AC204CEE13003CE920 /* Storyboards */,
 				2277E05D1F744AEE00AC53CB /* Models */,
@@ -461,6 +465,7 @@
 				227330A31FBBA894002D4026 /* CostCalculator.xib in Resources */,
 				224006B0204CEE20003CE920 /* Main.storyboard in Resources */,
 				224006B3204CEE34003CE920 /* Assets.xcassets in Resources */,
+				2296501E205EFD16008DCC2C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2287A3481FB508410035C685 /* CostCalculator.xib in Resources */,
+				2296501F205EFF00008DCC2C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,11 +488,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Karma/Pods-Karma-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -704,7 +718,7 @@
 				DEVELOPMENT_TEAM = B4LQS9CJ47;
 				INFOPLIST_FILE = "$(SRCROOT)/Karma/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.Karma;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wesleyan.Karma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pods/Backendless/SDK/ios/backendless/include/Backendless-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -723,7 +737,7 @@
 				DEVELOPMENT_TEAM = B4LQS9CJ47;
 				INFOPLIST_FILE = "$(SRCROOT)/Karma/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.Karma;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wesleyan.Karma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pods/Backendless/SDK/ios/backendless/include/Backendless-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -745,7 +759,7 @@
 				INFOPLIST_FILE = CostCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.Karma.CostCalculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wesleyan.Karma.CostCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -767,7 +781,7 @@
 				INFOPLIST_FILE = CostCalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.Karma.CostCalculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wesleyan.Karma.CostCalculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;

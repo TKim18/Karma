@@ -86,6 +86,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6t9-9S-jrR">
+                                <rect key="frame" x="177" y="265" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -218,6 +222,11 @@
                                     <action selector="registerButtonWithSender:" destination="x8M-4o-3IS" eventType="touchUpInside" id="Q6m-sp-X1h"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cdW-JC-tZ8">
+                                <rect key="frame" x="177" y="384" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -252,6 +261,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="cdW-JC-tZ8" id="Zh3-Lg-yR7"/>
                         <outlet property="emailField" destination="bGl-Rx-C3H" id="U0Y-AU-WYV"/>
                         <outlet property="errorMessage" destination="Rwa-6p-17R" id="N2z-Ac-mjR"/>
                         <outlet property="nameField" destination="AZ5-iT-Bpj" id="o6n-BP-PJc"/>

@@ -17,7 +17,7 @@ class CircleCreateViewController: CircleController {
     }
     
     // Helper Function
-    func notifyDup() {
+    func notifyDuplicate() {
         let alert = UIAlertController(title: "Sorry, that name is taken", message: "Please choose an equally cool name!",  preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
         self.present(alert, animated: true, completion: nil)
@@ -25,6 +25,10 @@ class CircleCreateViewController: CircleController {
     
     // Server Call
     func createCircle() {
+        // What to do here?
+        // upload the server 
+        
+        
         let dataStore = self.backendless.data.of(Circle().ofClass())
         
         let circle = Circle(name: circleNameField.text!, password: circleKeyField.text!)
@@ -42,7 +46,7 @@ class CircleCreateViewController: CircleController {
             self.backendless.userService.update(currentUser)
             self.performSegue(withIdentifier: "CreateCircle", sender: self)
         }, catchblock: {(exception) -> Void in
-            self.notifyDup()
+            self.notifyDuplicate()
             print(exception ?? "Error")
         })
     }

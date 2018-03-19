@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterController: UIViewController {
     // UI Elements
@@ -16,6 +17,7 @@ class RegisterController: UIViewController {
     @IBOutlet var verifyField : UITextField!
     @IBOutlet var wesleyan : UITextField!
     @IBOutlet var errorMessage: UILabel!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +25,10 @@ class RegisterController: UIViewController {
         setupView()
     }
     
-    @IBAction func registerButton(sender : AnyObject){
-        if (validRegister() && login()) {
-            self.performSegue(withIdentifier: "RegisterToCircle", sender: self)
-        }
-    }
-    
     private func setupView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
+        self.activityIndicator.hidesWhenStopped = true
         self.wesleyan.text = "@wesleyan.edu"
     }
     
@@ -40,53 +36,39 @@ class RegisterController: UIViewController {
         view.endEditing(true)
     }
     
-    // Segue handling
+    // Register button trigger
+    @IBAction func registerButton(sender : AnyObject){
+        if let email = self.emailField.text, let name = self.nameField.text, let password = self.passwordField.text {
+            if self.validRegister() {
+                register(email: email, name: name, password: password)
+            }
+        }
+        else {
+            self.errorMessage.text = "Please enter a valid email and password"
+        }
+    }
+    
+    // Validation
     func validRegister() -> Bool {
         if (passwordField.text != verifyField.text) {
             errorMessage.text = "Please verify that your password matches"
             return false
         }
-        else {
-            return register(
-                email: emailField.text!,
-                name: nameField.text!,
-                password: passwordField.text!
-            )
-        }
+        return true
     }
     
     // Server call
-    func register(email: String, name: String, password: String) -> Bool {
-        let backendless = Backendless.sharedInstance()!
-        let user = BackendlessUser()
-        user.setProperty("email", object: email + "@wesleyan.edu")
-        user.setProperty("name", object: name)
-        user.setProperty("password", object: password)
-        user.setProperty("imagePath", object: "default")
-        
-        var valid = true
-        Types.tryblock({ () -> Void in
-            backendless.userService.register(user)
-        },
-        catchblock: { (exception) -> Void in
-            let error = exception as! Fault
-            self.errorMessage.text = error.message!
-            valid = false
-        })
-        return valid
-    }
-
-    func login() -> Bool {
-        let backendless = Backendless.sharedInstance()!
-        
-        var valid = true
-        Types.tryblock({ () -> Void in
-            backendless.userService.login(self.emailField.text! + "@wesleyan.edu", password: self.passwordField.text)
-        }, catchblock: {(exception) -> Void in
-            let error = exception as! Fault
-            self.errorMessage.text = error.message!
-            valid = false
-        })
-        return valid
+    // TODO: Upon register, add field of imagePath and name to user
+    func register(email: String, name: String, password: String) {
+        activityIndicator.startAnimating()
+        Auth.auth().createUser(withEmail: (email + "@wesleyan.edu"), password: password) {
+            (user, error) in
+            if let error = error {
+                self.errorMessage.text = error.localizedDescription
+                return
+            }
+            self.activityIndicator.stopAnimating()
+            self.performSegue(withIdentifier: "RegisterToCircle", sender: self)
+        }
     }
 }

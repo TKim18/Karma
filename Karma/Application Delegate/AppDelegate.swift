@@ -1,5 +1,6 @@
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -12,11 +13,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override pointfor customization after application launch.
+        
+        // Override point for customization after application launch.
         backendless?.initApp(APP_ID, apiKey:API_Key)
         backendless?.userService.setStayLoggedIn(true)
         
-        // TODO: Split these into their own functions
+        // Initialize Firebase
+        FirebaseApp.configure()
+        
+        // Configure navigation and tab bar appearance
+        configureScheme()
+        
+        // Automatically login when device is logged in
+        // autoLogin()
+        
+        return true
+    }
+    
+    func configureScheme() {
         // Sets the universal navigation bar color, tint color, and text color across the whole app
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor.white
@@ -25,11 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Changes the selected tab bar icon to white
         UITabBar.appearance().tintColor = UIColor.white
-        
-        // Automatically login when device is logged in
-        autoLogin()
-        
-        return true
     }
     
     func autoLogin() {
