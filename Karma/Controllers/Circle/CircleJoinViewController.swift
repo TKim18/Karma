@@ -23,70 +23,27 @@ class CircleJoinViewController: CircleController {
             joinCircle()
         }
     }
+
+    // Server Call
+    func joinCircle(){
+        activityIndicator.startAnimating()
+        let circle = Circle(name: circleNameField.text!, password: circleKeyField.text!)
+        circle.existsWithKey() { exists in
+            exists ? self.updateCircle(circle: circle) : self.alertNoExist()
+        }
+        activityIndicator.stopAnimating()
+    }
+    
+    func updateCircle(circle: Circle) {
+        circle.upload(newCircle: false) { () -> () in
+            self.performSegue(withIdentifier: "JoinCircle", sender: self)
+        }
+    }
     
     func alertNoExist() {
         let alert = UIAlertController(title: "Sorry, those are not valid credentials", message: "",  preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    // Server Call
-    func joinCircle(){
-        // Process:
-        // Check if the circle exists
-        // If it does => add the user's circle item, 
-        // If it doesn't =>
-        
-        let query = "joinName = '" + self.circleNameField.text! + "' and joinKey = '" + self.circleKeyField.text! + "'"
-        print(query)
-        let queryBuilder = DataQueryBuilder()
-        queryBuilder!.setWhereClause(query)
-        
-        // Query the databaase
-        let dataStore = self.backendless.data.of(Circle().ofClass())
-        let currentUser = UserUtil.getCurrentUser()
-        
-        dataStore?.find(
-            queryBuilder,
-            response: {
-                (foundCircle) -> () in
-                let circles = foundCircle as! [Circle]
-                if (circles.isEmpty) {
-                    self.alertNoExist()
-                    return;
-                }
-                let circle = circles[0]
-                print ("Circle has been successfully found")
-                dataStore?.addRelation(
-                    "Users",
-                    parentObjectId: circle.objectId,
-                    childObjects: [currentUser.objectId],
-                    response: {
-                        (_) -> () in
-                        print ("The user has been added to the circle")
-                        currentUser.updateProperties(["circleId" : circle.objectId!])
-                        self.backendless.userService.update(
-                            currentUser,
-                            response: {
-                                (updatedUser: BackendlessUser?) -> Void in
-                                print ("User has been updated") 
-                                self.performSegue(withIdentifier: "JoinCircle", sender: self)
-                            },
-                            error: {
-                                (fault : Fault?) -> () in
-                                print("Server reported an error: \(String(describing: fault))")
-                            }
-                        )
-                    },
-                   error: {
-                    (fault : Fault?) -> () in
-                    print("Server reported an error: \(String(describing: fault))")
-                })
-            },
-            error: {
-                (fault : Fault?) -> () in
-                print("Server reported an error: \(String(describing: fault))")
-        })
     }
 
 }

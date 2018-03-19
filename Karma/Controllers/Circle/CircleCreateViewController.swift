@@ -28,23 +28,21 @@ class CircleCreateViewController: CircleController {
     func createCircle() {
         activityIndicator.startAnimating()
         let circle = Circle(name: circleNameField.text!, password: circleKeyField.text!)
-        circle.exists() {
-            exist in
-            exist ? self.notifyDuplicate() : self.uploadCircle(circle: circle)
+        circle.exists() { exist in
+            exist ? self.alertDuplicate() : self.uploadCircle(circle: circle)
         }
         activityIndicator.stopAnimating()
     }
     
-    func notifyDuplicate() {
+    func uploadCircle(circle: Circle) {
+        circle.upload(newCircle: true) { () -> () in
+            self.performSegue(withIdentifier: "CreateCircle", sender: self)
+        }
+    }
+    
+    func alertDuplicate() {
         let alert = UIAlertController(title: "Sorry, that name is taken", message: "Please choose an equally cool name!",  preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func uploadCircle(circle: Circle) {
-        circle.upload() {
-            () -> () in
-            self.performSegue(withIdentifier: "CreateCircle", sender: self)
-        }
     }
 }

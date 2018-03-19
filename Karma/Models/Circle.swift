@@ -30,13 +30,17 @@ class Circle : NSObject {
     }
     
     // In an upload call, add the circle name as the key and members/display name as values
-    func upload(callback: @escaping () -> ()) {
+    func upload(newCircle: Bool, callback: @escaping () -> ()) {
         let ref = Database.database().reference()
         if let id = UserUtil.getCurrentId() {
             UserUtil.getProperty(key: "userName", id: id) {
                 userName in
-                if let userName = userName, let circleName = self.joinName {
-                    ref.child("circles/\(circleName)/displayName").setValue(circleName)
+                if let userName = userName, let circleName = self.joinName, let circleKey = self.joinKey {
+                    if newCircle {
+                        ref.child("circles/\(circleName)/joinName").setValue(circleName)
+                        ref.child("circles/\(circleName)/displayName").setValue(circleName)
+                        ref.child("circles/\(circleName)/joinKey").setValue(circleKey)
+                    }
                     ref.child("circles/\(circleName)/members/\(userName)").setValue(true)
                     ref.child("users/\(id)/circles/\(circleName)").setValue(true)
                 } else {
@@ -55,6 +59,25 @@ class Circle : NSObject {
                 let entity = snapshot.value as? NSDictionary
                 let val = entity == nil ? false : true
                 completionHandler(val)
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // Authenticate the circle with its password
+    func existsWithKey(completionHandler: @escaping(_ exist: Bool) -> ()) {
+        let ref = Database.database().reference()
+        if let name = self.joinName {
+            ref.child("circles").child(name).observeSingleEvent(of: .value, with: { (snapshot) in
+                let entity = snapshot.value as? NSDictionary
+                if let entity = entity, let joinName = self.joinName, let joinKey = self.joinKey, let name = entity["joinName"], let password = entity["joinKey"] {
+                    let name = name as! String
+                    let password = password as! String
+                    completionHandler(name == joinName && password == joinKey)
+                } else {
+                    completionHandler(false)
+                }
             }) { (error) in
                 print(error.localizedDescription)
             }

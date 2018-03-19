@@ -23,12 +23,12 @@ class UserUtil {
         return getCurrentUserFB().email
     }
     
-//    static func getCurrentProperty(key: String, completionHandler: (_ property: Any) -> ()) {
-//        let userId = getCurrentId()
-//        if let userId = userId {
-//            getProperty(key: key, id: userId, completionHandler: completionHandler)
-//        }
-//    }
+    static func getCurrentProperty(key: String, completionHandler: @escaping (_ prop: Any?) -> ()) {
+        let userId = getCurrentId()
+        if let userId = userId {
+            getProperty(key: key, id: userId, completionHandler: completionHandler)
+        }
+    }
     
     static func getProperty(key: String, id: String, completionHandler: @escaping (_ prop: Any?) -> ()) {
         let ref = Database.database().reference()

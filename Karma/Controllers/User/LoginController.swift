@@ -65,6 +65,7 @@ class LoginController: UIViewController {
                 self.errorMessage.text = error.localizedDescription
                 return
             }
+            //UserUtil.getCurrentProperty(key: <#T##String#>, completionHandler: <#T##(Any) -> ()#>)
             // TODO: depending on whether they are in a circle or not, redirect them
             // let identifier = hasCircle() ? "LoginToTab" : "LoginNoCircle"
             self.performSegue(withIdentifier: "LoginNoCircle", sender: self)
