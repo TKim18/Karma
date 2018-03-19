@@ -105,7 +105,7 @@ class ViewRequestTableViewController: UITableViewController {
     
     private func loadAllOrders() {
         let dataStore = Circle.getCircleDataStore()
-        let circleId = User.getCurrentUserProperty(key: "circleId") as! String
+        let circleId = UserUtil.getCurrentUserProperty(key: "circleId") as! String
 
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(Order.ofClass())
         loadRelationsQueryBuilder!.setRelationName("Orders")
@@ -129,7 +129,7 @@ class ViewRequestTableViewController: UITableViewController {
     
     private func loadAccepted() {
         self.orders = self.allOrders.filter {
-            $0.acceptingUserId == User.getCurrentUserId() && !$0.completed
+            $0.acceptingUserId == UserUtil.getCurrentUserId() && !$0.completed
         }
     }
 
@@ -172,7 +172,7 @@ class ViewRequestTableViewController: UITableViewController {
         cell.categoryImage.image = order.fromDescription().image
         
         let requestId = order.requestingUserId!
-        let imagePath = User.getUserWithId(userId: requestId).getProperty("imagePath") as! String
+        let imagePath = UserUtil.getUserWithId(userId: requestId).getProperty("imagePath") as! String
         if imagePath == "default" {
             cell.userImage.image = UIImage(named: "DefaultAvatar")!
         }
@@ -208,7 +208,7 @@ class ViewRequestTableViewController: UITableViewController {
 
     func validAccept(indexPath: NSIndexPath) -> Bool {
         let dataStore = Order.getOrderDataStore()
-        let currentUser = User.getCurrentUser()
+        let currentUser = UserUtil.getCurrentUser()
         
         let selectedOrder = orders[indexPath.section]
         

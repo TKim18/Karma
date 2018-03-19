@@ -75,7 +75,7 @@ class CircleTableViewController: UITableViewController {
         let backendless = Backendless.sharedInstance()!
         let dataStore = backendless.data.of(Circle().ofClass())
         
-        let currentUser = User.getCurrentUser()
+        let currentUser = UserUtil.getCurrentUser()
         let selectedCircleId = circles[indexPath.row].objectId
         
         var status = true

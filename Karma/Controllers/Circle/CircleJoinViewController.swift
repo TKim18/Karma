@@ -10,6 +10,14 @@ import UIKit
 
 class CircleJoinViewController: CircleController {
 
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        activityIndicator.hidesWhenStopped = true
+    }
+    
     @IBAction func joinCircle(sender : AnyObject) {
         if (self.validValues()) {
             joinCircle()
@@ -31,7 +39,7 @@ class CircleJoinViewController: CircleController {
         
         // Query the databaase
         let dataStore = self.backendless.data.of(Circle().ofClass())
-        let currentUser = User.getCurrentUser()
+        let currentUser = UserUtil.getCurrentUser()
         
         dataStore?.find(
             queryBuilder,

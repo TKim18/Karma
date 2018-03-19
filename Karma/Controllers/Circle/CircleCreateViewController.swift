@@ -9,6 +9,14 @@
 import UIKit
 
 class CircleCreateViewController: CircleController {
+    
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        activityIndicator.hidesWhenStopped = true
+    }
 
     @IBAction func createCircle(sender : AnyObject) {
         if (self.validValues()) {
@@ -25,29 +33,16 @@ class CircleCreateViewController: CircleController {
     
     // Server Call
     func createCircle() {
-        // What to do here?
-        // upload the server 
-        
-        
-        let dataStore = self.backendless.data.of(Circle().ofClass())
-        
+        activityIndicator.startAnimating()
         let circle = Circle(name: circleNameField.text!, password: circleKeyField.text!)
-        let currentUser = User.getCurrentUser()
-        
-        Types.tryblock({ () -> Void in
-            //Save the new object, retrieve its object id, and add the relation to the Users column
-            let savedCircle = dataStore!.save(circle) as! Circle
-            dataStore!.setRelation(
-                "Users",
-                parentObjectId: savedCircle.objectId,
-                childObjects: [currentUser.objectId]
-            )
-            currentUser.updateProperties(["circleId" : savedCircle.objectId!])
-            self.backendless.userService.update(currentUser)
-            self.performSegue(withIdentifier: "CreateCircle", sender: self)
-        }, catchblock: {(exception) -> Void in
-            self.notifyDuplicate()
-            print(exception ?? "Error")
-        })
+        if circle.exists() {
+            notifyDuplicate()
+        }
+        else {
+            // Update user object as well
+            circle.upload()
+            //self.performSegue(withIdentifier: "CreateCircle", sender: self)
+        }
+        activityIndicator.stopAnimating()
     }
 }

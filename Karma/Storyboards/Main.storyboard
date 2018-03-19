@@ -116,6 +116,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="6t9-9S-jrR" id="ehi-VZ-9Eo"/>
                         <outlet property="emailField" destination="IcN-Yf-ngS" id="86v-U6-QIG"/>
                         <outlet property="errorMessage" destination="gDM-IE-Sys" id="M9L-eF-Bmi"/>
                         <outlet property="passwordField" destination="Naj-mA-Ufc" id="g3E-EC-ln9"/>
@@ -409,10 +410,15 @@
                                     <action selector="createCircleWithSender:" destination="FCG-S8-DIx" eventType="touchUpInside" id="Oz5-V3-UID"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Qs9-hI-Xpg">
+                                <rect key="frame" x="177" y="435" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Qs9-hI-Xpg" id="pvs-bL-Pfq"/>
                         <outlet property="circleKeyField" destination="dNS-gj-Gwf" id="wVj-qz-RMU"/>
                         <outlet property="circleNameField" destination="1Bc-fq-Mta" id="lLT-Am-lAP"/>
                         <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="CreateCircle" id="PPI-hW-TY2"/>
@@ -488,10 +494,15 @@
                                     <segue destination="FCG-S8-DIx" kind="showDetail" id="IhG-KY-8Wu"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="I1B-g4-T1A">
+                                <rect key="frame" x="177" y="419" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="I1B-g4-T1A" id="6HK-eB-htQ"/>
                         <outlet property="circleKeyField" destination="zHI-KS-f3e" id="I26-uK-otl"/>
                         <outlet property="circleNameField" destination="zOq-bT-zN1" id="lbw-FU-Xpv"/>
                         <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="JoinCircle" id="7UW-ov-f9O"/>
@@ -1220,8 +1231,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7fL-I0-nA8"/>
-        <segue reference="Obl-Wj-qaW"/>
-        <segue reference="r0E-Gv-G2T"/>
-        <segue reference="sb5-Wr-8id"/>
+        <segue reference="IhG-KY-8Wu"/>
+        <segue reference="rOi-oM-HQC"/>
+        <segue reference="7UW-ov-f9O"/>
     </inferredMetricsTieBreakers>
 </document>

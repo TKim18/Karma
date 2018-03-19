@@ -132,7 +132,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
             let placedOrder = orderDataStore!.save(self.currentOrder) as! Order
             circleDataStore!.addRelation(
                 "Orders",
-                parentObjectId: User.getCurrentUserProperty(key: "circleId") as! String,
+                parentObjectId: UserUtil.getCurrentUserProperty(key: "circleId") as! String,
                 childObjects: [placedOrder.objectId!]
             )
         },

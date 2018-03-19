@@ -136,7 +136,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
                 let newOrder = updatedOrder as! Order
                 circleStore.addRelation(
                     "Orders",
-                    parentObjectId: User.getCurrentUserProperty(key: "circleId") as! String,
+                    parentObjectId: UserUtil.getCurrentUserProperty(key: "circleId") as! String,
                     childObjects: [newOrder.objectId!],
                     response: {(num) -> () in ()},
                     error: {(fault : Fault?) -> () in print("Something went wrong adding the order")})
@@ -175,8 +175,8 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
                 print("Something went wrong trying to make the direct transfer: \(String(describing: fault))")
         })
         
-        let selectedUser = User.getUserWithId(userId: self.currentTransfer.selectedUserId)
-        let currentUser = User.getCurrentUser()
+        let selectedUser = UserUtil.getUserWithId(userId: self.currentTransfer.selectedUserId)
+        let currentUser = UserUtil.getCurrentUser()
         
         let selectedPoints = selectedUser.getProperty("karmaPoints") as! Double
         let currentPoints = currentUser.getProperty("karmaPoints") as! Double

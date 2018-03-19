@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import FirebaseDatabase
+import FirebaseAuth
 
 class CircleController: UIViewController {
 
     // UI Elements
     @IBOutlet var circleNameField : UITextField!
     @IBOutlet var circleKeyField: UITextField!
-    var ref = Database.database().reference()
     
     let backendless = Backendless.sharedInstance()!
     

@@ -51,7 +51,7 @@ class RequestTableViewController: UITableViewController {
         }
         
         let currentCategory = categories[indexPath.row]
-        let currentUser = User.getCurrentUser()
+        let currentUser = UserUtil.getCurrentUser()
         
         //Going to have to change this around for different views depending on category
         if segue.identifier == "ShowRequestDetails" {

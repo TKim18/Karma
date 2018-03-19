@@ -16,9 +16,7 @@
 		22302AFF1F7B376A0046E757 /* CircleMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302AFD1F7B376A0046E757 /* CircleMemberTableViewCell.swift */; };
 		22302B001F7B376A0046E757 /* CircleMemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302AFE1F7B376A0046E757 /* CircleMemberTableViewController.swift */; };
 		22302B041F7B37790046E757 /* CircleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B011F7B37790046E757 /* CircleController.swift */; };
-		22302B051F7B37790046E757 /* CircleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B021F7B37790046E757 /* CircleTableViewController.swift */; };
-		22302B061F7B37790046E757 /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B031F7B37790046E757 /* CircleTableViewCell.swift */; };
-		223BE9B81F90062000C6A8F7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BE9B71F90062000C6A8F7 /* User.swift */; };
+		223BE9B81F90062000C6A8F7 /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BE9B71F90062000C6A8F7 /* UserUtil.swift */; };
 		224006A7204CEDDD003CE920 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224006A6204CEDDD003CE920 /* AppDelegate.swift */; };
 		224006AB204CEE0D003CE920 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 224006AA204CEE0D003CE920 /* Info.plist */; };
 		224006AF204CEE20003CE920 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224006AD204CEE20003CE920 /* LaunchScreen.storyboard */; };
@@ -87,9 +85,7 @@
 		22302AFD1F7B376A0046E757 /* CircleMemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleMemberTableViewCell.swift; path = Karma/Controllers/Circle/Members/CircleMemberTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		22302AFE1F7B376A0046E757 /* CircleMemberTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleMemberTableViewController.swift; path = Karma/Controllers/Circle/Members/CircleMemberTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		22302B011F7B37790046E757 /* CircleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleController.swift; path = Karma/Controllers/Circle/CircleController.swift; sourceTree = SOURCE_ROOT; };
-		22302B021F7B37790046E757 /* CircleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewController.swift; path = Karma/Controllers/Circle/Deprecated/CircleTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		22302B031F7B37790046E757 /* CircleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleTableViewCell.swift; path = Karma/Controllers/Circle/Deprecated/CircleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		223BE9B71F90062000C6A8F7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		223BE9B71F90062000C6A8F7 /* UserUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUtil.swift; sourceTree = "<group>"; };
 		224006A6204CEDDD003CE920 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		224006A9204CEE0D003CE920 /* Karma.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Karma.entitlements; sourceTree = "<group>"; };
 		224006AA204CEE0D003CE920 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -176,15 +172,6 @@
 			path = Karma;
 			sourceTree = "<group>";
 		};
-		220E95472019306A00B8E2E5 /* Deprecated */ = {
-			isa = PBXGroup;
-			children = (
-				22302B031F7B37790046E757 /* CircleTableViewCell.swift */,
-				22302B021F7B37790046E757 /* CircleTableViewController.swift */,
-			);
-			path = Deprecated;
-			sourceTree = "<group>";
-		};
 		2229C0821F744D6E0083C215 /* ViewRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,7 +197,6 @@
 				22302B011F7B37790046E757 /* CircleController.swift */,
 				22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */,
 				227BBC9D2018DC80005314DF /* CircleJoinViewController.swift */,
-				220E95472019306A00B8E2E5 /* Deprecated */,
 				22302AFC1F7B37210046E757 /* Members */,
 			);
 			path = Circle;
@@ -264,7 +250,7 @@
 		2277E05D1F744AEE00AC53CB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				223BE9B71F90062000C6A8F7 /* User.swift */,
+				223BE9B71F90062000C6A8F7 /* UserUtil.swift */,
 				2277E0641F744B5F00AC53CB /* Circle.swift */,
 				2277E0651F744B5F00AC53CB /* Order.swift */,
 				22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */,
@@ -554,7 +540,7 @@
 			files = (
 				22ABA8691FABAB370043AB4E /* CircleCreateViewController.swift in Sources */,
 				227330A41FBBC0C6002D4026 /* RoundedButtonController.swift in Sources */,
-				223BE9B81F90062000C6A8F7 /* User.swift in Sources */,
+				223BE9B81F90062000C6A8F7 /* UserUtil.swift in Sources */,
 				224006A7204CEDDD003CE920 /* AppDelegate.swift in Sources */,
 				22302AFF1F7B376A0046E757 /* CircleMemberTableViewCell.swift in Sources */,
 				2229C0861F744D820083C215 /* ViewRequestTableViewCell.swift in Sources */,
@@ -571,11 +557,9 @@
 				2277E0681F744B5F00AC53CB /* Order.swift in Sources */,
 				22A139151FA6A60A00B21CD2 /* Double.swift in Sources */,
 				22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */,
-				22302B051F7B37790046E757 /* CircleTableViewController.swift in Sources */,
 				2277E0761F744C6300AC53CB /* ViewController.swift in Sources */,
 				22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */,
 				2277E0791F744C7800AC53CB /* LoginController.swift in Sources */,
-				22302B061F7B37790046E757 /* CircleTableViewCell.swift in Sources */,
 				2229C08C1F744D9E0083C215 /* CustomRequestViewController.swift in Sources */,
 				2277E0671F744B5F00AC53CB /* Circle.swift in Sources */,
 				22D31D8B1FB2B28400014892 /* DirectTransferViewController.swift in Sources */,

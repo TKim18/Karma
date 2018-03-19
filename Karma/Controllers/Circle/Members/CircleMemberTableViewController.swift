@@ -94,11 +94,11 @@ class CircleMemberTableViewController: UITableViewController {
         let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(BackendlessUser.ofClass())
         loadRelationsQueryBuilder!.setRelationName("Users")
         
-        let circleId = User.getCurrentUserProperty(key: "circleId") as! String
+        let circleId = UserUtil.getCurrentUserProperty(key: "circleId") as! String
         
         members = dataStore!.loadRelations(circleId, queryBuilder: loadRelationsQueryBuilder) as! [BackendlessUser]
         
-        let userId = User.getCurrentUserId()
+        let userId = UserUtil.getCurrentUserId()
         let currIndex = members.index(where: {($0.objectId as String) == userId })
        
         // Make the current user to be the first on the list
@@ -136,7 +136,7 @@ class CircleMemberTableViewController: UITableViewController {
         
         if let destination = segue.destination as? DirectTransferViewController {
             let currentTransfer = DirectTransfer(
-                currentUser : User.getCurrentUser(),
+                currentUser : UserUtil.getCurrentUser(),
                 selectedUser : selectedUser)
             destination.currentTransfer = currentTransfer
         }

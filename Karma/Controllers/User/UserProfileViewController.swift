@@ -44,20 +44,20 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     private func saveImageToCache (image: UIImage) {
-        let id = User.getCurrentUserId() as String
+        let id = UserUtil.getCurrentUserId() as String
         ImageCache.default.removeImage(forKey: id)
         ImageCache.default.store(image, forKey: id)
         print("User image has been saved to cache")
     }
     
     private func displayUserPicture() {
-        let imagePath = (User.getCurrentUserProperty(key: "imagePath") as! String)
+        let imagePath = (UserUtil.getCurrentUserProperty(key: "imagePath") as! String)
         if (imagePath == "default") {
             imageView.image = UIImage(named: "DefaultAvatar")!
             return
         }
         // Attempt to retrieve image from cache
-        ImageCache.default.retrieveImage(forKey: User.getCurrentUserId(), options: nil) {
+        ImageCache.default.retrieveImage(forKey: UserUtil.getCurrentUserId(), options: nil) {
             image, cacheType in
             if let image = image {
                 self.imageView.image = image
@@ -80,7 +80,7 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         let backendless = Backendless.sharedInstance()
         
         let imageData: Data = image.jpeg(.low)!
-        let path = "userImages/" + String(User.getCurrentUser().email) + ".png"
+        let path = "userImages/" + String(UserUtil.getCurrentUser().email) + ".png"
         let currentUser = backendless!.userService.currentUser
         
         backendless!.file.saveFile(
