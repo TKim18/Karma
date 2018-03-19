@@ -41,6 +41,7 @@ class CircleCreateViewController: CircleController {
         else {
             // Update user object as well
             circle.upload()
+            UserUtil.updateCurrentGroup(joinName: circleNameField.text!)
             //self.performSegue(withIdentifier: "CreateCircle", sender: self)
         }
         activityIndicator.stopAnimating()

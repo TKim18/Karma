@@ -23,31 +23,35 @@ class UserUtil {
         return getCurrentUserFB().email
     }
     
-    static func getCurrentProperty(key: String) -> Any? {
-        let userId = getCurrentId()
-        if let userId = userId {
-            return getProperty(key: key, id: userId)
-        }
-        return -1
-    }
+//    static func getCurrentProperty(key: String) -> Any? {
+//        let userId = getCurrentId()
+//        if let userId = userId {
+//            return getProperty(key: key, id: userId)
+//        }
+//        return -1
+//    }
     
-    static func getProperty(key: String, id : String) -> Any? {
-        let ref = Database.database().reference()
-        var ret : Any = -1
-        ref.child("users").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let entity = snapshot.value as? NSDictionary
-            ret = entity?[key] as? String ?? ""
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        return ret
-    }
+//    static func getProperty(key: String, id : String) -> Any? {
+//        let ref = Database.database().reference()
+//    
+//        ref.child("users").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let entity = snapshot.value as? NSDictionary
+//            print("work")
+//        }) { (error) in
+//            print("no work")
+//            print(error.localizedDescription)
+//        }
+//        print("thsi point")
+//        return "yhello"
+//    }
     
     static func updateCurrentGroup(joinName: String) {
         let ref = Database.database().reference()
         let currentId = getCurrentId()
-        ref.child("users/\(currentId as Optional)/circles/\(joinName)").setValue(true)
+        if let id = currentId {
+            ref.child("users/\(id)/circles/\(joinName)").setValue(true)
+        }
     }
     
     static func getCurrentUser() -> BackendlessUser {

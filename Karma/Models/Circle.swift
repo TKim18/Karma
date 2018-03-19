@@ -32,14 +32,20 @@ class Circle : NSObject {
     // In an upload call, add the circle name as the key and members/display name as values
     func upload() {
         let ref = Database.database().reference()
-        let userName = UserUtil.getCurrentProperty(key: "userName") as? String
-        if let userName = userName {
-            ref.child("circles/\(self.joinName as Optional)/displayName").setValue(self.joinName)
-            ref.child("circles/\(self.joinName as Optional)/members/\(userName)").setValue(true)
-            // Add circle to user object
-            // ref.child("users/\()")
-        } else {
-            print("Unable to retrieve user property")
+        if let id = UserUtil.getCurrentId() {
+            ref.child("users").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let entity = snapshot.value as? NSDictionary
+                let userName = entity?["userName"]
+                if let userName = userName, let circleName = self.joinName {
+                    ref.child("circles/\(circleName)/displayName").setValue(circleName)
+                    ref.child("circles/\(circleName)/members/\(userName)").setValue(true)
+                } else {
+                    print("Unable to retrieve user property")
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
         }
     }
     

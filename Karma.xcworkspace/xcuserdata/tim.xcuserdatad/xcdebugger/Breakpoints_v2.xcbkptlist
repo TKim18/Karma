@@ -152,7 +152,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "543125655.0486749"
+                  timestampString = "543141290.204175"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -167,7 +167,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "543125655.0512691"
+                  timestampString = "543141290.2071429"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -182,7 +182,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "543125655.055459"
+                  timestampString = "543141290.210017"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -197,7 +197,7 @@
                   moduleName = "Karma"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Controllers/ViewController.swift"
-                  timestampString = "543125655.059489"
+                  timestampString = "543141290.2131439"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "5"
@@ -214,7 +214,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
-            timestampString = "543125654.709649"
+            timestampString = "543141289.859025"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
@@ -262,7 +262,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
-            timestampString = "543125654.709741"
+            timestampString = "543141289.859146"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
@@ -278,7 +278,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
-            timestampString = "543125654.709808"
+            timestampString = "543141289.859235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -340,7 +340,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Circle/Members/CircleMemberTableViewController.swift"
-            timestampString = "543125654.709967"
+            timestampString = "543141289.859485"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"
@@ -356,7 +356,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Circle/Members/DirectTransferViewController.swift"
-            timestampString = "543125654.7100379"
+            timestampString = "543141289.859673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
@@ -404,7 +404,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Circle/CircleJoinViewController.swift"
-            timestampString = "543125654.710168"
+            timestampString = "543141289.859953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
@@ -420,7 +420,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/User/UserProfileViewController.swift"
-            timestampString = "543125654.710241"
+            timestampString = "543141289.860056"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
@@ -436,7 +436,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/User/UserProfileViewController.swift"
-            timestampString = "543125654.710304"
+            timestampString = "543141289.860139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
@@ -452,7 +452,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/User/UserProfileViewController.swift"
-            timestampString = "543125654.7103601"
+            timestampString = "543141289.860217"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
@@ -496,11 +496,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Circle/CircleCreateViewController.swift"
-            timestampString = "543125654.7104191"
+            timestampString = "543141289.860309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -512,192 +512,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Circle/CircleCreateViewController.swift"
-            timestampString = "543125654.710479"
+            timestampString = "543141289.860441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "createCircle()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Models/Circle.swift"
-            timestampString = "543125654.7105401"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "upload()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Models/Circle.swift"
-            timestampString = "543125761.4602751"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "upload()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Models/UserUtil.swift"
-            timestampString = "543125789.497673"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "getCurrentProperty(key:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Models/UserUtil.swift"
-            timestampString = "543125792.094021"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "getProperty(key:id:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static Karma.UserUtil.getProperty(key: Swift.String, id: Swift.String) -&gt; Swift.Optional&lt;Any&gt;"
-                  moduleName = "Karma"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Models/UserUtil.swift"
-                  timestampString = "543125792.204836"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "309">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in static Karma.UserUtil.getProperty(key: Swift.String, id: Swift.String) -&gt; Swift.Optional&lt;Any&gt;"
-                  moduleName = "Karma"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Models/UserUtil.swift"
-                  timestampString = "543125792.2075911"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Models/UserUtil.swift"
-            timestampString = "543125803.390849"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "getProperty(key:id:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in static Karma.UserUtil.getProperty(key: Swift.String, id: Swift.String) -&gt; Swift.Optional&lt;Any&gt;"
-                  moduleName = "Karma"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Models/UserUtil.swift"
-                  timestampString = "543125803.600137"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "620">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.String in closure #1 (__ObjC.DataSnapshot) -&gt; () in static Karma.UserUtil.getProperty(key: Swift.String, id: Swift.String) -&gt; Swift.Optional&lt;Any&gt;"
-                  moduleName = "Karma"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tim/Documents/Code/Karma/Karma/Models/UserUtil.swift"
-                  timestampString = "543125803.6020859"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Models/UserUtil.swift"
-            timestampString = "543125825.901425"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "getProperty(key:id:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Karma/Models/UserUtil.swift"
-            timestampString = "543125838.174016"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "getProperty(key:id:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
