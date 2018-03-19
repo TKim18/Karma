@@ -30,37 +30,35 @@ class Circle : NSObject {
     }
     
     // In an upload call, add the circle name as the key and members/display name as values
-    func upload() {
+    func upload(callback: @escaping () -> ()) {
         let ref = Database.database().reference()
         if let id = UserUtil.getCurrentId() {
-            ref.child("users").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let entity = snapshot.value as? NSDictionary
-                let userName = entity?["userName"]
+            UserUtil.getProperty(key: "userName", id: id) {
+                userName in
                 if let userName = userName, let circleName = self.joinName {
                     ref.child("circles/\(circleName)/displayName").setValue(circleName)
                     ref.child("circles/\(circleName)/members/\(userName)").setValue(true)
+                    ref.child("users/\(id)/circles/\(circleName)").setValue(true)
                 } else {
                     print("Unable to retrieve user property")
                 }
-            }) { (error) in
-                print(error.localizedDescription)
+                callback()
             }
         }
     }
     
     // Check if the circle already exists on the database
-    func exists() -> Bool {
+    func exists(completionHandler: @escaping(_ exist: Bool) -> ()) {
         let ref = Database.database().reference()
-        var status = false
         if let name = self.joinName {
             ref.child("circles").child(name).observeSingleEvent(of: .value, with: { (snapshot) in
-                status = true
+                let entity = snapshot.value as? NSDictionary
+                let val = entity == nil ? false : true
+                completionHandler(val)
             }) { (error) in
                 print(error.localizedDescription)
             }
         }
-        return status
     }
     
     static func getCircleDataStore() -> IDataStore {

@@ -24,26 +24,27 @@ class CircleCreateViewController: CircleController {
         }
     }
     
-    // Helper Function
+    // Server Call
+    func createCircle() {
+        activityIndicator.startAnimating()
+        let circle = Circle(name: circleNameField.text!, password: circleKeyField.text!)
+        circle.exists() {
+            exist in
+            exist ? self.notifyDuplicate() : self.uploadCircle(circle: circle)
+        }
+        activityIndicator.stopAnimating()
+    }
+    
     func notifyDuplicate() {
         let alert = UIAlertController(title: "Sorry, that name is taken", message: "Please choose an equally cool name!",  preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
         self.present(alert, animated: true, completion: nil)
     }
     
-    // Server Call
-    func createCircle() {
-        activityIndicator.startAnimating()
-        let circle = Circle(name: circleNameField.text!, password: circleKeyField.text!)
-        if circle.exists() {
-            notifyDuplicate()
+    func uploadCircle(circle: Circle) {
+        circle.upload() {
+            () -> () in
+            self.performSegue(withIdentifier: "CreateCircle", sender: self)
         }
-        else {
-            // Update user object as well
-            circle.upload()
-            UserUtil.updateCurrentGroup(joinName: circleNameField.text!)
-            //self.performSegue(withIdentifier: "CreateCircle", sender: self)
-        }
-        activityIndicator.stopAnimating()
     }
 }

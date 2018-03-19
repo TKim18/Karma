@@ -23,37 +23,25 @@ class UserUtil {
         return getCurrentUserFB().email
     }
     
-//    static func getCurrentProperty(key: String) -> Any? {
+//    static func getCurrentProperty(key: String, completionHandler: (_ property: Any) -> ()) {
 //        let userId = getCurrentId()
 //        if let userId = userId {
-//            return getProperty(key: key, id: userId)
+//            getProperty(key: key, id: userId, completionHandler: completionHandler)
 //        }
-//        return -1
 //    }
     
-//    static func getProperty(key: String, id : String) -> Any? {
-//        let ref = Database.database().reference()
-//    
-//        ref.child("users").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
-//            // Get user value
-//            let entity = snapshot.value as? NSDictionary
-//            print("work")
-//        }) { (error) in
-//            print("no work")
-//            print(error.localizedDescription)
-//        }
-//        print("thsi point")
-//        return "yhello"
-//    }
-    
-    static func updateCurrentGroup(joinName: String) {
+    static func getProperty(key: String, id: String, completionHandler: @escaping (_ prop: Any?) -> ()) {
         let ref = Database.database().reference()
-        let currentId = getCurrentId()
-        if let id = currentId {
-            ref.child("users/\(id)/circles/\(joinName)").setValue(true)
+        ref.child("users").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let entity = snapshot.value as? NSDictionary
+            let val = entity![key]
+            completionHandler(val)
+        }) { (error) in
+            print(error.localizedDescription)
         }
     }
-    
+ 
     static func getCurrentUser() -> BackendlessUser {
         return Backendless.sharedInstance().userService.currentUser
     }

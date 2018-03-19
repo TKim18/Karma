@@ -32,6 +32,11 @@ class CircleJoinViewController: CircleController {
     
     // Server Call
     func joinCircle(){
+        // Process:
+        // Check if the circle exists
+        // If it does => add the user's circle item, 
+        // If it doesn't =>
+        
         let query = "joinName = '" + self.circleNameField.text! + "' and joinKey = '" + self.circleKeyField.text! + "'"
         print(query)
         let queryBuilder = DataQueryBuilder()
