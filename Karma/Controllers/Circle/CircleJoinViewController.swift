@@ -29,9 +29,9 @@ class CircleJoinViewController: CircleController {
         activityIndicator.startAnimating()
         let circle = Circle(name: circleNameField.text!, password: circleKeyField.text!)
         circle.existsWithKey() { exists in
+            self.activityIndicator.stopAnimating()
             exists ? self.updateCircle(circle: circle) : self.alertNoExist()
         }
-        activityIndicator.stopAnimating()
     }
     
     func updateCircle(circle: Circle) {

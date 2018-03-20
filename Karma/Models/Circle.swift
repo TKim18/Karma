@@ -32,9 +32,9 @@ class Circle : NSObject {
     // In an upload call, add the circle name as the key and members/display name as values
     func upload(newCircle: Bool, callback: @escaping () -> ()) {
         let ref = Database.database().reference()
+        
         if let id = UserUtil.getCurrentId() {
-            UserUtil.getProperty(key: "userName", id: id) {
-                userName in
+            UserUtil.getProperty(key: "userName", id: id) { userName in
                 if let userName = userName, let circleName = self.joinName, let circleKey = self.joinKey {
                     if newCircle {
                         ref.child("circles/\(circleName)/joinName").setValue(circleName)

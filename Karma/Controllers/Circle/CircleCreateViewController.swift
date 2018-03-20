@@ -29,9 +29,9 @@ class CircleCreateViewController: CircleController {
         activityIndicator.startAnimating()
         let circle = Circle(name: circleNameField.text!, password: circleKeyField.text!)
         circle.exists() { exist in
+            self.activityIndicator.stopAnimating()
             exist ? self.alertDuplicate() : self.uploadCircle(circle: circle)
         }
-        activityIndicator.stopAnimating()
     }
     
     func uploadCircle(circle: Circle) {

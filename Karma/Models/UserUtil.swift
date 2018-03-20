@@ -35,8 +35,10 @@ class UserUtil {
         ref.child("users").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let entity = snapshot.value as? NSDictionary
-            let val = entity![key]
-            completionHandler(val)
+            if let entity = entity {
+                let val = entity[key]
+                completionHandler(val)
+            }
         }) { (error) in
             print(error.localizedDescription)
         }
