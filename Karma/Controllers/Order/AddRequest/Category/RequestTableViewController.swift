@@ -39,30 +39,30 @@ class RequestTableViewController: UITableViewController {
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        guard let selectedCircleCell = sender as? RequestCategoryTableViewCell else {
-            fatalError("Unexpected sender: \(String(describing: sender))")
-        }
-        
-        guard let indexPath = tableView.indexPath(for : selectedCircleCell) else {
-            fatalError("You definitely got the wrong cell")
-        }
-        
-//        let currentCategory = categories[indexPath.row]
-//        let currentUser = UserUtil.getCurrentUser()
-        
-        //Going to have to change this around for different views depending on category
-        if segue.identifier == "ShowRequestDetails" {
-            if let destination = segue.destination as? CustomRequestViewController {
-//                let currentOrder = Order(
-//                    category: currentCategory,
-//                    requestingUserId: currentUser.objectId as String,
-//                    requestingUserName: currentUser.name as String)
-//                destination.currentOrder = currentOrder
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        super.prepare(for: segue, sender: sender)
+//
+//        guard let selectedCircleCell = sender as? RequestCategoryTableViewCell else {
+//            fatalError("Unexpected sender: \(String(describing: sender))")
+//        }
+//
+//        guard let indexPath = tableView.indexPath(for : selectedCircleCell) else {
+//            fatalError("You definitely got the wrong cell")
+//        }
+//
+////        let currentCategory = categories[indexPath.row]
+////        let currentUser = UserUtil.getCurrentUser()
+//
+//        //Going to have to change this around for different views depending on category
+//        if segue.identifier == "ShowRequestDetails" {
+//            if let destination = segue.destination as? CustomRequestViewController {
+////                let currentOrder = Order(
+////                    category: currentCategory,
+////                    requestingUserId: currentUser.objectId as String,
+////                    requestingUserName: currentUser.name as String)
+////                destination.currentOrder = currentOrder
+//            }
+//        }
+//    }
 
 }

@@ -182,8 +182,7 @@
 		2229C0871F744D860083C215 /* AddRequest */ = {
 			isa = PBXGroup;
 			children = (
-				2229C08A1F744D9E0083C215 /* RequestCategoryTableViewCell.swift */,
-				2229C0881F744D9E0083C215 /* RequestTableViewController.swift */,
+				22ACAC672062F45900AA4397 /* Category */,
 				2229C0891F744D9E0083C215 /* CustomRequestViewController.swift */,
 			);
 			path = AddRequest;
@@ -317,6 +316,15 @@
 				22742AC8205E1AF3008405A5 /* NotificationTableViewController.swift */,
 			);
 			path = Notification;
+			sourceTree = "<group>";
+		};
+		22ACAC672062F45900AA4397 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				2229C08A1F744D9E0083C215 /* RequestCategoryTableViewCell.swift */,
+				2229C0881F744D9E0083C215 /* RequestTableViewController.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		5A8163A77E6F62574C4A1FC1 /* Frameworks */ = {

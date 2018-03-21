@@ -11,7 +11,7 @@ import UIKit
 class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextViewDelegate {
 
     // Local Variables
-    var currentOrder : Order!
+    var order : Order!
     var reqButtonPosition : CGFloat!
     var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 216))
     
@@ -42,8 +42,12 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     func setupView() {
         titleField.becomeFirstResponder()
         self.reqButtonPosition = requestButton.frame.origin.y
-        categoryImage.image = UIImage(named: "Summerfields")
-        //categoryImage.image = currentOrder.fromDescription().image
+        
+        order = Order()
+        order.category = .Custom
+        if let category = order.category {
+            categoryImage.image = category.image
+        }
     }
     
     func setupKeyboard() {
@@ -67,6 +71,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     }
     
     func setupDetails() {
+        // Insert ghost text when no text
         requestDetailsField.delegate = self
         placeholderLabel = UILabel()
         placeholderLabel.text = "Any other details you want to include?"
@@ -84,33 +89,34 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     
     // Segue handling
     @IBAction func request(sender : AnyObject) {
-        if (validRequest()) {
-            self.performSegue(withIdentifier: "SubmitRequest", sender: self)
+        populateOrder()
+        
+        if validifyOrder() {
+            setDefaults()
+            
+            order.upload() {
+                self.performSegue(withIdentifier: "SubmitRequest", sender: self)
+            }
         }
     }
-
-    // Server call
-    func validRequest() -> Bool {
-        let backendless = Backendless.sharedInstance()!
-        let orderDataStore = backendless.data.of(Order().ofClass())
-        let circleDataStore = backendless.data.of(Circle().ofClass())
+    
+    func populateOrder() {
+        order.title = titleField.text
+        order.message = requestDetailsField.text
+        order.requestedTime = endTimeField.text
+        order.destination = locationField.text
         
-        // Populate the attributes
-        self.currentOrder.title = titleField.text
-        self.currentOrder.message = requestDetailsField.text
-        self.currentOrder.requestedTime = endTimeField.text
-        self.currentOrder.destination = locationField.text
-
-        // TODO: Add safety measures to this - cant be below 0.01 or not a number
+        // Cost field
         var cost = costField.text!
         if cost.contains("$") {
             cost.remove(at: cost.startIndex)
         }
         
-        self.currentOrder.cost = (cost as NSString).doubleValue
-        
-        // Validify the values and set defaults
-        if (self.currentOrder.title!.isEmpty) {
+        order.cost = (cost as NSString).doubleValue
+    }
+
+    func validifyOrder() -> Bool {
+        if (order.title!.isEmpty) {
             self.errorMessage.text = "Please give this request a title!"
             return false
         }
@@ -118,33 +124,17 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
             self.errorMessage.text = "Please specify the amount of Karma!"
             return false
         }
-        
-        if (self.currentOrder.destination!.isEmpty) {
-            self.currentOrder.destination = "Home"
-            //self.currentOrder.destination = User.getCurrentUserProperty(key: "homeLocation") as? String
+        return true
+    }
+    
+    func setDefaults() {
+        if (order.destination!.isEmpty) {
+            order.destination = "Home"
         }
         
-        if (self.currentOrder.requestedTime!.isEmpty) {
-            self.currentOrder.requestedTime = "ASAP"
+        if (order.requestedTime!.isEmpty) {
+            order.requestedTime = "ASAP"
         }
-        
-        var valid = true
-        Types.tryblock({ () -> Void in
-            let placedOrder = orderDataStore!.save(self.currentOrder) as! Order
-            circleDataStore!.addRelation(
-                "Orders",
-                parentObjectId: UserUtil.getCurrentUserProperty(key: "circleId") as! String,
-                childObjects: [placedOrder.objectId!]
-            )
-        },
-        catchblock: { (exception) -> Void in
-            let error = exception as! Fault
-            self.errorMessage.text = error.message
-            valid = false
-        })
-        
-        return valid
-
     }
 
     // Helper Functions:

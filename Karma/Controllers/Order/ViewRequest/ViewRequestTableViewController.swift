@@ -107,9 +107,9 @@ class ViewRequestTableViewController: UITableViewController {
             self.ref.child(circle).observe(.childAdded, with: { [weak self] (snapshot) -> Void in
                 guard let strongSelf = self else { return }
                 strongSelf.orders.append(snapshot)
-                
+
                 // TODO: Add conditional to check which segmented control it is
-                strongSelf.tableView.insertRows(at: [IndexPath(row: 0, section: strongSelf.orders.count-1)], with: .automatic)
+                strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.orders.count-1, section: 0)], with: .automatic)
             })
         }
     }
@@ -122,11 +122,11 @@ class ViewRequestTableViewController: UITableViewController {
     
     //Each order has its own section
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return orders.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return orders.count
     }
     
     //Set the spacing between sections
@@ -145,15 +145,15 @@ class ViewRequestTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ViewRequestTableViewCell", for: indexPath) as? ViewRequestTableViewCell else {
             fatalError("Something's wrong with the Order object!")
         }
-        
-        let orderSnapshot = self.orders[indexPath.section]
+
+        let orderSnapshot = self.orders[indexPath.row]
         guard let order = orderSnapshot.value as? [String: String] else { return cell }
     
         cell.titleLabel.text = order[Constants.Order.Fields.title] ?? ""
         cell.descriptionLabel.text = order[Constants.Order.Fields.description] ?? ""
         cell.timeLabel.text = order[Constants.Order.Fields.time] ?? ""
         cell.locationLabel.text = order[Constants.Order.Fields.location] ?? ""
-        cell.categoryImage.image = Order.fromDescription(description: order[Constants.Order.Fields.category] ?? "").image
+        cell.categoryImage.image = order[Constants.Order.Fields.category] ?? "").image
         cell.userImage.image = UIImage(named: "DefaultAvatar")!
         
         return cell

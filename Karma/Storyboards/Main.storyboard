@@ -716,7 +716,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3V-2t-o7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1670" y="-1668"/>
+            <point key="canvasLocation" x="694" y="-2440"/>
         </scene>
         <!--Your Circle-->
         <scene sceneID="Y43-Bj-aMl">
@@ -854,6 +854,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="3kd-s3-SgQ"/>
                     <connections>
                         <outlet property="categoryImage" destination="ea9-ko-fBG" id="uJz-Rv-Iqg"/>
                         <outlet property="costField" destination="0Nu-lg-WDb" id="DLR-Fe-Yku"/>
@@ -868,7 +869,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQt-5P-tdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1669.5999999999999" y="-2419.3403298350827"/>
+            <point key="canvasLocation" x="1670" y="-1668"/>
         </scene>
         <!--Direct Transfer View Controller-->
         <scene sceneID="FAi-SX-0KR">
@@ -988,7 +989,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="S69-SH-7rZ" kind="relationship" relationship="rootViewController" id="nPH-wV-FIG"/>
+                        <segue destination="PdG-hk-wVj" kind="relationship" relationship="rootViewController" id="ndn-w6-JES"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5m-aY-bbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1230,9 +1231,10 @@
         <image name="UserSettingsSelectedIcon" width="39" height="39"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ndn-w6-JES"/>
         <segue reference="7fL-I0-nA8"/>
         <segue reference="IhG-KY-8Wu"/>
         <segue reference="rOi-oM-HQC"/>
-        <segue reference="7UW-ov-f9O"/>
+        <segue reference="slo-0J-Efm"/>
     </inferredMetricsTieBreakers>
 </document>

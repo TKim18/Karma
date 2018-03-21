@@ -49,7 +49,7 @@ class Order : NSObject {
     var title : String?
     var message : String?
     var requestedTime : String?
-    var category : String?
+    var category : Category?
     var origin : String?
     var destination : String?
     var cost : Double = 0.0
@@ -58,7 +58,7 @@ class Order : NSObject {
         self.title = ""
         self.message = ""
         self.requestedTime = ""
-        self.category = ""
+        self.category = .Custom
         self.origin = ""
         self.destination = ""
         self.requestingUserId = "-1"
@@ -67,27 +67,13 @@ class Order : NSObject {
         self.acceptingUserName = "-1"
     }
     
-    init (category: Category, requestingUserId: String, requestingUserName: String) {
-        self.category = category.description
-        self.requestingUserId = requestingUserId
-        self.requestingUserName = requestingUserName
+    func upload(callback: @escaping () -> ()) {
+        
     }
-    
-    
     
     
     static func getOrderDataStore() -> IDataStore {
         return Backendless.sharedInstance().data.of(Order().ofClass())
-    }
-
-    static func fromDescription(description: String) -> Category {
-        switch description {
-            case "Summerfields": return .Summerfields
-            case "WesWings": return .WesWings
-            case "WeShop": return .WeShop
-            case "Custom": return .Custom
-            default: return .Custom
-        }
     }
     
 }
