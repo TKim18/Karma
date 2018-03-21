@@ -30,6 +30,7 @@ struct Constants {
             static let description = "description"
             static let time = "requestedTime"
             static let location = "destination"
+            static let category = "category"
         }
     }
     

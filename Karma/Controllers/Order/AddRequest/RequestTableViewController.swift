@@ -50,17 +50,17 @@ class RequestTableViewController: UITableViewController {
             fatalError("You definitely got the wrong cell")
         }
         
-        let currentCategory = categories[indexPath.row]
-        let currentUser = UserUtil.getCurrentUser()
+//        let currentCategory = categories[indexPath.row]
+//        let currentUser = UserUtil.getCurrentUser()
         
         //Going to have to change this around for different views depending on category
         if segue.identifier == "ShowRequestDetails" {
             if let destination = segue.destination as? CustomRequestViewController {
-                let currentOrder = Order(
-                    category: currentCategory,
-                    requestingUserId: currentUser.objectId as String,
-                    requestingUserName: currentUser.name as String)
-                destination.currentOrder = currentOrder
+//                let currentOrder = Order(
+//                    category: currentCategory,
+//                    requestingUserId: currentUser.objectId as String,
+//                    requestingUserName: currentUser.name as String)
+//                destination.currentOrder = currentOrder
             }
         }
     }

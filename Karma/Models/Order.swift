@@ -80,13 +80,13 @@ class Order : NSObject {
         return Backendless.sharedInstance().data.of(Order().ofClass())
     }
 
-    func fromDescription() -> Category {
-        switch self.description {
-        case "Summerfields": return .Summerfields
-        case "WesWings": return .WesWings
-        case "WeShop": return .WeShop
-        case "Custom": return .Custom
-        default: return .Custom
+    static func fromDescription(description: String) -> Category {
+        switch description {
+            case "Summerfields": return .Summerfields
+            case "WesWings": return .WesWings
+            case "WeShop": return .WeShop
+            case "Custom": return .Custom
+            default: return .Custom
         }
     }
     

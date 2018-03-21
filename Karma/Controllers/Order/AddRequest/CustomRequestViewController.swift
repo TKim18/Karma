@@ -42,7 +42,8 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     func setupView() {
         titleField.becomeFirstResponder()
         self.reqButtonPosition = requestButton.frame.origin.y
-        categoryImage.image = currentOrder.fromDescription().image
+        categoryImage.image = UIImage(named: "Summerfields")
+        //categoryImage.image = currentOrder.fromDescription().image
     }
     
     func setupKeyboard() {

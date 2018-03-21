@@ -40,6 +40,8 @@ class ViewRequestTableViewController: UITableViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         //Pull from the database
         //loadAllOrders()
 
@@ -47,7 +49,7 @@ class ViewRequestTableViewController: UITableViewController {
         //noOrders()
 
         //Configure the navigation bar
-        updateKarmaPoints()
+        //updateKarmaPoints()
     }
     
     deinit {
@@ -107,7 +109,7 @@ class ViewRequestTableViewController: UITableViewController {
                 strongSelf.orders.append(snapshot)
                 
                 // TODO: Add conditional to check which segmented control it is
-                strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.orders.count-1, section: 0)], with: .automatic)
+                strongSelf.tableView.insertRows(at: [IndexPath(row: 0, section: strongSelf.orders.count-1)], with: .automatic)
             })
         }
     }
@@ -144,23 +146,15 @@ class ViewRequestTableViewController: UITableViewController {
             fatalError("Something's wrong with the Order object!")
         }
         
-        let orderSnapshot = self.orders[indexPath.row]
+        let orderSnapshot = self.orders[indexPath.section]
         guard let order = orderSnapshot.value as? [String: String] else { return cell }
     
-        cell.titleLabel.text = order[Constants.OrderFields.title] ?? ""
-        cell.descriptionLabel.text = order[Constants.OrderFields.description] ?? ""
-        cell.timeLabel.text = order[Constants.OrderFields.time] ?? ""
-        cell.locationLabel.text = order[Constants.OrderFields.location] ?? ""
-    
-//        let order = orders[indexPath.section]
-//
-//        // Cell components
-//        cell.titleLabel.text = order.title! + " for $" + String(order.cost)
-//        cell.descriptionLabel.text = order.message
-//        cell.timeLabel.text = order.requestedTime
-//        cell.locationLabel.text = order.destination!
-//        cell.categoryImage.image = order.fromDescription().image
-//        cell.userImage.image = UIImage(named: "DefaultAvatar")!
+        cell.titleLabel.text = order[Constants.Order.Fields.title] ?? ""
+        cell.descriptionLabel.text = order[Constants.Order.Fields.description] ?? ""
+        cell.timeLabel.text = order[Constants.Order.Fields.time] ?? ""
+        cell.locationLabel.text = order[Constants.Order.Fields.location] ?? ""
+        cell.categoryImage.image = Order.fromDescription(description: order[Constants.Order.Fields.category] ?? "").image
+        cell.userImage.image = UIImage(named: "DefaultAvatar")!
         
         return cell
     }
