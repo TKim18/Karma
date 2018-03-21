@@ -15,7 +15,8 @@ class ViewRequestTableViewController: UITableViewController {
     // Local Variables
     var ref: DatabaseReference!
     let cellSpacingHeight: CGFloat = 5
-    fileprivate var _refHandle: DatabaseHandle?
+    fileprivate var _pointHandle: DatabaseHandle?
+    fileprivate var _unacceptHandle: DatabaseHandle?
     var orders: [DataSnapshot]! = []
     
     private let refreshCont = UIRefreshControl()
@@ -27,40 +28,40 @@ class ViewRequestTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // tableView.register(ViewRequestTableViewCell.self, forCellReuseIdentifier: "ViewRequestCell")
+        self.ref = Database.database().reference()
         
         //Set up connection to database
         configureDatabase()
         
-        //Pull from the database
-        //loadAllOrders()
+        //Display number of points
+        configureKarmaPoints()
         
         //Configure the view
         configureTableView()
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        //Pull from the database
-        //loadAllOrders()
-
-        //Show no orders picture if orders is empty
-        //noOrders()
-
-        //Configure the navigation bar
-        //updateKarmaPoints()
-    }
     
     deinit {
-        if let refHandle = _refHandle {
-            self.ref.child("order").removeObserver(withHandle: refHandle)
+        if let unacceptHandle = _unacceptHandle {
+            self.ref.child("unacceptedOrder").removeObserver(withHandle: unacceptHandle)
+        }
+        if let pointHandle = _pointHandle {
+            self.ref.child("users").removeObserver(withHandle: pointHandle)
         }
     }
     
     private func configureDatabase() {
         loadUnaccepted()
         loadAccepted()
+    }
+    
+    private func configureKarmaPoints() {
+        if let userId = UserUtil.getCurrentId() {
+            let pointRef = self.ref.child("users/\(userId)/karma")
+            self._pointHandle = pointRef.observe(DataEventType.value, with: { (snapshot) in
+                let point = snapshot.value as! Double
+                self.karmaPointsButton.title = String(point)
+            })
+        }
     }
     
     private func configureTableView() {
@@ -85,11 +86,6 @@ class ViewRequestTableViewController: UITableViewController {
         self.refreshCont.endRefreshing()
     }
     
-    private func updateKarmaPoints() {
-        
-    }
-    
-
     @objc func segmentChanged(sender: UISegmentedControl) {
 //        switch sender.selectedSegmentIndex {
 //            case 0: loadPending()
@@ -102,9 +98,9 @@ class ViewRequestTableViewController: UITableViewController {
     //--------------------------------- Pull Order Data -------------------------------------//
     
     private func loadUnaccepted() {
-        ref = Database.database().reference().child("unacceptedOrders")
         UserUtil.getCurrentCircle() { circle in
-            self.ref.child(circle).observe(.childAdded, with: { [weak self] (snapshot) -> Void in
+            let orderRef = self.ref.child("unacceptedOrders/\(circle)")
+            self._unacceptHandle = orderRef.observe(.childAdded, with: { [weak self] (snapshot) -> Void in
                 guard let strongSelf = self else { return }
                 strongSelf.orders.append(snapshot)
 
