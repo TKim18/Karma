@@ -11,6 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class UserUtil {
+    
     static func getCurrentUserFB() -> User {
         return Auth.auth().currentUser!
     }
@@ -21,6 +22,14 @@ class UserUtil {
     
     static func getCurrentEmail() -> String? {
         return getCurrentUserFB().email
+    }
+    
+    static func getCurrentCircle(completionHandler: @escaping (_ circle: String) -> ()) {
+        getCurrentProperty(key: "circles") { circles in
+            let entity = circles as? NSDictionary ?? [:]
+            let val = entity.allKeys.first as? String ?? ""
+            completionHandler(val)
+        }
     }
     
     static func getCurrentProperty(key: String, completionHandler: @escaping (_ prop: Any?) -> ()) {

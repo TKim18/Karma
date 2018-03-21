@@ -30,7 +30,7 @@ class LoginController: UIViewController {
         
         registerButton.titleLabel?.textAlignment = NSTextAlignment.center
         self.activityIndicator.hidesWhenStopped = true
-        self.wesleyan.text = "@wesleyan.edu"
+        self.wesleyan.text = Constants.User.wesleyan
     }
     
     @objc func dismissKeyboard() {
@@ -38,21 +38,17 @@ class LoginController: UIViewController {
     }
     
     @IBAction func showRegister(sender : AnyObject) {
-        self.performSegue(withIdentifier: "LoginToRegister", sender: nil)
+        self.performSegue(withIdentifier: Constants.Segue.ToRegister, sender: nil)
     }
     
     //
     @IBAction func loginButton(sender : AnyObject) {
         if let email = self.emailField.text, let password = self.passwordField.text {
-            login(email: (email + "@wesleyan.edu"), password: password)
+            login(email: (email + Constants.User.wesleyan), password: password)
         }
         else {
-            self.errorMessage.text = "Please enter a valid email and password"
+            self.errorMessage.text = Constants.User.invalidLogin
         }
-    }
-    
-    func hasCircle() -> Bool {
-        return ((UserUtil.getCurrentUserProperty(key: "circleId") as! String) != "-1")
     }
     
     // Server call
@@ -65,8 +61,8 @@ class LoginController: UIViewController {
                 self.errorMessage.text = error.localizedDescription
                 return
             }
-            UserUtil.getCurrentProperty(key: "circles") { prop in
-                let identifier = prop == nil ? "LoginNoCircle" : "LoginToTab"
+            UserUtil.getCurrentProperty(key: Constants.User.Fields.circles) { prop in
+                let identifier = prop == nil ? Constants.Segue.ToNoCircle : Constants.Segue.LoginToMain
                 self.performSegue(withIdentifier: identifier, sender: self)
             }
         }

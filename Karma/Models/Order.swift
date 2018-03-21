@@ -67,12 +67,14 @@ class Order : NSObject {
         self.acceptingUserName = "-1"
     }
     
-    //Probably only going to use this one
     init (category: Category, requestingUserId: String, requestingUserName: String) {
         self.category = category.description
         self.requestingUserId = requestingUserId
         self.requestingUserName = requestingUserName
     }
+    
+    
+    
     
     static func getOrderDataStore() -> IDataStore {
         return Backendless.sharedInstance().data.of(Order().ofClass())

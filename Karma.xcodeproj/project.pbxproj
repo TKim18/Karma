@@ -32,7 +32,6 @@
 		2277E0681F744B5F00AC53CB /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0651F744B5F00AC53CB /* Order.swift */; };
 		2277E06D1F744BA400AC53CB /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06B1F744BA400AC53CB /* Image.swift */; };
 		2277E06E1F744BA400AC53CB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E06C1F744BA400AC53CB /* Color.swift */; };
-		2277E0761F744C6300AC53CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0751F744C6300AC53CB /* ViewController.swift */; };
 		2277E0791F744C7800AC53CB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0771F744C7800AC53CB /* LoginController.swift */; };
 		2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E0781F744C7800AC53CB /* RegisterController.swift */; };
 		227BBC9E2018DC80005314DF /* CircleJoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227BBC9D2018DC80005314DF /* CircleJoinViewController.swift */; };
@@ -45,6 +44,7 @@
 		22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */; };
 		22D31D8B1FB2B28400014892 /* DirectTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D31D8A1FB2B28400014892 /* DirectTransferViewController.swift */; };
 		22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */; };
+		22DE50822061F86400A87979 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE50812061F86400A87979 /* Constants.swift */; };
 		9953D19A5A0FD783C9755C42 /* Pods_Karma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,7 +100,6 @@
 		2277E0651F744B5F00AC53CB /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		2277E06B1F744BA400AC53CB /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		2277E06C1F744BA400AC53CB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		2277E0751F744C6300AC53CB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2277E0771F744C7800AC53CB /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2277E0781F744C7800AC53CB /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		227BBC9D2018DC80005314DF /* CircleJoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleJoinViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 		22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		22D31D8A1FB2B28400014892 /* DirectTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransferViewController.swift; sourceTree = "<group>"; };
 		22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransfer.swift; sourceTree = "<group>"; };
+		22DE50812061F86400A87979 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Karma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEFA3D6DA2E1C5CD49339F5 /* Pods-Karma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -270,10 +270,10 @@
 		2277E0711F744C0800AC53CB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2277E0751F744C6300AC53CB /* ViewController.swift */,
 				2277E0721F744C2B00AC53CB /* User */,
 				22302AFB1F7B36EF0046E757 /* Circle */,
 				2277E0741F744C3800AC53CB /* Order */,
+				22DE50812061F86400A87979 /* Constants.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -291,9 +291,9 @@
 		2277E0741F744C3800AC53CB /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				228CA9541F7B34180039B250 /* Notification */,
 				2229C0821F744D6E0083C215 /* ViewRequest */,
 				2229C0871F744D860083C215 /* AddRequest */,
+				228CA9541F7B34180039B250 /* Notification */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -555,7 +555,6 @@
 				2277E0681F744B5F00AC53CB /* Order.swift in Sources */,
 				22A139151FA6A60A00B21CD2 /* Double.swift in Sources */,
 				22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */,
-				2277E0761F744C6300AC53CB /* ViewController.swift in Sources */,
 				22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */,
 				2277E0791F744C7800AC53CB /* LoginController.swift in Sources */,
 				2229C08C1F744D9E0083C215 /* CustomRequestViewController.swift in Sources */,
@@ -563,6 +562,7 @@
 				22D31D8B1FB2B28400014892 /* DirectTransferViewController.swift in Sources */,
 				2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */,
 				22302B001F7B376A0046E757 /* CircleMemberTableViewController.swift in Sources */,
+				22DE50822061F86400A87979 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

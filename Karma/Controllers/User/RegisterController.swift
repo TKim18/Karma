@@ -32,7 +32,7 @@ class RegisterController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         self.activityIndicator.hidesWhenStopped = true
-        self.wesleyan.text = "@wesleyan.edu"
+        self.wesleyan.text = Constants.User.wesleyan
     }
     
     @objc func dismissKeyboard() {
@@ -47,14 +47,14 @@ class RegisterController: UIViewController {
             }
         }
         else {
-            self.errorMessage.text = "Please enter a valid email and password"
+            self.errorMessage.text = Constants.User.invalidLogin
         }
     }
     
     // Validation
     func validRegister() -> Bool {
         if (passwordField.text != verifyField.text) {
-            errorMessage.text = "Please verify that your password matches"
+            errorMessage.text = Constants.User.invalidPassword
             return false
         }
         return true
@@ -64,7 +64,7 @@ class RegisterController: UIViewController {
     // TODO: Upon register, add field of imagePath and name to user
     func register(email: String, name: String, password: String) {
         activityIndicator.startAnimating()
-        Auth.auth().createUser(withEmail: (email + "@wesleyan.edu"), password: password) {
+        Auth.auth().createUser(withEmail: (email + Constants.User.wesleyan), password: password) {
             (user, error) in
             self.activityIndicator.stopAnimating()
             if let error = error {
@@ -73,9 +73,12 @@ class RegisterController: UIViewController {
             }
             if let user = user {
                 self.ref.child("users").child(user.uid).setValue(
-                    ["name": name, "userName": email, "home": "Wesleyan University"]
+                    [Constants.User.Fields.name: name,
+                     Constants.User.Fields.userName: email,
+                     Constants.User.Fields.home: Constants.User.university,
+                     Constants.User.Fields.points: Constants.User.initialPoints]
                 )
-                self.performSegue(withIdentifier: "RegisterToCircle", sender: self)
+                self.performSegue(withIdentifier: Constants.Segue.RegisterToMain, sender: self)
             }
         }
     }
