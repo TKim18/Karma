@@ -35,7 +35,7 @@ class CircleCreateViewController: CircleController {
     }
     
     func uploadCircle(circle: Circle) {
-        circle.upload(newCircle: true) { () -> () in
+        circle.upload(newCircle: true) {
             self.performSegue(withIdentifier: "CreateCircle", sender: self)
         }
     }

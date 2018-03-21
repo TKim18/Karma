@@ -37,9 +37,12 @@ class Circle : NSObject {
             UserUtil.getProperty(key: "userName", id: id) { userName in
                 if let userName = userName, let circleName = self.joinName, let circleKey = self.joinKey {
                     if newCircle {
-                        ref.child("circles/\(circleName)/joinName").setValue(circleName)
-                        ref.child("circles/\(circleName)/displayName").setValue(circleName)
-                        ref.child("circles/\(circleName)/joinKey").setValue(circleKey)
+                        var data : [String : Any]
+                        data = [:]
+                        data["joinName"] = circleName
+                        data["displayName"] = circleName
+                        data["joinKey"] = circleKey
+                        ref.child("circles/\(circleName)").setValue(data)
                     }
                     ref.child("circles/\(circleName)/members/\(userName)").setValue(true)
                     ref.child("users/\(id)/circles/\(circleName)").setValue(true)

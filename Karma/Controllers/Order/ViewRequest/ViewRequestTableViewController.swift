@@ -147,14 +147,17 @@ class ViewRequestTableViewController: UITableViewController {
         }
 
         let orderSnapshot = self.orders[indexPath.row]
-        guard let order = orderSnapshot.value as? [String: String] else { return cell }
-    
-        cell.titleLabel.text = order[Constants.Order.Fields.title] ?? ""
-        cell.descriptionLabel.text = order[Constants.Order.Fields.description] ?? ""
-        cell.timeLabel.text = order[Constants.Order.Fields.time] ?? ""
-        cell.locationLabel.text = order[Constants.Order.Fields.location] ?? ""
-        cell.categoryImage.image = order[Constants.Order.Fields.category] ?? "").image
-        cell.userImage.image = UIImage(named: "DefaultAvatar")!
+        guard let order = orderSnapshot.value as? [String: Any] else { return cell }
+        
+        let title = order[Constants.Order.Fields.title] as? String
+        let cost = order[Constants.Order.Fields.points] as! Double
+        
+        cell.titleLabel.text = title! + " for $" + String(describing: cost)
+        cell.descriptionLabel.text = order[Constants.Order.Fields.details] as? String
+        cell.timeLabel.text = order[Constants.Order.Fields.time] as? String
+        cell.locationLabel.text = order[Constants.Order.Fields.destination] as? String
+        cell.categoryImage.image = Order.Category.Custom.image
+        cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
         
         return cell
     }

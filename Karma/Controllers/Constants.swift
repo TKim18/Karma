@@ -11,7 +11,7 @@ struct Constants {
     struct User {
         static let wesleyan = "@wesleyan.edu"
         static let university = "Wesleyan University"
-        static let initialPoints = 50 as NSNumber
+        static let initialPoints = 50.00 as Double
         static let invalidLogin = "Please enter a valid email and password"
         static let invalidPassword = "Please verify that your passwords match"
         
@@ -27,10 +27,13 @@ struct Constants {
     struct Order {
         struct Fields {
             static let title = "title"
-            static let description = "description"
-            static let time = "requestedTime"
-            static let location = "destination"
+            static let details = "details"
+            static let time = "time"
+            static let destination = "destination"
             static let category = "category"
+            static let points = "points"
+            static let userId = "userId"
+            static let userName = "userName"
         }
     }
     

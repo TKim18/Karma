@@ -35,7 +35,7 @@ class CircleJoinViewController: CircleController {
     }
     
     func updateCircle(circle: Circle) {
-        circle.upload(newCircle: false) { () -> () in
+        circle.upload(newCircle: false) {
             self.performSegue(withIdentifier: "JoinCircle", sender: self)
         }
     }

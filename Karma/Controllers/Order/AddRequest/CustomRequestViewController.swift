@@ -102,8 +102,8 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     
     func populateOrder() {
         order.title = titleField.text
-        order.message = requestDetailsField.text
-        order.requestedTime = endTimeField.text
+        order.details = requestDetailsField.text
+        order.time = endTimeField.text
         order.destination = locationField.text
         
         // Cost field
@@ -111,7 +111,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
         if cost.contains("$") {
             cost.remove(at: cost.startIndex)
         }
-        
+    
         order.cost = (cost as NSString).doubleValue
     }
 
@@ -132,8 +132,8 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
             order.destination = "Home"
         }
         
-        if (order.requestedTime!.isEmpty) {
-            order.requestedTime = "ASAP"
+        if (order.time!.isEmpty) {
+            order.time = "ASAP"
         }
     }
 

@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+import FirebaseDatabase
+
 @objcMembers
 class Order : NSObject {
     
@@ -47,19 +49,17 @@ class Order : NSObject {
     
     var completed : Bool = false
     var title : String?
-    var message : String?
-    var requestedTime : String?
+    var details : String?
+    var time : String?
     var category : Category?
-    var origin : String?
     var destination : String?
     var cost : Double = 0.0
     
     override init () {
         self.title = ""
-        self.message = ""
-        self.requestedTime = ""
+        self.details = ""
+        self.time = ""
         self.category = .Custom
-        self.origin = ""
         self.destination = ""
         self.requestingUserId = "-1"
         self.requestingUserName = "-1"
@@ -68,7 +68,30 @@ class Order : NSObject {
     }
     
     func upload(callback: @escaping () -> ()) {
+        let ref = Database.database().reference()
         
+        if let userId = UserUtil.getCurrentId() {
+            UserUtil.getProperty(key: "userName", id: userId) { userName in
+                UserUtil.getCurrentCircle() { circleName in
+                    if let userName = userName, let title = self.title, let details = self.details, let time = self.time, let category = self.category, let destination = self.destination {
+                        var data : [String : Any]
+                        data = [:]
+                        data[Constants.Order.Fields.title] = title
+                        data[Constants.Order.Fields.details] = details
+                        data[Constants.Order.Fields.time] = time
+                        data[Constants.Order.Fields.category] = category.description
+                        data[Constants.Order.Fields.destination] = destination
+                        data[Constants.Order.Fields.points] = self.cost
+                        data[Constants.Order.Fields.userId] = userId
+                        data[Constants.Order.Fields.userName] = userName
+                        ref.child("unacceptedOrders/\(circleName)").childByAutoId().setValue(data)
+                    } else {
+                        print("Unable to retrieve all of the order properties")
+                    }
+                    callback()
+                }
+            }
+        }
     }
     
     
