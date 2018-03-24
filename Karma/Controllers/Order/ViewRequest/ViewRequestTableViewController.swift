@@ -180,60 +180,12 @@ class ViewRequestTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: do different things depending on state of segment control
         
-        let orderSnapshot = self.orders[indexPath.row]
-        guard var order = orderSnapshot.value as? [String: Any] else { return }
+        let snapshot = self.orders[indexPath.row]
+        guard var order = snapshot.value as? [String: Any] else { return }
         
         if let userId = UserUtil.getCurrentId() {
-            if order[Constants.Order.Fields.userId] as? String ?? "" == userId {
-                return
-            }
-            
-            UserUtil.getCurrentUserName() { userName in
-                UserUtil.getCurrentCircle() { circleName in
-                    self.ref.child("unacceptedOrders/\(circleName)/\(orderSnapshot.key)").removeValue()
-                    order["acceptUserId"] = userId
-                    order["acceptUserName"] = userName
-                        self.ref.child("acceptedOrders/\(circleName)/\(userName)").childByAutoId().setValue(order)
-                }
-            }
+            if order[Constants.Order.Fields.userId] as? String ?? "" == userId { return }
+            Order.uploadAccept(key: snapshot.key, val: order, userId: userId)
         }
-        
-
-        
-        // Delete the order from the unaccepted hierarchy
-        // Add an order to the accepted hierarchy under the current user's id
-        
-//        if validAccept(indexPath: indexPath as NSIndexPath) {
-//            orders.remove(at: indexPath.section)
-//            self.tableView.reloadData()
-//        }
-    }
-    
-    func validAccept(indexPath: NSIndexPath) {
-        
-//        let dataStore = Order.getOrderDataStore()
-//        let currentUser = User.getCurrentUser()
-//
-//        let selectedOrder = orders[indexPath.section]
-//
-//        if (selectedOrder.requestingUserId == (currentUser.objectId as String)
-//            || selectedOrder.acceptingUserId == (currentUser.objectId as String)) { return false }
-//
-//        selectedOrder.acceptingUserId = currentUser.objectId as String
-//        selectedOrder.acceptingUserName = currentUser.name as String
-//
-//        dataStore.save(
-//            selectedOrder,
-//            response: {
-//                (order) -> () in
-//                print("Order saved")
-//        },
-//            error: {
-//                (fault : Fault?) -> () in
-//                print("Server reported an error: \(String(describing: fault))")
-//        }
-//        )
-//
-//        return true;
     }
 }

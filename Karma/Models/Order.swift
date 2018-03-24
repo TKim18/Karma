@@ -94,6 +94,18 @@ class Order : NSObject {
         }
     }
     
+    static func uploadAccept(key: String, val: [String: Any], userId: String) {
+        let ref = Database.database().reference()
+        UserUtil.getCurrentUserName() { userName in
+            UserUtil.getCurrentCircle() { circleName in
+                var order = val
+                order["acceptUserId"] = userId
+                order["acceptUserName"] = userName
+                ref.child("unacceptedOrders/\(circleName)/\(key)").removeValue()
+                ref.child("acceptedOrders/\(circleName)/\(userName)").childByAutoId().setValue(order)
+            }
+        }
+    }
     
     static func getOrderDataStore() -> IDataStore {
         return Backendless.sharedInstance().data.of(Order().ofClass())
