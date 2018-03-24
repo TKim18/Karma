@@ -34,8 +34,8 @@ class Circle : NSObject {
         let ref = Database.database().reference()
         
         if let id = UserUtil.getCurrentId() {
-            UserUtil.getProperty(key: "userName", id: id) { userName in
-                if let userName = userName, let circleName = self.joinName, let circleKey = self.joinKey {
+            UserUtil.getCurrentUserName() { userName in
+                if let circleName = self.joinName, let circleKey = self.joinKey {
                     if newCircle {
                         var data : [String : Any]
                         data = [:]

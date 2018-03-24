@@ -32,6 +32,14 @@ class UserUtil {
         }
     }
     
+    static func getCurrentUserName(completionHandler: @escaping (_ circle: String) -> ()) {
+        getCurrentProperty(key: "circles") { circles in
+            let entity = circles as? NSDictionary ?? [:]
+            let val = entity.allKeys.first as? String ?? ""
+            completionHandler(val)
+        }
+    }
+    
     static func getCurrentProperty(key: String, completionHandler: @escaping (_ prop: Any?) -> ()) {
         let userId = getCurrentId()
         if let userId = userId {

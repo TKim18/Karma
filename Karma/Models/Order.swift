@@ -71,9 +71,9 @@ class Order : NSObject {
         let ref = Database.database().reference()
         
         if let userId = UserUtil.getCurrentId() {
-            UserUtil.getProperty(key: "userName", id: userId) { userName in
+            UserUtil.getCurrentUserName() { userName in
                 UserUtil.getCurrentCircle() { circleName in
-                    if let userName = userName, let title = self.title, let details = self.details, let time = self.time, let category = self.category, let destination = self.destination {
+                    if let title = self.title, let details = self.details, let time = self.time, let category = self.category, let destination = self.destination {
                         var data : [String : Any]
                         data = [:]
                         data[Constants.Order.Fields.title] = title

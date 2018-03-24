@@ -16,7 +16,8 @@ class ViewRequestTableViewController: UITableViewController {
     var ref: DatabaseReference!
     let cellSpacingHeight: CGFloat = 5
     fileprivate var _pointHandle: DatabaseHandle?
-    fileprivate var _unacceptHandle: DatabaseHandle?
+    fileprivate var _unacceptAddHandle: DatabaseHandle?
+    fileprivate var _unacceptRemoveHandle: DatabaseHandle?
     var orders: [DataSnapshot]! = []
     
     private let refreshCont = UIRefreshControl()
@@ -41,16 +42,19 @@ class ViewRequestTableViewController: UITableViewController {
     }
     
     deinit {
-        if let unacceptHandle = _unacceptHandle {
-            self.ref.child("unacceptedOrder").removeObserver(withHandle: unacceptHandle)
-        }
         if let pointHandle = _pointHandle {
             self.ref.child("users").removeObserver(withHandle: pointHandle)
+        }
+        if let unacceptAddHandle = _unacceptAddHandle {
+            self.ref.child("unacceptedOrder").removeObserver(withHandle: unacceptAddHandle)
+        }
+        if let unacceptRemoveHandle = _unacceptRemoveHandle {
+            self.ref.child("unacceptedOrder").removeObserver(withHandle: unacceptRemoveHandle)
         }
     }
     
     private func configureDatabase() {
-        loadUnaccepted()
+        listenUnaccepted()
         loadAccepted()
     }
     
@@ -70,6 +74,9 @@ class ViewRequestTableViewController: UITableViewController {
         
         //Enable segment control
         self.pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
+        if pendingAcceptedControl.selectedSegmentIndex == 1 {
+            tableView.allowsSelection = false
+        }
         
         //Enable pull to refresh
         if #available(iOS 10.0, *) {
@@ -97,15 +104,26 @@ class ViewRequestTableViewController: UITableViewController {
 
     //--------------------------------- Pull Order Data -------------------------------------//
     
-    private func loadUnaccepted() {
+    private func listenUnaccepted() {
         UserUtil.getCurrentCircle() { circle in
             let orderRef = self.ref.child("unacceptedOrders/\(circle)")
-            self._unacceptHandle = orderRef.observe(.childAdded, with: { [weak self] (snapshot) -> Void in
+            
+            self._unacceptAddHandle = orderRef.observe(.childAdded, with: {
+                [weak self] (snapshot) -> Void in
                 guard let strongSelf = self else { return }
                 strongSelf.orders.append(snapshot)
 
                 // TODO: Add conditional to check which segmented control it is
                 strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.orders.count-1, section: 0)], with: .automatic)
+            })
+            self._unacceptRemoveHandle = orderRef.observe(.childRemoved, with: {
+                [weak self] (snapshot) -> Void in
+                guard let strongSelf = self else { return }
+                // Find the correct index of the snapshot
+                if let index = strongSelf.orders.index(where: {$0.key == snapshot.key}) {
+                    strongSelf.orders.remove(at: index)
+                    strongSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                }
             })
         }
     }
@@ -156,5 +174,66 @@ class ViewRequestTableViewController: UITableViewController {
         cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
         
         return cell
+    }
+    
+    ///---------------------- Accepting a request handling ---------------------------//
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: do different things depending on state of segment control
+        
+        let orderSnapshot = self.orders[indexPath.row]
+        guard var order = orderSnapshot.value as? [String: Any] else { return }
+        
+        if let userId = UserUtil.getCurrentId() {
+            if order[Constants.Order.Fields.userId] as? String ?? "" == userId {
+                return
+            }
+            
+            UserUtil.getCurrentUserName() { userName in
+                UserUtil.getCurrentCircle() { circleName in
+                    self.ref.child("unacceptedOrders/\(circleName)/\(orderSnapshot.key)").removeValue()
+                    order["acceptUserId"] = userId
+                    order["acceptUserName"] = userName
+                        self.ref.child("acceptedOrders/\(circleName)/\(userName)").childByAutoId().setValue(order)
+                }
+            }
+        }
+        
+
+        
+        // Delete the order from the unaccepted hierarchy
+        // Add an order to the accepted hierarchy under the current user's id
+        
+//        if validAccept(indexPath: indexPath as NSIndexPath) {
+//            orders.remove(at: indexPath.section)
+//            self.tableView.reloadData()
+//        }
+    }
+    
+    func validAccept(indexPath: NSIndexPath) {
+        
+//        let dataStore = Order.getOrderDataStore()
+//        let currentUser = User.getCurrentUser()
+//
+//        let selectedOrder = orders[indexPath.section]
+//
+//        if (selectedOrder.requestingUserId == (currentUser.objectId as String)
+//            || selectedOrder.acceptingUserId == (currentUser.objectId as String)) { return false }
+//
+//        selectedOrder.acceptingUserId = currentUser.objectId as String
+//        selectedOrder.acceptingUserName = currentUser.name as String
+//
+//        dataStore.save(
+//            selectedOrder,
+//            response: {
+//                (order) -> () in
+//                print("Order saved")
+//        },
+//            error: {
+//                (fault : Fault?) -> () in
+//                print("Server reported an error: \(String(describing: fault))")
+//        }
+//        )
+//
+//        return true;
     }
 }
