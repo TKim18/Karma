@@ -98,11 +98,26 @@ class Order : NSObject {
         let ref = Database.database().reference()
         UserUtil.getCurrentUserName() { userName in
             UserUtil.getCurrentCircle() { circleName in
-                var order = val
-                order["acceptUserId"] = userId
-                order["acceptUserName"] = userName
-                ref.child("unacceptedOrders/\(circleName)/\(key)").removeValue()
-                ref.child("acceptedOrders/\(circleName)/\(userName)").childByAutoId().setValue(order)
+                UserUtil.getCurrentProperty(key: "name") { name in
+                    var order = val
+                    if let requestName = order["userName"] {
+                        ref.child("unacceptedOrders/\(circleName)/\(key)").removeValue()
+                        
+                        let acceptRef = ref.child("acceptedOrders/accept/\(circleName)/\(userName)").childByAutoId()
+                        
+                        order["acceptName"] = name as? String ?? ""
+                        order["autoId"] = acceptRef.key
+                        
+                        ref.child("acceptedOrders/request/\(circleName)/\(requestName)").childByAutoId().setValue(order)
+                        
+                        order["userId"] = userId
+                        order["userName"] = userName
+                        order["acceptName"] = nil
+                        order["autoId"] = nil
+                        
+                        acceptRef.setValue(order)
+                    }
+                }
             }
         }
     }

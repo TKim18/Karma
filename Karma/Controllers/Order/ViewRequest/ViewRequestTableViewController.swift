@@ -15,10 +15,16 @@ class ViewRequestTableViewController: UITableViewController {
     // Local Variables
     var ref: DatabaseReference!
     let cellSpacingHeight: CGFloat = 5
+    
     fileprivate var _pointHandle: DatabaseHandle?
     fileprivate var _unacceptAddHandle: DatabaseHandle?
     fileprivate var _unacceptRemoveHandle: DatabaseHandle?
+    fileprivate var _acceptAddHandle: DatabaseHandle?
+    fileprivate var _acceptRemoveHandle: DatabaseHandle?
+    
     var orders: [DataSnapshot]! = []
+    var unacceptOrders: [DataSnapshot]! = []
+    var acceptOrders: [DataSnapshot]! = []
     
     private let refreshCont = UIRefreshControl()
     
@@ -55,7 +61,7 @@ class ViewRequestTableViewController: UITableViewController {
     
     private func configureDatabase() {
         listenUnaccepted()
-        loadAccepted()
+        listenAccepted()
     }
     
     private func configureKarmaPoints() {
@@ -69,6 +75,9 @@ class ViewRequestTableViewController: UITableViewController {
     }
     
     private func configureTableView() {
+        //Set the initial orders to be unaccepted
+        self.orders = self.unacceptOrders
+        
         //Configure background color
         self.tableView.backgroundColor = UIColor.lightGray
         
@@ -94,11 +103,11 @@ class ViewRequestTableViewController: UITableViewController {
     }
     
     @objc func segmentChanged(sender: UISegmentedControl) {
-//        switch sender.selectedSegmentIndex {
-//            case 0: loadPending()
-//            case 1: loadAccepted()
-//            default: self.orders = []
-//        }
+        switch sender.selectedSegmentIndex {
+            case 0: self.orders = self.unacceptOrders
+            case 1: self.orders = self.acceptOrders
+            default: self.orders = []
+        }
         self.tableView.reloadData()
     }
 
@@ -111,25 +120,59 @@ class ViewRequestTableViewController: UITableViewController {
             self._unacceptAddHandle = orderRef.observe(.childAdded, with: {
                 [weak self] (snapshot) -> Void in
                 guard let strongSelf = self else { return }
-                strongSelf.orders.append(snapshot)
+                strongSelf.unacceptOrders.append(snapshot)
 
-                // TODO: Add conditional to check which segmented control it is
-                strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.orders.count-1, section: 0)], with: .automatic)
+                if strongSelf.pendingAcceptedControl.selectedSegmentIndex == 0 {
+                    strongSelf.orders.append(snapshot)
+                    strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.unacceptOrders.count-1, section: 0)], with: .automatic)
+                }
             })
             self._unacceptRemoveHandle = orderRef.observe(.childRemoved, with: {
                 [weak self] (snapshot) -> Void in
                 guard let strongSelf = self else { return }
-                // Find the correct index of the snapshot
-                if let index = strongSelf.orders.index(where: {$0.key == snapshot.key}) {
-                    strongSelf.orders.remove(at: index)
-                    strongSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                
+                if let index = strongSelf.unacceptOrders.index(where: {$0.key == snapshot.key}) {
+                    strongSelf.unacceptOrders.remove(at: index)
+                    
+                    if strongSelf.pendingAcceptedControl.selectedSegmentIndex == 0 {
+                        strongSelf.orders.remove(at: index)
+                        strongSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                    }
                 }
             })
         }
     }
     
-    private func loadAccepted() {
-        
+    private func listenAccepted() {
+        UserUtil.getCurrentUserName() { userName in
+            UserUtil.getCurrentCircle() { circle in
+                let orderRef = self.ref.child("acceptedOrders/accept/\(circle)/\(userName)")
+                
+                self._acceptAddHandle = orderRef.observe(.childAdded, with: {
+                    [weak self] (snapshot) -> Void in
+                    guard let strongSelf = self else { return }
+                    strongSelf.acceptOrders.append(snapshot)
+                
+                    if strongSelf.pendingAcceptedControl.selectedSegmentIndex == 1 {
+                        strongSelf.orders.append(snapshot)
+                        strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.acceptOrders.count-1, section: 0)], with: .automatic)
+                    }
+                })
+                self._acceptRemoveHandle = orderRef.observe(.childRemoved, with: {
+                    [weak self] (snapshot) -> Void in
+                    guard let strongSelf = self else { return }
+                    
+                    if let index = strongSelf.acceptOrders.index(where: {$0.key == snapshot.key}) {
+                        strongSelf.acceptOrders.remove(at: index)
+                        
+                        if strongSelf.pendingAcceptedControl.selectedSegmentIndex == 1 {
+                            strongSelf.orders.remove(at: index)
+                            strongSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                        }
+                    }
+                })
+            }
+        }
     }
 
     //---------------------- Setting the table elements and variables ---------------------------//
