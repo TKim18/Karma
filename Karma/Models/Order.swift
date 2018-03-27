@@ -106,19 +106,48 @@ class Order : NSObject {
                         let acceptRef = ref.child("acceptedOrders/accept/\(circleName)/\(userName)").childByAutoId()
                         
                         order["acceptName"] = name as? String ?? ""
+                        order["acceptUserName"] = userName
+                        order["acceptId"] = userId
                         order["autoId"] = acceptRef.key
                         
                         ref.child("acceptedOrders/request/\(circleName)/\(requestName)").childByAutoId().setValue(order)
                         
                         order["userId"] = userId
                         order["userName"] = userName
+                        order["acceptUserName"] = nil
                         order["acceptName"] = nil
+                        order["acceptId"] = nil
                         order["autoId"] = nil
                         
                         acceptRef.setValue(order)
                     }
                 }
             }
+        }
+    }
+    
+    static func completeRequest(orderSnapshot: DataSnapshot) {
+        // Delete the order from both accept and request of acceptedOrders
+        // Move the order to completed
+        // orderSnapshot has:
+        // accept id, accept name, accept user name
+        // request id, request user name
+        // autoid
+        // category, destination, details, points, time, title
+        // in deleting from the request that's east --> just delete from
+        let ref = Database.database().reference()
+        
+        UserUtil.getCurrentCircle() { circleName in
+            let key = orderSnapshot.key
+            guard var order = orderSnapshot.value as? [String: Any] else { return }
+            
+            let requestUserName = order["userName"] as? String ?? ""
+            let acceptUserName = order["acceptUserName"] as? String ?? ""
+            let autoId = order["autoId"] as? String ?? ""
+            
+            ref.child("acceptedOrders/request/\(circleName)/\(requestUserName)/\(key)").removeValue()
+            ref.child("acceptedOrders/accept/\(circleName)/\(acceptUserName)/\(autoId)").removeValue()
+            ref.child("completedOrders/\(circleName)/\(requestUserName)").childByAutoId().setValue(order)
         }
     }
     

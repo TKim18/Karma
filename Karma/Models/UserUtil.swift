@@ -59,6 +59,29 @@ class UserUtil {
             print(error.localizedDescription)
         }
     }
+    
+    static func transactPoints(snapshot: DataSnapshot) {
+        if let order = snapshot.value as? [String: Any] {
+            let points = order["points"] as! Double
+            let requestId = order["userId"] as? String ?? ""
+            let acceptId = order["acceptId"] as? String ?? ""
+            
+            movePoints(userId: requestId, op: "sub", points: points)
+            movePoints(userId: acceptId, op: "add", points: points)
+        }
+    }
+    
+    static func movePoints(userId: String, op: String, points: Double) {
+        let ref = Database.database().reference().child("users/\(userId)/karma")
+        ref.runTransactionBlock({(currentData: MutableData) -> TransactionResult in
+            if var karma = currentData.value as? Double {
+                (op == "add") ? (karma += points) : (karma -= points)
+                currentData.value = karma
+                return TransactionResult.success(withValue: currentData)
+            }
+            return TransactionResult.success(withValue: currentData)
+        })
+    }
  
     static func getCurrentUser() -> BackendlessUser {
         return Backendless.sharedInstance().userService.currentUser

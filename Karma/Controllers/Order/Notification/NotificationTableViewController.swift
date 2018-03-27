@@ -14,6 +14,7 @@ class NotificationTableViewController: UITableViewController {
     var ref: DatabaseReference!
     
     var notifications : [DataSnapshot]! = []
+    var completed : [DataSnapshot]! = []
     
     fileprivate var _acceptAddHandle: DatabaseHandle?
     fileprivate var _acceptRemoveHandle: DatabaseHandle?
@@ -34,7 +35,7 @@ class NotificationTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 0) ? notifications.count : 0
+        return (section == 0) ? notifications.count : completed.count
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -58,29 +59,28 @@ class NotificationTableViewController: UITableViewController {
         cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
         cell.personalMessage.text = title
         cell.notificationLabel.text = name + " requests " + String(cost) + " points for completing your request!"
-
+        
         cell.payButton.tag = indexPath.row
         cell.payButton.addTarget(self, action: #selector(self.completeTransaction), for: UIControlEvents.touchUpInside)
 
         return cell
     }
 
-    @objc func completeTransaction(button : UIButton) {
-        performServerTransaction(selectedRequest: notifications[button.tag])
+    @objc func completeTransaction(sender: AnyObject) {
+        if let cell = sender.superview??.superview as? NotificationTableViewCell {
+            let indexPath = self.tableView.indexPath(for: cell)
+            performServerTransaction(selectedRequest: notifications[indexPath!.row])
+        }
     }
-
+    
     // Segue preparation
     private func performServerTransaction(selectedRequest : DataSnapshot) {
-        // Delete the order from both accept and request of acceptedOrders
-        // Move the order to completed
-        // Increment accept userId by point value and decrement request userId by point value
-        
+        Order.completeRequest(orderSnapshot: selectedRequest)
+        UserUtil.transactPoints(snapshot: selectedRequest)
     }
 
     // Server Call
     private func listenNotifications() {
-        // accepted orders filter
-        
         UserUtil.getCurrentUserName() { userName in
             UserUtil.getCurrentCircle() { circle in
                 let orderRef = self.ref.child("acceptedOrders/request/\(circle)/\(userName)")
