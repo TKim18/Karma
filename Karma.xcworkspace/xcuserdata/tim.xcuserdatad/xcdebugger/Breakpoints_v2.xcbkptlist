@@ -326,7 +326,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Models/Order.swift"
-            timestampString = "543812363.703558"
+            timestampString = "543817972.513569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
@@ -374,7 +374,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Models/UserUtil.swift"
-            timestampString = "543812363.703678"
+            timestampString = "543817972.513918"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "56"
@@ -390,7 +390,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
-            timestampString = "543812363.703745"
+            timestampString = "543817972.514274"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "226"
@@ -406,7 +406,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
-            timestampString = "543812363.703825"
+            timestampString = "543817972.514451"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "230"
@@ -454,7 +454,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/ViewRequest/ViewRequestTableViewController.swift"
-            timestampString = "543812363.703897"
+            timestampString = "543817972.51458"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
@@ -470,7 +470,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Models/Order.swift"
-            timestampString = "543812363.703959"
+            timestampString = "543817972.5147099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
@@ -518,7 +518,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Models/UserUtil.swift"
-            timestampString = "543812363.7040139"
+            timestampString = "543817972.514852"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
@@ -534,12 +534,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Models/UserUtil.swift"
-            timestampString = "543812363.704061"
+            timestampString = "543817972.5149961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
             endingLineNumber = "71"
             landmarkName = "transactPoints(snapshot:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Karma/Controllers/Circle/Members/CircleMemberTableViewController.swift"
+            timestampString = "543817972.515129"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "loadMembers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Karma/Controllers/Circle/Members/CircleMemberTableViewController.swift"
+            timestampString = "543817972.515995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "loadMembers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Karma/Controllers/Circle/Members/CircleMemberTableViewController.swift"
+            timestampString = "543817972.516382"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "loadMembers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

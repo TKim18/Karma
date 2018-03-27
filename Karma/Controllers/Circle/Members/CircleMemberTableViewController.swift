@@ -77,11 +77,16 @@ class CircleMemberTableViewController: UITableViewController {
                     guard let strongSelf = self else { return }
                     
                     // Swap the current user with the person at the first index
-//                    if userName == snapshot.key {
-//                        strongSelf.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-//                    }
-                    strongSelf.members.append(snapshot)
-                    strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.members.count-1, section: 0)], with: .automatic)
+                    if userName == snapshot.key {
+                        let temp = strongSelf.members[0]
+                        strongSelf.members[0] = snapshot
+                        strongSelf.members.append(temp)
+                        strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.members.count-1, section: 0)], with: .automatic)
+                        strongSelf.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+                    } else {
+                        strongSelf.members.append(snapshot)
+                        strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.members.count-1, section: 0)], with: .automatic)
+                    }
                 })
                 self._updateHandle = memberRef.observe(.childChanged, with: {
                     [weak self] (snapshot) -> Void in
