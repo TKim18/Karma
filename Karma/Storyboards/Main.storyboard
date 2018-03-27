@@ -763,8 +763,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="costLabel" destination="yGd-HX-oOk" id="Pmx-aS-VxL"/>
                                     <outlet property="costLogo" destination="n2P-5B-ePq" id="1aT-iS-mxf"/>
+                                    <outlet property="karmaLabel" destination="yGd-HX-oOk" id="Xs8-5n-bTP"/>
                                     <outlet property="nameLabel" destination="nc5-x9-VRM" id="KJp-Td-ps4"/>
                                     <outlet property="userImage" destination="Few-0w-XKC" id="r9H-o1-u7C"/>
                                     <segue destination="N7W-wu-JGK" kind="show" identifier="ShowDirectSegue" id="U97-dy-uUA"/>

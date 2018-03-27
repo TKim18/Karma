@@ -16,8 +16,8 @@ class NotificationTableViewController: UITableViewController {
     var notifications : [DataSnapshot]! = []
     var completed : [DataSnapshot]! = []
     
-    fileprivate var _acceptAddHandle: DatabaseHandle?
-    fileprivate var _acceptRemoveHandle: DatabaseHandle?
+    fileprivate var _addHandle: DatabaseHandle?
+    fileprivate var _removeHandle: DatabaseHandle?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,13 +85,13 @@ class NotificationTableViewController: UITableViewController {
             UserUtil.getCurrentCircle() { circle in
                 let orderRef = self.ref.child("acceptedOrders/request/\(circle)/\(userName)")
                 
-                self._acceptAddHandle = orderRef.observe(.childAdded, with: {
+                self._addHandle = orderRef.observe(.childAdded, with: {
                     [weak self] (snapshot) -> Void in
                     guard let strongSelf = self else { return }
                     strongSelf.notifications.append(snapshot)
                     strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.notifications.count-1, section: 0)], with: .automatic)
                 })
-                self._acceptRemoveHandle = orderRef.observe(.childRemoved, with: {
+                self._removeHandle = orderRef.observe(.childRemoved, with: {
                     [weak self] (snapshot) -> Void in
                     guard let strongSelf = self else { return }
                     

@@ -29,6 +29,12 @@ class Circle : NSObject {
         self.displayName = name
     }
     
+    init (name: String) {
+        self.joinName = name
+        self.displayName = name
+        self.joinKey = "-1"
+    }
+    
     // In an upload call, add the circle name as the key and members/display name as values
     func upload(newCircle: Bool, callback: @escaping () -> ()) {
         let ref = Database.database().reference()
@@ -88,6 +94,18 @@ class Circle : NSObject {
                 } else {
                     completionHandler(false)
                 }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getMembers(completionHandler: @escaping(_ members: [String: Any]) -> ()) {
+        let ref = Database.database().reference()
+        if let circleName = self.joinName {
+            ref.child("circles/\(circleName)/members").observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let entity = snapshot.value as? [String: Any] else { return }
+                completionHandler(entity)
             }) { (error) in
                 print(error.localizedDescription)
             }

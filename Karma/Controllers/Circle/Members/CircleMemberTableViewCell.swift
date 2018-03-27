@@ -23,7 +23,7 @@ class CircleMemberTableViewCell: UITableViewCell {
 
     // UI Elements
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var costLabel: UILabel!
+    @IBOutlet weak var karmaLabel: UILabel!
     @IBOutlet weak var costLogo: UIImageView!
     @IBOutlet weak var userImage: UIImageView!
     
