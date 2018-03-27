@@ -35,21 +35,28 @@ class Circle : NSObject {
         
         if let id = UserUtil.getCurrentId() {
             UserUtil.getCurrentUserName() { userName in
-                if let circleName = self.joinName, let circleKey = self.joinKey {
-                    if newCircle {
-                        var data : [String : Any]
-                        data = [:]
-                        data["joinName"] = circleName
-                        data["displayName"] = circleName
-                        data["joinKey"] = circleKey
-                        ref.child("circles/\(circleName)").setValue(data)
+                UserUtil.getCurrentProperty(key: "name") { name in
+                    if let circleName = self.joinName, let circleKey = self.joinKey {
+                        if newCircle {
+                            var data : [String : Any]
+                            data = [:]
+                            data["joinName"] = circleName
+                            data["displayName"] = circleName
+                            data["joinKey"] = circleKey
+                            ref.child("circles/\(circleName)").setValue(data)
+                        }
+                        var udata : [String : Any]
+                        udata = [:]
+                        udata["id"] = id
+                        udata["name"] = name
+                        udata["karma"] = 50.00
+                            ref.child("circles/\(circleName)/members/\(userName)").setValue(udata)
+                        ref.child("users/\(id)/circles/\(circleName)").setValue(true)
+                    } else {
+                        print("Unable to retrieve user property")
                     }
-                    ref.child("circles/\(circleName)/members/\(userName)").setValue(true)
-                    ref.child("users/\(id)/circles/\(circleName)").setValue(true)
-                } else {
-                    print("Unable to retrieve user property")
+                    callback()
                 }
-                callback()
             }
         }
     }

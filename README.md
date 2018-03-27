@@ -1,16 +1,11 @@
-## Current Capability ##
-1. User Login/Register
-2. Circle creation and joining
-3. Custom order requesting and viewing
+## The Sitch ##
+* Currently, the app is being migrated from the MBaaS backendless to Google's Firebase.
 
-## Features left to be implemented ##
-1. Menu fields
-2. User settings changes
-3. Individual requesting on the circles page
-4. Multiple circles
-5. Adding people into circles through invites and search
-6. Enable push notifications on inputted orders
+## Pretty crucial features ##
+* Push notifications
 
-## Quick Wins ##
-1. Paging on orders
+## Necessary Kha Zix fixes ##
 
+
+## Some Cool Bean Changes ##
+* Geolocation

@@ -127,14 +127,6 @@ class Order : NSObject {
     }
     
     static func completeRequest(orderSnapshot: DataSnapshot) {
-        // Delete the order from both accept and request of acceptedOrders
-        // Move the order to completed
-        // orderSnapshot has:
-        // accept id, accept name, accept user name
-        // request id, request user name
-        // autoid
-        // category, destination, details, points, time, title
-        // in deleting from the request that's east --> just delete from
         let ref = Database.database().reference()
         
         UserUtil.getCurrentCircle() { circleName in

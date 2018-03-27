@@ -62,17 +62,19 @@ class UserUtil {
     
     static func transactPoints(snapshot: DataSnapshot) {
         if let order = snapshot.value as? [String: Any] {
-            let points = order["points"] as! Double
-            let requestId = order["userId"] as? String ?? ""
-            let acceptId = order["acceptId"] as? String ?? ""
-            
-            movePoints(userId: requestId, op: "sub", points: points)
-            movePoints(userId: acceptId, op: "add", points: points)
+            UserUtil.getCurrentCircle() { circleName in
+                if let points = order["points"] as? Double, let requestId = order["userId"], let requestName = order["userName"], let acceptId = order["acceptId"], let acceptName = order["acceptUserName"] {
+                    let ref = Database.database().reference()
+                    changePoints(ref: ref.child("users/\(requestId)/karma"), op: "sub", points: points)
+                    changePoints(ref: ref.child("users/\(acceptId)/karma"), op: "add", points: points)
+                    changePoints(ref: ref.child("circles/\(circleName)/members/\(requestName)/karma"), op: "sub", points: points)
+                    changePoints(ref: ref.child("circles/\(circleName)/members/\(acceptName)/karma"), op: "add", points: points)
+                }
+            }
         }
     }
-    
-    static func movePoints(userId: String, op: String, points: Double) {
-        let ref = Database.database().reference().child("users/\(userId)/karma")
+
+    static func changePoints(ref: DatabaseReference, op: String, points: Double) {
         ref.runTransactionBlock({(currentData: MutableData) -> TransactionResult in
             if var karma = currentData.value as? Double {
                 (op == "add") ? (karma += points) : (karma -= points)
