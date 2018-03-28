@@ -13,8 +13,12 @@ import Kingfisher
 class CircleMemberTableViewController: UITableViewController {
 
     var ref: DatabaseReference!
-    
     var members = [DataSnapshot]()
+    
+    var name: String = ""
+    var userName: String = ""
+    var id: String = ""
+    var circle: String = ""
     
     fileprivate var _addHandle: DatabaseHandle?
     fileprivate var _updateHandle: DatabaseHandle?
@@ -25,12 +29,29 @@ class CircleMemberTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadLocalVariables()
+        
         self.ref = Database.database().reference()
         
         self.tableView.backgroundColor = viewColor
         self.tableView.separatorColor = viewColor
         
         loadMembers()
+    }
+    
+    func loadLocalVariables() {
+        if let currentUserId = UserUtil.getCurrentId() {
+            UserUtil.getCurrentUserName() { currentUserName in
+                UserUtil.getCurrentProperty(key: "name") { currentName in
+                    UserUtil.getCurrentCircle() { circleName in
+                        self.name = currentName as? String ?? ""
+                        self.userName = currentUserName
+                        self.id = currentUserId
+                        self.circle = circleName
+                    }
+                }
+            }
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -92,7 +113,8 @@ class CircleMemberTableViewController: UITableViewController {
                     [weak self] (snapshot) -> Void in
                     guard let strongSelf = self else { return }
                     if let index = strongSelf.members.index(where: {$0.key == snapshot.key}) {
-                        // TODO: Update the tableview at that cell
+                        strongSelf.members[index] = snapshot
+                        strongSelf.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                     }
                 })
                 
@@ -110,33 +132,32 @@ class CircleMemberTableViewController: UITableViewController {
         }
     }
     
-    
     // In preparation for direct transferring
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        super.prepare(for: segue, sender: sender)
-//
-//        guard let selectedCircleCell = sender as? CircleMemberTableViewCell else {
-//            fatalError("Unexpected sender: \(String(describing: sender))")
-//        }
-//
-//        guard let indexPath = tableView.indexPath(for : selectedCircleCell) else {
-//            fatalError("You definitely got the wrong cell")
-//        }
-//
-//        let selectedUser = members[indexPath.row]
-//
-//        if let destination = segue.destination as? DirectTransferViewController {
-//            let currentTransfer = DirectTransfer(
-//                currentUser : UserUtil.getCurrentUser(),
-//                selectedUser : selectedUser)
-//            destination.currentTransfer = currentTransfer
-//        }
-//    }
-    
-    // Swap the current user with the person at the first index
-    //                    if userName == snapshot.key {
-    //                        strongSelf.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-    //                    }
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        guard let selectedCircleCell = sender as? CircleMemberTableViewCell else {
+            fatalError("Unexpected sender: \(String(describing: sender))")
+        }
+
+        guard let indexPath = tableView.indexPath(for : selectedCircleCell) else {
+            fatalError("You definitely got the wrong cell")
+        }
+        
+        let memberSnapshot = members[indexPath.row]
+        guard let member = memberSnapshot.value as? [String: Any] else { return }
+        
+        if let destination = segue.destination as? DirectTransferViewController {
+            if let selectedUserId = member["id"], let selectedName = member["name"] {
+                let currentTransfer = DirectTransfer(
+                    currentUserId: self.id,
+                    currentUserName : self.userName,
+                    currentName: self.name,
+                    selectedUserId : selectedUserId as? String ?? "",
+                    selectedUserName : memberSnapshot.key,
+                    selectedName: selectedName as? String ?? "")
+                destination.currentTransfer = currentTransfer
+            }
+        }
+    }
 }

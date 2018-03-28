@@ -22,3 +22,6 @@
 
 ### Hard ###
 * Geolocation
+
+## Design fixes ##
+* Move current user variables to become load variables at the beginning instead of inside functions because they don't change

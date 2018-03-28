@@ -782,7 +782,7 @@
             </objects>
             <point key="canvasLocation" x="2645.5999999999999" y="-1668.2158920539732"/>
         </scene>
-        <!--Custom Request View Controller-->
+        <!--Add Request-->
         <scene sceneID="KE5-Fw-h64">
             <objects>
                 <viewController id="PdG-hk-wVj" customClass="CustomRequestViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
@@ -854,7 +854,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="3kd-s3-SgQ"/>
+                    <navigationItem key="navigationItem" title="Add Request" id="3kd-s3-SgQ"/>
                     <connections>
                         <outlet property="categoryImage" destination="ea9-ko-fBG" id="uJz-Rv-Iqg"/>
                         <outlet property="costField" destination="0Nu-lg-WDb" id="DLR-Fe-Yku"/>
