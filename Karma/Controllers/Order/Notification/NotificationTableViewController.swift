@@ -76,7 +76,7 @@ class NotificationTableViewController: UITableViewController {
     // Segue preparation
     private func performServerTransaction(selectedRequest : DataSnapshot) {
         Order.completeRequest(orderSnapshot: selectedRequest)
-        UserUtil.transactPoints(snapshot: selectedRequest)
+        UserUtil.transactPointsWithSnapshot(snapshot: selectedRequest)
     }
 
     // Server Call

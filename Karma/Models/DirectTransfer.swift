@@ -53,8 +53,10 @@ class DirectTransfer : NSObject {
     }
     
     func performPay(callback: @escaping () -> ()) {
-        let ref = Database.database().reference()
-        
+        if let requestId = self.currentUserId, let requestName = self.currentUserName, let acceptName = self.selectedUserName {
+            UserUtil.transactPoints(points: self.cost, requestId: requestId, requestName: requestName, acceptId: self.selectedUserId, acceptName: acceptName)
+            callback()
+        }
     }
     
 }

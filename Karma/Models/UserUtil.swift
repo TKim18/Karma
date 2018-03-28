@@ -60,17 +60,22 @@ class UserUtil {
         }
     }
     
-    static func transactPoints(snapshot: DataSnapshot) {
+    static func transactPointsWithSnapshot(snapshot: DataSnapshot) {
         if let order = snapshot.value as? [String: Any] {
-            UserUtil.getCurrentCircle() { circleName in
-                if let points = order["points"] as? Double, let requestId = order["userId"], let requestName = order["userName"], let acceptId = order["acceptId"], let acceptName = order["acceptUserName"] {
-                    let ref = Database.database().reference()
-                    changePoints(ref: ref.child("users/\(requestId)/karma"), op: "sub", points: points)
-                    changePoints(ref: ref.child("users/\(acceptId)/karma"), op: "add", points: points)
-                    changePoints(ref: ref.child("circles/\(circleName)/members/\(requestName)/karma"), op: "sub", points: points)
-                    changePoints(ref: ref.child("circles/\(circleName)/members/\(acceptName)/karma"), op: "add", points: points)
-                }
+            if let points = order["points"] as? Double, let requestId = order["userId"], let requestName = order["userName"], let acceptId = order["acceptId"], let acceptName = order["acceptUserName"] {
+                transactPoints(points: points, requestId: requestId as! String, requestName: requestName as! String, acceptId: acceptId as! String, acceptName: acceptName as! String)
             }
+        }
+    }
+    
+    static func transactPoints(points: Double, requestId: String, requestName: String, acceptId: String, acceptName: String) {
+        
+        UserUtil.getCurrentCircle() { circleName in
+            let ref = Database.database().reference()
+            changePoints(ref: ref.child("users/\(requestId)/karma"), op: "sub", points: points)
+            changePoints(ref: ref.child("users/\(acceptId)/karma"), op: "add", points: points)
+            changePoints(ref: ref.child("circles/\(circleName)/members/\(requestName)/karma"), op: "sub", points: points)
+            changePoints(ref: ref.child("circles/\(circleName)/members/\(acceptName)/karma"), op: "add", points: points)
         }
     }
 
