@@ -25,6 +25,8 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //TODO: Write code to crop into circle
+        
         imagePicker.delegate = self
         
         // imageView.image = getUserProfile()

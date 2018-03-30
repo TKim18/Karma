@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1025,12 +1025,15 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Akq-z1-tlQ">
                                 <rect key="frame" x="0.0" y="270" width="375" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.96912556886672974" green="0.96985918283462524" blue="0.96923929452896118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="     Security" image="UserSettingsSelectedIcon">
+                                <state key="normal" title="     Security" backgroundImage="settings_button_default">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="settings_button_highlighted">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="5st-Yk-NiM" kind="show" id="H6V-Qo-LCd"/>
@@ -1039,12 +1042,15 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EeI-Xx-xBj">
                                 <rect key="frame" x="0.0" y="118" width="375" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.96843274111675126" green="0.96843274111675126" blue="0.96843274111675126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="     Profile" image="FriendSelectedIcon">
+                                <state key="normal" title="     Profile" backgroundImage="settings_button_default">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="settings_button_highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="h8S-lG-pla" kind="show" id="hIt-ax-CBL"/>
@@ -1053,17 +1059,32 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixk-WO-D0D">
                                 <rect key="frame" x="0.0" y="169" width="375" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.96843274109999999" green="0.96843274109999999" blue="0.96843274109999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="     Join Requests" image="NotificationsSelectedIcon">
+                                <state key="normal" title="     Join Requests" backgroundImage="settings_button_default">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="settings_button_highlighted">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="IBv-f8-XqA" kind="show" id="5pw-70-JY0"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_settings_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ex2-Cj-Qnh">
+                                <rect key="frame" x="0.0" y="118" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="join_settings_icon" translatesAutoresizingMaskIntoConstraints="NO" id="GaW-Am-mfd">
+                                <rect key="frame" x="0.0" y="169" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="security_settings_icon" translatesAutoresizingMaskIntoConstraints="NO" id="8iH-gu-3Ux">
+                                <rect key="frame" x="0.0" y="270" width="51" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.92124956846237183" green="0.92194885015487671" blue="0.92135781049728394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1085,27 +1106,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upload your user image here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5au-Rz-VIj">
-                                <rect key="frame" x="72" y="101" width="240" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Be-IB-EuF">
+                                <rect key="frame" x="115" y="80" width="145" height="145"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Display Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VeD-EI-9mG">
+                                <rect key="frame" x="0.0" y="268" width="375" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9x-UH-yL8">
-                                <rect key="frame" x="25" y="521" width="334" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nur-rr-gUT">
+                                <rect key="frame" x="0.0" y="298" width="375" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Load Image"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9x-UH-yL8">
+                                <rect key="frame" x="256" y="200" width="35" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Load Image" image="add_picture_button"/>
                                 <connections>
                                     <action selector="loadImageButtonTappedWithSender:" destination="h8S-lG-pla" eventType="touchUpInside" id="lSB-fn-lEV"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Be-IB-EuF">
-                                <rect key="frame" x="62" y="208" width="250" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.92124956849999995" green="0.92194885019999995" blue="0.92135781049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="5Be-IB-EuF" id="Mr5-0r-kdv"/>
@@ -1218,17 +1248,20 @@
     <resources>
         <image name="BlueBar" width="375" height="52"/>
         <image name="ClassicBackground" width="375" height="667"/>
-        <image name="FriendSelectedIcon" width="39" height="39"/>
         <image name="FriendsIcon" width="27" height="27"/>
         <image name="KarmaPointsIcon" width="21" height="25"/>
         <image name="KarmaPointsView" width="120" height="120"/>
         <image name="MainBoardIcon" width="27" height="27"/>
         <image name="NewRequestIcon" width="27" height="27"/>
         <image name="NotificationsIcon" width="27" height="27"/>
-        <image name="NotificationsSelectedIcon" width="39" height="39"/>
         <image name="SelectedIconIndicator" width="39" height="39"/>
         <image name="UserSettingsIcon" width="27" height="27"/>
-        <image name="UserSettingsSelectedIcon" width="39" height="39"/>
+        <image name="add_picture_button" width="512" height="512"/>
+        <image name="join_settings_icon" width="256" height="256"/>
+        <image name="profile_settings_icon" width="256" height="256"/>
+        <image name="security_settings_icon" width="256" height="256"/>
+        <image name="settings_button_default" width="187" height="25"/>
+        <image name="settings_button_highlighted" width="187" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mce-JM-uSh"/>
@@ -1237,5 +1270,8 @@
         <segue reference="IhG-KY-8Wu"/>
         <segue reference="rOi-oM-HQC"/>
         <segue reference="slo-0J-Efm"/>
+        <segue reference="Obl-Wj-qaW"/>
+        <segue reference="r0E-Gv-G2T"/>
+        <segue reference="PPI-hW-TY2"/>
     </inferredMetricsTieBreakers>
 </document>
