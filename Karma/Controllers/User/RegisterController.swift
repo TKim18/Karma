@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class RegisterController: UIViewController {
     // UI Elements
@@ -16,6 +18,9 @@ class RegisterController: UIViewController {
     @IBOutlet var verifyField : UITextField!
     @IBOutlet var wesleyan : UITextField!
     @IBOutlet var errorMessage: UILabel!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
+    var ref = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,70 +28,58 @@ class RegisterController: UIViewController {
         setupView()
     }
     
-    @IBAction func registerButton(sender : AnyObject){
-        if (validRegister() && login()) {
-            self.performSegue(withIdentifier: "RegisterToCircle", sender: self)
-        }
-    }
-    
     private func setupView() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
-        self.wesleyan.text = "@wesleyan.edu"
+        self.activityIndicator.hidesWhenStopped = true
+        self.wesleyan.text = Constants.User.wesleyan
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    // Segue handling
-    func validRegister() -> Bool {
-        if (passwordField.text != verifyField.text) {
-            errorMessage.text = "Please verify that your password matches"
-            return false
+    // Register button trigger
+    @IBAction func registerButton(sender : AnyObject){
+        if let email = self.emailField.text, let name = self.nameField.text, let password = self.passwordField.text {
+            if self.validRegister() {
+                register(email: email, name: name, password: password)
+            }
         }
         else {
-            return register(
-                email: emailField.text!,
-                name: nameField.text!,
-                password: passwordField.text!
-            )
+            self.errorMessage.text = Constants.User.invalidLogin
         }
     }
     
-    // Server call
-    func register(email: String, name: String, password: String) -> Bool {
-        let backendless = Backendless.sharedInstance()!
-        let user = BackendlessUser()
-        user.setProperty("email", object: email + "@wesleyan.edu")
-        user.setProperty("name", object: name)
-        user.setProperty("password", object: password)
-        user.setProperty("imagePath", object: "default")
-        
-        var valid = true
-        Types.tryblock({ () -> Void in
-            backendless.userService.register(user)
-        },
-        catchblock: { (exception) -> Void in
-            let error = exception as! Fault
-            self.errorMessage.text = error.message!
-            valid = false
-        })
-        return valid
+    // Validation
+    func validRegister() -> Bool {
+        if (passwordField.text != verifyField.text) {
+            errorMessage.text = Constants.User.invalidPassword
+            return false
+        }
+        return true
     }
-
-    func login() -> Bool {
-        let backendless = Backendless.sharedInstance()!
-        
-        var valid = true
-        Types.tryblock({ () -> Void in
-            backendless.userService.login(self.emailField.text! + "@wesleyan.edu", password: self.passwordField.text)
-        }, catchblock: {(exception) -> Void in
-            let error = exception as! Fault
-            self.errorMessage.text = error.message!
-            valid = false
-        })
-        return valid
+    
+    // Server call
+    // TODO: Upon register, add field of imagePath and name to user
+    func register(email: String, name: String, password: String) {
+        activityIndicator.startAnimating()
+        Auth.auth().createUser(withEmail: (email + Constants.User.wesleyan), password: password) {
+            (user, error) in
+            self.activityIndicator.stopAnimating()
+            if let error = error {
+                self.errorMessage.text = error.localizedDescription
+                return
+            }
+            if let user = user {
+                self.ref.child("users").child(user.uid).setValue(
+                    [Constants.User.Fields.name: name,
+                     Constants.User.Fields.userName: email,
+                     Constants.User.Fields.home: Constants.User.university,
+                     Constants.User.Fields.points: Constants.User.initialPoints]
+                )
+                self.performSegue(withIdentifier: Constants.Segue.RegisterToMain, sender: self)
+            }
+        }
     }
 }

@@ -6,6 +6,9 @@ target 'Karma' do
   use_frameworks!
 
   # Pods for Karma
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
 pod 'Backendless'
 pod 'Kingfisher', '~> 4.0'
 

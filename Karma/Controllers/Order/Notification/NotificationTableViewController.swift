@@ -7,22 +7,26 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class NotificationTableViewController: UITableViewController {
 
-    //TODO: ENABLE PUSH NOTIFICATIONS
-    var notifications = [Order]()
+    var ref: DatabaseReference!
     
+    var notifications : [DataSnapshot]! = []
+    var completed : [DataSnapshot]! = []
+    
+    fileprivate var _addHandle: DatabaseHandle?
+    fileprivate var _removeHandle: DatabaseHandle?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadNotifications()
+        self.ref = Database.database().reference()
         
-        // self.tabBarController?.tabBar.items![1].badgeValue = String(notifications.count)
-    }
+        listenNotifications()
 
-    override func viewDidAppear(_ animated: Bool) {
-        loadNotifications()
+        // self.tabBarController?.tabBar.items![1].badgeValue = String(notifications.count)
     }
     
     // One section for pending, one for completed
@@ -31,115 +35,74 @@ class NotificationTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 0) ? notifications.count : 0
+        return (section == 0) ? notifications.count : completed.count
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return (section == 0) ? "PENDING" : "COMPLETED"
     }
-    
+
     //Load the data into the table cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cellIdentifier = "NotificationTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NotificationTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as? NotificationTableViewCell else {
             fatalError("Something's wrong with the Order object!")
         }
+
+        let notifSnapshot = notifications[indexPath.row]
+        guard let notification = notifSnapshot.value as? [String: Any], let info = notification["info"] as? [String: Any], let accUser = notification["acceptUser"] as? [String: Any] else { return cell }
+
+        let title = info["title"] as? String ?? ""
+        let name = accUser["name"] as? String ?? ""
+        let cost = info["points"] as! Double
         
-        let notification = notifications[indexPath.row]
-        
-        cell.notificationLabel.text = notification.acceptingUserName! + " requests " + String(notification.cost) + " points for completing your request!"
-        cell.personalMessage.text = notification.title
-        
-        //TODO: This should become a query on requesting user id and then a pull on their image attribute
-        let profilePicture = UIImage(named: "DummyAvatar")
-        cell.userImage.image = profilePicture!.maskInCircle(image: profilePicture!, radius: 78)
+        cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
+        cell.personalMessage.text = title
+        cell.notificationLabel.text = name + " requests " + String(cost) + " points for completing your request!"
         
         cell.payButton.tag = indexPath.row
         cell.payButton.addTarget(self, action: #selector(self.completeTransaction), for: UIControlEvents.touchUpInside)
-        
+
         return cell
     }
-    
-    @objc func completeTransaction(button : UIButton) {
-        if (performServerTransaction(selectedRequest: notifications[button.tag])) {
-            self.loadNotifications()
-            self.tableView.reloadData()
+
+    @objc func completeTransaction(sender: AnyObject) {
+        if let cell = sender.superview??.superview as? NotificationTableViewCell {
+            let indexPath = self.tableView.indexPath(for: cell)
+            performServerTransaction(selectedRequest: notifications[indexPath!.row])
         }
     }
     
     // Segue preparation
-    private func performServerTransaction(selectedRequest : Order) -> Bool {
-        let userService = Backendless.sharedInstance().userService
-        let orderDataStore = Order.getOrderDataStore()
-        
-        // Set the current request to be completed
-        selectedRequest.completed = true;
-        orderDataStore.save(
-            selectedRequest,
-            response: {
-                (updatedRequest) -> () in
-                print("Completed the request")
-        },
-            error: {
-                (fault : Fault?) -> () in
-                print("Something went wrong trying to complete the request: \(String(describing: fault))")
-        })
-        
-        // Update the people's karma points according to their service
-        let acceptingUser = User.getUserWithId(userId: selectedRequest.acceptingUserId!)
-        let requestingUser = User.getCurrentUser()
-        
-        let currentAccept = acceptingUser.getProperty("karmaPoints") as! Double
-        let currentRequest = requestingUser.getProperty("karmaPoints") as! Double
-        
-        let newAccept = (currentAccept + selectedRequest.cost).rounded(toPlaces: 2)
-        let newRequest = (currentRequest - selectedRequest.cost).rounded(toPlaces: 2)
-        
-        acceptingUser.setProperty("karmaPoints", object: newAccept)
-        requestingUser.setProperty("karmaPoints", object: newRequest)
-        
-        var status = false
-        
-        Types.tryblock({() -> Void in
-            userService!.update(acceptingUser)
-            userService!.update(requestingUser)
-            status = true
-        },
-           catchblock: { (exception) -> Void in
-            let error = exception as! Fault
-            print(error)
-        })
-        
-        return status
+    private func performServerTransaction(selectedRequest : DataSnapshot) {
+        Order.completeRequest(orderSnapshot: selectedRequest)
+        UserUtil.transactPointsWithSnapshot(snapshot: selectedRequest)
     }
-    
+
     // Server Call
-    private func loadNotifications() {
-        let backendless = Backendless.sharedInstance()
-        let dataStore = backendless!.data.of(Circle.ofClass())
-        
-        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(Order.ofClass())
-        loadRelationsQueryBuilder!.setRelationName("Orders")
-        loadRelationsQueryBuilder!.setPageSize(20)
-        
-        // Filter down all orders to include just the current user's requests
-        // that have been accepted by someone else but not yet completed
-        Types.tryblock({() -> Void in
-            let allOrders = dataStore!.loadRelations(
-                User.getCurrentUserProperty(key: "circleId") as! String,
-                queryBuilder: loadRelationsQueryBuilder
-            ) as! [Order]
-            self.notifications = allOrders.filter {
-                !($0.completed) &&
-                $0.acceptingUserId != "-1" &&
-                $0.requestingUserId == User.getCurrentUserId()
+    private func listenNotifications() {
+        UserUtil.getCurrentUserName() { userName in
+            UserUtil.getCurrentCircle() { circle in
+                let orderRef = self.ref.child("acceptedOrders/request/\(circle)/\(userName)")
+                
+                self._addHandle = orderRef.observe(.childAdded, with: {
+                    [weak self] (snapshot) -> Void in
+                    guard let strongSelf = self else { return }
+                    strongSelf.notifications.append(snapshot)
+                    strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.notifications.count-1, section: 0)], with: .automatic)
+                })
+                self._removeHandle = orderRef.observe(.childRemoved, with: {
+                    [weak self] (snapshot) -> Void in
+                    guard let strongSelf = self else { return }
+                    
+                    if let index = strongSelf.notifications.index(where: {$0.key == snapshot.key}) {
+                        strongSelf.notifications.remove(at: index)
+                        strongSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                    }
+                })
             }
-            self.notifications.sort { return ($0.updated! as Date) < ($1.updated! as Date) }
-        },
-           catchblock: { (exception) -> Void in
-                let error = exception as! Fault
-                print(error)
-        })
+        }
     }
 }
+
+

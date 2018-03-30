@@ -7,14 +7,26 @@
 //
 
 import UIKit
+import FirebaseDatabase
 import Kingfisher
 
 class ViewRequestTableViewController: UITableViewController {
 
     // Local Variables
+    var ref: DatabaseReference!
     let cellSpacingHeight: CGFloat = 5
-    private var allOrders = [Order]()
-    private var orders = [Order]()
+    
+    fileprivate var _pointHandle: DatabaseHandle?
+    fileprivate var _unacceptAddHandle: DatabaseHandle?
+    fileprivate var _unacceptRemoveHandle: DatabaseHandle?
+    fileprivate var _acceptAddHandle: DatabaseHandle?
+    fileprivate var _acceptRemoveHandle: DatabaseHandle?
+    
+    var orders: [DataSnapshot]! = []
+    var unacceptOrders: [DataSnapshot]! = []
+    var acceptOrders: [DataSnapshot]! = []
+    
+    private let refreshCont = UIRefreshControl()
     
     // UIElements
     @IBOutlet weak var pendingAcceptedControl: UISegmentedControl!
@@ -23,54 +35,77 @@ class ViewRequestTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Pull from the database
-        loadAllOrders()
+        self.ref = Database.database().reference()
+        
+        //Set up connection to database
+        configureDatabase()
+        
+        //Display number of points
+        configureKarmaPoints()
         
         //Configure the view
         configureTableView()
-        
-        //Configure the cache to expire
-        configureCache()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        //Pull from the database
-        loadAllOrders()
-    
-        //Show no orders picture if orders is empty
-        noOrders()
-        
-        //Configure the navigation bar
-        updateKarmaPoints()
     }
     
-    private func noOrders() {
-        if (orders.isEmpty) {
-            let backgroundImage = UIImage(named: "NoOrders")
-            self.tableView.backgroundView = UIImageView(image: backgroundImage)
+    deinit {
+        if let pointHandle = _pointHandle {
+            self.ref.child("users").removeObserver(withHandle: pointHandle)
+        }
+        if let unacceptAddHandle = _unacceptAddHandle {
+            self.ref.child("unacceptedOrder").removeObserver(withHandle: unacceptAddHandle)
+        }
+        if let unacceptRemoveHandle = _unacceptRemoveHandle {
+            self.ref.child("unacceptedOrder").removeObserver(withHandle: unacceptRemoveHandle)
+        }
+    }
+    
+    private func configureDatabase() {
+        listenUnaccepted()
+        listenAccepted()
+    }
+    
+    private func configureKarmaPoints() {
+        if let userId = UserUtil.getCurrentId() {
+            let pointRef = self.ref.child("users/\(userId)/karma")
+            self._pointHandle = pointRef.observe(DataEventType.value, with: { (snapshot) in
+                let point = snapshot.value as! Double
+                self.karmaPointsButton.title = String(point)
+            })
         }
     }
     
     private func configureTableView() {
+        //Set the initial orders to be unaccepted
+        self.orders = self.unacceptOrders
+        
         //Configure background color
         self.tableView.backgroundColor = UIColor.lightGray
         
         //Enable segment control
         self.pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)
+        if pendingAcceptedControl.selectedSegmentIndex == 1 {
+            tableView.allowsSelection = false
+        }
+        
+        //Enable pull to refresh
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshCont
+        } else {
+            tableView.addSubview(refreshCont)
+        }
+        refreshCont.addTarget(self, action: #selector(self.refreshOrders), for: .valueChanged)
+        refreshCont.attributedTitle = NSAttributedString(string: "Fetching new orders ...")
     }
 
-    private func updateKarmaPoints() {
-        karmaPointsButton.title = String(User.getCurrentUserProperty(key: "karmaPoints") as! Double)
+    @objc private func refreshOrders(_sender : Any) {
+        self.tableView.reloadData()
+        self.refreshCont.endRefreshing()
     }
     
-    private func configureCache() {
-        ImageCache.default.maxCachePeriodInSecond = 60 * 3
-    }
-
     @objc func segmentChanged(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-            case 0: loadPending()
-            case 1: loadAccepted()
+            case 0: self.orders = self.unacceptOrders
+            case 1: self.orders = self.acceptOrders
             default: self.orders = []
         }
         self.tableView.reloadData()
@@ -78,33 +113,65 @@ class ViewRequestTableViewController: UITableViewController {
 
     //--------------------------------- Pull Order Data -------------------------------------//
     
-    private func loadAllOrders() {
-        let dataStore = Circle.getCircleDataStore()
-        let circleId = User.getCurrentUserProperty(key: "circleId") as! String
+    private func listenUnaccepted() {
+        UserUtil.getCurrentCircle() { circle in
+            let orderRef = self.ref.child("unacceptedOrders/\(circle)")
+            
+            self._unacceptAddHandle = orderRef.observe(.childAdded, with: {
+                [weak self] (snapshot) -> Void in
+                guard let strongSelf = self else { return }
+                strongSelf.unacceptOrders.append(snapshot)
 
-        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(Order.ofClass())
-        loadRelationsQueryBuilder!.setRelationName("Orders")
-        loadRelationsQueryBuilder!.setPageSize(20)
-        
-        Types.tryblock({() -> Void in
-            self.allOrders = dataStore.loadRelations(circleId, queryBuilder: loadRelationsQueryBuilder) as! [Order]
-            //Sort all the orders by their created date
-            self.allOrders.sort { return ($0.created! as Date) < ($1.created! as Date) }
-            self.loadPending()
-        },
-            catchblock: { (exception) -> Void in
-            let error = exception as! Fault
-            print(error)
-        })
+                if strongSelf.pendingAcceptedControl.selectedSegmentIndex == 0 {
+                    strongSelf.orders.append(snapshot)
+                    strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.unacceptOrders.count-1, section: 0)], with: .automatic)
+                }
+            })
+            self._unacceptRemoveHandle = orderRef.observe(.childRemoved, with: {
+                [weak self] (snapshot) -> Void in
+                guard let strongSelf = self else { return }
+                
+                if let index = strongSelf.unacceptOrders.index(where: {$0.key == snapshot.key}) {
+                    strongSelf.unacceptOrders.remove(at: index)
+                    
+                    if strongSelf.pendingAcceptedControl.selectedSegmentIndex == 0 {
+                        strongSelf.orders.remove(at: index)
+                        strongSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                    }
+                }
+            })
+        }
     }
     
-    private func loadPending() {
-        self.orders = self.allOrders.filter { $0.acceptingUserId == "-1" }
-    }
-    
-    private func loadAccepted() {
-        self.orders = self.allOrders.filter {
-            $0.acceptingUserId == User.getCurrentUserId() && !$0.completed
+    private func listenAccepted() {
+        UserUtil.getCurrentUserName() { userName in
+            UserUtil.getCurrentCircle() { circle in
+                let orderRef = self.ref.child("acceptedOrders/accept/\(circle)/\(userName)")
+                
+                self._acceptAddHandle = orderRef.observe(.childAdded, with: {
+                    [weak self] (snapshot) -> Void in
+                    guard let strongSelf = self else { return }
+                    strongSelf.acceptOrders.append(snapshot)
+                
+                    if strongSelf.pendingAcceptedControl.selectedSegmentIndex == 1 {
+                        strongSelf.orders.append(snapshot)
+                        strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.acceptOrders.count-1, section: 0)], with: .automatic)
+                    }
+                })
+                self._acceptRemoveHandle = orderRef.observe(.childRemoved, with: {
+                    [weak self] (snapshot) -> Void in
+                    guard let strongSelf = self else { return }
+                    
+                    if let index = strongSelf.acceptOrders.index(where: {$0.key == snapshot.key}) {
+                        strongSelf.acceptOrders.remove(at: index)
+                        
+                        if strongSelf.pendingAcceptedControl.selectedSegmentIndex == 1 {
+                            strongSelf.orders.remove(at: index)
+                            strongSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                        }
+                    }
+                })
+            }
         }
     }
 
@@ -112,11 +179,11 @@ class ViewRequestTableViewController: UITableViewController {
     
     //Each order has its own section
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return orders.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return orders.count
     }
     
     //Set the spacing between sections
@@ -132,103 +199,36 @@ class ViewRequestTableViewController: UITableViewController {
     //Load the data into the table cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cellIdentifier = "ViewRequestTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ViewRequestTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ViewRequestTableViewCell", for: indexPath) as? ViewRequestTableViewCell else {
             fatalError("Something's wrong with the Order object!")
         }
+
+        let orderSnapshot = self.orders[indexPath.row]
+        guard let order = orderSnapshot.value as? [String: Any], let info = order["info"] as? [String: Any], let _ = order["requestUser"] else { return cell }
         
-        let order = orders[indexPath.section]
+        let title = info[Constants.Order.Fields.title] as? String
+        let cost = info[Constants.Order.Fields.points] as! Double
         
-        // Cell components
-        cell.titleLabel.text = order.title! + " for $" + String(order.cost)
-        cell.descriptionLabel.text = order.message
-        cell.timeLabel.text = order.requestedTime
-        cell.locationLabel.text = order.destination!
-        cell.categoryImage.image = order.fromDescription().image
-        
-        let requestId = order.requestingUserId!
-        let imagePath = User.getUserWithId(userId: requestId).getProperty("imagePath") as! String
-        if imagePath == "default" {
-            cell.userImage.image = UIImage(named: "DefaultAvatar")!
-        }
-        else {
-            ImageCache.default.retrieveImage(forKey: requestId, options: nil) {
-                image, cacheType in
-                if let image = image {
-                    cell.userImage.image = image
-                } else {
-                    let url = URL(string: imagePath)
-                    cell.userImage.kf.setImage(with: url, completionHandler: {
-                        (image, error, cacheType, imageUrl) in
-                        self.saveImageToCache(image: image!, id: requestId)
-                    })
-                }
-            }
-        }
+        cell.titleLabel.text = title! + " for $" + String(describing: cost)
+        cell.descriptionLabel.text = info[Constants.Order.Fields.details] as? String
+        cell.timeLabel.text = info[Constants.Order.Fields.time] as? String
+        cell.locationLabel.text = info[Constants.Order.Fields.destination] as? String
+        cell.categoryImage.image = Order.Category.Custom.image
+        cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
         
         return cell
     }
     
-    private func saveImageToCache (image: UIImage, id: String) {
-        ImageCache.default.store(image, forKey: id)
-    }
-
     ///---------------------- Accepting a request handling ---------------------------//
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if validAccept(indexPath: indexPath as NSIndexPath) {
-            orders.remove(at: indexPath.section)
-            self.tableView.reloadData()
+        // TODO: do different things depending on state of segment control
+        
+        let snapshot = self.orders[indexPath.row]
+        guard var order = snapshot.value as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return }
+        
+        if let userId = UserUtil.getCurrentId() {
+            if reqUser["id"] as? String ?? "" == userId { return }
+            Order.uploadAccept(key: snapshot.key, val: order, userId: userId)
         }
     }
-
-    func validAccept(indexPath: NSIndexPath) -> Bool {
-        let dataStore = Order.getOrderDataStore()
-        let currentUser = User.getCurrentUser()
-        
-        let selectedOrder = orders[indexPath.section]
-        
-        if (selectedOrder.requestingUserId == (currentUser.objectId as String)
-         || selectedOrder.acceptingUserId == (currentUser.objectId as String)) { return false }
-        
-        selectedOrder.acceptingUserId = currentUser.objectId as String
-        selectedOrder.acceptingUserName = currentUser.name as String
-        
-        dataStore.save(
-            selectedOrder,
-            response: {
-                (order) -> () in
-                print("Order saved")
-            },
-            error: {
-                (fault : Fault?) -> () in
-                print("Server reported an error: \(String(describing: fault))")
-            }
-        )
-        
-        return true;
-    }
-  
-//    var valid = false;
-//
-//    Types.tryblock({ () -> Void in
-//    dataStore.save(selectedOrder)
-//    valid = true
-//    }, catchblock: {(exception) -> Void in
-//    print(exception ?? "Error")
-//    })
-
 }
-
-// Asynchronous Call:
-//        dataStore!.loadRelations(
-//            circleId,
-//            queryBuilder: loadRelationsQueryBuilder,
-//            response: { pulledOrders in
-//                self.allOrders = pulledOrders as! [Order]
-//                self.loadPending()
-//            },
-//            error: {
-//                fault in
-//                print("Server reported an error: \(fault!.message)")
-//            }
-//        )

@@ -7,29 +7,52 @@
 //
 
 import UIKit
+import FirebaseDatabase
 import Kingfisher
 
 class CircleMemberTableViewController: UITableViewController {
 
+    var ref: DatabaseReference!
+    var members = [DataSnapshot]()
+    
+    var name: String = ""
+    var userName: String = ""
+    var id: String = ""
+    var circle: String = ""
+    
+    fileprivate var _addHandle: DatabaseHandle?
+    fileprivate var _updateHandle: DatabaseHandle?
+    fileprivate var _removeHandle: DatabaseHandle?
+    
     let viewColor = UIColor(red: 242, green: 242, blue: 242)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadLocalVariables()
+        
+        self.ref = Database.database().reference()
+        
         self.tableView.backgroundColor = viewColor
         self.tableView.separatorColor = viewColor
         
-        // Load data
         loadMembers()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func loadLocalVariables() {
+        if let currentUserId = UserUtil.getCurrentId() {
+            UserUtil.getCurrentUserName() { currentUserName in
+                UserUtil.getCurrentProperty(key: "name") { currentName in
+                    UserUtil.getCurrentCircle() { circleName in
+                        self.name = currentName as? String ?? ""
+                        self.userName = currentUserName
+                        self.id = currentUserId
+                        self.circle = circleName
+                    }
+                }
+            }
+        }
     }
-
-    // MARK: - Table view data source
-    var members = [BackendlessUser]()
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -44,103 +67,97 @@ class CircleMemberTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "CircleMemberTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CircleMemberTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CircleMemberTableViewCell", for: indexPath) as? CircleMemberTableViewCell else {
             fatalError("Something's wrong with the Circle Member object!")
         }
         
-        let member = members[indexPath.row]
-        cell.nameLabel.text = member.name! as String
+        let memberSnapshot = members[indexPath.row]
+        guard let member = memberSnapshot.value as? [String: Any] else { return cell }
         
-        let memberId = member.objectId! as String
-        let imagePath = member.getProperty("imagePath") as! String
-        if imagePath == "default" {
-            cell.userImage.image = UIImage(named: "DefaultAvatar")!
-        }
-        else {
-            ImageCache.default.retrieveImage(forKey: memberId, options: nil) {
-                image, cacheType in
-                if let image = image {
-                    cell.userImage.image = image
-                } else {
-                    let url = URL(string: imagePath)
-                    cell.userImage.kf.setImage(with: url, completionHandler: {
-                        (image, error, cacheType, imageUrl) in
-                        self.saveImageToCache(image: image!, id: memberId)
-                    })
-                }
-            }
-        }
+        cell.nameLabel.text = member["name"] as? String ?? ""
+        cell.karmaLabel.text = String(member["karma"] as! Double)
+        cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
         
         cell.layer.borderWidth = 10.0
         cell.layer.borderColor = viewColor.cgColor
         
         if (indexPath.row == 0) {
             cell.isUserInteractionEnabled = false
-            cell.pencilIcon.isHidden = true
         }
         
         return cell
     }
     
-    private func saveImageToCache (image: UIImage, id: String) {
-        ImageCache.default.store(image, forKey: id)
-    }
-    
     private func loadMembers() {
-        let backendless = Backendless.sharedInstance()
-        let dataStore = backendless!.data.of(Circle.ofClass())
-        
-        let loadRelationsQueryBuilder = LoadRelationsQueryBuilder.of(BackendlessUser.ofClass())
-        loadRelationsQueryBuilder!.setRelationName("Users")
-        
-        let circleId = User.getCurrentUserProperty(key: "circleId") as! String
-        
-        members = dataStore!.loadRelations(circleId, queryBuilder: loadRelationsQueryBuilder) as! [BackendlessUser]
-        
-        let userId = User.getCurrentUserId()
-        let currIndex = members.index(where: {($0.objectId as String) == userId })
-       
-        // Make the current user to be the first on the list
-        let temp = members[0]
-        members[0] = members[currIndex!]
-        members[currIndex!] = temp
-        
-        
-        //Asynchronous call:
-        //        dataStore!.loadRelations(
-        //            circleId,
-        //            queryBuilder: loadRelationsQueryBuilder,
-        //            response: { members in
-        //                self.members = members as! [BackendlessUser]
-        //            },
-        //            error: { fault in
-        //                print("Server reported an error: \(fault!.message)")
-        //            }
-        //        )
+        UserUtil.getCurrentUserName() { userName in
+            UserUtil.getCurrentCircle() { circleName in
+                let memberRef = self.ref.child("circles/\(circleName)/members")
+                
+                self._addHandle = memberRef.observe(.childAdded, with: {
+                    [weak self] (snapshot) -> Void in
+                    guard let strongSelf = self else { return }
+                    
+                    // Swap the current user with the person at the first index
+                    if userName == snapshot.key {
+                        let temp = strongSelf.members[0]
+                        strongSelf.members[0] = snapshot
+                        strongSelf.members.append(temp)
+                        strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.members.count-1, section: 0)], with: .automatic)
+                        strongSelf.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+                    } else {
+                        strongSelf.members.append(snapshot)
+                        strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.members.count-1, section: 0)], with: .automatic)
+                    }
+                })
+                self._updateHandle = memberRef.observe(.childChanged, with: {
+                    [weak self] (snapshot) -> Void in
+                    guard let strongSelf = self else { return }
+                    if let index = strongSelf.members.index(where: {$0.key == snapshot.key}) {
+                        strongSelf.members[index] = snapshot
+                        strongSelf.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                    }
+                })
+                
+                self._removeHandle = memberRef.observe(.childRemoved, with: {
+                    [weak self] (snapshot) -> Void in
+                    guard let strongSelf = self else { return }
+                    
+                    //TODO: Probably fix this but there's no way to remove anyways
+                    if let index = strongSelf.members.index(where: {$0.key == snapshot.key}) {
+                        strongSelf.members.remove(at: index)
+                        strongSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                    }
+                })
+            }
+        }
     }
     
     // In preparation for direct transferring
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
+
         guard let selectedCircleCell = sender as? CircleMemberTableViewCell else {
             fatalError("Unexpected sender: \(String(describing: sender))")
         }
-        
+
         guard let indexPath = tableView.indexPath(for : selectedCircleCell) else {
             fatalError("You definitely got the wrong cell")
         }
         
-        let selectedUser = members[indexPath.row]
+        let memberSnapshot = members[indexPath.row]
+        guard let member = memberSnapshot.value as? [String: Any] else { return }
         
         if let destination = segue.destination as? DirectTransferViewController {
-            let currentTransfer = DirectTransfer(
-                currentUser : User.getCurrentUser(),
-                selectedUser : selectedUser)
-            destination.currentTransfer = currentTransfer
+            if let selectedUserId = member["id"], let selectedName = member["name"] {
+                let currentTransfer = DirectTransfer(
+                    currentUserId: self.id,
+                    currentUserName : self.userName,
+                    currentName: self.name,
+                    selectedUserId : selectedUserId as? String ?? "",
+                    selectedUserName : memberSnapshot.key,
+                    selectedName: selectedName as? String ?? "")
+                destination.currentTransfer = currentTransfer
+            }
         }
     }
-    
-    
 }

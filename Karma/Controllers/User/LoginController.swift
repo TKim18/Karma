@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginController: UIViewController {
     // UI Elements
     @IBOutlet var emailField : UITextField!
     @IBOutlet var passwordField : UITextField!
     @IBOutlet var errorMessage : UILabel!
+    @IBOutlet var wesleyan : UITextField!
     @IBOutlet var registerButton : UIButton!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
-        
     }
     
     private func setupView() {
@@ -27,6 +29,8 @@ class LoginController: UIViewController {
         view.addGestureRecognizer(tap)
         
         registerButton.titleLabel?.textAlignment = NSTextAlignment.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.wesleyan.text = Constants.User.wesleyan
     }
     
     @objc func dismissKeyboard() {
@@ -34,38 +38,33 @@ class LoginController: UIViewController {
     }
     
     @IBAction func showRegister(sender : AnyObject) {
-        self.performSegue(withIdentifier: "LoginToRegister", sender: nil)
+        self.performSegue(withIdentifier: Constants.Segue.ToRegister, sender: nil)
     }
     
+    //
     @IBAction func loginButton(sender : AnyObject) {
-        if (validLogin()) {
-            let identifier = hasCircle() ? "LoginToTab" : "LoginNoCircle"
-            self.performSegue(withIdentifier: identifier, sender: self)
+        if let email = self.emailField.text, let password = self.passwordField.text {
+            login(email: (email + Constants.User.wesleyan), password: password)
+        }
+        else {
+            self.errorMessage.text = Constants.User.invalidLogin
         }
     }
     
-    // Segue handling
-    func validLogin() -> Bool {
-        return login(id: emailField.text!, password: passwordField.text!)
-    }
-    
-    func hasCircle() -> Bool {
-        return ((User.getCurrentUserProperty(key: "circleId") as! String) != "-1")
-    }
-    
     // Server call
-    func login(id: String, password: String) -> Bool {
-        let backendless = Backendless.sharedInstance()!
-        
-        var valid = true
-        Types.tryblock({ () -> Void in
-            backendless.userService.login(id, password: password)
-        }, catchblock: {(exception) -> Void in
-            let error = exception as! Fault
-            self.errorMessage.text = error.message!
-            valid = false
-        })
-        return valid
+    func login(email: String, password: String) {
+        activityIndicator.startAnimating()
+        Auth.auth().signIn(withEmail: email, password: password) {
+            (user, error) in
+            self.activityIndicator.stopAnimating()
+            if let error = error {
+                self.errorMessage.text = error.localizedDescription
+                return
+            }
+            UserUtil.getCurrentProperty(key: Constants.User.Fields.circles) { prop in
+                let identifier = prop == nil ? Constants.Segue.ToNoCircle : Constants.Segue.LoginToMain
+                self.performSegue(withIdentifier: identifier, sender: self)
+            }
+        }
     }
-
 }

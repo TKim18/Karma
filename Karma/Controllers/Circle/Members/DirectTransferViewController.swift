@@ -14,7 +14,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     var currentTransfer : DirectTransfer!
     var origButtonPosition : CGFloat!
     var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 216))
-    
+
     // UI Elements
     @IBOutlet weak var costField : UITextField!
     @IBOutlet weak var selectedUser : UILabel!
@@ -23,20 +23,68 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     @IBOutlet weak var payButton : UIButton!
     @IBOutlet weak var dividerLabel : UILabel!
     var placeholderLabel : UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
-        
+
         setupKeyboard()
-        
+
         setupDetails()
     }
-    
+
+    // Pay/Request Handling
+    @IBAction func request(sender : AnyObject) {
+        if validValues() {
+            self.currentTransfer.performRequest() {
+                self.performSegue(withIdentifier: "SubmitDirectTransfer", sender: self)
+            }
+        }
+//        if validValues() {
+//            directRequest()
+//        }
+    }
+
+    @IBAction func pay(sender : AnyObject) {
+        if validValues() {
+            self.currentTransfer.performPay() {
+                self.performSegue(withIdentifier: "SubmitDirectTransfer", sender: self)
+            }
+        }
+    }
+
+    func validValues() -> Bool {
+        self.currentTransfer.title = descriptionField.text
+
+        var cost = costField.text!
+        if cost.contains("$") {
+            cost.remove(at: cost.startIndex)
+        }
+
+        self.currentTransfer.cost = (cost as NSString).doubleValue
+
+        // Validify the values
+        if (self.currentTransfer.title!.isEmpty) {
+            let alert = UIAlertController(title: "Please enter a description.", message: "e.g., 'For that chicken parm I got you'", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
+        }
+        else if (costField.text!.isEmpty || self.currentTransfer.cost < 0.01) {
+            let alert = UIAlertController(title: "Please enter a valid amount.", message: "Anything greater than $0.00 is fine!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
+        }
+
+        return true
+    }
+
+    // MARK: Setup Methods
     func setupView() {
         // Set the text of the user label
-        selectedUser.text = currentTransfer.selectedUserName
+        selectedUser.text = currentTransfer.selectedName
         self.origButtonPosition = requestButton.frame.origin.y
         costField.becomeFirstResponder()
     }
@@ -53,7 +101,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
         // Dismissing numPad should evaluate the current expression
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DirectTransferViewController.finishCompute))
         view.addGestureRecognizer(tap)
-
+        
         // Turn off autocorrect/auto predict for the description field
         descriptionField.autocorrectionType = .no
     }
@@ -74,114 +122,40 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
         placeholderLabel.isHidden = !descriptionField.text.isEmpty
     }
     
-    // Pay/Request Handling
-    @IBAction func request(sender : AnyObject) {
-        if (validValues() && validRequest()) {
-            self.performSegue(withIdentifier: "SubmitDirectTransfer", sender: self)
-        }
-    }
-
-    @IBAction func pay(sender : AnyObject) {
-        if (validValues() && validPay()) {
-            self.performSegue(withIdentifier: "SubmitDirectTransfer", sender: self)
-        }
-    }
-
-    func validValues() -> Bool {
-        self.currentTransfer.title = descriptionField.text
-
-        var cost = costField.text!
-        if cost.contains("$") {
-            cost.remove(at: cost.startIndex)
-        }
-        
-        self.currentTransfer.cost = (cost as NSString).doubleValue
-        
-        // Validify the values
-        if (self.currentTransfer.title!.isEmpty) {
-            let alert = UIAlertController(title: "Please enter a description.", message: "e.g., 'For that chicken parm I got you'", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            return false
-        }
-        else if (costField.text!.isEmpty || self.currentTransfer.cost < 0.01) {
-            let alert = UIAlertController(title: "Please enter a valid amount.", message: "Anything greater than $0.00 is fine!", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            return false
-        }
-        
-        return true
-    }
-    
-    func validRequest() -> Bool {
-        // Make an order in addition to a direct transfer
-        return true
-    }
-    
-    func validPay() -> Bool {
-        let userService = Backendless.sharedInstance().userService
-        
-        let selectedUser = User.getUserWithId(userId: self.currentTransfer.selectedUserId)
-        let currentUser = User.getCurrentUser()
-        
-        let selectedPoints = selectedUser.getProperty("karmaPoints") as! Double
-        let currentPoints = currentUser.getProperty("karmaPoints") as! Double
-        
-        let cost = self.currentTransfer.cost
-        let newSelectedPoints = (selectedPoints + cost).rounded(toPlaces: 2)
-        let newCurrentPoints = (currentPoints - cost).rounded(toPlaces: 2)
-        
-        selectedUser.setProperty("karmaPoints", object: newSelectedPoints)
-        currentUser.setProperty("karmaPoints", object: newCurrentPoints)
-        
-        var status = false
-        
-        Types.tryblock({() -> Void in
-            userService!.update(selectedUser)
-            userService!.update(currentUser)
-            status = true
-        },
-        catchblock: { (exception) -> Void in
-            let error = exception as! Fault
-            print(error)
-        })
-        
-        return status
-    }
-    
-    // Helper Functions
+    // MARK: Helper Functions
     @objc func finishCompute() {
         NumPadCalculator.computeOperation(numPad)()
         view.endEditing(true)
     }
-    
+
     @objc func keyboardWillShow(notification: NSNotification) {
         let keyBoardFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let unifiedHeight = keyBoardFrame.origin.y - requestButton.frame.size.height
-        
+
         requestButton.frame.origin.y = unifiedHeight
         payButton.frame.origin.y = unifiedHeight
         dividerLabel.frame.origin.y = unifiedHeight
     }
-    
+
     @objc func keyboardWillHide(notification: NSNotification) {
         requestButton.frame.origin.y = origButtonPosition
         payButton.frame.origin.y = origButtonPosition
         dividerLabel.frame.origin.y = origButtonPosition
     }
 
-    // KeyboardDelegate Protocol Implementation:
+    // MARK: KeyboardDelegate Protocol Implementation
     func addText(character: String) {
         costField.insertText(character)
     }
-    
+
     func setText(text: String) {
         costField.text = "$" + text
     }
-    
+
     func deleteText() {
         costField.deleteBackward()
     }
-    
+
 }
+
+
