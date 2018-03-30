@@ -94,9 +94,6 @@ class NotificationTableViewController: UITableViewController {
                     strongSelf.notifications.append(snapshot)
                     strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.notifications.count-1, section: 0)], with: .automatic)
                     notifTab?.badgeValue = String(describing: strongSelf.notifications.count)
-//                    if let curr = notifTab?.badgeValue {
-//                        notifTab?.badgeValue = String(describing: Int(curr)! + 1)
-//                    }
                 })
                 self._removeHandle = orderRef.observe(.childRemoved, with: {
                     [weak self] (snapshot) -> Void in
@@ -109,14 +106,6 @@ class NotificationTableViewController: UITableViewController {
                     if strongSelf.notifications != [] {
                         notifTab?.badgeValue = String(describing: strongSelf.notifications.count)
                     }
-                    
-//                    if let curr = notifTab?.badgeValue {
-//                        if curr == "0" {
-//                            notifTab?.badgeValue = nil
-//                        } else {
-//                            notifTab?.badgeValue = String(describing: Int(curr)! - 1)
-//                        }
-//                    }
                 })
             }
         }

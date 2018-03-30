@@ -41,7 +41,6 @@ class LoginController: UIViewController {
         self.performSegue(withIdentifier: Constants.Segue.ToRegister, sender: nil)
     }
     
-    //
     @IBAction func loginButton(sender : AnyObject) {
         if let email = self.emailField.text, let password = self.passwordField.text {
             login(email: (email + Constants.User.wesleyan), password: password)

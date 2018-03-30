@@ -14,6 +14,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     var currentTransfer : DirectTransfer!
     var origButtonPosition : CGFloat!
     var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 216))
+    var placeholderLabel : UILabel!
 
     // UI Elements
     @IBOutlet weak var costField : UITextField!
@@ -22,7 +23,6 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     @IBOutlet weak var requestButton : UIButton!
     @IBOutlet weak var payButton : UIButton!
     @IBOutlet weak var dividerLabel : UILabel!
-    var placeholderLabel : UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +41,6 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
                 self.performSegue(withIdentifier: "SubmitDirectTransfer", sender: self)
             }
         }
-//        if validValues() {
-//            directRequest()
-//        }
     }
 
     @IBAction func pay(sender : AnyObject) {

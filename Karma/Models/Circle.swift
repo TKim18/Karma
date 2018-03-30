@@ -98,9 +98,4 @@ class Circle : NSObject {
             }
         }
     }
-    
-    static func getCircleDataStore() -> IDataStore {
-        return Backendless.sharedInstance().data.of(Circle().ofClass())
-    }
-    
 }

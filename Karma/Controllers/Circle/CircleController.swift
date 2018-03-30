@@ -14,9 +14,7 @@ class CircleController: UIViewController {
     // UI Elements
     @IBOutlet var circleNameField : UITextField!
     @IBOutlet var circleKeyField: UITextField!
-    
-    let backendless = Backendless.sharedInstance()!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

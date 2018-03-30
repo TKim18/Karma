@@ -12,16 +12,20 @@ import FirebaseDatabase
 
 class UserUtil {
     
-    static func getCurrentUserFB() -> User {
+    static func getCurrentUser() -> User {
         return Auth.auth().currentUser!
     }
     
     static func getCurrentId() -> String? {
-        return getCurrentUserFB().uid
+        return getCurrentUser().uid
+    }
+    
+    static func getCurrentImagePath() -> URL? {
+        return getCurrentUser().photoURL
     }
     
     static func getCurrentEmail() -> String? {
-        return getCurrentUserFB().email
+        return getCurrentUser().email
     }
     
     static func getCurrentCircle(completionHandler: @escaping (_ circle: String) -> ()) {
@@ -103,5 +107,14 @@ class UserUtil {
                 }
             }
         }
+    }
+    
+    static func changeUserImage(photoURL : URL, callback: @escaping () -> ()) {
+        let changeRequest = getCurrentUser().createProfileChangeRequest()
+        changeRequest.photoURL = photoURL
+        changeRequest.commitChanges() {
+            error in print(error?.localizedDescription as Any)
+        }
+        callback()
     }
 }

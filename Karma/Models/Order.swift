@@ -57,7 +57,7 @@ class Order : NSObject {
     func upload(callback: @escaping () -> ()) {
         let ref = Database.database().reference()
         
-        if let userId = UserUtil.getCurrentId() {
+        if let userId = UserUtil.getCurrentId(), let photoURL = UserUtil.getCurrentImagePath() {
             UserUtil.getCurrentProperty(key: "name") { name in
                 UserUtil.getCurrentUserName() { userName in
                     UserUtil.getCurrentCircle() { circleName in
@@ -75,7 +75,8 @@ class Order : NSObject {
                             let userInfo = [
                                 "id" : userId,
                                 "userName" : userName,
-                                "name" : name as? String ?? ""
+                                "name" : name as? String ?? "",
+                                "photoURL" : photoURL.absoluteString
                             ] as [String: Any]
                             
                             let data = ["info" : specifics, "requestUser": userInfo]
@@ -103,33 +104,36 @@ class Order : NSObject {
     // A user accepts another user's request
     static func uploadAccept(key: String, val: [String: Any], userId: String) {
         let ref = Database.database().reference()
-        UserUtil.getCurrentUserName() { userName in
-            UserUtil.getCurrentCircle() { circleName in
-                UserUtil.getCurrentProperty(key: "name") { name in
-                    var order = val
-                    guard let reqUser = order["requestUser"] as? [String : Any] else { return }
-                    if let requestName = reqUser["userName"] {
-                        // Delete the request from the list of unaccepted orders
-                        ref.child("unacceptedOrders/\(circleName)/\(key)").removeValue()
-                 
-                        // Add the request under the name of the person who accepted it
-                        let acceptRef = ref.child("acceptedOrders/accept/\(circleName)/\(userName)").childByAutoId()
-                        
-                        // Add the details of who accepted the order to the request
-                        order["acceptUser"] = [
-                            "id" : userId,
-                            "userName" : userName,
-                            "name" : name as? String ?? ""
-                        ]
-                        
-                        acceptRef.setValue(order)
-                        
-                        // Keep track of the mirroring order
-                        order["autoId"] = acceptRef.key
-                        order["isDirect"] = "false"
-                        
-                        // Add the request under the name of the person who requested it
-                        ref.child("acceptedOrders/request/\(circleName)/\(requestName)").childByAutoId().setValue(order)
+        if let photoURL = UserUtil.getCurrentImagePath() {
+            UserUtil.getCurrentUserName() { userName in
+                UserUtil.getCurrentCircle() { circleName in
+                    UserUtil.getCurrentProperty(key: "name") { name in
+                        var order = val
+                        guard let reqUser = order["requestUser"] as? [String : Any] else { return }
+                        if let requestName = reqUser["userName"] {
+                            // Delete the request from the list of unaccepted orders
+                            ref.child("unacceptedOrders/\(circleName)/\(key)").removeValue()
+                            
+                            // Add the request under the name of the person who accepted it
+                            let acceptRef = ref.child("acceptedOrders/accept/\(circleName)/\(userName)").childByAutoId()
+                            
+                            // Add the details of who accepted the order to the request
+                            order["acceptUser"] = [
+                                "id" : userId,
+                                "userName" : userName,
+                                "name" : name as? String ?? "",
+                                "photoURL" : photoURL.absoluteString
+                            ]
+                            
+                            acceptRef.setValue(order)
+                            
+                            // Keep track of the mirroring order
+                            order["autoId"] = acceptRef.key
+                            order["isDirect"] = "false"
+                            
+                            // Add the request under the name of the person who requested it
+                            ref.child("acceptedOrders/request/\(circleName)/\(requestName)").childByAutoId().setValue(order)
+                        }
                     }
                 }
             }

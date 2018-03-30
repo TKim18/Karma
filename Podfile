@@ -9,7 +9,7 @@ target 'Karma' do
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
-pod 'Backendless'
+pod 'Firebase/Storage'
 pod 'Kingfisher', '~> 4.0'
 
 end

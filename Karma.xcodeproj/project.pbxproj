@@ -252,6 +252,7 @@
 				2277E0641F744B5F00AC53CB /* Circle.swift */,
 				2277E0651F744B5F00AC53CB /* Order.swift */,
 				22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */,
+				22DE50812061F86400A87979 /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,7 +273,6 @@
 				2277E0721F744C2B00AC53CB /* User */,
 				22302AFB1F7B36EF0046E757 /* Circle */,
 				2277E0741F744C3800AC53CB /* Order */,
-				22DE50812061F86400A87979 /* Constants.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -710,7 +710,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wesleyan.Karma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pods/Backendless/SDK/ios/backendless/include/Backendless-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -729,7 +728,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wesleyan.Karma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pods/Backendless/SDK/ios/backendless/include/Backendless-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

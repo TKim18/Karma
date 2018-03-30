@@ -7,13 +7,14 @@
 //
 
 import UIKit
-import Kingfisher
+import FirebaseStorage
 
 class UserProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet var imageView: UIImageView!
-    
     let imagePicker = UIImagePickerController()
+    var storageRef : StorageReference!
+    
+    @IBOutlet var imageView: UIImageView!
     
     @IBAction func loadImageButtonTapped(sender: UIButton) {
         imagePicker.allowsEditing = false
@@ -25,11 +26,10 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //TODO: Write code to crop into circle
+        storageRef = Storage.storage().reference()
         
         imagePicker.delegate = self
         
-        // imageView.image = getUserProfile()
         displayUserPicture()
     }
     
