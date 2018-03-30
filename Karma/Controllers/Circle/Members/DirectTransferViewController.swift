@@ -36,6 +36,11 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
 
     // Pay/Request Handling
     @IBAction func request(sender : AnyObject) {
+        if validValues() {
+            self.currentTransfer.performRequest() {
+                self.performSegue(withIdentifier: "SubmitDirectTransfer", sender: self)
+            }
+        }
 //        if validValues() {
 //            directRequest()
 //        }

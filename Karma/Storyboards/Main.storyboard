@@ -1231,6 +1231,7 @@
         <image name="UserSettingsSelectedIcon" width="39" height="39"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="mce-JM-uSh"/>
         <segue reference="ndn-w6-JES"/>
         <segue reference="7fL-I0-nA8"/>
         <segue reference="IhG-KY-8Wu"/>

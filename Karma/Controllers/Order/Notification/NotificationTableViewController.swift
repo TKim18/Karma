@@ -50,11 +50,11 @@ class NotificationTableViewController: UITableViewController {
         }
 
         let notifSnapshot = notifications[indexPath.row]
-        guard let notification = notifSnapshot.value as? [String: Any] else { return cell }
+        guard let notification = notifSnapshot.value as? [String: Any], let info = notification["info"] as? [String: Any], let accUser = notification["acceptUser"] as? [String: Any] else { return cell }
 
-        let title = notification["title"] as? String ?? ""
-        let name = notification["acceptName"] as? String ?? ""
-        let cost = notification["points"] as! Double
+        let title = info["title"] as? String ?? ""
+        let name = accUser["name"] as? String ?? ""
+        let cost = info["points"] as! Double
         
         cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
         cell.personalMessage.text = title

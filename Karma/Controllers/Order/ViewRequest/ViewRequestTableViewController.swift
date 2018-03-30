@@ -204,15 +204,15 @@ class ViewRequestTableViewController: UITableViewController {
         }
 
         let orderSnapshot = self.orders[indexPath.row]
-        guard let order = orderSnapshot.value as? [String: Any] else { return cell }
+        guard let order = orderSnapshot.value as? [String: Any], let info = order["info"] as? [String: Any], let _ = order["requestUser"] else { return cell }
         
-        let title = order[Constants.Order.Fields.title] as? String
-        let cost = order[Constants.Order.Fields.points] as! Double
+        let title = info[Constants.Order.Fields.title] as? String
+        let cost = info[Constants.Order.Fields.points] as! Double
         
         cell.titleLabel.text = title! + " for $" + String(describing: cost)
-        cell.descriptionLabel.text = order[Constants.Order.Fields.details] as? String
-        cell.timeLabel.text = order[Constants.Order.Fields.time] as? String
-        cell.locationLabel.text = order[Constants.Order.Fields.destination] as? String
+        cell.descriptionLabel.text = info[Constants.Order.Fields.details] as? String
+        cell.timeLabel.text = info[Constants.Order.Fields.time] as? String
+        cell.locationLabel.text = info[Constants.Order.Fields.destination] as? String
         cell.categoryImage.image = Order.Category.Custom.image
         cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
         
@@ -224,10 +224,10 @@ class ViewRequestTableViewController: UITableViewController {
         // TODO: do different things depending on state of segment control
         
         let snapshot = self.orders[indexPath.row]
-        guard var order = snapshot.value as? [String: Any] else { return }
+        guard var order = snapshot.value as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return }
         
         if let userId = UserUtil.getCurrentId() {
-            if order[Constants.Order.Fields.userId] as? String ?? "" == userId { return }
+            if reqUser["id"] as? String ?? "" == userId { return }
             Order.uploadAccept(key: snapshot.key, val: order, userId: userId)
         }
     }

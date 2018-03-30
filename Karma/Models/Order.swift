@@ -71,24 +71,35 @@ class Order : NSObject {
         let ref = Database.database().reference()
         
         if let userId = UserUtil.getCurrentId() {
-            UserUtil.getCurrentUserName() { userName in
-                UserUtil.getCurrentCircle() { circleName in
-                    if let title = self.title, let details = self.details, let time = self.time, let category = self.category, let destination = self.destination {
-                        var data : [String : Any]
-                        data = [:]
-                        data[Constants.Order.Fields.title] = title
-                        data[Constants.Order.Fields.details] = details
-                        data[Constants.Order.Fields.time] = time
-                        data[Constants.Order.Fields.category] = category.description
-                        data[Constants.Order.Fields.destination] = destination
-                        data[Constants.Order.Fields.points] = self.cost
-                        data[Constants.Order.Fields.userId] = userId
-                        data[Constants.Order.Fields.userName] = userName
-                        ref.child("unacceptedOrders/\(circleName)").childByAutoId().setValue(data)
-                    } else {
-                        print("Unable to retrieve all of the order properties")
+            UserUtil.getCurrentProperty(key: "name") { name in
+                UserUtil.getCurrentUserName() { userName in
+                    UserUtil.getCurrentCircle() { circleName in
+                        if let title = self.title, let details = self.details, let time = self.time, let category = self.category, let destination = self.destination {
+                            // Separate order information from user information
+                            let specifics = [
+                                Constants.Order.Fields.title : title,
+                                Constants.Order.Fields.details : details,
+                                Constants.Order.Fields.time : time,
+                                Constants.Order.Fields.category : category.description,
+                                Constants.Order.Fields.destination : destination,
+                                Constants.Order.Fields.points : self.cost
+                                ] as [String : Any]
+                            
+                            let userInfo = [
+                                "id" : userId,
+                                "userName" : userName,
+                                "name" : name as? String ?? ""
+                            ] as [String: Any]
+                            
+                            let data = ["info" : specifics, "requestUser": userInfo]
+                            
+                            // Save under the corresponding circle for unacceptedOrders
+                            ref.child("unacceptedOrders/\(circleName)").childByAutoId().setValue(data)
+                        } else {
+                            print("Unable to retrieve all of the order properties")
+                        }
+                        callback()
                     }
-                    callback()
                 }
             }
         }
@@ -100,26 +111,29 @@ class Order : NSObject {
             UserUtil.getCurrentCircle() { circleName in
                 UserUtil.getCurrentProperty(key: "name") { name in
                     var order = val
-                    if let requestName = order["userName"] {
+                    guard let reqUser = order["requestUser"] as? [String : Any] else { return }
+                    if let requestName = reqUser["userName"] {
+                        // Delete the request from the list of unaccepted orders
                         ref.child("unacceptedOrders/\(circleName)/\(key)").removeValue()
-                        
+                 
+                        // Add the request under the name of the person who accepted it
                         let acceptRef = ref.child("acceptedOrders/accept/\(circleName)/\(userName)").childByAutoId()
                         
-                        order["acceptName"] = name as? String ?? ""
-                        order["acceptUserName"] = userName
-                        order["acceptId"] = userId
-                        order["autoId"] = acceptRef.key
-                        
-                        ref.child("acceptedOrders/request/\(circleName)/\(requestName)").childByAutoId().setValue(order)
-                        
-                        order["userId"] = userId
-                        order["userName"] = userName
-                        order["acceptUserName"] = nil
-                        order["acceptName"] = nil
-                        order["acceptId"] = nil
-                        order["autoId"] = nil
+                        // Add the details of who accepted the order to the request
+                        order["acceptUser"] = [
+                            "id" : userId,
+                            "userName" : userName,
+                            "name" : name as? String ?? ""
+                        ]
                         
                         acceptRef.setValue(order)
+                        
+                        // Keep track of the mirroring order
+                        order["autoId"] = acceptRef.key
+                        order["isDirect"] = "false"
+                        
+                        // Add the request under the name of the person who requested it
+                        ref.child("acceptedOrders/request/\(circleName)/\(requestName)").childByAutoId().setValue(order)
                     }
                 }
             }
@@ -131,15 +145,21 @@ class Order : NSObject {
         
         UserUtil.getCurrentCircle() { circleName in
             let key = orderSnapshot.key
-            guard var order = orderSnapshot.value as? [String: Any] else { return }
+            guard var order = orderSnapshot.value as? [String: Any], let reqUser = order["requestUser"] as? [String : Any], let accUser = order["acceptUser"] as? [String : Any] else { return }
             
-            let requestUserName = order["userName"] as? String ?? ""
-            let acceptUserName = order["acceptUserName"] as? String ?? ""
+            // Pull some user information to get the right database path
+            let requestUserName = reqUser["userName"] as? String ?? ""
+            let acceptUserName = accUser["userName"] as? String ?? ""
             let autoId = order["autoId"] as? String ?? ""
             
+            // Indicate this was not a direct transfer for transaction history purposes and remove id
+            order["autoId"] = nil
+            
+            // Make mirroring completed receipts for transaction history
             ref.child("acceptedOrders/request/\(circleName)/\(requestUserName)/\(key)").removeValue()
             ref.child("acceptedOrders/accept/\(circleName)/\(acceptUserName)/\(autoId)").removeValue()
             ref.child("completedOrders/\(circleName)/\(requestUserName)").childByAutoId().setValue(order)
+            ref.child("completedOrders/\(circleName)/\(acceptUserName)").childByAutoId().setValue(order)
         }
     }
     
