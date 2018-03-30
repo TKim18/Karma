@@ -37,17 +37,7 @@ class Order : NSObject {
             }
         }
     }
-    
-    var objectId : String?
-    var created: NSDate?
-    var updated: NSDate?
-    
-    var requestingUserId: String?
-    var requestingUserName: String?
-    var acceptingUserId: String?
-    var acceptingUserName: String?
-    
-    var completed : Bool = false
+
     var title : String?
     var details : String?
     var time : String?
@@ -61,12 +51,9 @@ class Order : NSObject {
         self.time = ""
         self.category = .Custom
         self.destination = ""
-        self.requestingUserId = "-1"
-        self.requestingUserName = "-1"
-        self.acceptingUserId = "-1"
-        self.acceptingUserName = "-1"
     }
     
+    // Add an unaccepted order
     func upload(callback: @escaping () -> ()) {
         let ref = Database.database().reference()
         
@@ -105,6 +92,7 @@ class Order : NSObject {
         }
     }
     
+    // A user accepts another user's request
     static func uploadAccept(key: String, val: [String: Any], userId: String) {
         let ref = Database.database().reference()
         UserUtil.getCurrentUserName() { userName in
@@ -140,6 +128,7 @@ class Order : NSObject {
         }
     }
     
+    // The original requesting user has paid off the person who accepted
     static func completeRequest(orderSnapshot: DataSnapshot) {
         let ref = Database.database().reference()
         
@@ -162,9 +151,4 @@ class Order : NSObject {
             ref.child("completedOrders/\(circleName)/\(acceptUserName)").childByAutoId().setValue(order)
         }
     }
-    
-    static func getOrderDataStore() -> IDataStore {
-        return Backendless.sharedInstance().data.of(Order().ofClass())
-    }
-    
 }

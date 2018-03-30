@@ -12,7 +12,6 @@ import FirebaseDatabase
 @objcMembers
 class Circle : NSObject {
     
-    var objectId : String?
     let joinName : String?
     let joinKey : String?
     var displayName : String?

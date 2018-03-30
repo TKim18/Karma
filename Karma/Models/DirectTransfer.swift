@@ -12,8 +12,8 @@ import FirebaseDatabase
 @objcMembers
 class DirectTransfer : NSObject {
     
-    var objectId : String?
     var title : String?
+    var cost : Double = 0.0
     
     var currentUserId: String?
     var currentUserName: String?
@@ -21,9 +21,6 @@ class DirectTransfer : NSObject {
     var selectedUserId: String
     var selectedUserName: String?
     var selectedName: String?
-    
-    var completed : Bool = false
-    var cost : Double = 0.0
     
     override init () {
         self.title = ""
@@ -42,10 +39,6 @@ class DirectTransfer : NSObject {
         self.selectedUserId = selectedUserId
         self.selectedUserName = selectedUserName
         self.selectedName = selectedName
-    }
-    
-    static func getDTDataStore() -> IDataStore {
-        return Backendless.sharedInstance().data.of(DirectTransfer().ofClass())
     }
     
     func performRequest(callback: @escaping () -> ()) {
