@@ -90,6 +90,21 @@ class UserUtil {
         })
     }
  
+    static func getNumAccepts(completionHandler: @escaping (_ number: Any?) -> ()) {
+        getCurrentUserName() { userName in
+            getCurrentCircle() { circleName in
+                let ref = Database.database().reference()
+                ref.child("acceptedOrders/request/\(circleName)/\(userName)").observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let entity = snapshot.value as? NSDictionary {
+                        completionHandler(entity.count)
+                    }
+                }) { (error) in
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
     static func getCurrentUser() -> BackendlessUser {
         return Backendless.sharedInstance().userService.currentUser
     }

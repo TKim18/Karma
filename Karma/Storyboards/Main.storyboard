@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -801,17 +801,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ6-GX-HZI">
-                                <rect key="frame" x="0.0" y="588" width="375" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Request" backgroundImage="BlueBar">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="requestWithSender:" destination="PdG-hk-wVj" eventType="touchUpInside" id="GAT-wF-1ur"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ea9-ko-fBG">
                                 <rect key="frame" x="0.0" y="64" width="375" height="99"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -851,6 +840,19 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHy-yG-dSL">
+                                <rect key="frame" x="0.0" y="566" width="375" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.27156596659999999" green="0.64596990109999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Request">
+                                    <color key="titleColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="requestWithSender:" destination="N7W-wu-JGK" eventType="touchUpInside" id="csv-nR-JBF"/>
+                                    <action selector="requestWithSender:" destination="PdG-hk-wVj" eventType="touchUpInside" id="dtP-FO-sqs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -861,7 +863,7 @@
                         <outlet property="endTimeField" destination="p3P-04-QGL" id="5yK-0N-fyp"/>
                         <outlet property="errorMessage" destination="bIb-4g-8td" id="NZV-hQ-5Sm"/>
                         <outlet property="locationField" destination="5dO-Xh-O74" id="TCA-t4-LBK"/>
-                        <outlet property="requestButton" destination="ZZ6-GX-HZI" id="1wh-6e-m44"/>
+                        <outlet property="requestButton" destination="ZHy-yG-dSL" id="cSz-C3-HwK"/>
                         <outlet property="requestDetailsField" destination="lNO-2H-Q35" id="mSs-mK-1AI"/>
                         <outlet property="titleField" destination="rYK-Ww-ftp" id="ssb-FQ-7h2"/>
                         <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="SubmitRequest" id="slo-0J-Efm"/>
@@ -869,7 +871,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQt-5P-tdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1670" y="-1668"/>
+            <point key="canvasLocation" x="1669.5999999999999" y="-1668.2158920539732"/>
         </scene>
         <!--Direct Transfer View Controller-->
         <scene sceneID="FAi-SX-0KR">
@@ -1264,14 +1266,10 @@
         <image name="settings_button_highlighted" width="187" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mce-JM-uSh"/>
         <segue reference="ndn-w6-JES"/>
         <segue reference="7fL-I0-nA8"/>
-        <segue reference="IhG-KY-8Wu"/>
-        <segue reference="rOi-oM-HQC"/>
-        <segue reference="slo-0J-Efm"/>
         <segue reference="Obl-Wj-qaW"/>
         <segue reference="r0E-Gv-G2T"/>
-        <segue reference="PPI-hW-TY2"/>
+        <segue reference="slo-0J-Efm"/>
     </inferredMetricsTieBreakers>
 </document>

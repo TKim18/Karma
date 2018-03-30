@@ -14,7 +14,6 @@ class NotificationTableViewController: UITableViewController {
     var ref: DatabaseReference!
     
     var notifications : [DataSnapshot]! = []
-    var completed : [DataSnapshot]! = []
     
     fileprivate var _addHandle: DatabaseHandle?
     fileprivate var _removeHandle: DatabaseHandle?
@@ -24,22 +23,17 @@ class NotificationTableViewController: UITableViewController {
 
         self.ref = Database.database().reference()
         
+        self.tabBarController?.tabBar.items![1].badgeValue = "0"
+        
         listenNotifications()
-
-        // self.tabBarController?.tabBar.items![1].badgeValue = String(notifications.count)
     }
     
-    // One section for pending, one for completed
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 0) ? notifications.count : completed.count
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return (section == 0) ? "PENDING" : "COMPLETED"
+        return notifications.count
     }
 
     //Load the data into the table cells
@@ -84,12 +78,16 @@ class NotificationTableViewController: UITableViewController {
         UserUtil.getCurrentUserName() { userName in
             UserUtil.getCurrentCircle() { circle in
                 let orderRef = self.ref.child("acceptedOrders/request/\(circle)/\(userName)")
+                let notifTab = self.tabBarController?.tabBar.items![1]
                 
                 self._addHandle = orderRef.observe(.childAdded, with: {
                     [weak self] (snapshot) -> Void in
                     guard let strongSelf = self else { return }
                     strongSelf.notifications.append(snapshot)
                     strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.notifications.count-1, section: 0)], with: .automatic)
+                    if let curr = notifTab?.badgeValue {
+                        notifTab?.badgeValue = String(describing: Int(curr)! + 1)
+                    }
                 })
                 self._removeHandle = orderRef.observe(.childRemoved, with: {
                     [weak self] (snapshot) -> Void in
@@ -98,6 +96,9 @@ class NotificationTableViewController: UITableViewController {
                     if let index = strongSelf.notifications.index(where: {$0.key == snapshot.key}) {
                         strongSelf.notifications.remove(at: index)
                         strongSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                    }
+                    if let curr = notifTab?.badgeValue {
+                        notifTab?.badgeValue = String(describing: Int(curr)! - 1)
                     }
                 })
             }

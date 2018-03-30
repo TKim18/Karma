@@ -1,6 +1,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,13 +43,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func autoLogin() {
-        let userService = backendless!.userService
-        if (userService?.isValidUserToken().boolValue)! {
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyBoard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.rootViewController = controller
-            self.window?.makeKeyAndVisible()
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if let _ = user {
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyBoard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
+                let notifTab = controller.tabBar.items![1]
+                UserUtil.getNumAccepts() { number in
+                    if let number = number {
+                        notifTab.badgeValue = String(describing: number)
+                    }
+                }
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = controller
+                self.window?.makeKeyAndVisible()
+            }
         }
     }
 

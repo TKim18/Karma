@@ -12,6 +12,7 @@
 * Become able to leave circles
 * Become able to log out
 * Become able to upload your own image
+* Add deinits to every listening handler
 
 ## Some Cool Bean Changes ##
 ### Easy ###
@@ -25,3 +26,15 @@
 
 ## Design fixes ##
 * Move current user variables to become load variables at the beginning instead of inside functions because they don't change
+
+## Priority List for Dev ##
+* User images
+* Push notifications
+* Transaction history on Karma button
+* Slide for action on billboard (accept or delete)
+* Press for more information on billboard
+* Newest to oldest (maybe)
+* Cancel accept
+* Better icons for tab bar controller
+* Email invite users on top right of members list
+* Calculator go back one instead of clear
