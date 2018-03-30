@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureScheme()
         
         // Automatically login when device is logged in
-        autoLogin()
+        //autoLogin()
         
         return true
     }

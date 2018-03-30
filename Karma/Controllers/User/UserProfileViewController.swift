@@ -36,8 +36,6 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     @objc
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            uploadImageToServer(image: pickedImage)
-            saveImageToCache(image: pickedImage)
             imageView.image = pickedImage.maskInCircle(image: pickedImage, radius: 78)
             imageView.contentMode = .scaleAspectFit
         }
@@ -45,71 +43,8 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         dismiss(animated: true, completion: nil)
     }
     
-    private func saveImageToCache (image: UIImage) {
-        let id = UserUtil.getCurrentUserId() as String
-        ImageCache.default.removeImage(forKey: id)
-        ImageCache.default.store(image, forKey: id)
-        print("User image has been saved to cache")
-    }
-    
     private func displayUserPicture() {
-        let imagePath = (UserUtil.getCurrentUserProperty(key: "imagePath") as! String)
-        if (imagePath == "default") {
-            imageView.image = UIImage(named: "DefaultAvatar")!
-            return
-        }
-        // Attempt to retrieve image from cache
-        ImageCache.default.retrieveImage(forKey: UserUtil.getCurrentUserId(), options: nil) {
-            image, cacheType in
-            if let image = image {
-                self.imageView.image = image
-            } else {
-                print("That image does not exist in cache, pulling from server")
-                let url = URL(string: imagePath)
-                DispatchQueue.global().async {
-                    let data = try? Data(contentsOf: url!)
-                    DispatchQueue.main.async {
-                        let onlineImage = UIImage(data: data!)
-                        self.saveImageToCache(image: onlineImage!)
-                        self.imageView.image = onlineImage
-                    }
-                }
-            }
-        }
-    }
-    
-    private func uploadImageToServer(image: UIImage) {
-        let backendless = Backendless.sharedInstance()
-        
-        let imageData: Data = image.jpeg(.low)!
-        let path = "userImages/" + String(UserUtil.getCurrentUser().email) + ".png"
-        let currentUser = backendless!.userService.currentUser
-        
-        backendless!.file.saveFile(
-            path,
-            content: imageData,
-            overwriteIfExist: true,
-            response: {
-                (savedFile: BackendlessFile?) -> Void in
-                // Upload the current user's image path attribute
-                let imagePath = "https://api.backendless.com/4E2E1A3D-FFCD-0343-FF47-1C589EC9B700/FA7EA74D-684C-9B00-FF57-36FE9F512200/files/userImages/" + String(currentUser!.email) + ".png"
-                currentUser!.updateProperties(["imagePath" : imagePath])
-                backendless!.userService.update(
-                    currentUser,
-                    response: {
-                        (updatedUser: BackendlessUser?) -> Void in
-                        print ("User image has been updated")
-                },
-                    error: {
-                        (fault : Fault?) -> () in
-                        print("Server reported an error: \(String(describing: fault))")
-                })
-                print("New image saved to server")
-            },
-            error: {
-                (fault: Fault?) -> Void in
-                print("Server reported an error")
-        })
+        imageView.image = #imageLiteral(resourceName: "DefaultAvatar")
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

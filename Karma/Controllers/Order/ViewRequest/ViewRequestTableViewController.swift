@@ -224,25 +224,19 @@ class ViewRequestTableViewController: UITableViewController {
         let snapshot = self.orders[indexPath.row]
         guard var order = snapshot.value as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return [] }
         
+        let userId = UserUtil.getCurrentId() ?? ""
+        
         let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
-            print("told to delete")
+            Order.deleteUnaccept(key: snapshot.key)
         }
         delete.backgroundColor = .red
         
         let accept = UITableViewRowAction(style: .normal, title: "Accept") { action, index in
-            print("told to accept")
+            Order.uploadAccept(key: snapshot.key, val: order, userId: userId)
         }
         accept.backgroundColor = .green
         
-        if let userId = UserUtil.getCurrentId() {
-            if reqUser["id"] as? String ?? "" == userId {
-                return [delete]
-            } else {
-                return [accept]
-            }
-        }
-        
-        return [delete, accept]
+        return (reqUser["id"] as? String ?? "" == userId) ? [delete] : [accept]
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

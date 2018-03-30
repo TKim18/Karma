@@ -92,6 +92,14 @@ class Order : NSObject {
         }
     }
     
+    // Remove the user's order from the list of unaccepted
+    static func deleteUnaccept(key: String) {
+        let ref = Database.database().reference()
+        UserUtil.getCurrentCircle() { circleName in
+            ref.child("unacceptedOrders/\(circleName)/\(key)").removeValue()
+        }
+    }
+    
     // A user accepts another user's request
     static func uploadAccept(key: String, val: [String: Any], userId: String) {
         let ref = Database.database().reference()

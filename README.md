@@ -16,25 +16,32 @@
 
 ## Some Cool Bean Changes ##
 ### Easy ###
-* A badge on notifications tab bar
+* User images
 
 ### Everything in between ###
 * Push notification when user joins your circle
+* Caching images and requests
 
 ### Hard ###
 * Geolocation
 
 ## Design fixes ##
 * Move current user variables to become load variables at the beginning instead of inside functions because they don't change
+* Make a customized user object that has the three attributes to be carried around as well as current user data such as images and seen requests
 
 ## Priority List for Dev ##
 * User images
 * Push notifications
 * Transaction history on Karma button
-* Slide for action on billboard (accept or delete)
 * Press for more information on billboard
 * Newest to oldest (maybe)
 * Cancel accept
 * Better icons for tab bar controller
 * Email invite users on top right of members list
 * Calculator go back one instead of clear
+
+## Need views for: ##
+* What more information looks like
+* Transaction history example
+
+
