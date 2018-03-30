@@ -52,10 +52,11 @@ class NotificationTableViewController: UITableViewController {
         
         cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
         cell.personalMessage.text = title
-        cell.notificationLabel.text = name + " requests " + String(cost) + " points for completing your request!"
+        cell.notificationLabel.text = name + " requests " + String(cost) + " points"
         
-        cell.payButton.tag = indexPath.row
+        
         cell.payButton.addTarget(self, action: #selector(self.completeTransaction), for: UIControlEvents.touchUpInside)
+        cell.declineButton.addTarget(self, action: #selector(self.rejectTransaction), for: UIControlEvents.touchUpInside)
 
         return cell
     }
@@ -64,6 +65,13 @@ class NotificationTableViewController: UITableViewController {
         if let cell = sender.superview??.superview as? NotificationTableViewCell {
             let indexPath = self.tableView.indexPath(for: cell)
             performServerTransaction(selectedRequest: notifications[indexPath!.row])
+        }
+    }
+    
+    @objc func rejectTransaction(sender: AnyObject) {
+        if let cell = sender.superview??.superview as? NotificationTableViewCell {
+            let indexPath = self.tableView.indexPath(for: cell)
+            Order.rejectRequest(orderSnapshot: notifications[indexPath!.row])
         }
     }
     

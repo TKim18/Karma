@@ -26,5 +26,6 @@ class NotificationTableViewCell: UITableViewCell {
     @IBOutlet weak var personalMessage: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var payButton: UIButton!
+    @IBOutlet weak var declineButton: UIButton!
 
 }

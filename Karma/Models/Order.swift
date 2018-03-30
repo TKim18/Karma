@@ -151,4 +151,22 @@ class Order : NSObject {
             ref.child("completedOrders/\(circleName)/\(acceptUserName)").childByAutoId().setValue(order)
         }
     }
+    
+    static func rejectRequest(orderSnapshot: DataSnapshot) {
+        let ref = Database.database().reference()
+        
+        UserUtil.getCurrentCircle() { circleName in
+            let key = orderSnapshot.key
+            guard var order = orderSnapshot.value as? [String: Any], let reqUser = order["requestUser"] as? [String : Any], let accUser = order["acceptUser"] as? [String : Any] else { return }
+            
+            // Pull some user information to get the right database path
+            let requestUserName = reqUser["userName"] as? String ?? ""
+            let acceptUserName = accUser["userName"] as? String ?? ""
+            let autoId = order["autoId"] as? String ?? ""
+            
+            // Make mirroring completed receipts for transaction history
+            ref.child("acceptedOrders/request/\(circleName)/\(requestUserName)/\(key)").removeValue()
+            ref.child("acceptedOrders/accept/\(circleName)/\(acceptUserName)/\(autoId)").removeValue()
+        }
+    }
 }
