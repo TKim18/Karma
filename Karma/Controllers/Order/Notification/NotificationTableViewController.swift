@@ -23,7 +23,7 @@ class NotificationTableViewController: UITableViewController {
 
         self.ref = Database.database().reference()
         
-        self.tabBarController?.tabBar.items![1].badgeValue = "0"
+        self.tabBarController?.tabBar.items![1].badgeValue = nil
         
         listenNotifications()
     }
@@ -93,9 +93,10 @@ class NotificationTableViewController: UITableViewController {
                     guard let strongSelf = self else { return }
                     strongSelf.notifications.append(snapshot)
                     strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.notifications.count-1, section: 0)], with: .automatic)
-                    if let curr = notifTab?.badgeValue {
-                        notifTab?.badgeValue = String(describing: Int(curr)! + 1)
-                    }
+                    notifTab?.badgeValue = String(describing: strongSelf.notifications.count)
+//                    if let curr = notifTab?.badgeValue {
+//                        notifTab?.badgeValue = String(describing: Int(curr)! + 1)
+//                    }
                 })
                 self._removeHandle = orderRef.observe(.childRemoved, with: {
                     [weak self] (snapshot) -> Void in
@@ -105,9 +106,17 @@ class NotificationTableViewController: UITableViewController {
                         strongSelf.notifications.remove(at: index)
                         strongSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                     }
-                    if let curr = notifTab?.badgeValue {
-                        notifTab?.badgeValue = String(describing: Int(curr)! - 1)
+                    if strongSelf.notifications != [] {
+                        notifTab?.badgeValue = String(describing: strongSelf.notifications.count)
                     }
+                    
+//                    if let curr = notifTab?.badgeValue {
+//                        if curr == "0" {
+//                            notifTab?.badgeValue = nil
+//                        } else {
+//                            notifTab?.badgeValue = String(describing: Int(curr)! - 1)
+//                        }
+//                    }
                 })
             }
         }

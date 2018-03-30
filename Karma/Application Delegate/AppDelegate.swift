@@ -49,8 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let controller = storyBoard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
                 let notifTab = controller.tabBar.items![1]
                 UserUtil.getNumAccepts() { number in
-                    if let number = number {
-                        notifTab.badgeValue = String(describing: number)
+                    if let number = number as? Int {
+                        if number != 0 {
+                            notifTab.badgeValue = String(describing: number)
+                        }
                     }
                 }
                 self.window = UIWindow(frame: UIScreen.main.bounds)

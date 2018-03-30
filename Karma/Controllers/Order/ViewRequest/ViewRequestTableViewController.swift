@@ -219,6 +219,36 @@ class ViewRequestTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let snapshot = self.orders[indexPath.row]
+        guard var order = snapshot.value as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return [] }
+        
+        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
+            print("told to delete")
+        }
+        delete.backgroundColor = .red
+        
+        let accept = UITableViewRowAction(style: .normal, title: "Accept") { action, index in
+            print("told to accept")
+        }
+        accept.backgroundColor = .green
+        
+        if let userId = UserUtil.getCurrentId() {
+            if reqUser["id"] as? String ?? "" == userId {
+                return [delete]
+            } else {
+                return [accept]
+            }
+        }
+        
+        return [delete, accept]
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     ///---------------------- Accepting a request handling ---------------------------//
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: do different things depending on state of segment control
