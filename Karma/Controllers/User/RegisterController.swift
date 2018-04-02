@@ -71,13 +71,12 @@ class RegisterController: UIViewController {
                 return
             }
             if let user = user {
-                let url = URL(string: "default")
-                UserUtil.setImageURL(photoURL: url!)
                 self.ref.child("users").child(user.uid).setValue(
                     [Constants.User.Fields.name: name,
                      Constants.User.Fields.userName: email,
                      Constants.User.Fields.home: Constants.User.university,
-                     Constants.User.Fields.points: Constants.User.initialPoints]
+                     Constants.User.Fields.points: Constants.User.initialPoints,
+                     "photoURL": "default"]
                 )
                 self.performSegue(withIdentifier: Constants.Segue.RegisterToMain, sender: self)
             }

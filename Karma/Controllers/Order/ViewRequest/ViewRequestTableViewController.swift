@@ -220,9 +220,10 @@ class ViewRequestTableViewController: UITableViewController {
         cell.locationLabel.text = info[Constants.Order.Fields.destination] as? String
         cell.categoryImage.image = Order.Category.Custom.image
         
-        UserUtil.getProperty(key: "photoURL", id: requestId) { imageURL in
-            let imageURL = imageURL as! URL
-            let imagePath = imageURL.path
+        UserUtil.getProperty(key: "photoURL", id: requestId) { imageString in
+            let imageString = imageString as? String ?? "default"
+            let imageURL = URL(string: imageString)
+            let imagePath = imageURL?.path
             
             if imagePath == "default" {
                 cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
@@ -232,7 +233,7 @@ class ViewRequestTableViewController: UITableViewController {
                     if let image = image {
                         cell.userImage.image = image
                     } else {
-                        self.storageRef.child(imagePath).getData(maxSize: INT64_MAX) {(data, error) in
+                        self.storageRef.child(imagePath!).getData(maxSize: INT64_MAX) {(data, error) in
                             if let error = error {
                                 print(error.localizedDescription)
                                 cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
@@ -281,17 +282,4 @@ class ViewRequestTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-    ///---------------------- Accepting a request handling ---------------------------//
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        // TODO: do different things depending on state of segment control
-//
-//        let snapshot = self.orders[indexPath.row]
-//        guard var order = snapshot.value as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return }
-//
-//        if let userId = UserUtil.getCurrentId() {
-//            if reqUser["id"] as? String ?? "" == userId { return }
-//            Order.uploadAccept(key: snapshot.key, val: order, userId: userId)
-//        }
-//    }
 }

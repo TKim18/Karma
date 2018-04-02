@@ -40,6 +40,7 @@
 * Better icons for tab bar controller
 * Email invite users on top right of members list
 * Calculator go back one instead of clear
+* Removing members from circle
 
 ## Need views for: ##
 * What more information looks like

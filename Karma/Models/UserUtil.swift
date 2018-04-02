@@ -115,6 +115,6 @@ class UserUtil {
     static func setImageURL(photoURL : URL) {
         let ref = Database.database().reference()
         let id = getCurrentId()!
-        ref.child("users/\(id)/photoURL").setValue(photoURL.absoluteString)
+        ref.child("users/\(id)").child("photoURL").setValue(photoURL.absoluteString)
     }
 }
