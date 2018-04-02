@@ -8,11 +8,13 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseStorage
 import Kingfisher
 
 class CircleMemberTableViewController: UITableViewController {
 
     var ref: DatabaseReference!
+    var storageRef: StorageReference!
     var members = [DataSnapshot]()
     
     var name: String = ""
@@ -32,23 +34,13 @@ class CircleMemberTableViewController: UITableViewController {
         loadLocalVariables()
         
         self.ref = Database.database().reference()
+        self.storageRef = Storage.storage().reference()
         
         self.tableView.backgroundColor = viewColor
         self.tableView.separatorColor = viewColor
         
         loadMembers()
     }
-    
-//    @IBAction func inviteTapped(_ sender: AnyObject) {
-//        if let invite = Invites.inviteDialog() {
-//            invite.setInviteDelegate(self as! InviteDelegate)
-//            invite.setMessage("This shit is sick")
-//            invite.setTitle("Karma")
-//            invite.setDeepLink("app_url")
-//            invite.setCallToActionText("Install!")
-//            invite.open()
-//        }
-//    }
     
     func loadLocalVariables() {
         if let currentUserId = UserUtil.getCurrentId() {
@@ -85,8 +77,42 @@ class CircleMemberTableViewController: UITableViewController {
         let memberSnapshot = members[indexPath.row]
         guard let member = memberSnapshot.value as? [String: Any] else { return cell }
         
+        let id = member["id"] as? String ?? ""
+        
         cell.nameLabel.text = member["name"] as? String ?? ""
         cell.karmaLabel.text = String(member["karma"] as! Double)
+        
+        UserUtil.getProperty(key: "photoURL", id: id) { imageString in
+            let imageString = imageString as? String ?? "default"
+            let imageURL = URL(string: imageString)
+            let imagePath = imageURL?.path
+            
+            if imagePath == "default" {
+                cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
+            } else {
+                ImageCache.default.retrieveImage(forKey: id, options: nil) {
+                    image, cacheType in
+                    if let image = image {
+                        cell.userImage.image = image
+                    } else {
+                        self.storageRef.child(imagePath!).getData(maxSize: INT64_MAX) {(data, error) in
+                            if let error = error {
+                                print(error.localizedDescription)
+                                cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
+                            } else {
+                                DispatchQueue.main.async {
+                                    let serverImage = UIImage.init(data: data!)
+                                    cell.userImage.image = serverImage
+                                    self.saveImageToCache(image: serverImage!, id: id)
+                                    cell.setNeedsLayout()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
         
         cell.layer.borderWidth = 10.0
@@ -99,6 +125,10 @@ class CircleMemberTableViewController: UITableViewController {
         return cell
     }
     
+    private func saveImageToCache(image: UIImage, id: String) {
+        ImageCache.default.store(image, forKey: id)
+    }
+    
     private func loadMembers() {
         UserUtil.getCurrentUserName() { userName in
             UserUtil.getCurrentCircle() { circleName in
@@ -109,15 +139,15 @@ class CircleMemberTableViewController: UITableViewController {
                     guard let strongSelf = self else { return }
                     
                     // Swap the current user with the person at the first index
-                    if userName == snapshot.key {
+                    if userName != snapshot.key || strongSelf.members.isEmpty {
+                        strongSelf.members.append(snapshot)
+                        strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.members.count-1, section: 0)], with: .automatic)
+                    } else {
                         let temp = strongSelf.members[0]
                         strongSelf.members[0] = snapshot
                         strongSelf.members.append(temp)
                         strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.members.count-1, section: 0)], with: .automatic)
                         strongSelf.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-                    } else {
-                        strongSelf.members.append(snapshot)
-                        strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.members.count-1, section: 0)], with: .automatic)
                     }
                 })
                 self._updateHandle = memberRef.observe(.childChanged, with: {

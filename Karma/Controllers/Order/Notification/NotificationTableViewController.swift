@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Kingfisher
 import FirebaseDatabase
+import FirebaseStorage
 
 class NotificationTableViewController: UITableViewController {
 
     var ref: DatabaseReference!
+    var storageRef: StorageReference!
     
     var notifications : [DataSnapshot]! = []
     
@@ -21,7 +24,8 @@ class NotificationTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.ref = Database.database().reference()
+        ref = Database.database().reference()
+        storageRef = Storage.storage().reference()
         
         self.tabBarController?.tabBar.items![1].badgeValue = nil
         
@@ -49,13 +53,43 @@ class NotificationTableViewController: UITableViewController {
         guard let notification = notifSnapshot.value as? [String: Any], let info = notification["info"] as? [String: Any], let accUser = notification["acceptUser"] as? [String: Any] else { return cell }
 
         let title = info["title"] as? String ?? ""
-        let name = accUser["name"] as? String ?? ""
         let cost = info["points"] as! Double
+        let name = accUser["name"] as? String ?? ""
+        let acceptId = accUser["id"] as? String ?? ""
         
-        cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
+        UserUtil.getProperty(key: "photoURL", id: acceptId) { imageString in
+            let imageString = imageString as? String ?? "default"
+            let imageURL = URL(string: imageString)
+            let imagePath = imageURL?.path
+            
+            if imagePath == "default" {
+                cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
+            } else {
+                ImageCache.default.retrieveImage(forKey: acceptId, options: nil) {
+                    image, cacheType in
+                    if let image = image {
+                        cell.userImage.image = image
+                    } else {
+                        self.storageRef.child(imagePath!).getData(maxSize: INT64_MAX) {(data, error) in
+                            if let error = error {
+                                print(error.localizedDescription)
+                                cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
+                            } else {
+                                DispatchQueue.main.async {
+                                    let serverImage = UIImage.init(data: data!)
+                                    cell.userImage.image = serverImage
+                                    self.saveImageToCache(image: serverImage!, id: acceptId)
+                                    cell.setNeedsLayout()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         cell.personalMessage.text = title
         cell.notificationLabel.text = name + " requests " + String(cost) + " points"
-        
         
         cell.payButton.addTarget(self, action: #selector(self.completeTransaction), for: UIControlEvents.touchUpInside)
         cell.declineButton.addTarget(self, action: #selector(self.rejectTransaction), for: UIControlEvents.touchUpInside)
@@ -63,6 +97,10 @@ class NotificationTableViewController: UITableViewController {
         return cell
     }
 
+    private func saveImageToCache(image: UIImage, id: String) {
+        ImageCache.default.store(image, forKey: id)
+    }
+    
     @objc func completeTransaction(sender: AnyObject) {
         if let cell = sender.superview??.superview as? NotificationTableViewCell {
             let indexPath = self.tableView.indexPath(for: cell)
@@ -107,6 +145,8 @@ class NotificationTableViewController: UITableViewController {
                     }
                     if strongSelf.notifications != [] {
                         notifTab?.badgeValue = String(describing: strongSelf.notifications.count)
+                    } else {
+                        notifTab?.badgeValue = nil
                     }
                 })
             }

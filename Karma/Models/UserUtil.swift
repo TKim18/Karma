@@ -20,8 +20,11 @@ class UserUtil {
         return getCurrentUser().uid
     }
     
-    static func getCurrentImagePath() -> URL? {
-        return getCurrentUser().photoURL
+    static func getCurrentImageURL(completionHandler: @escaping (_ url: URL) -> ()) {
+        getCurrentProperty(key: "photoURL") { path in
+            let val = path as? String ?? "default"
+            completionHandler(URL(string: val)!)
+        }
     }
     
     static func getCurrentEmail() -> String? {
@@ -109,11 +112,9 @@ class UserUtil {
         }
     }
     
-    static func setImagePath(photoURL : URL) {
-        let changeRequest = getCurrentUser().createProfileChangeRequest()
-        changeRequest.photoURL = photoURL
-        changeRequest.commitChanges() {
-            error in print(error?.localizedDescription as Any)
-        }
+    static func setImageURL(photoURL : URL) {
+        let ref = Database.database().reference()
+        let id = getCurrentId()!
+        ref.child("users/\(id)").child("photoURL").setValue(photoURL.absoluteString)
     }
 }

@@ -55,7 +55,9 @@ class Circle : NSObject {
                         udata["id"] = id
                         udata["name"] = name
                         udata["karma"] = 50.00
-                            ref.child("circles/\(circleName)/members/\(userName)").setValue(udata)
+                        udata["photoURL"] = "default"
+                        
+                        ref.child("circles/\(circleName)/members/\(userName)").setValue(udata)
                         ref.child("users/\(id)/circles/\(circleName)").setValue(true)
                     } else {
                         print("Unable to retrieve user property")

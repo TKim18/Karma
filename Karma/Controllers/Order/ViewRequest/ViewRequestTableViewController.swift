@@ -8,13 +8,16 @@
 
 import UIKit
 import FirebaseDatabase
-//import Kingfisher
+import FirebaseStorage
+import Kingfisher
 
 class ViewRequestTableViewController: UITableViewController {
 
     // Local Variables
     var ref: DatabaseReference!
+    var storageRef: StorageReference!
     let cellSpacingHeight: CGFloat = 5
+    let backgroundColor = UIColor.white
     
     fileprivate var _pointHandle: DatabaseHandle?
     fileprivate var _unacceptAddHandle: DatabaseHandle?
@@ -36,6 +39,7 @@ class ViewRequestTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.ref = Database.database().reference()
+        self.storageRef = Storage.storage().reference()
         
         //Set up connection to database
         configureDatabase()
@@ -193,7 +197,7 @@ class ViewRequestTableViewController: UITableViewController {
     
     //Set the table insides as white
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor.white
+        cell.backgroundColor = backgroundColor
     }
     
     //Load the data into the table cells
@@ -204,21 +208,57 @@ class ViewRequestTableViewController: UITableViewController {
         }
 
         let orderSnapshot = self.orders[indexPath.row]
-        guard let order = orderSnapshot.value as? [String: Any], let info = order["info"] as? [String: Any], let _ = order["requestUser"] else { return cell }
+        guard let order = orderSnapshot.value as? [String: Any], let info = order["info"] as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return cell }
         
         let title = info[Constants.Order.Fields.title] as? String
         let cost = info[Constants.Order.Fields.points] as! Double
+        let requestId = reqUser["id"] as? String ?? ""
         
         cell.titleLabel.text = title! + " for $" + String(describing: cost)
         cell.descriptionLabel.text = info[Constants.Order.Fields.details] as? String
         cell.timeLabel.text = info[Constants.Order.Fields.time] as? String
         cell.locationLabel.text = info[Constants.Order.Fields.destination] as? String
         cell.categoryImage.image = Order.Category.Custom.image
-        cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
+        
+        UserUtil.getProperty(key: "photoURL", id: requestId) { imageString in
+            let imageString = imageString as? String ?? "default"
+            let imageURL = URL(string: imageString)
+            let imagePath = imageURL?.path
+            
+            if imagePath == "default" {
+                cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
+            } else {
+                ImageCache.default.retrieveImage(forKey: requestId, options: nil) {
+                    image, cacheType in
+                    if let image = image {
+                        cell.userImage.image = image
+                    } else {
+                        self.storageRef.child(imagePath!).getData(maxSize: INT64_MAX) {(data, error) in
+                            if let error = error {
+                                print(error.localizedDescription)
+                                cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
+                            } else {
+                                DispatchQueue.main.async {
+                                    let serverImage = UIImage.init(data: data!)
+                                    cell.userImage.image = serverImage
+                                    self.saveImageToCache(image: serverImage!, id: requestId)
+                                    cell.setNeedsLayout()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         
         return cell
     }
     
+    private func saveImageToCache(image: UIImage, id: String) {
+        ImageCache.default.store(image, forKey: id)
+    }
+    
+    // Slide to accept or delete request
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let snapshot = self.orders[indexPath.row]
@@ -241,18 +281,5 @@ class ViewRequestTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
-    }
-    
-    ///---------------------- Accepting a request handling ---------------------------//
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: do different things depending on state of segment control
-        
-        let snapshot = self.orders[indexPath.row]
-        guard var order = snapshot.value as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return }
-        
-        if let userId = UserUtil.getCurrentId() {
-            if reqUser["id"] as? String ?? "" == userId { return }
-            Order.uploadAccept(key: snapshot.key, val: order, userId: userId)
-        }
     }
 }
