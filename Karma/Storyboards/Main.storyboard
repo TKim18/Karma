@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -134,11 +134,12 @@
         <scene sceneID="6eh-qz-fhT">
             <objects>
                 <tabBarController storyboardIdentifier="MainTab" id="sJO-1I-4Tx" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="BlueBar" selectionIndicatorImage="SelectedIconIndicator" id="1Ux-s4-dHf">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="1Ux-s4-dHf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.97961787229999997" green="1" blue="0.99383590830000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.12802097201347351" green="0.40624415874481201" blue="0.8100895881652832" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.12802097200000001" green="0.40624415870000002" blue="0.81008958819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.12802097200000001" green="0.40624415870000002" blue="0.81008958819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Cg9-80-h2H" kind="relationship" relationship="viewControllers" id="IW7-Cd-7CT"/>
@@ -614,7 +615,7 @@
             <objects>
                 <tableViewController id="vdr-Jx-gdD" customClass="NotificationTableViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" id="fK9-ZS-07w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -732,7 +733,7 @@
             <objects>
                 <tableViewController id="kd8-uh-9f8" customClass="CircleMemberTableViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="114" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pbm-qg-tmC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -802,7 +803,7 @@
                         <viewControllerLayoutGuide type="bottom" id="dsy-Ll-vOO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="x8f-bd-eRF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lNO-2H-Q35">
@@ -893,7 +894,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4uh-oK-itz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AmE-ZB-rNs">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="233-mX-YO7">
@@ -967,12 +968,12 @@
             </objects>
             <point key="canvasLocation" x="2645.5999999999999" y="-2419.3403298350827"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Board-->
         <scene sceneID="wIY-7M-fmN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cg9-80-h2H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="MainBoardIcon" id="hPg-t9-v0K">
-                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    <tabBarItem key="tabBarItem" title="Board" image="MainBoardIcon" id="hPg-t9-v0K">
+                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="-2"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ph-52-rVo">
@@ -988,12 +989,12 @@
             </objects>
             <point key="canvasLocation" x="-346" y="-896"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Request-->
         <scene sceneID="irM-b8-A2M">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7ZM-hz-DcA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="NewRequestIcon" selectedImage="NewRequestIcon" id="LUd-sP-bIn">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    <tabBarItem key="tabBarItem" title="Request" image="NewRequestIcon" selectedImage="NewRequestIcon" id="LUd-sP-bIn">
+                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="-2"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cA3-ad-UFY">
@@ -1018,7 +1019,7 @@
                         <viewControllerLayoutGuide type="bottom" id="bdB-PZ-hfL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="b4z-rH-dDO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GENERAL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSi-vU-RPe">
@@ -1116,14 +1117,14 @@
                         <viewControllerLayoutGuide type="bottom" id="ldE-Zn-vlV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QA7-dm-LBP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Be-IB-EuF">
                                 <rect key="frame" x="115" y="80" width="145" height="145"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Display Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VeD-EI-9mG">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Display Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VeD-EI-9mG">
                                 <rect key="frame" x="0.0" y="268" width="375" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1158,12 +1159,12 @@
             </objects>
             <point key="canvasLocation" x="4628" y="-2078.4107946026988"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Your Circle-->
         <scene sceneID="MqK-pZ-55c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wjk-d7-lTJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="FriendsIcon" selectedImage="FriendsIcon" id="qxv-7q-Qhk">
-                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    <tabBarItem key="tabBarItem" title="Your Circle" image="FriendsIcon" selectedImage="FriendsIcon" id="qxv-7q-Qhk">
+                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="-2"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7hV-qM-paU">
@@ -1179,12 +1180,12 @@
             </objects>
             <point key="canvasLocation" x="2647" y="-896"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Notifications-->
         <scene sceneID="gzT-1c-Pki">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IRR-WL-oDz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="NotificationsIcon" selectedImage="NotificationsIcon" id="bkH-ZI-fB6">
-                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="NotificationsIcon" selectedImage="NotificationsIcon" id="bkH-ZI-fB6">
+                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="-2"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6M2-4F-K7I">
@@ -1200,12 +1201,12 @@
             </objects>
             <point key="canvasLocation" x="695" y="-895"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Settings-->
         <scene sceneID="SBA-TZ-dXH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iy0-rq-3NA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="UserSettingsIcon" selectedImage="UserSettingsIcon" id="yDn-jW-ltm">
-                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="UserSettingsIcon" selectedImage="UserSettingsIcon" id="yDn-jW-ltm">
+                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="-2"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sNV-We-49M">
@@ -1230,7 +1231,7 @@
                         <viewControllerLayoutGuide type="bottom" id="FZc-ZG-hi0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jG4-Sd-TjL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1248,7 +1249,7 @@
                         <viewControllerLayoutGuide type="bottom" id="94n-BV-V61"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="twt-ne-LIJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1259,15 +1260,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BlueBar" width="375" height="52"/>
         <image name="ClassicBackground" width="375" height="667"/>
         <image name="FriendsIcon" width="27" height="27"/>
         <image name="KarmaPointsIcon" width="21" height="25"/>
         <image name="KarmaPointsView" width="120" height="120"/>
         <image name="MainBoardIcon" width="27" height="27"/>
-        <image name="NewRequestIcon" width="27" height="27"/>
+        <image name="NewRequestIcon" width="35" height="35"/>
         <image name="NotificationsIcon" width="27" height="27"/>
-        <image name="SelectedIconIndicator" width="39" height="39"/>
         <image name="UserSettingsIcon" width="27" height="27"/>
         <image name="add_picture_button" width="512" height="512"/>
         <image name="join_settings_icon" width="256" height="256"/>
