@@ -785,7 +785,9 @@
                             <outlet property="delegate" destination="kd8-uh-9f8" id="Lx0-XC-ReX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your Circle" id="K6G-jn-vN3"/>
+                    <navigationItem key="navigationItem" title="Your Circle" id="K6G-jn-vN3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pDj-7Z-jjG"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvS-pt-DaX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

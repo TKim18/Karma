@@ -26,6 +26,8 @@ class NotificationTableViewController: UITableViewController {
         self.tabBarController?.tabBar.items![1].badgeValue = nil
         
         listenNotifications()
+        
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

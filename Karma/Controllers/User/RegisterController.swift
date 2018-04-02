@@ -61,7 +61,6 @@ class RegisterController: UIViewController {
     }
     
     // Server call
-    // TODO: Upon register, add field of imagePath and name to user
     func register(email: String, name: String, password: String) {
         activityIndicator.startAnimating()
         Auth.auth().createUser(withEmail: (email + Constants.User.wesleyan), password: password) {
@@ -72,6 +71,8 @@ class RegisterController: UIViewController {
                 return
             }
             if let user = user {
+                let url = URL(string: "default")
+                UserUtil.setImagePath(photoURL: url!)
                 self.ref.child("users").child(user.uid).setValue(
                     [Constants.User.Fields.name: name,
                      Constants.User.Fields.userName: email,

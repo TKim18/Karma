@@ -109,12 +109,11 @@ class UserUtil {
         }
     }
     
-    static func changeUserImage(photoURL : URL, callback: @escaping () -> ()) {
+    static func setImagePath(photoURL : URL) {
         let changeRequest = getCurrentUser().createProfileChangeRequest()
         changeRequest.photoURL = photoURL
         changeRequest.commitChanges() {
             error in print(error?.localizedDescription as Any)
         }
-        callback()
     }
 }

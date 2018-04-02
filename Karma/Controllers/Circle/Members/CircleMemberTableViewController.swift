@@ -39,6 +39,17 @@ class CircleMemberTableViewController: UITableViewController {
         loadMembers()
     }
     
+//    @IBAction func inviteTapped(_ sender: AnyObject) {
+//        if let invite = Invites.inviteDialog() {
+//            invite.setInviteDelegate(self as! InviteDelegate)
+//            invite.setMessage("This shit is sick")
+//            invite.setTitle("Karma")
+//            invite.setDeepLink("app_url")
+//            invite.setCallToActionText("Install!")
+//            invite.open()
+//        }
+//    }
+    
     func loadLocalVariables() {
         if let currentUserId = UserUtil.getCurrentId() {
             UserUtil.getCurrentUserName() { currentUserName in
