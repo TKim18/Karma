@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220FE6DC1FBB9AD7006C257E /* NumPadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */; };
+		2211A5A42071DBF400BD48EA /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2211A5A32071DBF400BD48EA /* ImageCache.swift */; };
 		2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */; };
 		2229C0861F744D820083C215 /* ViewRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */; };
 		2229C08B1F744D9E0083C215 /* RequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0881F744D9E0083C215 /* RequestTableViewController.swift */; };
@@ -76,6 +77,7 @@
 		05D99E2CD8E1D330A6C94F72 /* Pods-Karma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.debug.xcconfig"; sourceTree = "<group>"; };
 		0F22E1AB1E8407D1004B722A /* Karma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumPadCalculator.swift; sourceTree = "<group>"; };
+		2211A5A32071DBF400BD48EA /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewController.swift; sourceTree = "<group>"; };
 		2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewCell.swift; sourceTree = "<group>"; };
 		2229C0881F744D9E0083C215 /* RequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				2277E0651F744B5F00AC53CB /* Order.swift */,
 				22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */,
 				22DE50812061F86400A87979 /* Constants.swift */,
+				2211A5A32071DBF400BD48EA /* ImageCache.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				22D31D8B1FB2B28400014892 /* DirectTransferViewController.swift in Sources */,
 				2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */,
 				22302B001F7B376A0046E757 /* CircleMemberTableViewController.swift in Sources */,
+				2211A5A42071DBF400BD48EA /* ImageCache.swift in Sources */,
 				22DE50822061F86400A87979 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

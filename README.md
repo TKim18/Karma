@@ -17,6 +17,7 @@
 ## Some Cool Bean Changes ##
 ### Easy ###
 * User images
+* Clock for time on order
 
 ### Everything in between ###
 * Push notification when user joins your circle
@@ -44,4 +45,10 @@
 * What more information looks like
 * Transaction history example
 
+Notes:
+locations for where userprofiles appear:
+notifications page,
+user profile page,
+members page,
+requests page
 

@@ -72,7 +72,7 @@ class RegisterController: UIViewController {
             }
             if let user = user {
                 let url = URL(string: "default")
-                UserUtil.setImagePath(photoURL: url!)
+                UserUtil.setImageURL(photoURL: url!)
                 self.ref.child("users").child(user.uid).setValue(
                     [Constants.User.Fields.name: name,
                      Constants.User.Fields.userName: email,

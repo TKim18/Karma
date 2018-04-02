@@ -34,12 +34,14 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         setupView()
         
-        displayUserPicture()
+        UserUtil.getCurrentImageURL() { url in
+            self.imageURL = url
+            self.displayUserPicture()
+        }
     }
     
     private func setupView() {
         storageRef = Storage.storage().reference()
-        imageURL = UserUtil.getCurrentImagePath()
         activityIndicator.hidesWhenStopped = true
         imagePicker.delegate = self
     }
@@ -67,7 +69,7 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
             }
         } else {
             imageView.image = #imageLiteral(resourceName: "DefaultAvatar")
-            UserUtil.setImagePath(photoURL: URL(string: "default")!)
+            UserUtil.setImageURL(photoURL: URL(string: "default")!)
         }
     }
     
@@ -103,7 +105,7 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
                 
                 // Update the user photo if it is still on default
                 if self.imageURL == URL(string: "default") {
-                    UserUtil.setImagePath(photoURL: URL(string: "gs://karma-b3940.appspot.com/\(imagePath)")!)
+                    UserUtil.setImageURL(photoURL: URL(string: "gs://karma-b3940.appspot.com/\(imagePath)")!)
                 }
                 
                 print("User image has been uploaded to the server")
