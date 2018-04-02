@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import Kingfisher
 import FirebaseStorage
 
 class UserProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    let borderWidth = 1.0
+    let borderWidth = 2.0
     let borderColor = UIColor.black.cgColor
     
     let imagePicker = UIImagePickerController()
@@ -19,6 +20,7 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     var storageRef : StorageReference!
     
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func loadImageButtonTapped(sender: UIButton) {
         imagePicker.allowsEditing = false
@@ -38,57 +40,85 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     private func setupView() {
         storageRef = Storage.storage().reference()
         imageURL = UserUtil.getCurrentImagePath()
+        activityIndicator.hidesWhenStopped = true
         imagePicker.delegate = self
     }
     
     private func displayUserPicture() {
-        if imageURL.path == "default" {
-            imageView.image = #imageLiteral(resourceName: "DefaultAvatar")
-        } else {
-            self.storageRef.child(imageURL.path).getData(maxSize: INT64_MAX) {(data, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage.init(data: data!)
+        let path = imageURL.path
+        if path.hasPrefix("/userImages/"){
+            ImageCache.default.retrieveImage(forKey: UserUtil.getCurrentId()!, options: nil) {
+                image, cacheType in
+                if let image = image {
+                    self.imageView.image = image
+                } else {
+                    self.activityIndicator.startAnimating()
+                    self.storageRef.child(path).getData(maxSize: INT64_MAX) {(data, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            self.imageView.image = UIImage.init(data: data!)
+                            self.activityIndicator.stopAnimating()
+                        }
+                    }
                 }
             }
+        } else {
+            imageView.image = #imageLiteral(resourceName: "DefaultAvatar")
+            UserUtil.setImagePath(photoURL: URL(string: "default")!)
         }
     }
     
     @objc
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            UserUtil.getCurrentUserName() { userName in
-                // Crop the image into a circle
-                self.imageView.image = pickedImage
-                self.imageView.image = self.makeRoundImg(img: self.imageView)
-                
-                // Convert the image into Data type
-                let imageData = UIImagePNGRepresentation(self.imageView.image!)
-                let imagePath = "userImages/\(userName).png"
-                let metaData = StorageMetadata()
-                metaData.contentType = "image/png"
-
-                // Upload the image to Firebase storage
-                self.storageRef.child(imagePath).putData(imageData!, metadata: metaData) {
-                    (metadata, error) in
-                    if let error = error {
-                        print (error.localizedDescription)
-                    }
-                    
-                    // Update the user photo if it is still on default
-                    if self.imageURL == URL(string: "default") {
-                        UserUtil.setImagePath(photoURL: URL(string: "gs://karma-b3940.appspot.com/\(imagePath)")!)
-                    }
-                }
-            }
+            uploadImageToServer(image: pickedImage)
         } else { return }
         
         dismiss(animated: true, completion: nil)
     }
     
+    private func uploadImageToServer(image: UIImage) {
+        UserUtil.getCurrentUserName() { userName in
+            // Crop the image into a circle
+            self.imageView.image = image
+            let roundImage = self.makeRoundImg(img: self.imageView)
+            self.imageView.image = roundImage
+            self.saveImageToCache(image: roundImage)
+            
+            // Convert the image into Data type
+            let imageData = UIImagePNGRepresentation(self.imageView.image!)
+            let imagePath = "userImages/\(userName).png"
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/png"
+            
+            // Upload the image to Firebase storage
+            self.storageRef.child(imagePath).putData(imageData!, metadata: metaData) {
+                (metadata, error) in
+                if let error = error {
+                    print (error.localizedDescription)
+                }
+                
+                // Update the user photo if it is still on default
+                if self.imageURL == URL(string: "default") {
+                    UserUtil.setImagePath(photoURL: URL(string: "gs://karma-b3940.appspot.com/\(imagePath)")!)
+                }
+                
+                print("User image has been uploaded to the server")
+            }
+        }
+    }
+    
+    private func saveImageToCache(image: UIImage) {
+        let id = UserUtil.getCurrentId()!
+        ImageCache.default.removeImage(forKey: id)
+        ImageCache.default.store(image, forKey: id)
+        print("User image has been saved to cache")
+    }
+    
+    // TODO: extract this out of this class
     func makeRoundImg(img: UIImageView) -> UIImage {
         let imgLayer = CALayer()
         imgLayer.frame = img.bounds
@@ -108,7 +138,5 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
-
     
 }
