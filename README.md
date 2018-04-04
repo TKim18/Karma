@@ -11,17 +11,14 @@
 ## Necessary Kha Zix fixes ##
 * Become able to leave circles
 * Become able to log out
-* Become able to upload your own image
 * Add deinits to every listening handler
 
 ## Some Cool Bean Changes ##
 ### Easy ###
-* User images
 * Clock for time on order
 
 ### Everything in between ###
 * Push notification when user joins your circle
-* Caching images and requests
 
 ### Hard ###
 * Geolocation
@@ -31,16 +28,15 @@
 * Make a customized user object that has the three attributes to be carried around as well as current user data such as images and seen requests
 
 ## Priority List for Dev ##
-* User images
+* Cancel accept
 * Push notifications
 * Transaction history on Karma button
-* Press for more information on billboard
+* Press for more information on billboard --> like a pop up
 * Newest to oldest (maybe)
-* Cancel accept
-* Better icons for tab bar controller
 * Email invite users on top right of members list
 * Calculator go back one instead of clear
 * Removing members from circle
+* Menu view with the 3 button system
 
 ## Need views for: ##
 * What more information looks like

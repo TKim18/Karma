@@ -274,7 +274,7 @@ class ViewRequestTableViewController: UITableViewController {
         let accept = UITableViewRowAction(style: .normal, title: "Accept") { action, index in
             Order.uploadAccept(key: snapshot.key, val: order, userId: userId)
         }
-        accept.backgroundColor = .green
+        accept.backgroundColor = UIColor(rgb: 0x32CD32)
         
         return (reqUser["id"] as? String ?? "" == userId) ? [delete] : [accept]
     }

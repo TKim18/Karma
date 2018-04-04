@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import FirebaseAuth
-import FirebaseDatabase
+import Firebase
 
 class UserUtil {
     
@@ -68,10 +67,9 @@ class UserUtil {
     }
     
     static func transactPointsWithSnapshot(snapshot: DataSnapshot) {
-        if let order = snapshot.value as? [String: Any] {
-            if let points = order["points"] as? Double, let requestId = order["userId"], let requestName = order["userName"], let acceptId = order["acceptId"], let acceptName = order["acceptUserName"] {
-                transactPoints(points: points, requestId: requestId as! String, requestName: requestName as! String, acceptId: acceptId as! String, acceptName: acceptName as! String)
-            }
+        guard let order = snapshot.value as? [String: Any], let info = order["info"] as? [String: Any], let accUser = order["acceptUser"] as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return }
+        if let points = info["points"] as? Double, let requestId = reqUser["id"], let requestName = reqUser["userName"], let acceptId = accUser["id"], let acceptName = accUser["userName"] {
+            transactPoints(points: points, requestId: requestId as! String, requestName: requestName as! String, acceptId: acceptId as! String, acceptName: acceptName as! String)
         }
     }
     
