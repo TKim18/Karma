@@ -51,18 +51,6 @@ class ViewRequestTableViewController: UITableViewController {
         configureTableView()
     }
     
-    deinit {
-        if let pointHandle = _pointHandle {
-            self.ref.child("users").removeObserver(withHandle: pointHandle)
-        }
-        if let unacceptAddHandle = _unacceptAddHandle {
-            self.ref.child("unacceptedOrder").removeObserver(withHandle: unacceptAddHandle)
-        }
-        if let unacceptRemoveHandle = _unacceptRemoveHandle {
-            self.ref.child("unacceptedOrder").removeObserver(withHandle: unacceptRemoveHandle)
-        }
-    }
-    
     private func configureDatabase() {
         listenUnaccepted()
         listenAccepted()
@@ -281,5 +269,33 @@ class ViewRequestTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    deinit {
+        if let userId = UserUtil.getCurrentId() {
+            UserUtil.getCurrentUserName() { userName in
+                UserUtil.getCurrentCircle() { circle in
+                    let pointRef = self.ref.child("users/\(userId)")
+                    let unacceptRef = self.ref.child("unacceptedOrders/\(circle)")
+                    let acceptRef = self.ref.child("acceptedOrders/accept/\(circle)/\(userName)")
+                    
+                    if let pointHandle = self._pointHandle {
+                        pointRef.removeObserver(withHandle: pointHandle)
+                    }
+                    if let unacceptAddHandle = self._unacceptAddHandle {
+                        unacceptRef.removeObserver(withHandle: unacceptAddHandle)
+                    }
+                    if let unacceptRemoveHandle = self._unacceptRemoveHandle {
+                        unacceptRef.removeObserver(withHandle: unacceptRemoveHandle)
+                    }
+                    if let acceptAddHandle = self._unacceptAddHandle {
+                        acceptRef.removeObserver(withHandle: acceptAddHandle)
+                    }
+                    if let acceptRemoveHandle = self._unacceptRemoveHandle {
+                       acceptRef.removeObserver(withHandle: acceptRemoveHandle)
+                    }
+                }
+            }
+        }
     }
 }

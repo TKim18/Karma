@@ -201,4 +201,19 @@ class CircleMemberTableViewController: UITableViewController {
             }
         }
     }
+    
+    deinit {
+        UserUtil.getCurrentCircle() { circleName in
+            let memberRef = self.ref.child("circles/\(circleName)/members")
+            if let addHandle = self._addHandle {
+                memberRef.removeObserver(withHandle: addHandle)
+            }
+            if let updateHandle = self._updateHandle {
+                memberRef.removeObserver(withHandle: updateHandle)
+            }
+            if let removeHandle = self._removeHandle {
+                memberRef.removeObserver(withHandle: removeHandle)
+            }
+        }
+    }
 }

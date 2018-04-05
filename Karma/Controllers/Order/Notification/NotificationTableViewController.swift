@@ -30,8 +30,6 @@ class NotificationTableViewController: UITableViewController {
         self.tabBarController?.tabBar.items![1].badgeValue = nil
         
         listenNotifications()
-        
-        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -149,6 +147,20 @@ class NotificationTableViewController: UITableViewController {
                         notifTab?.badgeValue = nil
                     }
                 })
+            }
+        }
+    }
+    
+    deinit {
+        UserUtil.getCurrentUserName() { userName in
+            UserUtil.getCurrentCircle() { circle in
+                let acceptRef = self.ref.child("acceptedOrders/request/\(circle)/\(userName)")
+                if let addHandle = self._addHandle {
+                    acceptRef.removeObserver(withHandle: addHandle)
+                }
+                if let removeHandle = self._removeHandle {
+                    acceptRef.removeObserver(withHandle: removeHandle)
+                }
             }
         }
     }

@@ -709,6 +709,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = B4LQS9CJ47;
 				INFOPLIST_FILE = "$(SRCROOT)/Karma/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wesleyan.Karma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -727,6 +728,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				DEVELOPMENT_TEAM = B4LQS9CJ47;
 				INFOPLIST_FILE = "$(SRCROOT)/Karma/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wesleyan.Karma;
 				PRODUCT_NAME = "$(TARGET_NAME)";
