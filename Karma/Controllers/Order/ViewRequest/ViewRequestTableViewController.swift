@@ -254,17 +254,27 @@ class ViewRequestTableViewController: UITableViewController {
         
         let userId = UserUtil.getCurrentId() ?? ""
         
-        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
-            Order.deleteUnaccept(key: snapshot.key)
+        // When viewing unaccepted orders
+        if self.pendingAcceptedControl.selectedSegmentIndex == 0 {
+            let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
+                Order.deleteUnaccept(key: snapshot.key)
+            }
+            delete.backgroundColor = .red
+            
+            let accept = UITableViewRowAction(style: .normal, title: "Accept") { action, index in
+                Order.uploadAccept(key: snapshot.key, val: order, userId: userId)
+            }
+            accept.backgroundColor = UIColor(rgb: 0x32CD32)
+            
+            return (reqUser["id"] as? String ?? "" == userId) ? [delete] : [accept]
+        } else {
+            let unaccept = UITableViewRowAction(style: .normal, title: "Undo") { action, index in
+                Order.undoAccept(orderSnapshot: snapshot)
+            }
+            unaccept.backgroundColor = .red
+            
+            return [unaccept]
         }
-        delete.backgroundColor = .red
-        
-        let accept = UITableViewRowAction(style: .normal, title: "Accept") { action, index in
-            Order.uploadAccept(key: snapshot.key, val: order, userId: userId)
-        }
-        accept.backgroundColor = UIColor(rgb: 0x32CD32)
-        
-        return (reqUser["id"] as? String ?? "" == userId) ? [delete] : [accept]
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

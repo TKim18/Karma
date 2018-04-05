@@ -116,6 +116,7 @@ class Order : NSObject {
                         
                         // Add the request under the name of the person who accepted it
                         let acceptRef = ref.child("acceptedOrders/accept/\(circleName)/\(userName)").childByAutoId()
+                        let requestRef = ref.child("acceptedOrders/request/\(circleName)/\(requestName)").childByAutoId()
                         
                         // Add the details of who accepted the order to the request
                         order["acceptUser"] = [
@@ -124,17 +125,39 @@ class Order : NSObject {
                             "name" : name as? String ?? ""
                         ]
                         
+                        // Set the mirroring order/request id for deletion purposes
+                        order["autoId"] = requestRef.key
                         acceptRef.setValue(order)
-                        
-                        // Keep track of the mirroring order
+
                         order["autoId"] = acceptRef.key
                         order["isDirect"] = "false"
-                        
-                        // Add the request under the name of the person who requested it
-                        ref.child("acceptedOrders/request/\(circleName)/\(requestName)").childByAutoId().setValue(order)
+                        requestRef.setValue(order)
                     }
                 }
             }
+        }
+    }
+    
+    // The person who accepted decides they cannot
+    static func undoAccept(orderSnapshot: DataSnapshot) {
+        let ref = Database.database().reference()
+        
+        UserUtil.getCurrentCircle() { circleName in
+            let key = orderSnapshot.key
+            guard var order = orderSnapshot.value as? [String: Any], let reqUser = order["requestUser"] as? [String : Any], let accUser = order["acceptUser"] as? [String : Any] else { return }
+            
+            // Pull some user information to get the right database path
+            let requestUserName = reqUser["userName"] as? String ?? ""
+            let acceptUserName = accUser["userName"] as? String ?? ""
+            let autoId = order["autoId"] as? String ?? ""
+            
+            // Indicate this was not a direct transfer for transaction history purposes and remove id
+            order["autoId"] = nil
+            
+            // Make mirroring completed receipts for transaction history
+            ref.child("acceptedOrders/accept/\(circleName)/\(acceptUserName)/\(key)").removeValue()
+            ref.child("acceptedOrders/request/\(circleName)/\(requestUserName)/\(autoId)").removeValue()
+            ref.child("unacceptedOrders/\(circleName)").childByAutoId().setValue(order)
         }
     }
     
