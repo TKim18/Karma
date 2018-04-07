@@ -113,8 +113,6 @@ class CircleMemberTableViewController: UITableViewController {
             }
         }
         
-        cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
-        
         cell.layer.borderWidth = 10.0
         cell.layer.borderColor = viewColor.cgColor
         

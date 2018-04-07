@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         enableNotifs(application)
         
         // Automatically login when device is logged in
-        //autoLogin()
+        autoLogin()
         
         return true
     }
@@ -59,17 +59,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func autoLogin() {
         Auth.auth().addStateDidChangeListener { auth, user in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             if let _ = user {
-                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyBoard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
-                let notifTab = controller.tabBar.items![1]
-                UserUtil.getNumAccepts() { number in
-                    if let number = number as? Int {
-                        if number != 0 {
-                            notifTab.badgeValue = String(describing: number)
+                UserUtil.getCurrentProperty(key: Constants.User.Fields.circles) { prop in
+                    if prop == nil {
+                        let controller = storyBoard.instantiateViewController(withIdentifier: "NoCircle")
+                        self.window = UIWindow(frame: UIScreen.main.bounds)
+                        self.window?.rootViewController = controller
+                        self.window?.makeKeyAndVisible()
+                    } else {
+                        let controller = storyBoard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
+                        let notifTab = controller.tabBar.items![1]
+                        UserUtil.getNumAccepts() { number in
+                            if let number = number as? Int {
+                                if number != 0 {
+                                    notifTab.badgeValue = String(describing: number)
+                                }
+                            }
                         }
+                        self.window = UIWindow(frame: UIScreen.main.bounds)
+                        self.window?.rootViewController = controller
+                        self.window?.makeKeyAndVisible()
                     }
                 }
+            } else {
+                let controller = storyBoard.instantiateViewController(withIdentifier: "LoginScreen")
                 self.window = UIWindow(frame: UIScreen.main.bounds)
                 self.window?.rootViewController = controller
                 self.window?.makeKeyAndVisible()

@@ -87,7 +87,7 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
             // Crop the image into a circle
             self.imageView.image = image
             let roundImage = self.makeRoundImg(img: self.imageView)
-            self.imageView.image = roundImage
+            self.imageView.image = roundImage.fixOrientation()
             self.saveImageToCache(image: roundImage)
             
             // Convert the image into Data type

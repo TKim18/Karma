@@ -22,17 +22,20 @@ extension UIImage {
     func jpeg(_ quality: JPEGQuality) -> Data? {
         return UIImageJPEGRepresentation(self, quality.rawValue)
     }
-    
-    func maskInCircle(image: UIImage, radius: CGFloat) -> UIImage {
-        let imageView: UIImageView = UIImageView(image: image)
-        var layer: CALayer = CALayer()
-        layer = imageView.layer
-        layer.masksToBounds = true
-        layer.cornerRadius = radius
-        UIGraphicsBeginImageContext(imageView.bounds.size)
-        layer.render(in: UIGraphicsGetCurrentContext()!)
-        let roundedImage = UIGraphicsGetImageFromCurrentImageContext()
+
+    func fixOrientation() -> UIImage {
+        let img = self
+        if (img.imageOrientation == .up) {
+            return img
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
+        let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
+        img.draw(in: rect)
+        
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        return roundedImage!
+        
+        return normalizedImage
     }
 }

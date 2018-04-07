@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="enb-Lf-0aq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -280,7 +280,7 @@
         <!--Circle Controller-->
         <scene sceneID="ZoB-Qs-sRp">
             <objects>
-                <viewController id="ike-AZ-j8h" customClass="CircleController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoCircle" id="ike-AZ-j8h" customClass="CircleController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5H8-Pc-uim"/>
                         <viewControllerLayoutGuide type="bottom" id="IyZ-AU-lD5"/>
@@ -1156,11 +1156,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1IS-pc-crv">
+                                <rect key="frame" x="177" y="142" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.92124956849999995" green="0.92194885019999995" blue="0.92135781049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile Settings" id="0KH-Ob-l6M"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="1IS-pc-crv" id="8YK-4b-myL"/>
                         <outlet property="imageView" destination="5Be-IB-EuF" id="Mr5-0r-kdv"/>
                     </connections>
                 </viewController>
@@ -1385,8 +1390,38 @@
             </objects>
             <point key="canvasLocation" x="5392.8000000000002" y="-1668.2158920539732"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="MnH-m1-HUV">
+            <objects>
+                <viewController id="enb-Lf-0aq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Zl-Q2-7fy"/>
+                        <viewControllerLayoutGuide type="bottom" id="wLy-AR-IaC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bzU-qQ-uzX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClassicBackdrop" translatesAutoresizingMaskIntoConstraints="NO" id="B0B-xF-jW5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="B0B-xF-jW5" firstAttribute="leading" secondItem="bzU-qQ-uzX" secondAttribute="leading" id="1Nz-Lk-0I3"/>
+                            <constraint firstItem="wLy-AR-IaC" firstAttribute="top" secondItem="B0B-xF-jW5" secondAttribute="bottom" id="DfY-6M-58I"/>
+                            <constraint firstItem="B0B-xF-jW5" firstAttribute="top" secondItem="bzU-qQ-uzX" secondAttribute="top" id="FvA-vo-eqV"/>
+                            <constraint firstAttribute="trailing" secondItem="B0B-xF-jW5" secondAttribute="trailing" id="cYJ-Wo-QTg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fiq-gS-dPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1476" y="63"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ClassicBackdrop" width="375" height="667"/>
         <image name="ClassicBackground" width="375" height="667"/>
         <image name="FriendsIcon" width="27" height="27"/>
         <image name="KarmaPointsIcon" width="21" height="25"/>
@@ -1404,8 +1439,9 @@
         <image name="white" width="112" height="112"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="tTh-g7-CXk"/>
         <segue reference="ndn-w6-JES"/>
-        <segue reference="7fL-I0-nA8"/>
+        <segue reference="ESN-d1-xsN"/>
         <segue reference="Obl-Wj-qaW"/>
         <segue reference="rOi-oM-HQC"/>
         <segue reference="sb5-Wr-8id"/>
