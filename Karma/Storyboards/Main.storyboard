@@ -137,9 +137,12 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="1Ux-s4-dHf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.12802097201347351" green="0.40624415874481201" blue="0.8100895881652832" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.12802097200000001" green="0.40624415870000002" blue="0.81008958819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.12802097200000001" green="0.40624415870000002" blue="0.81008958819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" red="0.49365482233502533" green="0.49365482233502533" blue="0.49365482233502533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="Cg9-80-h2H" kind="relationship" relationship="viewControllers" id="IW7-Cd-7CT"/>
@@ -167,6 +170,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClassicBackground" translatesAutoresizingMaskIntoConstraints="NO" id="mJk-fU-hO8">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mrU-MO-5oC">
                                 <rect key="frame" x="72" y="325" width="231" height="30"/>
@@ -972,7 +976,7 @@
         <scene sceneID="wIY-7M-fmN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cg9-80-h2H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Board" image="MainBoardIcon" id="hPg-t9-v0K">
+                    <tabBarItem key="tabBarItem" title="Board" image="MainBoardIcon" selectedImage="MainBoardIcon" id="hPg-t9-v0K">
                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="-2"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -1195,6 +1199,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IRR-WL-oDz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notifications" image="NotificationsIcon" selectedImage="NotificationsIcon" id="bkH-ZI-fB6">
                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="-2"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6M2-4F-K7I">
@@ -1234,7 +1243,7 @@
         <!--Security Settings-->
         <scene sceneID="9R1-Ae-bmF">
             <objects>
-                <viewController id="5st-Yk-NiM" sceneMemberID="viewController">
+                <viewController id="5st-Yk-NiM" customClass="SecurityViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dbG-xG-gog"/>
                         <viewControllerLayoutGuide type="bottom" id="FZc-ZG-hi0"/>
@@ -1290,6 +1299,9 @@
                         <color key="backgroundColor" red="0.92124956846237183" green="0.92194885015487671" blue="0.92135781049728394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Security Settings" id="jH4-GI-jRK"/>
+                    <connections>
+                        <outlet property="passwordField" destination="ndD-hl-L9l" id="QcX-mY-mAj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wya-Gr-LU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1388,13 +1400,13 @@
     </scenes>
     <resources>
         <image name="ClassicBackground" width="375" height="667"/>
-        <image name="FriendsIcon" width="27" height="27"/>
+        <image name="FriendsIcon" width="39" height="39"/>
         <image name="KarmaPointsIcon" width="21" height="25"/>
         <image name="KarmaPointsView" width="120" height="120"/>
-        <image name="MainBoardIcon" width="27" height="27"/>
-        <image name="NewRequestIcon" width="35" height="35"/>
-        <image name="NotificationsIcon" width="27" height="27"/>
-        <image name="UserSettingsIcon" width="27" height="27"/>
+        <image name="MainBoardIcon" width="39" height="39"/>
+        <image name="NewRequestIcon" width="27" height="27"/>
+        <image name="NotificationsIcon" width="39" height="39"/>
+        <image name="UserSettingsIcon" width="39" height="39"/>
         <image name="add_picture_button" width="512" height="512"/>
         <image name="join_settings_icon" width="256" height="256"/>
         <image name="profile_settings_icon" width="256" height="256"/>
@@ -1407,7 +1419,7 @@
         <segue reference="ndn-w6-JES"/>
         <segue reference="7fL-I0-nA8"/>
         <segue reference="Obl-Wj-qaW"/>
-        <segue reference="rOi-oM-HQC"/>
+        <segue reference="r0E-Gv-G2T"/>
         <segue reference="sb5-Wr-8id"/>
     </inferredMetricsTieBreakers>
 </document>

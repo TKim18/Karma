@@ -46,6 +46,7 @@
 		22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */; };
 		22DE50822061F86400A87979 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE50812061F86400A87979 /* Constants.swift */; };
 		9953D19A5A0FD783C9755C42 /* Pods_Karma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */; };
+		A53539DD2071FFD80088E063 /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53539DC2071FFD80088E063 /* SecurityViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransfer.swift; sourceTree = "<group>"; };
 		22DE50812061F86400A87979 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Karma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53539DC2071FFD80088E063 /* SecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
 		ABEFA3D6DA2E1C5CD49339F5 /* Pods-Karma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -273,6 +275,7 @@
 				2277E0721F744C2B00AC53CB /* User */,
 				22302AFB1F7B36EF0046E757 /* Circle */,
 				2277E0741F744C3800AC53CB /* Order */,
+				A53539DB2071FFA90088E063 /* Settings */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -282,7 +285,6 @@
 			children = (
 				2277E0771F744C7800AC53CB /* LoginController.swift */,
 				2277E0781F744C7800AC53CB /* RegisterController.swift */,
-				224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -333,6 +335,15 @@
 				2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A53539DB2071FFA90088E063 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */,
+				A53539DC2071FFD80088E063 /* SecurityViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		EC93994028366C7236EAAAE4 /* Pods */ = {
@@ -554,6 +565,7 @@
 				22302B041F7B37790046E757 /* CircleController.swift in Sources */,
 				2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */,
 				2277E06E1F744BA400AC53CB /* Color.swift in Sources */,
+				A53539DD2071FFD80088E063 /* SecurityViewController.swift in Sources */,
 				224158CA2027BE3F00C8DE2F /* UserProfileViewController.swift in Sources */,
 				227BBC9E2018DC80005314DF /* CircleJoinViewController.swift in Sources */,
 				2229C08B1F744D9E0083C215 /* RequestTableViewController.swift in Sources */,

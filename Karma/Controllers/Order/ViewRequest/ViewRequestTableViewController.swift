@@ -83,7 +83,7 @@ class ViewRequestTableViewController: UITableViewController {
         self.orders = self.unacceptOrders
         
         //Configure background color
-        self.tableView.backgroundColor = UIColor.lightGray
+        self.tableView.backgroundColor = UIColor(red: 242, green: 242, blue: 242)
         
         //Enable segment control
         self.pendingAcceptedControl.addTarget(self, action: #selector(self.segmentChanged), for: .valueChanged)

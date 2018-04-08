@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureScheme()
         
         // Automatically login when device is logged in
-        //autoLogin()
+        autoLogin()
         
         return true
     }
@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func configureScheme() {
         // Sets the universal navigation bar color, tint color, and text color across the whole app
         let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.tintColor = UIColor.white
-        navigationBarAppearance.barTintColor = UIColor(rgb: 285398)
+        navigationBarAppearance.tintColor = UIColor.black
+        navigationBarAppearance.barTintColor = UIColor.white //(rgb: 285398)
         navigationBarAppearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         
         // Changes the selected tab bar icon to white
