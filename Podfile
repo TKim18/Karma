@@ -6,11 +6,16 @@ target 'Karma' do
   use_frameworks!
 
   # Pods for Karma
+  
+  # Firebase Components
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
 pod 'Firebase/Messaging'
+
+# Custom Libraries
+pod 'ActionSheetPicker-3.0'
 pod 'Kingfisher', '~> 4.0'
 
 end

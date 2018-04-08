@@ -95,6 +95,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Print full message.
+        let content = UNMutableNotificationContent()
+        content.title = NSString.localizedUserNotificationString(forKey: "Someone just posted a new request!", arguments: nil)
+        content.body = NSString.localizedUserNotificationString(forKey: "Check it out!", arguments: nil)
+        
         print(userInfo)
         
         completionHandler(UIBackgroundFetchResult.newData)
@@ -147,12 +151,6 @@ extension AppDelegate : MessagingDelegate {
         Database.database().reference().child("devices/\(deviceToken)").setValue(true)
         
         print("Firebase registration token: \(fcmToken)")
-    }
-    
-    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        print("\n\n\n\n\n\n\n\n\n\n")
-        print("THIS HERE IS HTE MESSAGE")
-        print("Received data message: \(remoteMessage.appData)")
     }
 }
 

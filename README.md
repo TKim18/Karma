@@ -1,5 +1,5 @@
 ## The Sitch ##
-* Currently, the app is being migrated from the MBaaS backendless to Google's Firebase.
+* The app is in the pre-beta phase. 
 
 ## Pretty crucial features ##
 * Push notification when a new request is added on the circle
@@ -10,8 +10,6 @@
 
 ## Necessary Kha Zix fixes ##
 * Become able to leave circles
-* Become able to log out
-* Add deinits to every listening handler
 
 ## Some Cool Bean Changes ##
 ### Easy ###

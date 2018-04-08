@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="enb-Lf-0aq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1268,7 +1268,7 @@
         <!--Security Settings-->
         <scene sceneID="9R1-Ae-bmF">
             <objects>
-                <viewController id="5st-Yk-NiM" sceneMemberID="viewController">
+                <viewController id="5st-Yk-NiM" customClass="SecurityViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dbG-xG-gog"/>
                         <viewControllerLayoutGuide type="bottom" id="FZc-ZG-hi0"/>
@@ -1326,6 +1326,9 @@
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" red="1" green="0.020440589929999999" blue="0.094096585829999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="logoutButtonWithSender:" destination="5st-Yk-NiM" eventType="touchUpInside" id="aTz-7Q-RUB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92124956846237183" green="0.92194885015487671" blue="0.92135781049728394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1342,6 +1345,9 @@
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="logout" id="nc0-7C-4gG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wya-Gr-LU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1502,5 +1508,6 @@
         <segue reference="Obl-Wj-qaW"/>
         <segue reference="r0E-Gv-G2T"/>
         <segue reference="slo-0J-Efm"/>
+        <segue reference="nc0-7C-4gG"/>
     </inferredMetricsTieBreakers>
 </document>

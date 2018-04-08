@@ -261,22 +261,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Karma/Models/UserUtil.swift"
-            timestampString = "544852020.619579"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "setImageURL(photoURL:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Karma/Controllers/Order/Notification/NotificationTableViewController.swift"
             timestampString = "544590976.333086"
             startingColumnNumber = "9223372036854775807"
@@ -284,6 +268,22 @@
             startingLineNumber = "145"
             endingLineNumber = "145"
             landmarkName = "listenNotifications()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Karma/Models/Circle.swift"
+            timestampString = "544854113.64942"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "upload(newCircle:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
