@@ -94,11 +94,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Message ID: \(messageID)")
         }
         
-        // Print full message.
-        let content = UNMutableNotificationContent()
-        content.title = NSString.localizedUserNotificationString(forKey: "Someone just posted a new request!", arguments: nil)
-        content.body = NSString.localizedUserNotificationString(forKey: "Check it out!", arguments: nil)
-        
         print(userInfo)
         
         completionHandler(UIBackgroundFetchResult.newData)
