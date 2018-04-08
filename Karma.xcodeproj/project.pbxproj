@@ -252,6 +252,7 @@
 		2274A4A22079CE68005FB6B0 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */,
 				2274A4A32079CE8E005FB6B0 /* SecurityViewController.swift */,
 			);
 			path = Settings;
@@ -296,7 +297,6 @@
 			children = (
 				2277E0771F744C7800AC53CB /* LoginController.swift */,
 				2277E0781F744C7800AC53CB /* RegisterController.swift */,
-				224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";

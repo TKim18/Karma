@@ -839,7 +839,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="date_time_pick:" destination="PdG-hk-wVj" eventType="touchDown" id="cGy-lz-1o5"/>
+                                    <action selector="triggerDatePicker:" destination="PdG-hk-wVj" eventType="touchDown" id="xs4-RX-25N"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rYK-Ww-ftp">
@@ -1158,7 +1158,7 @@
                                     <action selector="loadImageButtonTappedWithSender:" destination="h8S-lG-pla" eventType="touchUpInside" id="lSB-fn-lEV"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="Nur-rr-gUT">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="Nur-rr-gUT">
                                 <rect key="frame" x="26" y="333" width="349" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1196,6 +1196,8 @@
                     <connections>
                         <outlet property="activityIndicator" destination="1IS-pc-crv" id="8YK-4b-myL"/>
                         <outlet property="imageView" destination="5Be-IB-EuF" id="Mr5-0r-kdv"/>
+                        <outlet property="nameField" destination="VeD-EI-9mG" id="2Eb-EA-uPS"/>
+                        <outlet property="numberField" destination="Nur-rr-gUT" id="NSw-IC-z8g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4A-1z-dQI" userLabel="First Responder" sceneMemberID="firstResponder"/>

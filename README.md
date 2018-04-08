@@ -15,6 +15,7 @@
 ### Easy ###
 * Clock for time on order
 * Newest to oldest (maybe)
+* Empty space before and after fields in circle should be eliminated
 
 ### Everything in between ###
 * Push notification when user joins your circle

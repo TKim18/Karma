@@ -19,6 +19,8 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     var imageURL : URL!
     var storageRef : StorageReference!
     
+    @IBOutlet var nameField : UITextField!
+    @IBOutlet var numberField : UITextField!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
@@ -34,16 +36,28 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         setupView()
         
-        UserUtil.getCurrentImageURL() { url in
-            self.imageURL = url
-            self.displayUserPicture()
-        }
+        setFields()
     }
     
     private func setupView() {
         storageRef = Storage.storage().reference()
         activityIndicator.hidesWhenStopped = true
         imagePicker.delegate = self
+    }
+    
+    private func setFields() {
+        UserUtil.getCurrentProperty(key: "name") { name in
+            self.nameField.text = name as? String ?? ""
+        }
+        
+        UserUtil.getCurrentProperty(key: "phoneNumber") { number in
+            self.numberField.text = number as? String ?? ""
+        }
+        
+        UserUtil.getCurrentImageURL() { url in
+            self.imageURL = url
+            self.displayUserPicture()
+        }
     }
     
     private func displayUserPicture() {
@@ -85,9 +99,9 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     private func uploadImageToServer(image: UIImage) {
         UserUtil.getCurrentUserName() { userName in
             // Crop the image into a circle
-            self.imageView.image = image
+            self.imageView.image = image.fixOrientation()
             let roundImage = self.makeRoundImg(img: self.imageView)
-            self.imageView.image = roundImage.fixOrientation()
+            self.imageView.image = roundImage
             self.saveImageToCache(image: roundImage)
             
             // Convert the image into Data type
@@ -123,7 +137,8 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     // TODO: extract this out of this class
     func makeRoundImg(img: UIImageView) -> UIImage {
         let imgLayer = CALayer()
-        imgLayer.frame = img.bounds
+        let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 145, height: 145))
+        imgLayer.frame = rect
         imgLayer.contents = img.image?.cgImage;
         imgLayer.masksToBounds = true;
         
