@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -137,9 +137,17 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="1Ux-s4-dHf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.12802097201347351" green="0.40624415874481201" blue="0.8100895881652832" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.12802097200000001" green="0.40624415870000002" blue="0.81008958819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.12802097200000001" green="0.40624415870000002" blue="0.81008958819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.056519813840000002" green="0.096666060390000003" blue="0.35836267469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="selectedImageTintColor">
+                                <color key="value" red="0.41122699873096447" green="0.41122699873096447" blue="0.41122699873096447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="Cg9-80-h2H" kind="relationship" relationship="viewControllers" id="IW7-Cd-7CT"/>
@@ -629,7 +637,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pE2-BW-rRL">
                                             <rect key="frame" x="272" y="70" width="95" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.096569456160068512" green="0.32764366269111633" blue="0.66958451271057129" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.056519813840000002" green="0.096666060390000003" blue="0.35836267469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <state key="normal" title="Pay">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -752,12 +760,8 @@
                                             <rect key="frame" x="403" y="46" width="70" height="82"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="KarmaPointsView" translatesAutoresizingMaskIntoConstraints="NO" id="n2P-5B-ePq">
-                                            <rect key="frame" x="300" y="47" width="24" height="24"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nc5-x9-VRM">
-                                            <rect key="frame" x="110" y="47" width="234" height="24"/>
+                                            <rect key="frame" x="110" y="47" width="186" height="24"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
@@ -770,6 +774,10 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="KarmaPointsView" translatesAutoresizingMaskIntoConstraints="NO" id="n2P-5B-ePq">
+                                            <rect key="frame" x="310" y="51" width="14" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -855,11 +863,16 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHy-yG-dSL">
                                 <rect key="frame" x="0.0" y="566" width="375" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.27156596659999999" green="0.64596990109999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.05651981383562088" green="0.096666060388088226" blue="0.35836267471313477" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Request">
                                     <color key="titleColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                        <color key="value" red="0.40767766497461932" green="0.40767766497461932" blue="0.40767766497461932" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="requestWithSender:" destination="N7W-wu-JGK" eventType="touchUpInside" id="csv-nR-JBF"/>
                                     <action selector="requestWithSender:" destination="PdG-hk-wVj" eventType="touchUpInside" id="dtP-FO-sqs"/>
@@ -907,10 +920,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="poR-X1-Z6M">
                                 <rect key="frame" x="187" y="566" width="188" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.27156596659999999" green="0.64596990109999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.056519813840000002" green="0.096666060390000003" blue="0.35836267469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Pay">
-                                    <color key="titleColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="payWithSender:" destination="N7W-wu-JGK" eventType="touchUpInside" id="xUg-MH-Cgq"/>
@@ -920,7 +933,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Us5-0q-Ors">
                                 <rect key="frame" x="0.0" y="566" width="188" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.27156596659999999" green="0.64596990109999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.056519813840000002" green="0.096666060390000003" blue="0.35836267469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Request">
                                     <color key="titleColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -979,6 +992,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ph-52-rVo">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1000,6 +1014,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cA3-ad-UFY">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1100,7 +1115,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.92124956846237183" green="0.92194885015487671" blue="0.92135781049728394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="6Zq-iB-w6I"/>
                 </viewController>
@@ -1163,7 +1178,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92124956849999995" green="0.92194885019999995" blue="0.92135781049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile Settings" id="0KH-Ob-l6M"/>
+                    <navigationItem key="navigationItem" title="Profile Settings" id="0KH-Ob-l6M">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="SdR-cf-k4N">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EVS-JB-OwN">
+                                <rect key="frame" x="315" y="7" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.056519813840000002" green="0.096666060390000003" blue="0.35836267469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="1IS-pc-crv" id="8YK-4b-myL"/>
                         <outlet property="imageView" destination="5Be-IB-EuF" id="Mr5-0r-kdv"/>
@@ -1184,6 +1210,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7hV-qM-paU">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1205,6 +1232,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6M2-4F-K7I">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1226,6 +1254,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sNV-We-49M">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1291,10 +1320,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hO-qU-W74">
+                                <rect key="frame" x="132" y="563" width="110" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="1" green="0.020440589929999999" blue="0.094096585829999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92124956846237183" green="0.92194885015487671" blue="0.92135781049728394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Security Settings" id="jH4-GI-jRK"/>
+                    <navigationItem key="navigationItem" title="Security Settings" id="jH4-GI-jRK">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="vIs-eR-qNr">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UAF-Du-sCD">
+                                <rect key="frame" x="315" y="7" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.056519813840000002" green="0.096666060390000003" blue="0.35836267469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wya-Gr-LU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1384,7 +1431,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92124956846237183" green="0.92194885015487671" blue="0.92135781049728394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Circle Settings" id="ygl-Vs-DtL"/>
+                    <navigationItem key="navigationItem" title="Circle Settings" id="ygl-Vs-DtL">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="9zQ-B7-uwZ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vt8-Um-Hhs">
+                                <rect key="frame" x="315" y="7" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.056519813840000002" green="0.096666060390000003" blue="0.35836267469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVy-OV-yYT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1423,13 +1481,13 @@
     <resources>
         <image name="ClassicBackdrop" width="375" height="667"/>
         <image name="ClassicBackground" width="375" height="667"/>
-        <image name="FriendsIcon" width="27" height="27"/>
+        <image name="FriendsIcon" width="39" height="39"/>
         <image name="KarmaPointsIcon" width="21" height="25"/>
         <image name="KarmaPointsView" width="120" height="120"/>
-        <image name="MainBoardIcon" width="27" height="27"/>
-        <image name="NewRequestIcon" width="35" height="35"/>
-        <image name="NotificationsIcon" width="27" height="27"/>
-        <image name="UserSettingsIcon" width="27" height="27"/>
+        <image name="MainBoardIcon" width="39" height="39"/>
+        <image name="NewRequestIcon" width="27" height="27"/>
+        <image name="NotificationsIcon" width="39" height="39"/>
+        <image name="UserSettingsIcon" width="39" height="39"/>
         <image name="add_picture_button" width="512" height="512"/>
         <image name="join_settings_icon" width="256" height="256"/>
         <image name="profile_settings_icon" width="256" height="256"/>
@@ -1439,11 +1497,10 @@
         <image name="white" width="112" height="112"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tTh-g7-CXk"/>
         <segue reference="ndn-w6-JES"/>
         <segue reference="ESN-d1-xsN"/>
         <segue reference="Obl-Wj-qaW"/>
-        <segue reference="rOi-oM-HQC"/>
-        <segue reference="sb5-Wr-8id"/>
+        <segue reference="r0E-Gv-G2T"/>
+        <segue reference="slo-0J-Efm"/>
     </inferredMetricsTieBreakers>
 </document>
