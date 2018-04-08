@@ -14,36 +14,29 @@
 ## Some Cool Bean Changes ##
 ### Easy ###
 * Clock for time on order
+* Newest to oldest (maybe)
 
 ### Everything in between ###
 * Push notification when user joins your circle
 
 ### Hard ###
 * Geolocation
+* Constraints
 
 ## Design fixes ##
 * Move current user variables to become load variables at the beginning instead of inside functions because they don't change
 * Make a customized user object that has the three attributes to be carried around as well as current user data such as images and seen requests
 
 ## Priority List for Dev ##
-* Cancel accept
-* Push notifications
 * Transaction history on Karma button
+* Menu view with the categories included (put these in a new storyboard)
 * Press for more information on billboard --> like a pop up
-* Newest to oldest (maybe)
+
 * Email invite users on top right of members list
-* Calculator go back one instead of clear
 * Removing members from circle
-* Menu view with the 3 button system
 
 ## Need views for: ##
 * What more information looks like
 * Transaction history example
 
-Notes:
-locations for where userprofiles appear:
-notifications page,
-user profile page,
-members page,
-requests page
 
