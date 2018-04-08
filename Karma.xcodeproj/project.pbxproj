@@ -23,6 +23,7 @@
 		224006B3204CEE34003CE920 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224006B2204CEE34003CE920 /* Assets.xcassets */; };
 		224006B5204CEF31003CE920 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224006B4204CEF31003CE920 /* Login.storyboard */; };
 		224158CA2027BE3F00C8DE2F /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */; };
+		2254AD5B2079C14000A03ADF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2254AD5A2079C14000A03ADF /* String.swift */; };
 		226270DC1FB5369100690600 /* RoundedButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226270DB1FB5369100690600 /* RoundedButtonController.swift */; };
 		227330A21FBBA88E002D4026 /* NumPadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */; };
 		227330A31FBBA894002D4026 /* CostCalculator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2287A3471FB508410035C685 /* CostCalculator.xib */; };
@@ -93,6 +94,7 @@
 		224006B2204CEE34003CE920 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		224006B4204CEF31003CE920 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		2254AD5A2079C14000A03ADF /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		226270DB1FB5369100690600 /* RoundedButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonController.swift; sourceTree = "<group>"; };
 		226270DD1FB53E7E00690600 /* CostCalculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CostCalculator.entitlements; sourceTree = "<group>"; };
 		22742AC8205E1AF3008405A5 /* NotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				2277E06C1F744BA400AC53CB /* Color.swift */,
 				2277E06B1F744BA400AC53CB /* Image.swift */,
 				22A139141FA6A60A00B21CD2 /* Double.swift */,
+				2254AD5A2079C14000A03ADF /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				2229C08D1F744D9E0083C215 /* RequestCategoryTableViewCell.swift in Sources */,
 				2277E0681F744B5F00AC53CB /* Order.swift in Sources */,
 				22A139151FA6A60A00B21CD2 /* Double.swift in Sources */,
+				2254AD5B2079C14000A03ADF /* String.swift in Sources */,
 				22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */,
 				22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */,
 				2277E0791F744C7800AC53CB /* LoginController.swift in Sources */,

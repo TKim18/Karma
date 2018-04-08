@@ -60,7 +60,9 @@ class Circle : NSObject {
                         ref.child("circles/\(circleName)/members/\(userName)").setValue(udata)
                         ref.child("users/\(id)/circles/\(circleName)").setValue(true)
                         
-                        Messaging.messaging().subscribe(toTopic: "\(circleName)/General")
+                        let cleanName = circleName.clean()
+                        Messaging.messaging().subscribe(toTopic: "\(cleanName)")
+                        
                     } else {
                         print("Unable to retrieve user property")
                     }
