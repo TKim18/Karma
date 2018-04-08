@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ActionSheetPicker_3_0
 
 class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextViewDelegate {
 
@@ -85,6 +86,29 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     
     func textViewDidChange(_ textView: UITextView) {
         placeholderLabel.isHidden = !requestDetailsField.text.isEmpty
+    }
+    
+    // Date and Time Picker
+    @IBAction func date_time_pick(_ sender : UITextField) {
+        self.view.endEditing(true)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, h:mm a"
+        
+        let datePicker = ActionSheetDatePicker(title: "Pick Due Date and Time:", datePickerMode: UIDatePickerMode.dateAndTime, selectedDate: Date(timeInterval: 3600, since: Date()), doneBlock: {
+            picker, value, index in
+            if let value = value {
+                sender.text = formatter.string(from: value as! Date)
+            }
+            
+            return
+        }, cancel: { ActionStringCancelBlock in return }, origin: sender.superview!)
+        let secondsInThreeWeek: TimeInterval = 7 * 24 * 60 * 60 * 3
+        let secondsInAnHour : TimeInterval = 60 * 60
+        datePicker?.minimumDate = Date(timeInterval: secondsInAnHour, since: Date())
+        datePicker?.maximumDate = Date(timeInterval: secondsInThreeWeek, since: Date())
+        datePicker?.minuteInterval = 10
+        datePicker?.show()
     }
     
     // Segue handling
