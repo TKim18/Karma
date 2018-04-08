@@ -9,6 +9,9 @@ PODS:
   - Firebase/Database (4.8.1):
     - Firebase/Core
     - FirebaseDatabase (= 4.1.4)
+  - Firebase/DynamicLinks (4.8.1):
+    - Firebase/Core
+    - FirebaseDynamicLinks (= 2.3.2)
   - Firebase/Messaging (4.8.1):
     - Firebase/Core
     - FirebaseMessaging (= 2.0.8)
@@ -30,6 +33,8 @@ PODS:
     - FirebaseAnalytics (~> 4.0)
     - FirebaseCore (~> 4.0)
     - leveldb-library (~> 1.18)
+  - FirebaseDynamicLinks (2.3.2):
+    - FirebaseAnalytics (~> 4.0)
   - FirebaseInstanceID (2.0.8):
     - FirebaseCore (~> 4.0)
   - FirebaseMessaging (2.0.8):
@@ -69,6 +74,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/DynamicLinks
   - Firebase/Messaging
   - Firebase/Storage
   - Kingfisher (~> 4.0)
@@ -80,6 +86,7 @@ SPEC CHECKSUMS:
   FirebaseAuth: bd2738c5c1e92b108ba5f7f7335908097a4e50bb
   FirebaseCore: 2e0b98fb2d64ca8140136beff15772bdd14d2dd7
   FirebaseDatabase: de4446507ccd3257fca37d16f40e1540324571fd
+  FirebaseDynamicLinks: 38b68641d24e78d0277a9205d988ce22875d5a25
   FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
   FirebaseMessaging: dfdcd307c2382290a1e297a81d0f18370f5b1bcd
   FirebaseStorage: 181bb543d39ee3c53e0558de7ba86b1286a0427f
@@ -90,6 +97,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
 
-PODFILE CHECKSUM: 74cc9e0a60b6850e8120e05c3e6f71dd526fdbdb
+PODFILE CHECKSUM: a683cb18c069eef5b918f6d56648b774d3721797
 
 COCOAPODS: 1.3.1
