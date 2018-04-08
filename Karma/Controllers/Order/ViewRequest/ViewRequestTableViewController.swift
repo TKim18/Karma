@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import FirebaseStorage
+import Firebase
 import Kingfisher
 
 class ViewRequestTableViewController: UITableViewController {
@@ -148,6 +147,7 @@ class ViewRequestTableViewController: UITableViewController {
                     if strongSelf.pendingAcceptedControl.selectedSegmentIndex == 1 {
                         strongSelf.orders.append(snapshot)
                         strongSelf.tableView.insertRows(at: [IndexPath(row: strongSelf.acceptOrders.count-1, section: 0)], with: .automatic)
+                        
                     }
                 })
                 self._acceptRemoveHandle = orderRef.observe(.childRemoved, with: {

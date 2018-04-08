@@ -115,4 +115,47 @@ class UserUtil {
         let id = getCurrentId()!
         ref.child("users/\(id)").child("photoURL").setValue(photoURL.absoluteString)
     }
+    
+    static func notifyNewRequest() {
+        getCurrentCircle() { circle in
+            let url = URL(string: "https://fcm.googleapis.com/fcm/send")!
+            var request = URLRequest(url: url)
+            
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("key=AIzaSyDEZEjjyOQChi5XW2vxJhd9gnBWlg-dUrM", forHTTPHeaderField: "Authorization")
+            
+            do {
+                let dic : [String : Any] = [
+                    //"condition":"'test'"
+                    "to":"/topics/test/General",
+                     "data": [
+                        "message":"yo"
+                    ]
+                ]
+                request.httpBody = try JSONSerialization.data(withJSONObject: dic, options: JSONSerialization.WritingOptions())
+                print("My parameters: \(dic)")
+            } catch {
+                print("Caught an error: \(error)")
+            }
+
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data, error == nil else {
+                    // check for fundamental networking error
+                    print("error=\(String(describing: error))")
+                    return
+                }
+                
+                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                    // check for http errors
+                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                    print("response = \(String(describing: response))")
+                }
+                
+                let responseString = String(data: data, encoding: .utf8)
+                print("responseString = \(String(describing: responseString))")
+            }
+            task.resume()
+        }
+    }
 }

@@ -83,6 +83,8 @@ class Order : NSObject {
                                 
                                 // Save under the corresponding circle for unacceptedOrders
                                 ref.child("unacceptedOrders/\(circleName)").childByAutoId().setValue(data)
+                                
+                                UserUtil.notifyNewRequest()
                             } else {
                                 print("Unable to retrieve all of the order properties")
                             }

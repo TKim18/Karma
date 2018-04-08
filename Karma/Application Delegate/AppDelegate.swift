@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         enableNotifs(application)
         
         // Automatically login when device is logged in
-        autoLogin()
+        //autoLogin()
         
         return true
     }
