@@ -61,6 +61,7 @@ class Circle : NSObject {
                         ref.child("users/\(id)/circles/\(circleName)").setValue(true)
                         
                         let cleanName = circleName.clean()
+                        self.notifyNewMember(topic: cleanName)
                         Messaging.messaging().subscribe(toTopic: "\(cleanName)")
                         
                     } else {
@@ -102,6 +103,13 @@ class Circle : NSObject {
             }) { (error) in
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    func notifyNewMember(topic: String) {
+        UserUtil.getCurrentProperty(key: "name") { name in
+            let name = name as? String ?? ""
+            UserUtil.sendNotification(title: "New Member", body: "\(name) has just joined your circle!", topic: topic)
         }
     }
 }

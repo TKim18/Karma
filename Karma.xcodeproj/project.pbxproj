@@ -1,4 +1,4 @@
-// !$*UTF8*$!
+ // !$*UTF8*$!
 {
 	archiveVersion = 1;
 	classes = {
@@ -119,7 +119,7 @@
 		22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransfer.swift; sourceTree = "<group>"; };
 		22DE50812061F86400A87979 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Karma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5C3769D207ABCBB00E0BC8E /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailsViewController.swift; path = Karma/Controllers/Order/OrderDetails/OrderDetailsViewController.swift; sourceTree = SOURCE_ROOT; };
+		A5C3769D207ABCBB00E0BC8E /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailsViewController.swift; path = Karma/Controllers/Order/ViewRequest/OrderDetailsViewController.swift; sourceTree = SOURCE_ROOT; };
 		ABEFA3D6DA2E1C5CD49339F5 /* Pods-Karma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +181,7 @@
 			children = (
 				2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */,
 				2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */,
+				A5C3769D207ABCBB00E0BC8E /* OrderDetailsViewController.swift */,
 			);
 			path = ViewRequest;
 			sourceTree = "<group>";
@@ -191,7 +192,7 @@
 				22ACAC672062F45900AA4397 /* Category */,
 				2229C0891F744D9E0083C215 /* CustomRequestViewController.swift */,
 			);
-			path = AddRequest;
+			path = AddRequest;	
 			sourceTree = "<group>";
 		};
 		22302AFB1F7B36EF0046E757 /* Circle */ = {
@@ -254,6 +255,7 @@
 		2274A4A22079CE68005FB6B0 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */,
 				2274A4A32079CE8E005FB6B0 /* SecurityViewController.swift */,
 			);
 			path = Settings;
@@ -298,7 +300,6 @@
 			children = (
 				2277E0771F744C7800AC53CB /* LoginController.swift */,
 				2277E0781F744C7800AC53CB /* RegisterController.swift */,
-				224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -306,7 +307,6 @@
 		2277E0741F744C3800AC53CB /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				A5C3769C207ABB1F00E0BC8E /* OrderDetails */,
 				2229C0821F744D6E0083C215 /* ViewRequest */,
 				2229C0871F744D860083C215 /* AddRequest */,
 				228CA9541F7B34180039B250 /* Notification */,
@@ -350,14 +350,6 @@
 				2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A5C3769C207ABB1F00E0BC8E /* OrderDetails */ = {
-			isa = PBXGroup;
-			children = (
-				A5C3769D207ABCBB00E0BC8E /* OrderDetailsViewController.swift */,
-			);
-			path = OrderDetails;
 			sourceTree = "<group>";
 		};
 		EC93994028366C7236EAAAE4 /* Pods */ = {
