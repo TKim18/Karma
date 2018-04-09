@@ -67,14 +67,21 @@ class UserUtil {
     
     static func setCurrentProperty (key: String, value: String) {
         if let userId = getCurrentId() {
-            setProperty(key: key, id: userId, value: value)
+            UserUtil.getCurrentUserName() { userName in
+                UserUtil.getCurrentCircle() { circleName in
+                    let ref = Database.database().reference()
+                    ref.child("users/\(userId)/\(key)").setValue(value)
+                    ref.child("circles/\(circleName)/members/\(userName)/\(key)").setValue(value)
+                }
+            }
         }
     }
     
-    static func setProperty(key: String, id: String, value: String) {
-        let ref = Database.database().reference()
-        ref.child("users/\(id)/\(key)").setValue(value)
-    }
+//    static func setProperty(key: String, id: String, value: String) {
+//        let ref = Database.database().reference()
+//        ref.child("users/\(id)/\(key)").setValue(value)
+//        ref.child("circles/\(circleName)/members/\(userName)").setValue(value)
+//    }
     
     static func transactPointsWithSnapshot(snapshot: DataSnapshot) {
         guard let order = snapshot.value as? [String: Any], let info = order["info"] as? [String: Any], let accUser = order["acceptUser"] as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return }

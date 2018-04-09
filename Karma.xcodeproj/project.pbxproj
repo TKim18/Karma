@@ -48,6 +48,7 @@
 		22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */; };
 		22DE50822061F86400A87979 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE50812061F86400A87979 /* Constants.swift */; };
 		9953D19A5A0FD783C9755C42 /* Pods_Karma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */; };
+		A5C3769E207ABCBB00E0BC8E /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C3769D207ABCBB00E0BC8E /* OrderDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransfer.swift; sourceTree = "<group>"; };
 		22DE50812061F86400A87979 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2331B61BD2F688D3EBA7BE41 /* Pods_Karma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Karma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5C3769D207ABCBB00E0BC8E /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailsViewController.swift; path = Karma/Controllers/Order/ViewRequest/OrderDetailsViewController.swift; sourceTree = SOURCE_ROOT; };
 		ABEFA3D6DA2E1C5CD49339F5 /* Pods-Karma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,6 +181,7 @@
 			children = (
 				2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */,
 				2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */,
+				A5C3769D207ABCBB00E0BC8E /* OrderDetailsViewController.swift */,
 			);
 			path = ViewRequest;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				227330A41FBBC0C6002D4026 /* RoundedButtonController.swift in Sources */,
 				223BE9B81F90062000C6A8F7 /* UserUtil.swift in Sources */,
 				224006A7204CEDDD003CE920 /* AppDelegate.swift in Sources */,
+				A5C3769E207ABCBB00E0BC8E /* OrderDetailsViewController.swift in Sources */,
 				22302AFF1F7B376A0046E757 /* CircleMemberTableViewCell.swift in Sources */,
 				2229C0861F744D820083C215 /* ViewRequestTableViewCell.swift in Sources */,
 				227330A21FBBA88E002D4026 /* NumPadCalculator.swift in Sources */,

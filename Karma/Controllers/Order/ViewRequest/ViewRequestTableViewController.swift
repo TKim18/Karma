@@ -202,10 +202,8 @@ class ViewRequestTableViewController: UITableViewController {
         let cost = info[Constants.Order.Fields.points] as! Double
         let requestId = reqUser["id"] as? String ?? ""
         
-        cell.titleLabel.text = title! + " for $" + String(describing: cost)
-        cell.descriptionLabel.text = info[Constants.Order.Fields.details] as? String
-        cell.timeLabel.text = info[Constants.Order.Fields.time] as? String
-        cell.locationLabel.text = info[Constants.Order.Fields.destination] as? String
+        cell.titleLabel.text = title! //+ " for $" + String(describing: cost)
+        cell.pointsLabel.text = String(describing: cost)
         cell.categoryImage.image = Order.Category.Custom.image
         
         UserUtil.getProperty(key: "photoURL", id: requestId) { imageString in
@@ -279,6 +277,22 @@ class ViewRequestTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let selectedCircleCell = sender as? ViewRequestTableViewCell else {
+            fatalError("Unexpected sender: \(String(describing: sender))")
+        }
+        
+        guard let indexPath = tableView.indexPath(for : selectedCircleCell) else {
+            fatalError("You definitely got the wrong cell")
+        }
+        
+        if let destination = segue.destination as? OrderDetailsViewController {
+            destination.currentOrder = orders[indexPath.row]
+        }
     }
     
     deinit {
