@@ -205,8 +205,8 @@ class ViewRequestTableViewController: UITableViewController {
         cell.titleLabel.text = title! //+ " for $" + String(describing: cost)
         cell.pointsLabel.text = String(describing: cost)
         //cell.descriptionLabel.text = info[Constants.Order.Fields.details] as? String
-        //cell.timeLabel.text = info[Constants.Order.Fields.time] as? String
-        //cell.locationLabel.text = info[Constants.Order.Fields.destination] as? String
+        cell.timeLabel.text = info[Constants.Order.Fields.time] as? String
+        cell.locationLabel.text = info[Constants.Order.Fields.destination] as? String
         cell.categoryImage.image = Order.Category.Custom.image
         
         UserUtil.getProperty(key: "photoURL", id: requestId) { imageString in

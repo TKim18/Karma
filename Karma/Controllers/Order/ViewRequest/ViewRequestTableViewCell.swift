@@ -23,9 +23,9 @@ class ViewRequestTableViewCell: UITableViewCell {
     
     //UI Elements
     @IBOutlet weak var titleLabel: UILabel!
-    //@IBOutlet weak var descriptionLabel: UILabel!
-    //@IBOutlet weak var timeLabel: UILabel!
-    //@IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
     
     @IBOutlet weak var pointsImage: UIImageView!

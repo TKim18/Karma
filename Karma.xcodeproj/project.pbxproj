@@ -357,8 +357,7 @@
 			children = (
 				A5C3769D207ABCBB00E0BC8E /* OrderDetailsViewController.swift */,
 			);
-			name = OrderDetails;
-			path = "New Group";
+			path = OrderDetails;
 			sourceTree = "<group>";
 		};
 		EC93994028366C7236EAAAE4 /* Pods */ = {
