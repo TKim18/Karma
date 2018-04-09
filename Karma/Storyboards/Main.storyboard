@@ -1504,7 +1504,7 @@
         <!--Circle Settings-->
         <scene sceneID="dgB-BT-vIA">
             <objects>
-                <viewController id="IBv-f8-XqA" sceneMemberID="viewController">
+                <viewController id="IBv-f8-XqA" customClass="CircleSettingsViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nxz-hR-AP1"/>
                         <viewControllerLayoutGuide type="bottom" id="94n-BV-V61"/>
@@ -1585,18 +1585,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92124956846237183" green="0.92194885015487671" blue="0.92135781049728394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Circle Settings" id="ygl-Vs-DtL">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="9zQ-B7-uwZ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vt8-Um-Hhs">
-                                <rect key="frame" x="315" y="7" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.056519813840000002" green="0.096666060390000003" blue="0.35836267469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Circle Settings" id="ygl-Vs-DtL"/>
+                    <connections>
+                        <outlet property="confirmKeyField" destination="TKI-vY-07m" id="1CR-9b-0ok"/>
+                        <outlet property="displayNameField" destination="Y3x-9i-1R0" id="a5x-Qd-aWc"/>
+                        <outlet property="joinKeyField" destination="Ud9-jq-RNf" id="lsc-ff-Q8x"/>
+                        <outlet property="newKeyField" destination="f0v-MZ-phg" id="pOR-Vl-LXJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVy-OV-yYT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

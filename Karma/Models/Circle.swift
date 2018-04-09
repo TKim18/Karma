@@ -34,6 +34,28 @@ class Circle : NSObject {
         self.joinKey = "-1"
     }
     
+    static func getProperty(key: String, completionHandler: @escaping(_ prop: Any?) -> ()) {
+        let ref = Database.database().reference()
+        UserUtil.getCurrentCircle() { circleName in
+            ref.child("circles").child(circleName).observeSingleEvent(of: .value, with: { (snapshot) in
+                let entity = snapshot.value as? NSDictionary
+                if let entity = entity {
+                    let val = entity[key]
+                    completionHandler(val)
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    static func setProperty(key: String, value: String) {
+        let ref = Database.database().reference()
+        UserUtil.getCurrentCircle() { circleName in
+            ref.child("circles/\(circleName)/\(key)").setValue(value)
+        }
+    }
+    
     // In an upload call, add the circle name as the key and members/display name as values
     func upload(newCircle: Bool, callback: @escaping () -> ()) {
         let ref = Database.database().reference()

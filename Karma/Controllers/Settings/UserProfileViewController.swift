@@ -49,6 +49,7 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         activityIndicator.hidesWhenStopped = true
         imagePicker.delegate = self
         
+        // Make a save button
         let barButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveUserSettings))
         
         barButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.blue], for: .normal)

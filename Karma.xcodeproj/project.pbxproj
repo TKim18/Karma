@@ -41,6 +41,7 @@
 		2287A3481FB508410035C685 /* CostCalculator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2287A3471FB508410035C685 /* CostCalculator.xib */; };
 		2296501E205EFD16008DCC2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2296501D205EFD16008DCC2C /* GoogleService-Info.plist */; };
 		2296501F205EFF00008DCC2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2296501D205EFD16008DCC2C /* GoogleService-Info.plist */; };
+		22A0B1B0207C01F400330DB0 /* CircleSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A0B1AF207C01F400330DB0 /* CircleSettingsViewController.swift */; };
 		22A139151FA6A60A00B21CD2 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A139141FA6A60A00B21CD2 /* Double.swift */; };
 		22ABA8691FABAB370043AB4E /* CircleCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */; };
 		22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */; };
@@ -112,6 +113,7 @@
 		2287A33F1FB507ED0035C685 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2287A3471FB508410035C685 /* CostCalculator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CostCalculator.xib; sourceTree = "<group>"; };
 		2296501D205EFD16008DCC2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		22A0B1AF207C01F400330DB0 /* CircleSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleSettingsViewController.swift; sourceTree = "<group>"; };
 		22A139141FA6A60A00B21CD2 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCreateViewController.swift; sourceTree = "<group>"; };
 		22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */,
+				22A0B1AF207C01F400330DB0 /* CircleSettingsViewController.swift */,
 				2274A4A32079CE8E005FB6B0 /* SecurityViewController.swift */,
 			);
 			path = Settings;
@@ -586,6 +589,7 @@
 				22A139151FA6A60A00B21CD2 /* Double.swift in Sources */,
 				2254AD5B2079C14000A03ADF /* String.swift in Sources */,
 				22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */,
+				22A0B1B0207C01F400330DB0 /* CircleSettingsViewController.swift in Sources */,
 				22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */,
 				2277E0791F744C7800AC53CB /* LoginController.swift in Sources */,
 				2274A4A42079CE8E005FB6B0 /* SecurityViewController.swift in Sources */,
