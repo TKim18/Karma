@@ -203,8 +203,7 @@ class ViewRequestTableViewController: UITableViewController {
         let requestId = reqUser["id"] as? String ?? ""
         
         cell.titleLabel.text = title! //+ " for $" + String(describing: cost)
-        cell.pointsLabel.text = String(describing: cost)
-        //cell.descriptionLabel.text = info[Constants.Order.Fields.details] as? String
+        cell.pointsLabel.text = String(describing: cost)	
         cell.timeLabel.text = info[Constants.Order.Fields.time] as? String
         cell.locationLabel.text = info[Constants.Order.Fields.destination] as? String
         cell.categoryImage.image = Order.Category.Custom.image
@@ -282,7 +281,6 @@ class ViewRequestTableViewController: UITableViewController {
         return true
     }
     
-    // Prepare for More Details
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -293,9 +291,6 @@ class ViewRequestTableViewController: UITableViewController {
         guard let indexPath = tableView.indexPath(for : selectedCircleCell) else {
             fatalError("You definitely got the wrong cell")
         }
-        
-        let orderSnapshot = orders[indexPath.row]
-        guard let order = orderSnapshot.value as? [String: Any] else { return }
         
         if let destination = segue.destination as? OrderDetailsViewController {
             destination.currentOrder = orders[indexPath.row]

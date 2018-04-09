@@ -19,6 +19,11 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     var imageURL : URL!
     var storageRef : StorageReference!
     
+    var initName : String!
+    var initNumber : String!
+    
+    @IBOutlet var nameField : UITextField!
+    @IBOutlet var numberField : UITextField!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
@@ -34,16 +39,74 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         setupView()
         
-        UserUtil.getCurrentImageURL() { url in
-            self.imageURL = url
-            self.displayUserPicture()
-        }
+        setFields()
+        
+        listenFields()
     }
     
     private func setupView() {
         storageRef = Storage.storage().reference()
         activityIndicator.hidesWhenStopped = true
         imagePicker.delegate = self
+        
+        let barButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveUserSettings))
+        
+        barButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.blue], for: .normal)
+        barButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.gray], for: .disabled)
+        
+        barButtonItem.isEnabled = false
+        navigationItem.setRightBarButton(barButtonItem, animated: false)
+    }
+    
+    private func setFields() {
+        UserUtil.getCurrentProperty(key: "name") { name in
+            if let name = name as? String {
+                self.nameField.text = name
+                self.initName = name
+            }
+        }
+        
+        UserUtil.getCurrentProperty(key: "phoneNumber") { number in
+            if let number = number as? String {
+                self.numberField.text = number
+                self.initNumber = number
+            }
+        }
+        
+        UserUtil.getCurrentImageURL() { url in
+            self.imageURL = url
+            self.displayUserPicture()
+        }
+    }
+    
+    private func listenFields() {
+        nameField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        numberField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+    }
+    
+    @objc func editingChanged(_ textField: UITextField) {
+        guard let name = nameField.text, let phone = numberField.text else { 
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            return
+        }
+        navigationItem.rightBarButtonItem?.isEnabled = (name != initName || phone != initNumber)
+    }
+    
+    @objc func saveUserSettings() {
+        if let newName = nameField!.text {
+            self.initName = newName
+            UserUtil.setCurrentProperty(key: "name", value: newName)
+        } else {
+            let alert = UIAlertController(title: "Sorry, that's not a valid name", message: "Please enter a real name",  preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        if let newNumber = numberField!.text {
+            self.initNumber = newNumber
+            UserUtil.setCurrentProperty(key: "phoneNumber", value: newNumber)
+        }
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     private func displayUserPicture() {
@@ -85,9 +148,9 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     private func uploadImageToServer(image: UIImage) {
         UserUtil.getCurrentUserName() { userName in
             // Crop the image into a circle
-            self.imageView.image = image
+            self.imageView.image = image.fixOrientation()
             let roundImage = self.makeRoundImg(img: self.imageView)
-            self.imageView.image = roundImage.fixOrientation()
+            self.imageView.image = roundImage
             self.saveImageToCache(image: roundImage)
             
             // Convert the image into Data type
@@ -123,7 +186,8 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     // TODO: extract this out of this class
     func makeRoundImg(img: UIImageView) -> UIImage {
         let imgLayer = CALayer()
-        imgLayer.frame = img.bounds
+        let rect = CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: 145, height: 145))
+        imgLayer.frame = rect
         imgLayer.contents = img.image?.cgImage;
         imgLayer.masksToBounds = true;
         
