@@ -19,6 +19,9 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     var imageURL : URL!
     var storageRef : StorageReference!
     
+    var initName : String!
+    var initNumber : String!
+    
     @IBOutlet var nameField : UITextField!
     @IBOutlet var numberField : UITextField!
     @IBOutlet var imageView: UIImageView!
@@ -37,27 +40,73 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
         setupView()
         
         setFields()
+        
+        listenFields()
     }
     
     private func setupView() {
         storageRef = Storage.storage().reference()
         activityIndicator.hidesWhenStopped = true
         imagePicker.delegate = self
+        
+        let barButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveUserSettings))
+        
+        barButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.blue], for: .normal)
+        barButtonItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.gray], for: .disabled)
+        
+        barButtonItem.isEnabled = false
+        navigationItem.setRightBarButton(barButtonItem, animated: false)
     }
     
     private func setFields() {
         UserUtil.getCurrentProperty(key: "name") { name in
-            self.nameField.text = name as? String ?? ""
+            if let name = name as? String {
+                self.nameField.text = name
+                self.initName = name
+            }
         }
         
         UserUtil.getCurrentProperty(key: "phoneNumber") { number in
-            self.numberField.text = number as? String ?? ""
+            if let number = number as? String {
+                self.numberField.text = number
+                self.initNumber = number
+            }
         }
         
         UserUtil.getCurrentImageURL() { url in
             self.imageURL = url
             self.displayUserPicture()
         }
+    }
+    
+    private func listenFields() {
+        nameField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+        numberField.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
+    }
+    
+    @objc func editingChanged(_ textField: UITextField) {
+        guard let name = nameField.text, let phone = numberField.text else { 
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            return
+        }
+        navigationItem.rightBarButtonItem?.isEnabled = (name != initName || phone != initNumber)
+    }
+    
+    @objc func saveUserSettings() {
+        if let newName = nameField!.text {
+            self.initName = newName
+            UserUtil.setCurrentProperty(key: "name", value: newName)
+        } else {
+            let alert = UIAlertController(title: "Sorry, that's not a valid name", message: "Please enter a real name",  preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        if let newNumber = numberField!.text {
+            self.initNumber = newNumber
+            UserUtil.setCurrentProperty(key: "phoneNumber", value: newNumber)
+        }
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     private func displayUserPicture() {

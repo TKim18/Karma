@@ -46,8 +46,7 @@ class UserUtil {
     }
     
     static func getCurrentProperty(key: String, completionHandler: @escaping (_ prop: Any?) -> ()) {
-        let userId = getCurrentId()
-        if let userId = userId {
+        if let userId = getCurrentId() {
             getProperty(key: key, id: userId, completionHandler: completionHandler)
         }
     }
@@ -64,6 +63,17 @@ class UserUtil {
         }) { (error) in
             print(error.localizedDescription)
         }
+    }
+    
+    static func setCurrentProperty (key: String, value: String) {
+        if let userId = getCurrentId() {
+            setProperty(key: key, id: userId, value: value)
+        }
+    }
+    
+    static func setProperty(key: String, id: String, value: String) {
+        let ref = Database.database().reference()
+        ref.child("users/\(id)/\(key)").setValue(value)
     }
     
     static func transactPointsWithSnapshot(snapshot: DataSnapshot) {
@@ -116,6 +126,16 @@ class UserUtil {
         ref.child("users/\(id)").child("photoURL").setValue(photoURL.absoluteString)
     }
     
+    static func notifyNewRequest() {
+        getCurrentCircle() { circle in
+            getCurrentProperty(key: "name") { name in
+                let name = name as? String ?? ""
+                let clean = circle.clean()
+                sendNotification(title: "New Request", body: "\(name) has just requested something!", topic: clean)
+            }
+        }
+    }
+    
     static func sendNotification(title: String, body: String, topic: String) {
         let url = URL(string: "https://fcm.googleapis.com/fcm/send")!
         var request = URLRequest(url: url)
@@ -154,15 +174,5 @@ class UserUtil {
             print("responseString = \(String(describing: responseString))")
         }
         task.resume()
-    }
-    
-    static func notifyNewRequest() {
-        getCurrentCircle() { circle in
-            getCurrentProperty(key: "name") { name in
-                let name = name as? String ?? ""
-                let clean = circle.clean()
-                sendNotification(title: "New Request", body: "\(name) has just requested something!", topic: clean)
-            }
-        }
     }
 }
