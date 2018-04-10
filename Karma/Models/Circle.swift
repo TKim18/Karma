@@ -64,13 +64,14 @@ class Circle : NSObject {
             UserUtil.getCurrentUserName() { userName in
                 UserUtil.getCurrentProperty(key: "name") { name in
                     if let circleName = self.joinName, let circleKey = self.joinKey {
+                        let noWhiteName = circleName.trimmingCharacters(in: .whitespacesAndNewlines)
                         if newCircle {
                             var data : [String : Any]
                             data = [:]
-                            data["joinName"] = circleName
-                            data["displayName"] = circleName
+                            data["joinName"] = noWhiteName
+                            data["displayName"] = noWhiteName
                             data["joinKey"] = circleKey
-                            ref.child("circles/\(circleName)").setValue(data)
+                            ref.child("circles/\(noWhiteName)").setValue(data)
                         }
                         var udata : [String : Any]
                         udata = [:]
@@ -79,8 +80,8 @@ class Circle : NSObject {
                         udata["karma"] = 50.00
                         udata["photoURL"] = "default"
                         
-                        ref.child("circles/\(circleName)/members/\(userName)").setValue(udata)
-                        ref.child("users/\(id)/circles/\(circleName)").setValue(true)
+                        ref.child("circles/\(noWhiteName)/members/\(userName)").setValue(udata)
+                        ref.child("users/\(id)/circles/\(noWhiteName)").setValue(true)
                         
                         let cleanName = circleName.clean()
                         PushNotification.notifyNewMember(topic: cleanName)

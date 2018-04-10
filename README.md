@@ -13,10 +13,8 @@
 ## Some Cool Bean Changes ##
 ### Easy ###
 * Newest to oldest (maybe)
-* Empty space before and after fields in circle should be eliminated
 
 ### Everything in between ###
-* Push notification when user joins your circle
 
 ### Hard ###
 * Geolocation
@@ -28,13 +26,7 @@
 ## Priority List for Dev ##
 * Transaction history on Karma button
 * Menu view with the categories included (put these in a new storyboard)
-* Press for more information on billboard --> like a pop up
 
 * Email invite users on top right of members list
 * Removing members from circle
-
-## Need views for: ##
-* What more information looks like
-* Transaction history example
-
 

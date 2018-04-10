@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		220FE6DC1FBB9AD7006C257E /* NumPadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */; };
 		221C9A49207C3AC90025C6F0 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C9A48207C3AC90025C6F0 /* PushNotification.swift */; };
+		221C9A4B207C3ECD0025C6F0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 221C9A4A207C3ECD0025C6F0 /* README.md */; };
 		2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */; };
 		2229C0861F744D820083C215 /* ViewRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */; };
 		2229C08B1F744D9E0083C215 /* RequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0881F744D9E0083C215 /* RequestTableViewController.swift */; };
@@ -82,6 +83,7 @@
 		0F22E1AB1E8407D1004B722A /* Karma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumPadCalculator.swift; sourceTree = "<group>"; };
 		221C9A48207C3AC90025C6F0 /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
+		221C9A4A207C3ECD0025C6F0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewController.swift; sourceTree = "<group>"; };
 		2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewCell.swift; sourceTree = "<group>"; };
 		2229C0881F744D9E0083C215 /* RequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		224006A8204CEDFD003CE920 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				221C9A4A207C3ECD0025C6F0 /* README.md */,
 				2296501D205EFD16008DCC2C /* GoogleService-Info.plist */,
 				224006AA204CEE0D003CE920 /* Info.plist */,
 				224006A9204CEE0D003CE920 /* Karma.entitlements */,
@@ -478,6 +481,7 @@
 				224006AF204CEE20003CE920 /* LaunchScreen.storyboard in Resources */,
 				224006B5204CEF31003CE920 /* Login.storyboard in Resources */,
 				227330A31FBBA894002D4026 /* CostCalculator.xib in Resources */,
+				221C9A4B207C3ECD0025C6F0 /* README.md in Resources */,
 				224006B0204CEE20003CE920 /* Main.storyboard in Resources */,
 				224006B3204CEE34003CE920 /* Assets.xcassets in Resources */,
 				2296501E205EFD16008DCC2C /* GoogleService-Info.plist in Resources */,
