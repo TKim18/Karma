@@ -1,4 +1,4 @@
- // !$*UTF8*$!
+// !$*UTF8*$!
 {
 	archiveVersion = 1;
 	classes = {
@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220FE6DC1FBB9AD7006C257E /* NumPadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */; };
+		221C9A49207C3AC90025C6F0 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C9A48207C3AC90025C6F0 /* PushNotification.swift */; };
 		2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */; };
 		2229C0861F744D820083C215 /* ViewRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */; };
 		2229C08B1F744D9E0083C215 /* RequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0881F744D9E0083C215 /* RequestTableViewController.swift */; };
@@ -80,6 +81,7 @@
 		05D99E2CD8E1D330A6C94F72 /* Pods-Karma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karma.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Karma/Pods-Karma.debug.xcconfig"; sourceTree = "<group>"; };
 		0F22E1AB1E8407D1004B722A /* Karma.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karma.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumPadCalculator.swift; sourceTree = "<group>"; };
+		221C9A48207C3AC90025C6F0 /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewController.swift; sourceTree = "<group>"; };
 		2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewCell.swift; sourceTree = "<group>"; };
 		2229C0881F744D9E0083C215 /* RequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewController.swift; sourceTree = "<group>"; };
@@ -194,7 +196,7 @@
 				22ACAC672062F45900AA4397 /* Category */,
 				2229C0891F744D9E0083C215 /* CustomRequestViewController.swift */,
 			);
-			path = AddRequest;	
+			path = AddRequest;
 			sourceTree = "<group>";
 		};
 		22302AFB1F7B36EF0046E757 /* Circle */ = {
@@ -271,6 +273,7 @@
 				2277E0641F744B5F00AC53CB /* Circle.swift */,
 				2277E0651F744B5F00AC53CB /* Order.swift */,
 				22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */,
+				221C9A48207C3AC90025C6F0 /* PushNotification.swift */,
 				22DE50812061F86400A87979 /* Constants.swift */,
 			);
 			path = Models;
@@ -578,6 +581,7 @@
 				227330A21FBBA88E002D4026 /* NumPadCalculator.swift in Sources */,
 				22302B041F7B37790046E757 /* CircleController.swift in Sources */,
 				2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */,
+				221C9A49207C3AC90025C6F0 /* PushNotification.swift in Sources */,
 				2277E06E1F744BA400AC53CB /* Color.swift in Sources */,
 				224158CA2027BE3F00C8DE2F /* UserProfileViewController.swift in Sources */,
 				227BBC9E2018DC80005314DF /* CircleJoinViewController.swift in Sources */,

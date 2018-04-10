@@ -954,7 +954,7 @@
                         <viewControllerLayoutGuide type="bottom" id="dsy-Ll-vOO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="x8f-bd-eRF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lNO-2H-Q35">
@@ -1324,18 +1324,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92124956849999995" green="0.92194885019999995" blue="0.92135781049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile Settings" id="0KH-Ob-l6M">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="SdR-cf-k4N">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EVS-JB-OwN">
-                                <rect key="frame" x="315" y="7" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.056519813840000002" green="0.096666060390000003" blue="0.35836267469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Profile Settings" id="0KH-Ob-l6M"/>
                     <connections>
                         <outlet property="activityIndicator" destination="1IS-pc-crv" id="8YK-4b-myL"/>
                         <outlet property="imageView" destination="5Be-IB-EuF" id="Mr5-0r-kdv"/>
@@ -1481,19 +1470,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.92124956846237183" green="0.92194885015487671" blue="0.92135781049728394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Security Settings" id="jH4-GI-jRK">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="vIs-eR-qNr">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UAF-Du-sCD">
-                                <rect key="frame" x="315" y="7" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" red="0.056519813840000002" green="0.096666060390000003" blue="0.35836267469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Security Settings" id="jH4-GI-jRK"/>
                     <connections>
+                        <outlet property="confirmPasswordField" destination="S0n-DL-Ax2" id="2rW-FA-GZM"/>
+                        <outlet property="currentPasswordField" destination="ndD-hl-L9l" id="bzL-QT-s0i"/>
+                        <outlet property="newPasswordField" destination="Avc-pk-V9c" id="Jrh-q9-LRy"/>
                         <segue destination="BYZ-38-t0r" kind="showDetail" identifier="logout" id="nc0-7C-4gG"/>
                     </connections>
                 </viewController>
@@ -1591,8 +1572,8 @@
                     <navigationItem key="navigationItem" title="Circle Settings" id="ygl-Vs-DtL"/>
                     <connections>
                         <outlet property="confirmKeyField" destination="TKI-vY-07m" id="1CR-9b-0ok"/>
+                        <outlet property="currentJoinKeyField" destination="Ud9-jq-RNf" id="nHV-1r-W0s"/>
                         <outlet property="displayNameField" destination="Y3x-9i-1R0" id="a5x-Qd-aWc"/>
-                        <outlet property="joinKeyField" destination="Ud9-jq-RNf" id="lsc-ff-Q8x"/>
                         <outlet property="newKeyField" destination="f0v-MZ-phg" id="pOR-Vl-LXJ"/>
                     </connections>
                 </viewController>

@@ -11,6 +11,7 @@ import Firebase
 
 class UserUtil {
     
+    //------------------------ Handling User Properties ----------------------------//
     static func getCurrentUser() -> User {
         return Auth.auth().currentUser!
     }
@@ -77,11 +78,34 @@ class UserUtil {
         }
     }
     
+    static func getNumAccepts(completionHandler: @escaping (_ number: Any?) -> ()) {
+        getCurrentUserName() { userName in
+            getCurrentCircle() { circleName in
+                let ref = Database.database().reference()
+                ref.child("acceptedOrders/request/\(circleName)/\(userName)").observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let entity = snapshot.value as? NSDictionary {
+                        completionHandler(entity.count)
+                    }
+                }) { (error) in
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    static func setImageURL(photoURL : URL) {
+        let ref = Database.database().reference()
+        let id = getCurrentId()!
+        ref.child("users/\(id)").child("photoURL").setValue(photoURL.absoluteString)
+    }
+    
 //    static func setProperty(key: String, id: String, value: String) {
 //        let ref = Database.database().reference()
 //        ref.child("users/\(id)/\(key)").setValue(value)
 //        ref.child("circles/\(circleName)/members/\(userName)").setValue(value)
 //    }
+    
+    //------------------------ Handling Transaction ----------------------------//
     
     static func transactPointsWithSnapshot(snapshot: DataSnapshot) {
         guard let order = snapshot.value as? [String: Any], let info = order["info"] as? [String: Any], let accUser = order["acceptUser"] as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return }
@@ -110,76 +134,5 @@ class UserUtil {
             }
             return TransactionResult.success(withValue: currentData)
         })
-    }
- 
-    static func getNumAccepts(completionHandler: @escaping (_ number: Any?) -> ()) {
-        getCurrentUserName() { userName in
-            getCurrentCircle() { circleName in
-                let ref = Database.database().reference()
-                ref.child("acceptedOrders/request/\(circleName)/\(userName)").observeSingleEvent(of: .value, with: { (snapshot) in
-                    if let entity = snapshot.value as? NSDictionary {
-                        completionHandler(entity.count)
-                    }
-                }) { (error) in
-                    print(error.localizedDescription)
-                }
-            }
-        }
-    }
-    
-    static func setImageURL(photoURL : URL) {
-        let ref = Database.database().reference()
-        let id = getCurrentId()!
-        ref.child("users/\(id)").child("photoURL").setValue(photoURL.absoluteString)
-    }
-    
-    static func notifyNewRequest() {
-        getCurrentCircle() { circle in
-            getCurrentProperty(key: "name") { name in
-                let name = name as? String ?? ""
-                let clean = circle.clean()
-                sendNotification(title: "New Request", body: "\(name) has just requested something!", topic: clean)
-            }
-        }
-    }
-    
-    static func sendNotification(title: String, body: String, topic: String) {
-        let url = URL(string: "https://fcm.googleapis.com/fcm/send")!
-        var request = URLRequest(url: url)
-        
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("key=AIzaSyDEZEjjyOQChi5XW2vxJhd9gnBWlg-dUrM", forHTTPHeaderField: "Authorization")
-        
-        do {
-            let dic : [String : Any] = [
-                "condition":"'\(topic)' in topics",
-                "notification" : [
-                    "body" : body,
-                    "title" : title
-                ]
-            ]
-            request.httpBody = try JSONSerialization.data(withJSONObject: dic, options: JSONSerialization.WritingOptions())
-        } catch {
-            print("Caught an error: \(error)")
-        }
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                // check for fundamental networking error
-                print("error=\(String(describing: error))")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(String(describing: response))")
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(String(describing: responseString))")
-        }
-        task.resume()
     }
 }
