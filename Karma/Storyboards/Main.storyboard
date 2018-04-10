@@ -1581,6 +1581,9 @@
                                 <state key="normal" title="Leave Circle">
                                     <color key="titleColor" red="1" green="0.020440589928190422" blue="0.094096585826957346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="leaveCircleWithSender:" destination="IBv-f8-XqA" eventType="touchUpInside" id="o9t-nA-Igz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92124956846237183" green="0.92194885015487671" blue="0.92135781049728394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1651,7 +1654,7 @@
         <image name="white" width="112" height="112"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5oT-NM-lk9"/>
+        <segue reference="ndn-w6-JES"/>
         <segue reference="ESN-d1-xsN"/>
         <segue reference="Obl-Wj-qaW"/>
         <segue reference="r0E-Gv-G2T"/>
