@@ -24,8 +24,9 @@
 * Make a customized user object that has the three attributes to be carried around as well as current user data such as images and seen requests
 
 ## Priority List for Dev ##
-* Transaction history on Karma button
+* Constraints
 * Menu view with the categories included (put these in a new storyboard)
+* Transaction history on Karma button
 
 * Email invite users on top right of members list
 * Removing members from circle

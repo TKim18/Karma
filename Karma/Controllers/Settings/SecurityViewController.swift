@@ -26,6 +26,9 @@ class SecurityViewController: UIViewController {
     @IBAction func logoutButton(sender : AnyObject){
         do {
             try Auth.auth().signOut()
+            
+            // TODO: Memory zombie appears because deinit is never called
+            self.navigationController?.popToRootViewController(animated: true)
             self.performSegue(withIdentifier: "logout", sender: self)
         } catch {
             print("Error trying to log out")

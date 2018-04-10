@@ -320,6 +320,8 @@ class ViewRequestTableViewController: UITableViewController {
                     if let acceptRemoveHandle = self._unacceptRemoveHandle {
                        acceptRef.removeObserver(withHandle: acceptRemoveHandle)
                     }
+                    
+                    print("Finished deinitializing")
                 }
             }
         }
