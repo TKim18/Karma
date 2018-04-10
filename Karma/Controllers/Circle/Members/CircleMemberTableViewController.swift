@@ -90,23 +90,16 @@ class CircleMemberTableViewController: UITableViewController {
             if imagePath == "default" {
                 cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
             } else {
-                ImageCache.default.retrieveImage(forKey: id, options: nil) {
-                    image, cacheType in
-                    if let image = image {
-                        cell.userImage.image = image
+                self.storageRef.child(imagePath!).getData(maxSize: INT64_MAX) {(data, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
                     } else {
-                        self.storageRef.child(imagePath!).getData(maxSize: INT64_MAX) {(data, error) in
-                            if let error = error {
-                                print(error.localizedDescription)
-                                cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
-                            } else {
-                                DispatchQueue.main.async {
-                                    let serverImage = UIImage.init(data: data!)
-                                    cell.userImage.image = serverImage
-                                    self.saveImageToCache(image: serverImage!, id: id)
-                                    cell.setNeedsLayout()
-                                }
-                            }
+                        DispatchQueue.main.async {
+                            let serverImage = UIImage.init(data: data!)
+                            cell.userImage.image = serverImage
+                            self.saveImageToCache(image: serverImage!, id: id)
+                            cell.setNeedsLayout()
                         }
                     }
                 }
