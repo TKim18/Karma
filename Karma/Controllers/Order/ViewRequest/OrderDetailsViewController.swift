@@ -24,7 +24,7 @@ class OrderDetailsViewController: UIViewController {
     }
     
     func presentOrder() {
-        guard let order = currentOrder.value as? [String: Any], let info = order["info"] as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return }
+        guard let order = currentOrder.value as? [String: Any], let info = order["info"] as? [String: Any], let _ = order["requestUser"] as? [String: Any] else { return }
         
         let title = info[Constants.Order.Fields.title] as? String
         let cost = info[Constants.Order.Fields.points] as! Double

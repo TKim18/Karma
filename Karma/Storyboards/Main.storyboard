@@ -261,7 +261,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Order Details" id="gf1-YA-Pb2">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="stop" id="efh-HV-878">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="efh-HV-878">
                                             <connections>
                                                 <action selector="dismissModalWithSender:" destination="kfE-SF-bWw" id="Atf-Bt-uP8"/>
                                             </connections>
@@ -357,7 +357,7 @@
             <objects>
                 <tableViewController id="S69-SH-7rZ" customClass="RequestTableViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="TjX-JM-XSu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -397,7 +397,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3V-2t-o7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="-2440"/>
+            <point key="canvasLocation" x="1671" y="-1669"/>
         </scene>
         <!--Your Circle-->
         <scene sceneID="Y43-Bj-aMl">
@@ -457,9 +457,7 @@
                             <outlet property="delegate" destination="kd8-uh-9f8" id="Lx0-XC-ReX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your Circle" id="K6G-jn-vN3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pDj-7Z-jjG"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Your Circle" id="K6G-jn-vN3"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvS-pt-DaX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -562,7 +560,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQt-5P-tdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1669.5999999999999" y="-1668.2158920539732"/>
+            <point key="canvasLocation" x="1670" y="-2502"/>
         </scene>
         <!--Direct Transfer View Controller-->
         <scene sceneID="FAi-SX-0KR">
@@ -684,7 +682,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="PdG-hk-wVj" kind="relationship" relationship="rootViewController" id="ndn-w6-JES"/>
+                        <segue destination="S69-SH-7rZ" kind="relationship" relationship="rootViewController" id="cQO-lF-uty"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5m-aY-bbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1162,8 +1160,6 @@
         <image name="white" width="112" height="112"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s7E-FF-nsl"/>
-        <segue reference="ndn-w6-JES"/>
-        <segue reference="ruZ-Ha-ylM"/>
+        <segue reference="slo-0J-Efm"/>
     </inferredMetricsTieBreakers>
 </document>
