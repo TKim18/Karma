@@ -14,7 +14,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     // Local Variables
     var order : Order!
     var reqButtonPosition : CGFloat!
-    var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 216))
+    var numPad : NumPadCalculator! = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 216))
     
     // UI Elements
     @IBOutlet var categoryImage: UIImageView!
@@ -43,6 +43,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     func setupView() {
         titleField.becomeFirstResponder()
         self.reqButtonPosition = requestButton.frame.origin.y
+        // self.numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 216))
         
         order = Order()
         order.category = .Custom
