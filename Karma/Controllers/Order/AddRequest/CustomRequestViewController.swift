@@ -43,6 +43,8 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     func setupView() {
         titleField.becomeFirstResponder()
         self.reqButtonPosition = requestButton.frame.origin.y
+        
+        requestButton.frame.origin.y = 216 - requestButton.frame.size.height
         // self.numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 216))
         
         order = Order()
