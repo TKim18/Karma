@@ -24,7 +24,8 @@ class OrderDetailsViewController: UIViewController {
     }
     
     func presentOrder() {
-        guard let order = currentOrder.value as? [String: Any], let info = order["info"] as? [String: Any], let _ = order["requestUser"] as? [String: Any] else { return }
+        guard let order = currentOrder.value as? [String: Any], let info = order["info"] as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return }
+        
         
         let title = info[Constants.Order.Fields.title] as? String
         let cost = info[Constants.Order.Fields.points] as! Double
@@ -34,7 +35,7 @@ class OrderDetailsViewController: UIViewController {
         locationLabel.text = info[Constants.Order.Fields.destination] as? String ?? ""
         pointsLabel.text = String(describing: cost)
         titleLabel.text = title!
-        //userLabel.text = reqUser["name"] as? String ?? ""
+        userLabel.text = reqUser["name"] as? String ?? ""
 
     }
     
@@ -50,7 +51,7 @@ class OrderDetailsViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var pointsLabel: UILabel!
-    //@IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
     
