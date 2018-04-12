@@ -751,7 +751,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y00-lp-y2X">
                                 <rect key="frame" x="16" y="72" width="309" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Select a user"/>
+                                <state key="normal" title="Select a User"/>
                                 <connections>
                                     <action selector="displayMembersWithSender:" destination="N7W-wu-JGK" eventType="touchUpInside" id="z9O-4y-THl"/>
                                 </connections>
@@ -759,7 +759,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="kEn-2h-qWZ"/>
+                    <navigationItem key="navigationItem" id="kEn-2h-qWZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4Yb-oE-3bW">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="cancelWithSender:" destination="N7W-wu-JGK" id="7Gw-n5-EXo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="costField" destination="jvU-KT-amv" id="4Ud-YQ-6Yk"/>
                         <outlet property="descriptionField" destination="233-mX-YO7" id="tYh-IV-PXt"/>

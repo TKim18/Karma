@@ -60,29 +60,9 @@ class NotificationTableViewController: UITableViewController {
             let imageURL = URL(string: imageString)
             let imagePath = imageURL?.path
             
-            if imagePath == "default" {
-                cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
-            } else {
-                ImageCache.default.retrieveImage(forKey: acceptId, options: nil) {
-                    image, cacheType in
-                    if let image = image {
-                        cell.userImage.image = image
-                    } else {
-                        self.storageRef.child(imagePath!).getData(maxSize: INT64_MAX) {(data, error) in
-                            if let error = error {
-                                print(error.localizedDescription)
-                                cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
-                            } else {
-                                DispatchQueue.main.async {
-                                    let serverImage = UIImage.init(data: data!)
-                                    cell.userImage.image = serverImage
-                                    self.saveImageToCache(image: serverImage!, id: acceptId)
-                                    cell.setNeedsLayout()
-                                }
-                            }
-                        }
-                    }
-                }
+            UserUtil.getImage(id: acceptId, path: imagePath!, fromCache: true, saveCache: true) { image in
+                cell.userImage.image = image
+                cell.setNeedsLayout()
             }
         }
         
@@ -93,10 +73,6 @@ class NotificationTableViewController: UITableViewController {
         cell.declineButton.addTarget(self, action: #selector(self.rejectTransaction), for: UIControlEvents.touchUpInside)
 
         return cell
-    }
-
-    private func saveImageToCache(image: UIImage, id: String) {
-        ImageCache.default.store(image, forKey: id)
     }
     
     @objc func completeTransaction(sender: AnyObject) {

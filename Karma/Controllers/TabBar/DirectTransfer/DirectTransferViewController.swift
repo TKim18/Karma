@@ -8,20 +8,22 @@
 
 import UIKit
 import DropDown
-import FirebaseStorage
-import Kingfisher
 
 class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextViewDelegate {
 
     // Local Variables
     let dropDown = DropDown()
-    var storageRef : StorageReference!
     var currentTransfer : DirectTransfer!
-    var members : [NSDictionary]!
     var origButtonPosition : CGFloat!
     var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 216))
     var placeholderLabel : UILabel!
     var userName : String!
+    
+    var members : [NSDictionary] = []
+    var names : [String] = []
+    var ids : [String] = []
+    var userNames : [String] = []
+    var imagePaths : [String] = []
 
     // UI Elements
     @IBOutlet weak var dropDownView : UIView!
@@ -31,7 +33,10 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     @IBOutlet weak var requestButton : UIButton!
     @IBOutlet weak var payButton : UIButton!
     @IBOutlet weak var dividerLabel : UILabel!
-
+    @IBAction func cancel(sender : AnyObject) {
+        self.view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -58,12 +63,13 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.selectedUser.setTitle(item, for: .normal)
+            self.currentTransfer.selectedName = self.names[index]
+            self.currentTransfer.selectedUserName = self.userNames[index]
+            self.currentTransfer.selectedUserId = self.ids[index]
         }
     }
     
     private func loadVariables() {
-        storageRef = Storage.storage().reference()
-        self.members = []
         self.origButtonPosition = requestButton.frame.origin.y
         if let currentUserId = UserUtil.getCurrentId() {
             UserUtil.getCurrentUserName() { currentUserName in
@@ -97,6 +103,17 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
                     let firstUser = Array(firstDic.allKeys).first as! String
                     let secondUser = Array(secondDic.allKeys).first as! String
                     return firstUser == secondUser ? true : firstUser < secondUser
+                }
+                // Pull out each attribute into a list
+                for dict in self.members {
+                    for (userName, val) in dict {
+                        if let info = val as? NSDictionary, let name = info["name"] as? String, let id = info["id"] as? String, let photo = info["photoURL"] as? String, let userName = userName as? String {
+                            self.names.append(name)
+                            self.ids.append(id)
+                            self.userNames.append(userName)
+                            self.imagePaths.append((URL(string: photo)?.path)!)
+                        }
+                    }
                 }
             }
         }
@@ -132,48 +149,21 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     }
     
     @IBAction func displayMembers(sender : AnyObject) {
-        var names : [String] = []
-        var ids : [String] = []
-        var userNames : [String] = []
-        var imagePaths : [String] = []
-        for dict in self.members {
-            for (userName, val) in dict {
-                if let info = val as? NSDictionary, let name = info["name"] as? String, let id = info["id"] as? String, let photo = info["photoURL"] as? String, let userName = userName as? String {
-                    names.append(name)
-                    ids.append(id)
-                    userNames.append(userName)
-                    let imageURL = URL(string: photo)
-                    let imagePath = imageURL?.path
-                    imagePaths.append(imagePath!)
-                }
-            }
-        }
         dropDown.dataSource = names
         dropDown.cellNib = UINib(nibName: "MemberCell", bundle: nil)
+        
+        // Configure the cell with the right informaiton
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             guard let cell = cell as? MemberCell else { return }
             cell.optionLabel.text = item
-            cell.userName.text = userNames[index]
-            //TODO: Extract image caching and retrieving into UserUtil
-            let imagePath = imagePaths[index]
-            ImageCache.default.retrieveImage(forKey: ids[index], options: nil) {
-                image, cacheType in
-                if let image = image {
-                    cell.userImage.image = image
-                } else {
-                    self.storageRef.child(imagePath).getData(maxSize: INT64_MAX) {(data, error) in
-                        if let error = error {
-                            print(error.localizedDescription)
-                            cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
-                        } else {
-                            DispatchQueue.main.async {
-                                let serverImage = UIImage.init(data: data!)
-                                cell.userImage.image = serverImage
-                                cell.setNeedsLayout()
-                            }
-                        }
-                    }
-                }
+            cell.userName.text = self.userNames[index]
+
+            let imagePath = self.imagePaths[index]
+            let id = self.ids[index]
+            
+            UserUtil.getImage(id: id, path: imagePath, fromCache: true, saveCache: false) { image in
+                cell.userImage.image = image
+                cell.setNeedsLayout()
             }
         }
         dropDown.show()
@@ -195,8 +185,15 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
             }
         }
     }
-
+    
     func validValues() -> Bool {
+        // Must select a user
+        if self.currentTransfer.selectedUserId == "" {
+            let alert = UIAlertController(title: "Please select a user first", message: "It's always more fun with a friend", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
+        }
         self.currentTransfer.title = descriptionField.text
 
         var cost = costField.text!

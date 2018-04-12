@@ -13,6 +13,7 @@ import Kingfisher
 class UserUtil {
     
     //------------------------ Handling User Properties ----------------------------//
+    
     static func getCurrentUser() -> User {
         return Auth.auth().currentUser!
     }
@@ -94,6 +95,8 @@ class UserUtil {
         }
     }
     
+    //------------------------ Handling Images ----------------------------//
+    
     static func setImageURL(photoURL : URL) {
         getCurrentCircle() { circleName in
             getCurrentUserName() { userName in
@@ -105,7 +108,7 @@ class UserUtil {
         }
     }
     
-    static func getImage(id: String, path: String, fromCache: Bool, completionHandler: @escaping (_ image: Image) -> ()) {
+    static func getImage(id: String, path: String, fromCache: Bool, saveCache: Bool, completionHandler: @escaping (_ image: Image) -> ()) {
         if path == "default" {
             completionHandler(#imageLiteral(resourceName: "DefaultAvatar"))
             return
@@ -119,12 +122,12 @@ class UserUtil {
                 }
             }
         }
-        getImageFromServer(path: path) { image in
+        getImageFromServer(id: id, path: path, saveCache: saveCache) { image in
             completionHandler(image)
         }
     }
     
-    private static func getImageFromServer(path: String, completionHandler: @escaping (_ image: Image) -> ()){
+    private static func getImageFromServer(id: String, path: String, saveCache: Bool, completionHandler: @escaping (_ image: Image) -> ()){
         let storageRef = Storage.storage().reference()
         storageRef.child(path).getData(maxSize: INT64_MAX) {(data, error) in
             if let error = error {
@@ -133,14 +136,13 @@ class UserUtil {
             }
             DispatchQueue.main.async {
                 let serverImage = UIImage.init(data: data!)!
-                self.saveImageToCache(image: serverImage)
+                if saveCache { self.saveImageToCache(id: id, image: serverImage) }
                 completionHandler(serverImage)
             }
         }
     }
     
-    static func saveImageToCache(image: UIImage) {
-        let id = UserUtil.getCurrentId()!
+    static func saveImageToCache(id: String, image: UIImage) {
         ImageCache.default.removeImage(forKey: id)
         ImageCache.default.store(image, forKey: id)
         print("User image has been saved to cache")

@@ -99,7 +99,7 @@ class ViewRequestTableViewController: UITableViewController {
         roundButton.setImage(UIImage(named:"AddButton"), for: .normal)
         roundButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -25), roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -25), roundButton.widthAnchor.constraint(equalToConstant: 75), roundButton.heightAnchor.constraint(equalToConstant: 75)])
+        roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -25), roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -25), roundButton.widthAnchor.constraint(equalToConstant: 60), roundButton.heightAnchor.constraint(equalToConstant: 60)])
     }
 
     @IBAction func showNewRequest(_ sender: UIButton){
@@ -231,17 +231,13 @@ class ViewRequestTableViewController: UITableViewController {
             let imageURL = URL(string: imageString)
             let imagePath = imageURL?.path
             
-            UserUtil.getImage(id: requestId, path: imagePath!, fromCache: true) { image in
+            UserUtil.getImage(id: requestId, path: imagePath!, fromCache: true, saveCache: true) { image in
                 cell.userImage.image = image
                 cell.setNeedsLayout()
             }
         }
         
         return cell
-    }
-    
-    private func saveImageToCache(image: UIImage, id: String) {
-        ImageCache.default.store(image, forKey: id)
     }
     
     // Slide to accept or delete request
