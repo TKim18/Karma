@@ -7,18 +7,24 @@
 //
 
 import UIKit
+import SearchTextField
 
 class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextViewDelegate {
 
     // Local Variables
     var currentTransfer : DirectTransfer!
+    var members : [SearchTextFieldItem]!
     var origButtonPosition : CGFloat!
     var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 216))
     var placeholderLabel : UILabel!
+    var name: String = ""
+    var userName: String = ""
+    var id: String = ""
+    var circle: String = ""
 
     // UI Elements
     @IBOutlet weak var costField : UITextField!
-    @IBOutlet weak var selectedUser : UILabel!
+    @IBOutlet weak var selectUserField : SearchTextField!
     @IBOutlet weak var descriptionField : UITextView!
     @IBOutlet weak var requestButton : UIButton!
     @IBOutlet weak var payButton : UIButton!
@@ -26,7 +32,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupView()
 
         setupKeyboard()
@@ -34,6 +40,81 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
         setupDetails()
     }
 
+    // MARK: Setup Methods
+    func setupView() {
+        selectUserField.becomeFirstResponder()
+        selectUserField.theme = SearchTextFieldTheme.darkTheme()
+        selectUserField.theme.cellHeight = 70
+        
+        loadVariables()
+        
+        loadMembers()
+    }
+    
+    private func loadVariables() {
+        self.members = []
+        self.origButtonPosition = requestButton.frame.origin.y
+        self.currentTransfer = DirectTransfer(currentUserId: self.id, currentUserName : self.userName, currentName: self.name)
+        if let currentUserId = UserUtil.getCurrentId() {
+            UserUtil.getCurrentUserName() { currentUserName in
+                UserUtil.getCurrentProperty(key: "name") { currentName in
+                    UserUtil.getCurrentCircle() { circleName in
+                        self.name = currentName as? String ?? ""
+                        self.userName = currentUserName
+                        self.id = currentUserId
+                        self.circle = circleName
+                    }
+                }
+            }
+        }
+    }
+    
+    private func loadMembers() {
+        Circle.getProperty(key: "members") { members in
+            if let membersDic = members as? NSDictionary {
+                for (userName, val) in membersDic {
+                    if let member = val as? NSDictionary, let name = member["name"] as? String, let id = member["id"] as? String, let userName = userName as? String {
+                        self.members.append(SearchMemberFieldItem(title: name, subtitle: userName, id: id, image: #imageLiteral(resourceName: "DefaultAvatar")))
+                    }
+                }
+                self.selectUserField.filterItems(self.members)
+            }
+        }
+    }
+    
+    func setupKeyboard() {
+        // These are added to push the Request button to appear above the keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        // Adding costField to use the numPad view
+        numPad.delegate = self
+        costField.inputView = numPad
+        
+        // Dismissing numPad should evaluate the current expression
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DirectTransferViewController.finishCompute))
+        view.addGestureRecognizer(tap)
+        
+        // Turn off autocorrect/auto predict for the description field
+        descriptionField.autocorrectionType = .no
+    }
+    
+    func setupDetails() {
+        // Add ghost text to the details field
+        descriptionField!.delegate = self
+        placeholderLabel = UILabel()
+        placeholderLabel.text = "What is this for?"
+        placeholderLabel.sizeToFit()
+        descriptionField.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: (descriptionField.font?.pointSize)! / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = !descriptionField.text.isEmpty
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !descriptionField.text.isEmpty
+    }
+    
     // Pay/Request Handling
     @IBAction func request(sender : AnyObject) {
         if validValues() {
@@ -76,47 +157,6 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
         }
 
         return true
-    }
-
-    // MARK: Setup Methods
-    func setupView() {
-        // Set the text of the user label
-        selectedUser.text = currentTransfer.selectedName
-        self.origButtonPosition = requestButton.frame.origin.y
-        costField.becomeFirstResponder()
-    }
-    
-    func setupKeyboard() {
-        // These are added to push the Request button to appear above the keyboard
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        // Adding costField to use the numPad view
-        numPad.delegate = self
-        costField.inputView = numPad
-        
-        // Dismissing numPad should evaluate the current expression
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DirectTransferViewController.finishCompute))
-        view.addGestureRecognizer(tap)
-        
-        // Turn off autocorrect/auto predict for the description field
-        descriptionField.autocorrectionType = .no
-    }
-    
-    func setupDetails() {
-        // Add ghost text to the details field
-        descriptionField!.delegate = self
-        placeholderLabel = UILabel()
-        placeholderLabel.text = "What is this for?"
-        placeholderLabel.sizeToFit()
-        descriptionField.addSubview(placeholderLabel)
-        placeholderLabel.frame.origin = CGPoint(x: 5, y: (descriptionField.font?.pointSize)! / 2)
-        placeholderLabel.textColor = UIColor.lightGray
-        placeholderLabel.isHidden = !descriptionField.text.isEmpty
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        placeholderLabel.isHidden = !descriptionField.text.isEmpty
     }
     
     // MARK: Helper Functions
