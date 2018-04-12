@@ -91,6 +91,11 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
         placeholderLabel.isHidden = !requestDetailsField.text.isEmpty
     }
     
+    @IBAction func dismissModal(sender: Any) {
+        view.endEditing(true)
+        self.dismiss(animated: true, completion: {})
+    }
+    
     // Date and Time Picker
     @IBAction func triggerDatePicker(_ sender : UITextField) {
         view.endEditing(true)

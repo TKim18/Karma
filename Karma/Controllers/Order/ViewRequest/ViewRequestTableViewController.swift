@@ -29,6 +29,7 @@ class ViewRequestTableViewController: UITableViewController {
     var acceptOrders: [DataSnapshot]! = []
     
     private let refreshCont = UIRefreshControl()
+    private var roundButton = UIButton()
     
     // UIElements
     @IBOutlet weak var pendingAcceptedControl: UISegmentedControl!
@@ -86,8 +87,25 @@ class ViewRequestTableViewController: UITableViewController {
         }
         refreshCont.addTarget(self, action: #selector(self.refreshOrders), for: .valueChanged)
         refreshCont.attributedTitle = NSAttributedString(string: "Fetching new orders ...")
+        
+        //Add the new request button
+        self.roundButton = UIButton(type: .custom)
+        self.roundButton.setTitleColor(UIColor.orange, for: .normal)
+        self.roundButton.addTarget(self, action: #selector(showNewRequest(_:)), for: UIControlEvents.touchUpInside)
+        self.navigationController?.view.addSubview(roundButton)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        roundButton.setImage(UIImage(named:"AddButton"), for: .normal)
+        roundButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+        roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -25), roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -25), roundButton.widthAnchor.constraint(equalToConstant: 75), roundButton.heightAnchor.constraint(equalToConstant: 75)])
     }
 
+    @IBAction func showNewRequest(_ sender: UIButton){
+        self.performSegue(withIdentifier: "NewRequest", sender: sender)
+    }
+    
     @objc private func refreshOrders(_sender : Any) {
         self.tableView.reloadData()
         self.refreshCont.endRefreshing()
@@ -284,16 +302,18 @@ class ViewRequestTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        guard let selectedCircleCell = sender as? ViewRequestTableViewCell else {
-            fatalError("Unexpected sender: \(String(describing: sender))")
-        }
-        
-        guard let indexPath = tableView.indexPath(for : selectedCircleCell) else {
-            fatalError("You definitely got the wrong cell")
-        }
-        
-        if let destination = segue.destination as? OrderDetailsViewController {
-            destination.currentOrder = orders[indexPath.row]
+        if segue.identifier == "MoreDetails" {
+            guard let selectedCircleCell = sender as? ViewRequestTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = tableView.indexPath(for : selectedCircleCell) else {
+                fatalError("You definitely got the wrong cell")
+            }
+            
+            if let destination = segue.destination as? OrderDetailsViewController {
+                destination.currentOrder = orders[indexPath.row]
+            }
         }
     }
     
