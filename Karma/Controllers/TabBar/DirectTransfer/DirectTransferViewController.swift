@@ -15,7 +15,6 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     let dropDown = DropDown()
     var currentTransfer : DirectTransfer!
     var members : [NSDictionary]!
-    //var members : NSDictionary!
     var origButtonPosition : CGFloat!
     var numPad = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 216))
     var placeholderLabel : UILabel!
