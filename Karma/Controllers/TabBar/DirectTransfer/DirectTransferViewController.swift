@@ -136,7 +136,15 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
                 }
             }
         }
-        dropDown.dataSource = names
+        // dropDown.dataSource = names
+        dropDown.cellNib = UINib(nibName: "MemberCell", bundle: nil)
+        dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
+            guard let cell = cell as? MemberCell else { return }
+            //TODO: Fix this in the morning timmy
+            cell.optionLabel.text = "HELLO"
+            cell.userName.text = "YOLO"
+            cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
+        }
         dropDown.show()
     }
     
