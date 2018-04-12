@@ -8,11 +8,14 @@
 
 import UIKit
 import DropDown
+import FirebaseStorage
+import Kingfisher
 
 class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextViewDelegate {
 
     // Local Variables
     let dropDown = DropDown()
+    var storageRef : StorageReference!
     var currentTransfer : DirectTransfer!
     var members : [NSDictionary]!
     var origButtonPosition : CGFloat!
@@ -59,6 +62,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     }
     
     private func loadVariables() {
+        storageRef = Storage.storage().reference()
         self.members = []
         self.origButtonPosition = requestButton.frame.origin.y
         if let currentUserId = UserUtil.getCurrentId() {
@@ -129,21 +133,48 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     
     @IBAction func displayMembers(sender : AnyObject) {
         var names : [String] = []
+        var ids : [String] = []
+        var userNames : [String] = []
+        var imagePaths : [String] = []
         for dict in self.members {
-            for (_, val) in dict {
-                if let info = val as? NSDictionary, let name = info["name"] as? String {
+            for (userName, val) in dict {
+                if let info = val as? NSDictionary, let name = info["name"] as? String, let id = info["id"] as? String, let photo = info["photoURL"] as? String, let userName = userName as? String {
                     names.append(name)
+                    ids.append(id)
+                    userNames.append(userName)
+                    let imageURL = URL(string: photo)
+                    let imagePath = imageURL?.path
+                    imagePaths.append(imagePath!)
                 }
             }
         }
-        // dropDown.dataSource = names
+        dropDown.dataSource = names
         dropDown.cellNib = UINib(nibName: "MemberCell", bundle: nil)
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             guard let cell = cell as? MemberCell else { return }
-            //TODO: Fix this in the morning timmy
-            cell.optionLabel.text = "HELLO"
-            cell.userName.text = "YOLO"
-            cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
+            cell.optionLabel.text = item
+            cell.userName.text = userNames[index]
+            //TODO: Extract image caching and retrieving into UserUtil
+            let imagePath = imagePaths[index]
+            ImageCache.default.retrieveImage(forKey: ids[index], options: nil) {
+                image, cacheType in
+                if let image = image {
+                    cell.userImage.image = image
+                } else {
+                    self.storageRef.child(imagePath).getData(maxSize: INT64_MAX) {(data, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                            cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
+                        } else {
+                            DispatchQueue.main.async {
+                                let serverImage = UIImage.init(data: data!)
+                                cell.userImage.image = serverImage
+                                cell.setNeedsLayout()
+                            }
+                        }
+                    }
+                }
+            }
         }
         dropDown.show()
     }
