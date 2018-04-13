@@ -7,6 +7,11 @@
 		<key>ActionSheetPicker-3.0.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>DropDown.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
@@ -32,7 +37,7 @@
 		<key>Protobuf.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>10</integer>
 		</dict>
 		<key>leveldb-library.xcscheme</key>
 		<dict>
