@@ -35,6 +35,9 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     @IBOutlet weak var dividerLabel : UILabel!
     @IBAction func cancel(sender : AnyObject) {
         self.view.endEditing(true)
+        requestButton.frame.origin.y = view.frame.maxY - requestButton.frame.size.height
+        payButton.frame.origin.y = view.frame.maxY - payButton.frame.size.height
+        dividerLabel.frame.origin.y = view.frame.maxY - dividerLabel.frame.size.height
     }
     
     override func viewDidLoad() {
@@ -61,6 +64,11 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     private func loadDropDown() {
         dropDown.anchorView = dropDownView
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+        // Customize dropdown appearance programmatically
+        DropDown.appearance().textColor = UIColor.black
+        DropDown.appearance().backgroundColor = UIColor.white
+        DropDown.appearance().selectionBackgroundColor = UIColor.lightGray
+        DropDown.appearance().cellHeight = 50
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.selectedUser.setTitle(item, for: .normal)
             self.currentTransfer.selectedName = self.names[index]

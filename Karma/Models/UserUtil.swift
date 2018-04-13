@@ -117,13 +117,19 @@ class UserUtil {
             ImageCache.default.retrieveImage(forKey: id, options: nil) {
                 image, cacheType in
                 if let image = image {
+                    print("Retrieving image from cache")
                     completionHandler(image)
                     return
+                } else {
+                    getImageFromServer(id: id, path: path, saveCache: saveCache) { image in
+                        completionHandler(image)
+                    }
                 }
             }
-        }
-        getImageFromServer(id: id, path: path, saveCache: saveCache) { image in
-            completionHandler(image)
+        } else {
+            getImageFromServer(id: id, path: path, saveCache: saveCache) { image in
+                completionHandler(image)
+            }
         }
     }
     
@@ -135,6 +141,7 @@ class UserUtil {
                 completionHandler(#imageLiteral(resourceName: "DefaultAvatar"))
             }
             DispatchQueue.main.async {
+                print("Asking server for image")
                 let serverImage = UIImage.init(data: data!)!
                 if saveCache { self.saveImageToCache(id: id, image: serverImage) }
                 completionHandler(serverImage)

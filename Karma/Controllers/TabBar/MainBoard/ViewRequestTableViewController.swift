@@ -14,7 +14,6 @@ class ViewRequestTableViewController: UITableViewController {
 
     // Local Variables
     var ref: DatabaseReference!
-    var storageRef: StorageReference!
     let cellSpacingHeight: CGFloat = 5
     let backgroundColor = UIColor.white
     
@@ -38,9 +37,6 @@ class ViewRequestTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.ref = Database.database().reference()
-        self.storageRef = Storage.storage().reference()
-        
         //Set up connection to database
         configureDatabase()
         
@@ -52,6 +48,7 @@ class ViewRequestTableViewController: UITableViewController {
     }
     
     private func configureDatabase() {
+        self.ref = Database.database().reference()
         listenUnaccepted()
         listenAccepted()
     }

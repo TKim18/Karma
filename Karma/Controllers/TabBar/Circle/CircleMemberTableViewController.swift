@@ -143,35 +143,6 @@ class CircleMemberTableViewController: UITableViewController {
         }
     }
     
-    // In preparation for direct transferring
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-
-        guard let selectedCircleCell = sender as? CircleMemberTableViewCell else {
-            fatalError("Unexpected sender: \(String(describing: sender))")
-        }
-
-        guard let indexPath = tableView.indexPath(for : selectedCircleCell) else {
-            fatalError("You definitely got the wrong cell")
-        }
-        
-        let memberSnapshot = members[indexPath.row]
-        guard let member = memberSnapshot.value as? [String: Any] else { return }
-        
-        if let destination = segue.destination as? DirectTransferViewController {
-            if let selectedUserId = member["id"], let selectedName = member["name"] {
-                let currentTransfer = DirectTransfer(
-                    currentUserId: self.id,
-                    currentUserName : self.userName,
-                    currentName: self.name,
-                    selectedUserId : selectedUserId as? String ?? "",
-                    selectedUserName : memberSnapshot.key,
-                    selectedName: selectedName as? String ?? "")
-                destination.currentTransfer = currentTransfer
-            }
-        }
-    }
-    
     deinit {
         UserUtil.getCurrentCircle() { circleName in
             let memberRef = self.ref.child("circles/\(circleName)/members")
