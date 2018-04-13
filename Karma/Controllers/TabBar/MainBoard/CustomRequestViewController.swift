@@ -97,7 +97,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     }
     
     // Date and Time Picker
-    @IBAction func triggerDatePicker(_ sender : UITextField) {
+    @IBAction func triggerDatePicker(_ sender : UIButton) {
         view.endEditing(true)
         
         let formatter = DateFormatter()
@@ -106,7 +106,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
         let datePicker = ActionSheetDatePicker(title: "Pick Due Date and Time:", datePickerMode: UIDatePickerMode.dateAndTime, selectedDate: Date(timeInterval: 3600, since: Date()), doneBlock: {
             picker, value, index in
             if let value = value as? Date{
-                sender.text = formatter.string(from: value)
+                self.endTimeField.text = formatter.string(from: value)
             }
             
             return

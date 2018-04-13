@@ -608,9 +608,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="triggerDatePicker:" destination="PdG-hk-wVj" eventType="touchDown" id="xs4-RX-25N"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Where from?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rYK-Ww-ftp">
                                 <rect key="frame" x="16" y="171" width="180" height="30"/>
@@ -1457,6 +1454,6 @@
         <image name="white" width="112" height="112"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ruZ-Ha-ylM"/>
+        <segue reference="slo-0J-Efm"/>
     </inferredMetricsTieBreakers>
 </document>
