@@ -1,7 +1,8 @@
 
 import UIKit
-import Firebase
 import UserNotifications
+import Firebase
+import DropDown
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureScheme()
         
         Messaging.messaging().delegate = self
+        DropDown.startListeningToKeyboard()
         
         // Request permission to enable push notifications
         enableNotifs(application)

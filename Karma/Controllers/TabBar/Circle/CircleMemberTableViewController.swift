@@ -8,13 +8,10 @@
 
 import UIKit
 import FirebaseDatabase
-import FirebaseStorage
-import Kingfisher
 
 class CircleMemberTableViewController: UITableViewController {
 
     var ref: DatabaseReference!
-    var storageRef: StorageReference!
     var members = [DataSnapshot]()
     
     var name: String = ""
@@ -34,7 +31,6 @@ class CircleMemberTableViewController: UITableViewController {
         loadLocalVariables()
         
         self.ref = Database.database().reference()
-        self.storageRef = Storage.storage().reference()
         
         self.tableView.backgroundColor = viewColor
         self.tableView.separatorColor = viewColor
@@ -87,22 +83,9 @@ class CircleMemberTableViewController: UITableViewController {
             let imageURL = URL(string: imageString)
             let imagePath = imageURL?.path
             
-            if imagePath == "default" {
-                cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
-            } else {
-                self.storageRef.child(imagePath!).getData(maxSize: INT64_MAX) {(data, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
-                    } else {
-                        DispatchQueue.main.async {
-                            let serverImage = UIImage.init(data: data!)
-                            cell.userImage.image = serverImage
-                            self.saveImageToCache(image: serverImage!, id: id)
-                            cell.setNeedsLayout()
-                        }
-                    }
-                }
+            UserUtil.getImage(id: id, path: imagePath!, fromCache: false, saveCache: true) { image in
+                cell.userImage.image = image
+                cell.setNeedsLayout()
             }
         }
         
@@ -115,11 +98,7 @@ class CircleMemberTableViewController: UITableViewController {
         
         return cell
     }
-    
-    private func saveImageToCache(image: UIImage, id: String) {
-        ImageCache.default.store(image, forKey: id)
-    }
-    
+
     private func loadMembers() {
         UserUtil.getCurrentUserName() { userName in
             UserUtil.getCurrentCircle() { circleName in

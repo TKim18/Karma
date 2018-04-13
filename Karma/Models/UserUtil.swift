@@ -8,10 +8,12 @@
 
 import Foundation
 import Firebase
+import Kingfisher
 
 class UserUtil {
     
     //------------------------ Handling User Properties ----------------------------//
+    
     static func getCurrentUser() -> User {
         return Auth.auth().currentUser!
     }
@@ -66,18 +68,6 @@ class UserUtil {
         }
     }
     
-    static func setCurrentProperty (key: String, value: String) {
-        if let userId = getCurrentId() {
-            UserUtil.getCurrentUserName() { userName in
-                UserUtil.getCurrentCircle() { circleName in
-                    let ref = Database.database().reference()
-                    ref.child("users/\(userId)/\(key)").setValue(value)
-                    ref.child("circles/\(circleName)/members/\(userName)/\(key)").setValue(value)
-                }
-            }
-        }
-    }
-    
     static func getNumAccepts(completionHandler: @escaping (_ number: Any?) -> ()) {
         getCurrentUserName() { userName in
             getCurrentCircle() { circleName in
@@ -93,17 +83,70 @@ class UserUtil {
         }
     }
     
-    static func setImageURL(photoURL : URL) {
-        let ref = Database.database().reference()
-        let id = getCurrentId()!
-        ref.child("users/\(id)").child("photoURL").setValue(photoURL.absoluteString)
+    static func setCurrentProperty (key: String, value: String) {
+        if let userId = getCurrentId() {
+            UserUtil.getCurrentUserName() { userName in
+                UserUtil.getCurrentCircle() { circleName in
+                    let ref = Database.database().reference()
+                    ref.child("users/\(userId)/\(key)").setValue(value)
+                    ref.child("circles/\(circleName)/members/\(userName)/\(key)").setValue(value)
+                }
+            }
+        }
     }
     
-//    static func setProperty(key: String, id: String, value: String) {
-//        let ref = Database.database().reference()
-//        ref.child("users/\(id)/\(key)").setValue(value)
-//        ref.child("circles/\(circleName)/members/\(userName)").setValue(value)
-//    }
+    //------------------------ Handling Images ----------------------------//
+    
+    static func setImageURL(photoURL : URL) {
+        getCurrentCircle() { circleName in
+            getCurrentUserName() { userName in
+                let ref = Database.database().reference()
+                let id = getCurrentId()!
+                ref.child("users/\(id)").child("photoURL").setValue(photoURL.absoluteString)
+                ref.child("circles/\(circleName)/members/\(userName)/photoURL").setValue(photoURL.absoluteString)
+            }
+        }
+    }
+    
+    static func getImage(id: String, path: String, fromCache: Bool, saveCache: Bool, completionHandler: @escaping (_ image: Image) -> ()) {
+        if path == "default" {
+            completionHandler(#imageLiteral(resourceName: "DefaultAvatar"))
+            return
+        }
+        if fromCache {
+            ImageCache.default.retrieveImage(forKey: id, options: nil) {
+                image, cacheType in
+                if let image = image {
+                    completionHandler(image)
+                    return
+                }
+            }
+        }
+        getImageFromServer(id: id, path: path, saveCache: saveCache) { image in
+            completionHandler(image)
+        }
+    }
+    
+    private static func getImageFromServer(id: String, path: String, saveCache: Bool, completionHandler: @escaping (_ image: Image) -> ()){
+        let storageRef = Storage.storage().reference()
+        storageRef.child(path).getData(maxSize: INT64_MAX) {(data, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completionHandler(#imageLiteral(resourceName: "DefaultAvatar"))
+            }
+            DispatchQueue.main.async {
+                let serverImage = UIImage.init(data: data!)!
+                if saveCache { self.saveImageToCache(id: id, image: serverImage) }
+                completionHandler(serverImage)
+            }
+        }
+    }
+    
+    static func saveImageToCache(id: String, image: UIImage) {
+        ImageCache.default.removeImage(forKey: id)
+        ImageCache.default.store(image, forKey: id)
+        print("User image has been saved to cache")
+    }
     
     //------------------------ Handling Transaction ----------------------------//
     

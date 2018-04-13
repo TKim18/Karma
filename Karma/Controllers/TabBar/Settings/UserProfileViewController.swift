@@ -112,24 +112,12 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     private func displayUserPicture() {
         let path = imageURL.path
+        let id = UserUtil.getCurrentId()!
         if path.hasPrefix("/userImages/"){
-            ImageCache.default.retrieveImage(forKey: UserUtil.getCurrentId()!, options: nil) {
-                image, cacheType in
-                if let image = image {
-                    self.imageView.image = image
-                } else {
-                    self.activityIndicator.startAnimating()
-                    self.storageRef.child(path).getData(maxSize: INT64_MAX) {(data, error) in
-                        if let error = error {
-                            print(error.localizedDescription)
-                            return
-                        }
-                        DispatchQueue.main.async {
-                            self.imageView.image = UIImage.init(data: data!)
-                            self.activityIndicator.stopAnimating()
-                        }
-                    }
-                }
+            self.activityIndicator.startAnimating()
+            UserUtil.getImage(id: id, path: path, fromCache: true, saveCache: true) { image in
+                self.imageView.image = image
+                self.activityIndicator.stopAnimating()
             }
         } else {
             imageView.image = #imageLiteral(resourceName: "DefaultAvatar")
@@ -152,7 +140,7 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
             self.imageView.image = image.fixOrientation()
             let roundImage = self.makeRoundImg(img: self.imageView)
             self.imageView.image = roundImage
-            self.saveImageToCache(image: roundImage)
+            UserUtil.saveImageToCache(id: UserUtil.getCurrentId()!, image: roundImage)
             
             // Convert the image into Data type
             let imageData = UIImagePNGRepresentation(self.imageView.image!)
@@ -168,20 +156,11 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
                 }
                 
                 // Update the user photo if it is still on default
-                if self.imageURL == URL(string: "default") {
-                    UserUtil.setImageURL(photoURL: URL(string: "gs://karma-b3940.appspot.com/\(imagePath)")!)
-                }
+                UserUtil.setImageURL(photoURL: URL(string: "gs://karma-b3940.appspot.com/\(imagePath)")!)
                 
                 print("User image has been uploaded to the server")
             }
         }
-    }
-    
-    private func saveImageToCache(image: UIImage) {
-        let id = UserUtil.getCurrentId()!
-        ImageCache.default.removeImage(forKey: id)
-        ImageCache.default.store(image, forKey: id)
-        print("User image has been saved to cache")
     }
     
     // TODO: extract this out of this class

@@ -99,7 +99,7 @@ class ViewRequestTableViewController: UITableViewController {
         roundButton.setImage(UIImage(named:"AddButton"), for: .normal)
         roundButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -25), roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -25), roundButton.widthAnchor.constraint(equalToConstant: 75), roundButton.heightAnchor.constraint(equalToConstant: 75)])
+        roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -25), roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -25), roundButton.widthAnchor.constraint(equalToConstant: 60), roundButton.heightAnchor.constraint(equalToConstant: 60)])
     }
 
     @IBAction func showNewRequest(_ sender: UIButton){
@@ -231,37 +231,13 @@ class ViewRequestTableViewController: UITableViewController {
             let imageURL = URL(string: imageString)
             let imagePath = imageURL?.path
             
-            if imagePath == "default" {
-                cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
-            } else {
-                ImageCache.default.retrieveImage(forKey: requestId, options: nil) {
-                    image, cacheType in
-                    if let image = image {
-                        cell.userImage.image = image
-                    } else {
-                        self.storageRef.child(imagePath!).getData(maxSize: INT64_MAX) {(data, error) in
-                            if let error = error {
-                                print(error.localizedDescription)
-                                cell.userImage.image = #imageLiteral(resourceName: "DefaultAvatar")
-                            } else {
-                                DispatchQueue.main.async {
-                                    let serverImage = UIImage.init(data: data!)
-                                    cell.userImage.image = serverImage
-                                    self.saveImageToCache(image: serverImage!, id: requestId)
-                                    cell.setNeedsLayout()
-                                }
-                            }
-                        }
-                    }
-                }
+            UserUtil.getImage(id: requestId, path: imagePath!, fromCache: true, saveCache: true) { image in
+                cell.userImage.image = image
+                cell.setNeedsLayout()
             }
         }
         
         return cell
-    }
-    
-    private func saveImageToCache(image: UIImage, id: String) {
-        ImageCache.default.store(image, forKey: id)
     }
     
     // Slide to accept or delete request

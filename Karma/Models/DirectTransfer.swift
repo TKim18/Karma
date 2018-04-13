@@ -32,6 +32,15 @@ class DirectTransfer : NSObject {
         self.selectedName = ""
     }
     
+    init (currentUserId: String, currentUserName: String, currentName: String) {
+        self.currentUserId = currentUserId
+        self.currentUserName = currentUserName
+        self.currentName = currentName
+        self.selectedUserId = ""
+        self.selectedUserName = ""
+        self.selectedName = ""
+    }
+    
     init (currentUserId: String, currentUserName: String, currentName: String, selectedUserId: String, selectedUserName: String, selectedName: String) {
         self.currentUserId = currentUserId
         self.currentUserName = currentUserName
