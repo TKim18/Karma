@@ -41,13 +41,12 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     }
     
     func setupView() {
-        titleField.becomeFirstResponder()
+        locationField.becomeFirstResponder()
         self.reqButtonPosition = requestButton.frame.origin.y
         
-        order = Order()
-        order.category = .Custom
         if let category = order.category {
-            categoryImage.image = category.image
+            self.categoryImage.image = category.image
+            self.titleField.text = category.description
         }
     }
     
@@ -86,11 +85,6 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     
     func textViewDidChange(_ textView: UITextView) {
         placeholderLabel.isHidden = !requestDetailsField.text.isEmpty
-    }
-    
-    @IBAction func dismissModal(sender: Any) {
-        view.endEditing(true)
-        self.dismiss(animated: true, completion: {})
     }
     
     // Date and Time Picker

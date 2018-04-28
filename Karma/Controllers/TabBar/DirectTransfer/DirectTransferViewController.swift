@@ -49,11 +49,13 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
 
         setupDetails()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        costField.becomeFirstResponder()
+    }
 
     // MARK: Setup Methods
     func setupView() {
-        costField.becomeFirstResponder()
-        
         loadDropDown()
         
         loadVariables()

@@ -53,6 +53,14 @@ class Order : NSObject {
         self.destination = ""
     }
     
+    init (category: Category) {
+        self.title = ""
+        self.details = ""
+        self.time = ""
+        self.category = category
+        self.destination = ""
+    }
+    
     // Add an unaccepted order
     func upload(callback: @escaping () -> ()) {
         let ref = Database.database().reference()

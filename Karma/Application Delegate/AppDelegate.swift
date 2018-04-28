@@ -69,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     } else {
                         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                         let controller = storyBoard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
+                        
                         let notifTab = controller.tabBar.items![1]
                         UserUtil.getNumAccepts() { number in
                             if let number = number as? Int {
@@ -93,7 +94,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        // Print message ID.
+        
+        application.applicationIconBadgeNumber += 1
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }

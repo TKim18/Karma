@@ -16,6 +16,7 @@ class ViewRequestTableViewController: UITableViewController {
     var ref: DatabaseReference!
     let cellSpacingHeight: CGFloat = 5
     let backgroundColor = UIColor.white
+    let application = UIApplication.shared
     
     fileprivate var _pointHandle: DatabaseHandle?
     fileprivate var _unacceptAddHandle: DatabaseHandle?
@@ -45,6 +46,12 @@ class ViewRequestTableViewController: UITableViewController {
         
         //Configure the view
         configureTableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        application.applicationIconBadgeNumber = 0
     }
     
     private func configureDatabase() {

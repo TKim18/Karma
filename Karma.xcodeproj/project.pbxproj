@@ -17,7 +17,6 @@
 		221C9A4B207C3ECD0025C6F0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 221C9A4A207C3ECD0025C6F0 /* README.md */; };
 		2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */; };
 		2229C0861F744D820083C215 /* ViewRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */; };
-		2229C08C1F744D9E0083C215 /* CustomRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0891F744D9E0083C215 /* CustomRequestViewController.swift */; };
 		22302B041F7B37790046E757 /* CircleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B011F7B37790046E757 /* CircleController.swift */; };
 		223BE9B81F90062000C6A8F7 /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BE9B71F90062000C6A8F7 /* UserUtil.swift */; };
 		224006A7204CEDDD003CE920 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224006A6204CEDDD003CE920 /* AppDelegate.swift */; };
@@ -26,6 +25,9 @@
 		224006B3204CEE34003CE920 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224006B2204CEE34003CE920 /* Assets.xcassets */; };
 		224006B5204CEF31003CE920 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224006B4204CEF31003CE920 /* Login.storyboard */; };
 		224158CA2027BE3F00C8DE2F /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */; };
+		224C77942092D5A500E746CA /* CustomRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C77912092D5A500E746CA /* CustomRequestViewController.swift */; };
+		224C77952092D5A500E746CA /* RequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C77922092D5A500E746CA /* RequestTableViewController.swift */; };
+		224C77962092D5A500E746CA /* RequestCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224C77932092D5A500E746CA /* RequestCategoryTableViewCell.swift */; };
 		2254AD5B2079C14000A03ADF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2254AD5A2079C14000A03ADF /* String.swift */; };
 		226270DC1FB5369100690600 /* RoundedButtonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226270DB1FB5369100690600 /* RoundedButtonController.swift */; };
 		227330A21FBBA88E002D4026 /* NumPadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FE6DB1FBB9AD7006C257E /* NumPadCalculator.swift */; };
@@ -91,7 +93,6 @@
 		221C9A4A207C3ECD0025C6F0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewController.swift; sourceTree = "<group>"; };
 		2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewCell.swift; sourceTree = "<group>"; };
-		2229C0891F744D9E0083C215 /* CustomRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRequestViewController.swift; sourceTree = "<group>"; };
 		22302B011F7B37790046E757 /* CircleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleController.swift; path = Karma/Controllers/Onboarding/Circle/CircleController.swift; sourceTree = SOURCE_ROOT; };
 		223BE9B71F90062000C6A8F7 /* UserUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUtil.swift; sourceTree = "<group>"; };
 		224006A6204CEDDD003CE920 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +103,9 @@
 		224006B2204CEE34003CE920 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		224006B4204CEF31003CE920 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		224C77912092D5A500E746CA /* CustomRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRequestViewController.swift; sourceTree = "<group>"; };
+		224C77922092D5A500E746CA /* RequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTableViewController.swift; sourceTree = "<group>"; };
+		224C77932092D5A500E746CA /* RequestCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		2254AD5A2079C14000A03ADF /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		226270DB1FB5369100690600 /* RoundedButtonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonController.swift; sourceTree = "<group>"; };
 		226270DD1FB53E7E00690600 /* CostCalculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CostCalculator.entitlements; sourceTree = "<group>"; };
@@ -208,7 +212,7 @@
 				2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */,
 				2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */,
 				2216C35E207F261800B57463 /* OrderDetailsViewController.swift */,
-				2229C0891F744D9E0083C215 /* CustomRequestViewController.swift */,
+				224C77902092D57E00E746CA /* AddRequest */,
 			);
 			path = MainBoard;
 			sourceTree = "<group>";
@@ -257,6 +261,16 @@
 				224006B2204CEE34003CE920 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		224C77902092D57E00E746CA /* AddRequest */ = {
+			isa = PBXGroup;
+			children = (
+				224C77932092D5A500E746CA /* RequestCategoryTableViewCell.swift */,
+				224C77922092D5A500E746CA /* RequestTableViewController.swift */,
+				224C77912092D5A500E746CA /* CustomRequestViewController.swift */,
+			);
+			path = AddRequest;
 			sourceTree = "<group>";
 		};
 		2274A4A22079CE68005FB6B0 /* Settings */ = {
@@ -571,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22ABA8691FABAB370043AB4E /* CircleCreateViewController.swift in Sources */,
+				224C77942092D5A500E746CA /* CustomRequestViewController.swift in Sources */,
 				227330A41FBBC0C6002D4026 /* RoundedButtonController.swift in Sources */,
 				223BE9B81F90062000C6A8F7 /* UserUtil.swift in Sources */,
 				224006A7204CEDDD003CE920 /* AppDelegate.swift in Sources */,
@@ -591,16 +606,17 @@
 				2254AD5B2079C14000A03ADF /* String.swift in Sources */,
 				22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */,
 				22A0B1B0207C01F400330DB0 /* CircleSettingsViewController.swift in Sources */,
+				224C77952092D5A500E746CA /* RequestTableViewController.swift in Sources */,
 				22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */,
 				2277E0791F744C7800AC53CB /* LoginController.swift in Sources */,
 				2216C35F207F261900B57463 /* OrderDetailsViewController.swift in Sources */,
 				2274A4A42079CE8E005FB6B0 /* SecurityViewController.swift in Sources */,
-				2229C08C1F744D9E0083C215 /* CustomRequestViewController.swift in Sources */,
 				2277E0671F744B5F00AC53CB /* Circle.swift in Sources */,
 				22D31D8B1FB2B28400014892 /* DirectTransferViewController.swift in Sources */,
 				2216C364207F26AB00B57463 /* CircleMemberTableViewCell.swift in Sources */,
 				2277E07A1F744C7800AC53CB /* RegisterController.swift in Sources */,
 				22DE50822061F86400A87979 /* Constants.swift in Sources */,
+				224C77962092D5A500E746CA /* RequestCategoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
