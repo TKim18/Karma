@@ -33,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func configureScheme() {
         // Sets the universal navigation bar color, tint color, and text color across the whole app
         let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.tintColor = UIColor.black
         navigationBarAppearance.barTintColor = UIColor.white //(rgb: 285398)
         navigationBarAppearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.black]
     }

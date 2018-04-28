@@ -21,6 +21,7 @@ class OrderDetailsViewController: UIViewController {
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var acceptButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,11 @@ class OrderDetailsViewController: UIViewController {
     func presentOrder() {
         guard let order = currentOrder.value as? [String: Any], let info = order["info"] as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return }
         
+        let id = UserUtil.getCurrentId() ?? ""
+        if reqUser["id"] as? String == id {
+            self.acceptButton.title = ""
+        }
+        
         let title = info[Constants.Order.Fields.title] as? String
         let cost = info[Constants.Order.Fields.points] as! Double
         
@@ -41,7 +47,13 @@ class OrderDetailsViewController: UIViewController {
         pointsLabel.text = String(describing: cost)
         titleLabel.text = title!
         userLabel.text = reqUser["name"] as? String ?? ""
-
+    }
+    
+    @IBAction func acceptOrder(sender: UIButton) {
+        let userId = UserUtil.getCurrentId() ?? ""
+        guard let order = currentOrder.value as? [String: Any] else { return }
+        Order.uploadAccept(key: currentOrder.key, val: order, userId: userId)
+        self.dismiss(animated: true, completion: {})
     }
     
     @IBAction func dismissModal(sender: Any) {

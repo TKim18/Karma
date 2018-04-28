@@ -71,6 +71,8 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
             if let number = number as? String {
                 self.numberField.text = number
                 self.initNumber = number
+            } else {
+                self.initNumber = ""
             }
         }
         
@@ -86,7 +88,7 @@ class UserProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @objc func editingChanged(_ textField: UITextField) {
-        guard let name = nameField.text, let phone = numberField.text else { 
+        guard let name = nameField.text, let phone = numberField.text else {
             navigationItem.rightBarButtonItem?.isEnabled = false
             return
         }

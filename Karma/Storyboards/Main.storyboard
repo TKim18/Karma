@@ -334,6 +334,11 @@
                                                 <action selector="dismissModalWithSender:" destination="kfE-SF-bWw" id="Atf-Bt-uP8"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Accept" id="9t4-G0-ftl">
+                                            <connections>
+                                                <action selector="acceptOrderWithSender:" destination="kfE-SF-bWw" id="mfN-8W-kLn"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -362,7 +367,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="testing" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Iml-H0-DJI">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="testing" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iml-H0-DJI">
                                 <rect key="frame" x="165" y="380" width="173" height="254"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -427,6 +432,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
+                        <outlet property="acceptButton" destination="9t4-G0-ftl" id="G0E-g3-sTZ"/>
                         <outlet property="descriptionTextView" destination="Iml-H0-DJI" id="eLX-i1-ieG"/>
                         <outlet property="locationLabel" destination="zhY-Hv-qst" id="u6N-cM-DDZ"/>
                         <outlet property="pointsLabel" destination="XVe-Td-6kT" id="8EW-v1-Zho"/>
@@ -511,12 +517,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="requestWithSender:" destination="lUE-jR-J2o" eventType="touchUpInside" id="J6z-oe-BPc"/>
                                     <action selector="requestWithSender:" destination="N7W-wu-JGK" eventType="touchUpInside" id="Rae-KX-EXZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f95-P1-w7i">
                                 <rect key="frame" x="214" y="171" width="152" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="triggerDatePicker:" destination="lUE-jR-J2o" eventType="touchDown" id="uXE-R1-aNL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -530,6 +540,7 @@
                         <outlet property="requestButton" destination="aEK-yw-r2e" id="LgZ-s4-yLr"/>
                         <outlet property="requestDetailsField" destination="vxt-db-53q" id="Aa4-rB-Ihr"/>
                         <outlet property="titleField" destination="97M-Wk-NDa" id="dsH-Ow-jRd"/>
+                        <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="SubmitRequest" id="Q8a-rh-rRp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXV-h8-2aQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -694,7 +705,7 @@
             </objects>
             <point key="canvasLocation" x="2645.5999999999999" y="-1668.2158920539732"/>
         </scene>
-        <!--Direct Transfer View Controller-->
+        <!--Pay or Request-->
         <scene sceneID="FAi-SX-0KR">
             <objects>
                 <viewController id="N7W-wu-JGK" customClass="DirectTransferViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
@@ -793,7 +804,7 @@
                             <constraint firstItem="ryO-1x-bCX" firstAttribute="top" secondItem="ggN-uH-D4N" secondAttribute="bottom" constant="12" id="zhj-fu-Wy9"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="kEn-2h-qWZ">
+                    <navigationItem key="navigationItem" title="Pay or Request" id="kEn-2h-qWZ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4Yb-oE-3bW">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>

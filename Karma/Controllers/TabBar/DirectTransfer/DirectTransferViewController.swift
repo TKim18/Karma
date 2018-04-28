@@ -46,7 +46,10 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
         self.currentTransfer.selectedUserName = ""
         self.currentTransfer.selectedUserId = ""
         
-        requestButton.frame.origin.y = view.frame.maxY - requestButton.frame.size.height
+        // Reference the constraint value here and manually position it to be at 566
+        let reqPos = view.frame.maxY - requestButton.frame.size.height
+        
+        requestButton.frame.origin.y = reqPos
         payButton.frame.origin.y = view.frame.maxY - payButton.frame.size.height
         dividerLabel.frame.origin.y = view.frame.maxY - dividerLabel.frame.size.height
     }
@@ -91,6 +94,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     }
     
     private func loadVariables() {
+        // self.origButtonPosition = 618
         self.origButtonPosition = requestButton.frame.origin.y
         if let currentUserId = UserUtil.getCurrentId() {
             UserUtil.getCurrentUserName() { currentUserName in

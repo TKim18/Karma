@@ -41,12 +41,18 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     }
     
     func setupView() {
-        locationField.becomeFirstResponder()
+        // locationField.becomeFirstResponder()
         self.reqButtonPosition = requestButton.frame.origin.y
         
         if let category = order.category {
             self.categoryImage.image = category.image
             self.titleField.text = category.description
+            if category == .Custom {
+                self.titleField.text = ""
+                self.titleField.becomeFirstResponder()
+            } else {
+                self.locationField.becomeFirstResponder()
+            }
         }
     }
     

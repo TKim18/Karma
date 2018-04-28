@@ -15,6 +15,7 @@
 * Newest to oldest (maybe)
 
 ### Everything in between ###
+* Add iMessaging feature to circle member
 
 ### Hard ###
 * Geolocation
