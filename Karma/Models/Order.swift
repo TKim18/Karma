@@ -92,7 +92,7 @@ class Order : NSObject {
                                 // Save under the corresponding circle for unacceptedOrders
                                 ref.child("unacceptedOrders/\(circleName)").childByAutoId().setValue(data)
                                 
-                                PushNotification.notifyNewRequest()
+                                PushNotification.notifyNewRequest(title: title)
                             } else {
                                 print("Unable to retrieve all of the order properties")
                             }
@@ -120,7 +120,7 @@ class Order : NSObject {
                 UserUtil.getCurrentProperty(key: "name") { name in
                     var order = val
                     guard let reqUser = order["requestUser"] as? [String : Any] else { return }
-                    if let requestName = reqUser["userName"] {
+                    if let requestName = reqUser["userName"] as? String {
                         // Delete the request from the list of unaccepted orders
                         ref.child("unacceptedOrders/\(circleName)/\(key)").removeValue()
                         
@@ -142,6 +142,8 @@ class Order : NSObject {
                         order["autoId"] = acceptRef.key
                         order["isDirect"] = "false"
                         requestRef.setValue(order)
+                        
+                        PushNotification.notifyAcceptRequest(name: name as! String, topic: requestName)
                     }
                 }
             }

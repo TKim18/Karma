@@ -9,12 +9,12 @@
 import Foundation
 
 class PushNotification {
-    static func notifyNewRequest() {
+    static func notifyNewRequest(title: String) {
         UserUtil.getCurrentCircle() { circle in
             UserUtil.getCurrentProperty(key: "name") { name in
                 let name = name as? String ?? ""
                 let clean = circle.clean()
-                sendNotification(title: "New Request", body: "\(name) has just requested something!", topic: clean)
+                sendNotification(title: "New Request", body: "\(name) has just requested something from \(title)!", topic: clean)
             }
         }
     }
@@ -24,6 +24,10 @@ class PushNotification {
             let name = name as? String ?? ""
             sendNotification(title: "New Member", body: "\(name) has just joined your circle!", topic: topic)
         }
+    }
+    
+    static func notifyAcceptRequest(name: String, topic: String) {
+        sendNotification(title: "Accepted Request", body: "\(name) has just accepted your request", topic: topic)
     }
     
     static func sendNotification(title: String, body: String, topic: String) {

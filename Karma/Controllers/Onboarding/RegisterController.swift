@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
+import Firebase
 
 class RegisterController: UIViewController {
     // UI Elements
@@ -78,6 +77,7 @@ class RegisterController: UIViewController {
                      Constants.User.Fields.points: Constants.User.initialPoints,
                      "photoURL": "default"]
                 )
+                Messaging.messaging().subscribe(toTopic: "\(email)")
                 self.performSegue(withIdentifier: Constants.Segue.RegisterToMain, sender: self)
             }
         }
