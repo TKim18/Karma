@@ -33,8 +33,19 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     @IBOutlet weak var requestButton : UIButton!
     @IBOutlet weak var payButton : UIButton!
     @IBOutlet weak var dividerLabel : UILabel!
+    
     @IBAction func cancel(sender : AnyObject) {
         self.view.endEditing(true)
+        
+        self.costField.text = ""
+        self.descriptionField.text = ""
+        self.placeholderLabel.isHidden = false
+        self.selectedUser.setTitle("Select a User", for: .normal)
+        
+        self.currentTransfer.selectedName = ""
+        self.currentTransfer.selectedUserName = ""
+        self.currentTransfer.selectedUserId = ""
+        
         requestButton.frame.origin.y = view.frame.maxY - requestButton.frame.size.height
         payButton.frame.origin.y = view.frame.maxY - payButton.frame.size.height
         dividerLabel.frame.origin.y = view.frame.maxY - dividerLabel.frame.size.height

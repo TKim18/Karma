@@ -521,6 +521,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <connections>
+                        <outlet property="categoryImage" destination="EAD-Rf-aPG" id="uhJ-id-UYm"/>
+                        <outlet property="costField" destination="emC-Uq-h1u" id="LO8-9i-QEd"/>
+                        <outlet property="endTimeField" destination="P8f-kw-77L" id="vP0-p2-B5W"/>
+                        <outlet property="errorMessage" destination="Bjd-DR-YGo" id="ZWn-12-MN7"/>
+                        <outlet property="locationField" destination="JBp-kh-fUL" id="iGH-42-oUV"/>
+                        <outlet property="requestButton" destination="aEK-yw-r2e" id="LgZ-s4-yLr"/>
+                        <outlet property="requestDetailsField" destination="vxt-db-53q" id="Aa4-rB-Ihr"/>
+                        <outlet property="titleField" destination="97M-Wk-NDa" id="dsH-Ow-jRd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXV-h8-2aQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -574,7 +584,7 @@
                                 <connections>
                                     <outlet property="categoryImage" destination="ONb-9f-DKj" id="53D-zP-woe"/>
                                     <outlet property="categoryLabel" destination="Jr3-YP-l8w" id="zpH-a2-wX4"/>
-                                    <segue destination="lUE-jR-J2o" kind="show" id="Mbl-K2-bls"/>
+                                    <segue destination="lUE-jR-J2o" kind="show" identifier="CategoryDetails" id="Mbl-K2-bls"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
