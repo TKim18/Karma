@@ -445,6 +445,24 @@
             </objects>
             <point key="canvasLocation" x="-346" y="-2523"/>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="ayB-XJ-TTF">
+            <objects>
+                <viewController id="dMI-D7-BJn" customClass="MenuViewController" customModule="Karma" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NfF-E1-MKD"/>
+                        <viewControllerLayoutGuide type="bottom" id="nDX-1r-fSM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NqI-pe-FnD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NRY-XB-w8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2969" y="-2532"/>
+        </scene>
         <!--Custom Request View Controller-->
         <scene sceneID="XLV-xF-IGz">
             <objects>
@@ -528,6 +546,13 @@
                                     <action selector="triggerDatePicker:" destination="lUE-jR-J2o" eventType="touchDown" id="uXE-R1-aNL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3q-Ha-1St">
+                                <rect key="frame" x="0.0" y="64" width="375" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="dMI-D7-BJn" kind="show" identifier="OpenMenu" id="LRe-kn-JdM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -545,7 +570,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXV-h8-2aQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2124" y="-2523"/>
+            <point key="canvasLocation" x="-2124" y="-2523.6881559220392"/>
         </scene>
         <!--Choose a Category-->
         <scene sceneID="xPF-QY-Ftz">
@@ -1521,6 +1546,6 @@
         <image name="white" width="112" height="112"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ruZ-Ha-ylM"/>
+        <segue reference="Q8a-rh-rRp"/>
     </inferredMetricsTieBreakers>
 </document>

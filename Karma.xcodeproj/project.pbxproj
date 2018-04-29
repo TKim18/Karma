@@ -17,6 +17,7 @@
 		221C9A4B207C3ECD0025C6F0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 221C9A4A207C3ECD0025C6F0 /* README.md */; };
 		2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */; };
 		2229C0861F744D820083C215 /* ViewRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */; };
+		222E8DFF2095369F00540F40 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E8DFE2095369F00540F40 /* MenuViewController.swift */; };
 		22302B041F7B37790046E757 /* CircleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22302B011F7B37790046E757 /* CircleController.swift */; };
 		223BE9B81F90062000C6A8F7 /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223BE9B71F90062000C6A8F7 /* UserUtil.swift */; };
 		224006A7204CEDDD003CE920 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224006A6204CEDDD003CE920 /* AppDelegate.swift */; };
@@ -93,6 +94,7 @@
 		221C9A4A207C3ECD0025C6F0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		2229C0831F744D820083C215 /* ViewRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewController.swift; sourceTree = "<group>"; };
 		2229C0841F744D820083C215 /* ViewRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRequestTableViewCell.swift; sourceTree = "<group>"; };
+		222E8DFE2095369F00540F40 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		22302B011F7B37790046E757 /* CircleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleController.swift; path = Karma/Controllers/Onboarding/Circle/CircleController.swift; sourceTree = SOURCE_ROOT; };
 		223BE9B71F90062000C6A8F7 /* UserUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUtil.swift; sourceTree = "<group>"; };
 		224006A6204CEDDD003CE920 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				224C77932092D5A500E746CA /* RequestCategoryTableViewCell.swift */,
 				224C77922092D5A500E746CA /* RequestTableViewController.swift */,
 				224C77912092D5A500E746CA /* CustomRequestViewController.swift */,
+				222E8DFE2095369F00540F40 /* MenuViewController.swift */,
 			);
 			path = AddRequest;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				22302B041F7B37790046E757 /* CircleController.swift in Sources */,
 				2229C0851F744D820083C215 /* ViewRequestTableViewController.swift in Sources */,
 				221C9A49207C3AC90025C6F0 /* PushNotification.swift in Sources */,
+				222E8DFF2095369F00540F40 /* MenuViewController.swift in Sources */,
 				2277E06E1F744BA400AC53CB /* Color.swift in Sources */,
 				224158CA2027BE3F00C8DE2F /* UserProfileViewController.swift in Sources */,
 				2216C363207F26AB00B57463 /* CircleMemberTableViewController.swift in Sources */,

@@ -165,6 +165,17 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
             order.time = "ASAP"
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        let iden = segue.identifier
+        if iden == "OpenMenu" {
+            let currentCategory = order.category
+            if let destination = segue.destination as? MenuViewController {
+                destination.category = currentCategory
+            }
+        }
+    }
 
     // Helper Functions:
     @objc func dismissKeyboard() {
