@@ -41,7 +41,6 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     }
     
     func setupView() {
-        // locationField.becomeFirstResponder()
         self.reqButtonPosition = requestButton.frame.origin.y
         
         if let category = order.category {
@@ -54,6 +53,10 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
                 self.locationField.becomeFirstResponder()
             }
         }
+    }
+    
+    @IBAction func showMenu(_ sender: UIButton){
+        self.performSegue(withIdentifier: "ShowMenu", sender: sender)
     }
     
     func setupKeyboard() {

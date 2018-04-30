@@ -189,7 +189,7 @@
                     <connections>
                         <outlet property="karmaPointsButton" destination="GEq-48-yyk" id="A0A-tm-j2I"/>
                         <outlet property="pendingAcceptedControl" destination="ARC-r2-a7u" id="KiI-N5-OfJ"/>
-                        <segue destination="Mhu-zY-hlZ" kind="presentation" identifier="NewRequest" id="mJ6-lo-KXj"/>
+                        <segue destination="Mhu-zY-hlZ" kind="showDetail" identifier="NewRequest" id="mJ6-lo-KXj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ix-LT-qlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -546,13 +546,6 @@
                                     <action selector="triggerDatePicker:" destination="lUE-jR-J2o" eventType="touchDown" id="uXE-R1-aNL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E3q-Ha-1St">
-                                <rect key="frame" x="0.0" y="64" width="375" height="99"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="dMI-D7-BJn" kind="show" identifier="OpenMenu" id="LRe-kn-JdM"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -566,6 +559,7 @@
                         <outlet property="requestDetailsField" destination="vxt-db-53q" id="Aa4-rB-Ihr"/>
                         <outlet property="titleField" destination="97M-Wk-NDa" id="dsH-Ow-jRd"/>
                         <segue destination="sJO-1I-4Tx" kind="showDetail" identifier="SubmitRequest" id="Q8a-rh-rRp"/>
+                        <segue destination="dMI-D7-BJn" kind="show" identifier="ShowMenu" id="9QY-We-7ym"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXV-h8-2aQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
