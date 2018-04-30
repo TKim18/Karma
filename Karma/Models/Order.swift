@@ -15,15 +15,16 @@ import FirebaseDatabase
 class Order : NSObject {
     
     enum Category: String {
-        case Summerfields, WesWings, WeShop, Custom
+        case Summerfields, WesWings, WeShop, RedBlack, Custom
         
-        static let allCategories = [Summerfields, WesWings, WeShop, Custom]
+        static let allCategories = [Summerfields, WesWings, WeShop, RedBlack, Custom]
         
         var description: String {
             switch self {
             case .Summerfields: return "Summerfields"
             case .WesWings: return "WesWings"
             case .WeShop: return "WeShop"
+            case .RedBlack: return "Red & Black"
             case .Custom: return "Custom"
             }
         }
@@ -33,7 +34,19 @@ class Order : NSObject {
             case .Summerfields: return UIImage(named: "Summerfields")!
             case .WesWings: return UIImage(named: "WeShop")!
             case .WeShop: return UIImage(named: "WeShop")!
+            case .RedBlack: return UIImage(named: "WeShop")!
             case .Custom: return UIImage(named: "Summerfields")!
+            }
+        }
+        
+        var menuURL: URL {
+            switch self {
+            // TODO: Add the URL strings
+            case .Summerfields: return URL(string: "")!
+            case .WesWings: return URL(string: "https://docs.wixstatic.com/ugd/5b7235_b08fe2d4d23844b5a6874c1eb813b8ce.pdf")!
+            case .RedBlack: return URL(string: "https://docs.wixstatic.com/ugd/5b7235_71a4a9824d95417ea8999a547b86b911.pdf")!
+            case .WeShop: return URL(string: "")!
+            case .Custom: return URL(string: "")!
             }
         }
     }

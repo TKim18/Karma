@@ -552,7 +552,7 @@
                     <navigationItem key="navigationItem" title="Request Details" id="jSr-p7-781">
                         <barButtonItem key="rightBarButtonItem" title="Menu" id="H4A-EA-zvl">
                             <connections>
-                                <segue destination="dMI-D7-BJn" kind="show" id="sPa-i0-4YB"/>
+                                <segue destination="dMI-D7-BJn" kind="show" identifier="OpenMenu" id="sPa-i0-4YB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1546,6 +1546,7 @@
         <image name="white" width="112" height="112"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Cnv-rv-vjZ"/>
         <segue reference="Q8a-rh-rRp"/>
     </inferredMetricsTieBreakers>
 </document>

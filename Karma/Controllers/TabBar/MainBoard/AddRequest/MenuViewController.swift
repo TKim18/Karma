@@ -20,8 +20,7 @@ class MenuViewController: UIViewController, UIWebViewDelegate {
         myWebView.delegate = self
         self.view.addSubview(myWebView)
         
-        let url = URL (string: "http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UIWebView_Class/UIWebView_Class.pdf");
-        let request = URLRequest(url: url! as URL);
+        let request = URLRequest(url: category.menuURL);
         myWebView.loadRequest(request);
     }
     
