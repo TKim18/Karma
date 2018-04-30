@@ -8,16 +8,16 @@
 
 import UIKit
 import FirebaseAuth
-import GoogleSignIn
 
 class LoginController: UIViewController {
+    
     // UI Elements
-    @IBOutlet var emailField : UITextField!
-    @IBOutlet var passwordField : UITextField!
-    @IBOutlet var errorMessage : UILabel!
-    @IBOutlet var wesleyan : UITextField!
-    @IBOutlet var registerButton : UIButton!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var emailField : UITextField!
+    @IBOutlet weak var passwordField : UITextField!
+    @IBOutlet weak var errorMessage : UILabel!
+    @IBOutlet weak var wesleyan : UITextField!
+    @IBOutlet weak var registerButton : UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class LoginController: UIViewController {
         self.activityIndicator.hidesWhenStopped = true
         self.wesleyan.text = Constants.User.wesleyan
     }
-    
+
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }

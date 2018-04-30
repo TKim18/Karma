@@ -18,7 +18,6 @@ pod 'Firebase/Messaging'
 pod 'ActionSheetPicker-3.0'
 pod 'Kingfisher', '~> 4.0'
 pod 'DropDown'
-pod 'GoogleSignIn'
 
 end
         
