@@ -8,8 +8,9 @@
 
 import UIKit
 import FirebaseDatabase
+import MessageUI
 
-class CircleMemberTableViewController: UITableViewController {
+class CircleMemberTableViewController: UITableViewController, MFMessageComposeViewControllerDelegate {
 
     var ref: DatabaseReference!
     var members = [DataSnapshot]()
@@ -36,6 +37,10 @@ class CircleMemberTableViewController: UITableViewController {
         self.tableView.separatorColor = viewColor
         
         loadMembers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     func loadLocalVariables() {
@@ -97,6 +102,55 @@ class CircleMemberTableViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    // Slide to accept or delete request
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let member = self.members[indexPath.row]
+        
+        if let info = member.value as? [String : Any], let number = info["phoneNumber"] as? String {
+            let text = UITableViewRowAction(style: .normal, title: "Text") { action, index in
+                self.sendTextWithNumber(phoneNumber: number)
+            }
+            text.backgroundColor = UIColor(rgb: 0x32CD32)
+            let call = UITableViewRowAction(style: .normal, title: "Call") { action, index in
+                self.callNumber(phoneNumber: number)
+            }
+            call.backgroundColor = .blue
+            
+            return [text, call]
+        }
+        return []
+    }
+    
+    func sendTextWithNumber(phoneNumber: String) {
+        if (MFMessageComposeViewController.canSendText()) {
+            let controller = MFMessageComposeViewController()
+            controller.body = "Message Body"
+            controller.recipients = [phoneNumber]
+            controller.messageComposeDelegate = self
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        //... handle sms screen actions
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func callNumber(phoneNumber: String) {
+        if let url = URL(string: "tel://\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 
     private func loadMembers() {
