@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0910"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3514A379672D413EB90FB31EEDA3F66E"
+               BlueprintIdentifier = "800536090A9D546026EBE37DEF032813"
                BuildableName = "Pods_Karma.framework"
                BlueprintName = "Pods-Karma"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3514A379672D413EB90FB31EEDA3F66E"
+            BlueprintIdentifier = "800536090A9D546026EBE37DEF032813"
             BuildableName = "Pods_Karma.framework"
             BlueprintName = "Pods-Karma"
             ReferencedContainer = "container:Pods.xcodeproj">

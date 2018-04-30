@@ -3,6 +3,7 @@ import UIKit
 import UserNotifications
 import Firebase
 import DropDown
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
