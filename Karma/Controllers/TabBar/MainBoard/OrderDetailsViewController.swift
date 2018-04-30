@@ -13,6 +13,7 @@ class OrderDetailsViewController: UIViewController {
 
     //Local Variables
     var currentOrder : DataSnapshot!
+    var segment : Int!
     
     //UI Elements
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -34,7 +35,7 @@ class OrderDetailsViewController: UIViewController {
         guard let order = currentOrder.value as? [String: Any], let info = order["info"] as? [String: Any], let reqUser = order["requestUser"] as? [String: Any] else { return }
         
         let id = UserUtil.getCurrentId() ?? ""
-        if reqUser["id"] as? String == id {
+        if reqUser["id"] as? String == id || segment == 1 {
             self.acceptButton.title = ""
         }
         

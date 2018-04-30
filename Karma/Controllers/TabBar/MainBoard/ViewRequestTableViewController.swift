@@ -293,6 +293,7 @@ class ViewRequestTableViewController: UITableViewController {
             
             if let destination = segue.destination as? OrderDetailsViewController {
                 destination.currentOrder = orders[indexPath.row]
+                destination.segment = self.pendingAcceptedControl.selectedSegmentIndex
             }
         }
     }
