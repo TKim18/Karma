@@ -13,6 +13,7 @@ class RegisterController: UIViewController {
     // UI Elements
     @IBOutlet var nameField : UITextField!
     @IBOutlet var emailField : UITextField!
+    @IBOutlet var numberField : UITextField!
     @IBOutlet var passwordField : UITextField!
     @IBOutlet var verifyField : UITextField!
     @IBOutlet var wesleyan : UITextField!
@@ -40,9 +41,9 @@ class RegisterController: UIViewController {
     
     // Register button trigger
     @IBAction func registerButton(sender : AnyObject){
-        if let email = self.emailField.text, let name = self.nameField.text, let password = self.passwordField.text {
+        if let email = self.emailField.text, let name = self.nameField.text, let password = self.passwordField.text, let number = self.numberField.text {
             if self.validRegister() {
-                register(email: email, name: name, password: password)
+                register(email: email, name: name, password: password, number: number)
             }
         }
         else {
@@ -56,11 +57,15 @@ class RegisterController: UIViewController {
             errorMessage.text = Constants.User.invalidPassword
             return false
         }
+        if (nameField.text == "") {
+            errorMessage.text = "Please enter a name"
+            return false
+        }
         return true
     }
     
     // Server call
-    func register(email: String, name: String, password: String) {
+    func register(email: String, name: String, password: String, number: String) {
         activityIndicator.startAnimating()
         Auth.auth().createUser(withEmail: (email + Constants.User.wesleyan), password: password) {
             (user, error) in
@@ -75,6 +80,7 @@ class RegisterController: UIViewController {
                      Constants.User.Fields.userName: email,
                      Constants.User.Fields.home: Constants.User.university,
                      Constants.User.Fields.points: Constants.User.initialPoints,
+                     "phoneNumber" : number,
                      "photoURL": "default"]
                 )
                 Messaging.messaging().subscribe(toTopic: "\(email)")

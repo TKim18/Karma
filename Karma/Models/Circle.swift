@@ -64,26 +64,33 @@ class Circle : NSObject {
             UserUtil.getCurrentUserName() { userName in
                 UserUtil.getCurrentProperty(key: "name") { name in
                     if let circleName = self.joinName, let circleKey = self.joinKey {
-                        let noWhiteName = circleName.trimmingCharacters(in: .whitespacesAndNewlines)
+                        let cleanName = circleName.clean()
+                        
                         if newCircle {
                             var data : [String : Any]
                             data = [:]
-                            data["joinName"] = noWhiteName
-                            data["displayName"] = noWhiteName
+                            data["joinName"] = cleanName
+                            data["displayName"] = circleName
                             data["joinKey"] = circleKey
-                            ref.child("circles/\(noWhiteName)").setValue(data)
+                            ref.child("circles/\(cleanName)").setValue(data)
                         }
+                        
                         var udata : [String : Any]
+                        
                         udata = [:]
                         udata["id"] = id
                         udata["name"] = name
                         udata["karma"] = 50.00
                         udata["photoURL"] = "default"
                         
-                        ref.child("circles/\(noWhiteName)/members/\(userName)").setValue(udata)
-                        ref.child("users/\(id)/circles/\(noWhiteName)").setValue(true)
+                        ref.child("circles/\(cleanName)/members/\(userName)").setValue(udata)
+                        ref.child("users/\(id)/circles/\(cleanName)").setValue(true)
                         
-                        let cleanName = circleName.clean()
+                        UserUtil.getCurrentProperty(key: "phoneNumber") { number in
+                            ref.child("circles/\(cleanName)/members/\(userName)/phoneNumber").setValue(number as! String)
+                        }
+                        
+                        // let cleanName = circleName.clean()
                         PushNotification.notifyNewMember(topic: cleanName)
                         Messaging.messaging().subscribe(toTopic: "\(cleanName)")
                         
@@ -100,6 +107,7 @@ class Circle : NSObject {
     func exists(completionHandler: @escaping(_ exist: Bool) -> ()) {
         let ref = Database.database().reference()
         if let name = self.joinName {
+            
             ref.child("circles").child(name).observeSingleEvent(of: .value, with: { (snapshot) in
                 let entity = snapshot.value as? NSDictionary
                 let val = entity == nil ? false : true

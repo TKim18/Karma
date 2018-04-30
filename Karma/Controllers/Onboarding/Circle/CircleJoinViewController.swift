@@ -41,7 +41,7 @@ class CircleJoinViewController: CircleController {
     }
     
     func alertNoExist() {
-        let alert = UIAlertController(title: "Sorry, those are not valid credentials", message: "",  preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Sorry, those are not valid credentials", message: "The key is case sensitive.",  preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
         self.present(alert, animated: true, completion: nil)
     }

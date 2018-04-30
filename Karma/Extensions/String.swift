@@ -15,7 +15,8 @@ extension String {
         let lowerSet = "abcdefghijklmnopqrstuvwxyz"
         let puncSet = "._-~%"
         let cleanSet = numSet + upperSet + lowerSet + puncSet
-        return String(self.filter { cleanSet.contains($0) })
+        let noWhiteOrUpper = self.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        return String(noWhiteOrUpper.filter { cleanSet.contains($0) })
     }
 }
 
