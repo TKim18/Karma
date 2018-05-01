@@ -11,21 +11,22 @@ import ActionSheetPicker_3_0
 
 class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextViewDelegate {
     
-    @IBOutlet weak var RequestBottomConstraint: NSLayoutConstraint!
     // Local Variables
     var order : Order!
     var reqButtonPosition : CGFloat!
     var numPad : NumPadCalculator! = NumPadCalculator(frame: CGRect(x: 0, y: 0, width: 375, height: 216))
     
     // UI Elements
-    @IBOutlet var categoryImage: UIImageView!
-    @IBOutlet var titleField : UITextField!
-    @IBOutlet var endTimeField : UITextField!
-    @IBOutlet var locationField : UITextField!
-    @IBOutlet var costField : UITextField!
-    @IBOutlet var requestDetailsField : UITextView!
-    @IBOutlet var errorMessage : UILabel!
-    @IBOutlet var requestButton : UIButton!
+    @IBOutlet weak var categoryImage: UIImageView!
+    @IBOutlet weak var titleField : UITextField!
+    @IBOutlet weak var endTimeField : UITextField!
+    @IBOutlet weak var locationField : UITextField!
+    @IBOutlet weak var costField : UITextField!
+    @IBOutlet weak var requestDetailsField : UITextView!
+    @IBOutlet weak var errorMessage : UILabel!
+    @IBOutlet weak var requestButton : UIButton!
+    @IBOutlet weak var RequestBottomConstraint: NSLayoutConstraint!
+
     var placeholderLabel : UILabel!
     
     override func viewDidLoad() {

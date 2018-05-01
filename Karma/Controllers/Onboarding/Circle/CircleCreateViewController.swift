@@ -10,7 +10,7 @@ import UIKit
 
 class CircleCreateViewController: CircleController {
     
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

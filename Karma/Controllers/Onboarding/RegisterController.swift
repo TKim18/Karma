@@ -11,14 +11,14 @@ import Firebase
 
 class RegisterController: UIViewController {
     // UI Elements
-    @IBOutlet var nameField : UITextField!
-    @IBOutlet var emailField : UITextField!
-    @IBOutlet var numberField : UITextField!
-    @IBOutlet var passwordField : UITextField!
-    @IBOutlet var verifyField : UITextField!
-    @IBOutlet var wesleyan : UITextField!
-    @IBOutlet var errorMessage: UILabel!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var nameField : UITextField!
+    @IBOutlet weak var emailField : UITextField!
+    @IBOutlet weak var numberField : UITextField!
+    @IBOutlet weak var passwordField : UITextField!
+    @IBOutlet weak var verifyField : UITextField!
+    @IBOutlet weak var wesleyan : UITextField!
+    @IBOutlet weak var errorMessage: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var ref = Database.database().reference()
     

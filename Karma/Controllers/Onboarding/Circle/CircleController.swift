@@ -12,8 +12,8 @@ import FirebaseAuth
 class CircleController: UIViewController {
 
     // UI Elements
-    @IBOutlet var circleNameField : UITextField!
-    @IBOutlet var circleKeyField: UITextField!
+    @IBOutlet weak var circleNameField : UITextField!
+    @IBOutlet weak var circleKeyField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
