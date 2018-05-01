@@ -8,9 +8,10 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseInvites
 import MessageUI
 
-class CircleMemberTableViewController: UITableViewController, MFMessageComposeViewControllerDelegate {
+class CircleMemberTableViewController: UITableViewController, MFMessageComposeViewControllerDelegate, InviteDelegate {
 
     var ref: DatabaseReference!
     var members = [DataSnapshot]()
@@ -23,6 +24,8 @@ class CircleMemberTableViewController: UITableViewController, MFMessageComposeVi
     fileprivate var _addHandle: DatabaseHandle?
     fileprivate var _updateHandle: DatabaseHandle?
     fileprivate var _removeHandle: DatabaseHandle?
+    
+    @IBOutlet weak var inviteButton: UIBarButtonItem!
     
     let viewColor = UIColor(red: 242, green: 242, blue: 242)
     
@@ -122,6 +125,32 @@ class CircleMemberTableViewController: UITableViewController, MFMessageComposeVi
             return [text, call]
         }
         return []
+    }
+    
+    @IBAction func inviteTapped(_ sender: AnyObject) {
+        if let invite = Invites.inviteDialog() {
+            invite.setInviteDelegate(self)
+            UserUtil.getCurrentProperty(key: "name") { name in
+                if let name = name as? String {
+                    invite.setMessage("Join my circle!\n -\(name)")
+                    invite.setTitle("Karma Invite")
+                    invite.setDeepLink("app_url")
+                    invite.setCallToActionText("Install!")
+                    invite.setCustomImage("https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png")
+                    invite.open()
+                }
+            }
+        }
+    }
+    
+    func inviteFinished(withInvitations invitationIds: [String], error: Error?) {
+        if let error = error {
+            print("Failed: " + error.localizedDescription)
+        } else {
+            let alert = UIAlertController(title: "\(invitationIds.count) invites sent!", message: "They will not be invited to your circle automatically.",  preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func sendTextWithNumber(phoneNumber: String) {

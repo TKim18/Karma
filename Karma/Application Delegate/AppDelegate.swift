@@ -118,6 +118,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
+        -> Bool {
+            return self.application(application, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: "")
+    }
+    
+    func application(_ application: UIApplication,
+                     open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return Invites.handleUniversalLink(url) { invite, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            if let invite = invite {
+                self.showAlertView(withInvite: invite)
+            }
+        }
+    }
+    
+    func showAlertView(withInvite invite: ReceivedInvite) {
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let matchType = invite.matchType == .weak ? "weak" : "strong"
+        let message = "Invite ID: \(invite.inviteId)\nDeep-link: \(invite.deepLink)\nMatch Type: \(matchType)"
+        let alertController = UIAlertController(title: "Invite", message: message, preferredStyle: .alert)
+        alertController.addAction(okAction)
+        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
 }
 
 @available(iOS 10, *)

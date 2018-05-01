@@ -48,17 +48,16 @@ class Order : NSObject {
             case .WeShop: return UIImage(named: "weshop")!
             case .RedBlack: return UIImage(named: "rednblack")!
             case .PiCafe: return UIImage(named: "picafe")!
-            case .Custom: return UIImage(named: "summies")!
+            case .Custom: return UIImage(named: "WeShop")!
             }
         }
         
         var menuURL: URL {
             switch self {
-            // TODO: Add the URL strings
-            case .Summerfields: return URL(string: "https://www.karmawes.com/weswings")!
-            case .WesWings: return URL(string: "https://docs.wixstatic.com/ugd/5b7235_b08fe2d4d23844b5a6874c1eb813b8ce.pdf")!
+            case .Summerfields: return URL(string: "https://docs.wixstatic.com/ugd/5b7235_ef544eac449b4dce92e4a4f935e78d46.pdf")!
+            case .WesWings: return URL(string: "https://drive.google.com/file/d/1GSyRmZwwNtkR8ZvuLYj34ebqUfgsLhc6/view")!
             case .RedBlack: return URL(string: "https://docs.wixstatic.com/ugd/5b7235_71a4a9824d95417ea8999a547b86b911.pdf")!
-            case .PiCafe: return URL(string: "www.google.com")!
+            case .PiCafe: return URL(string: "https://docs.wixstatic.com/ugd/5b7235_585fdd97d4884f708a9d6bf5d7958b10.pdf")!
             case .WeShop: return URL(string: "www.google.com")!
             case .Custom: return URL(string: "www.google.com")!
             }

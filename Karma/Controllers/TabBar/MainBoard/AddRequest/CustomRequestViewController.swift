@@ -46,17 +46,21 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     func setupView() {
         self.reqButtonPosition = requestBottomConstraint.constant
         
+        
         if let category = order.category {
+            // Set the category images
             self.categoryImage.image = category.image
-            self.titleField.text = category.description
-            if category == .Custom {
-                self.menuButton.title = ""
-                self.titleField.text = ""
+            
+            // WeShop and Custom both do not have menus
+            if category == .WeShop || category == .Custom { self.menuButton.title = "" }
+            
+            // Custom should have title field as its first text with nothing inside
+            if (category == .Custom) {
                 self.titleField.becomeFirstResponder()
-            } else if category == .WeShop {
-                self.menuButton.title = ""
+                self.titleField.text = ""
             } else {
                 self.locationField.becomeFirstResponder()
+                self.titleField.text = category.description
             }
         }
     }
@@ -85,7 +89,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
         // Insert ghost text when no text
         requestDetailsField.delegate = self
         placeholderLabel = UILabel()
-        placeholderLabel.text = "Any other details you want to include?"
+        placeholderLabel.text = "What would you like to request?"
         placeholderLabel.font = UIFont(name: (requestDetailsField.font?.fontName)!, size: (requestDetailsField.font?.pointSize)!)
         placeholderLabel.sizeToFit()
         requestDetailsField.addSubview(placeholderLabel)

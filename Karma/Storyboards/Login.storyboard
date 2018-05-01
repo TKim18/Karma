@@ -63,11 +63,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="l0l-cK-jsO">
-                                <rect key="frame" x="77" y="465" width="221" height="36"/>
+                                <rect key="frame" x="33.5" y="465" width="308" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="QpL-dL-kfh"/>
                                 </constraints>
-                                <state key="normal" title="Don't have an account? Sign up!">
+                                <state key="normal" title="First time using the app? Tap here to sign up!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -597,7 +597,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="4Uz-4D-lJU"/>
         <segue reference="ZOK-bP-mtk"/>
-        <segue reference="az6-R5-xiE"/>
+        <segue reference="UKu-yy-TYg"/>
         <segue reference="ocm-kU-f8a"/>
     </inferredMetricsTieBreakers>
 </document>
