@@ -7,6 +7,7 @@
 * Remove members from circle
 * Become able to leave circles
 * Email invite new users
+* Ability to edit a preexisting order
 
 ## Future of Push Notifs ##
 * Push notification when someone requests karma points

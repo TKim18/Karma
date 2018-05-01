@@ -49,7 +49,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
         
         if let category = order.category {
             // Set the category images
-            self.categoryImage.image = category.image
+            self.categoryImage.image = category.brightImage
             
             // WeShop and Custom both do not have menus
             if category == .WeShop || category == .Custom { self.menuButton.title = "" }

@@ -35,6 +35,11 @@ class CircleSettingsViewController: UIViewController {
                 self.initName = name
             }
         }
+        Circle.getProperty(key: "joinKey") {key in
+            if let key = key as? String {
+                self.currentJoinKeyField.text = key
+            }
+        }
     }
     
     private func setupView() {
@@ -98,6 +103,9 @@ class CircleSettingsViewController: UIViewController {
                         return
                     } else {
                         Circle.setProperty(key: "joinKey", value: newKey)
+                        self.currentJoinKeyField.text = newKey
+                        self.confirmKeyField.text = ""
+                        self.newKeyField.text = ""
                         self.notify(title: "Success!", message: "Your new join key has successfully been saved.")
                     }
                 }

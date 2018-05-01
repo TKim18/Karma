@@ -48,7 +48,18 @@ class Order : NSObject {
             case .WeShop: return UIImage(named: "weshop")!
             case .RedBlack: return UIImage(named: "rednblack")!
             case .PiCafe: return UIImage(named: "picafe")!
-            case .Custom: return UIImage(named: "WeShop")!
+            case .Custom: return UIImage(named: "custom")!
+            }
+        }
+        
+        var brightImage: UIImage {
+            switch self {
+            case .Summerfields: return UIImage(named: "summiesbright")!
+            case .WesWings: return UIImage(named: "weswingsbright")!
+            case .WeShop: return UIImage(named: "weshopbright")!
+            case .RedBlack: return UIImage(named: "rednblackbright")!
+            case .PiCafe: return UIImage(named: "picafebright")!
+            case .Custom: return UIImage(named: "custombright")!
             }
         }
         
