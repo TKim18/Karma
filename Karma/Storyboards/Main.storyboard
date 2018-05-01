@@ -508,8 +508,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cost" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="emC-Uq-h1u">
-                                <rect key="frame" x="269" y="207" width="97" height="24"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cost" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="emC-Uq-h1u">
+                                <rect key="frame" x="269" y="210" width="97" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="97" id="Kuy-Ff-3hL"/>
                                 </constraints>
@@ -601,6 +601,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="RequestBottomConstraint" destination="Ojn-8u-QYD" id="HxK-99-kUO"/>
                         <outlet property="categoryImage" destination="EAD-Rf-aPG" id="uhJ-id-UYm"/>
                         <outlet property="costField" destination="emC-Uq-h1u" id="LO8-9i-QEd"/>
                         <outlet property="endTimeField" destination="P8f-kw-77L" id="vP0-p2-B5W"/>

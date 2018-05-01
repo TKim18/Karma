@@ -11,6 +11,7 @@ import ActionSheetPicker_3_0
 
 class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var RequestBottomConstraint: NSLayoutConstraint!
     // Local Variables
     var order : Order!
     var reqButtonPosition : CGFloat!

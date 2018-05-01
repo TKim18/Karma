@@ -246,11 +246,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Karma/Models/UserUtil.swift"
-            timestampString = "546760294.257634"
+            timestampString = "546830521.404726"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "getImageFromServer(id:path:saveCache:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>

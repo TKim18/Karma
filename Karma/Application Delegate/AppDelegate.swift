@@ -57,29 +57,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func autoLogin() {
         Auth.auth().addStateDidChangeListener { auth, user in
-            if let _ = user {
-                UserUtil.getCurrentProperty(key: Constants.User.Fields.circles) { prop in
-                    if prop == nil {
-                        let storyBoard = UIStoryboard(name: "Login", bundle: nil)
-                        let controller = storyBoard.instantiateViewController(withIdentifier: "NoCircle")
-                        self.window = UIWindow(frame: UIScreen.main.bounds)
-                        self.window?.rootViewController = controller
-                        self.window?.makeKeyAndVisible()
-                    } else {
-                        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                        let controller = storyBoard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
-                        
-                        let notifTab = controller.tabBar.items![1]
-                        UserUtil.getNumAccepts() { number in
-                            if let number = number as? Int {
-                                if number != 0 {
-                                    notifTab.badgeValue = String(describing: number)
+            if let user = user {
+                UserUtil.existsInDatabase(id: user.uid) { exists in
+                    if exists {
+                        UserUtil.getCurrentProperty(key: Constants.User.Fields.circles) { prop in
+                            if prop == nil {
+                                let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+                                let controller = storyBoard.instantiateViewController(withIdentifier: "NoCircle")
+                                self.window = UIWindow(frame: UIScreen.main.bounds)
+                                self.window?.rootViewController = controller
+                                self.window?.makeKeyAndVisible()
+                                return
+                            } else {
+                                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                                let controller = storyBoard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
+                                
+                                let notifTab = controller.tabBar.items![1]
+                                UserUtil.getNumAccepts() { number in
+                                    if let number = number as? Int {
+                                        if number != 0 {
+                                            notifTab.badgeValue = String(describing: number)
+                                        }
+                                    }
                                 }
+                                self.window = UIWindow(frame: UIScreen.main.bounds)
+                                self.window?.rootViewController = controller
+                                self.window?.makeKeyAndVisible()
+                                return
                             }
                         }
+                    } else {
+                        let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+                        let controller = storyBoard.instantiateViewController(withIdentifier: "LoginScreen")
                         self.window = UIWindow(frame: UIScreen.main.bounds)
                         self.window?.rootViewController = controller
                         self.window?.makeKeyAndVisible()
+                        return
                     }
                 }
             } else {
@@ -88,8 +101,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window = UIWindow(frame: UIScreen.main.bounds)
                 self.window?.rootViewController = controller
                 self.window?.makeKeyAndVisible()
+                return
             }
         }
+        
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

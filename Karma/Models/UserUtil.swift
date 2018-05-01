@@ -68,6 +68,20 @@ class UserUtil {
         }
     }
     
+    static func existsInDatabase(id: String, completionHandler: @escaping (_ exist: Bool) -> ()) {
+        let ref = Database.database().reference()
+        ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            if let entity = snapshot.value as? NSDictionary {
+                completionHandler(entity[id] != nil)
+            } else {
+                completionHandler(false)
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     static func getNumAccepts(completionHandler: @escaping (_ number: Any?) -> ()) {
         getCurrentUserName() { userName in
             getCurrentCircle() { circleName in

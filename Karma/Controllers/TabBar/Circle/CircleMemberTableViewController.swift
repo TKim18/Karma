@@ -127,7 +127,7 @@ class CircleMemberTableViewController: UITableViewController, MFMessageComposeVi
     func sendTextWithNumber(phoneNumber: String) {
         if (MFMessageComposeViewController.canSendText()) {
             let controller = MFMessageComposeViewController()
-            controller.body = "Message Body"
+            controller.body = ""
             controller.recipients = [phoneNumber]
             controller.messageComposeDelegate = self
             self.present(controller, animated: true, completion: nil)
@@ -150,7 +150,7 @@ class CircleMemberTableViewController: UITableViewController, MFMessageComposeVi
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return (indexPath.row != 0)
     }
 
     private func loadMembers() {
