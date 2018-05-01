@@ -601,12 +601,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="RequestBottomConstraint" destination="Ojn-8u-QYD" id="HxK-99-kUO"/>
                         <outlet property="categoryImage" destination="EAD-Rf-aPG" id="uhJ-id-UYm"/>
                         <outlet property="costField" destination="emC-Uq-h1u" id="LO8-9i-QEd"/>
                         <outlet property="endTimeField" destination="P8f-kw-77L" id="vP0-p2-B5W"/>
                         <outlet property="errorMessage" destination="Bjd-DR-YGo" id="ZWn-12-MN7"/>
                         <outlet property="locationField" destination="JBp-kh-fUL" id="iGH-42-oUV"/>
+                        <outlet property="requestBottomConstraint" destination="Ojn-8u-QYD" id="P8i-b2-4e5"/>
                         <outlet property="requestButton" destination="aEK-yw-r2e" id="LgZ-s4-yLr"/>
                         <outlet property="requestDetailsField" destination="vxt-db-53q" id="Aa4-rB-Ihr"/>
                         <outlet property="titleField" destination="97M-Wk-NDa" id="dsH-Ow-jRd"/>
@@ -883,6 +883,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonBottomConstraint" destination="Nj2-bN-7Am" id="TFB-Jg-R85"/>
                         <outlet property="costField" destination="jvU-KT-amv" id="4Ud-YQ-6Yk"/>
                         <outlet property="descriptionField" destination="233-mX-YO7" id="tYh-IV-PXt"/>
                         <outlet property="dividerLabel" destination="kIi-Je-r6v" id="h0F-AP-LJV"/>
@@ -1591,6 +1592,6 @@
         <image name="white" width="112" height="112"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Q8a-rh-rRp"/>
+        <segue reference="ruZ-Ha-ylM"/>
     </inferredMetricsTieBreakers>
 </document>

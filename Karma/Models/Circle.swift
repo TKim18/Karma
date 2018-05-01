@@ -107,8 +107,8 @@ class Circle : NSObject {
     func exists(completionHandler: @escaping(_ exist: Bool) -> ()) {
         let ref = Database.database().reference()
         if let name = self.joinName {
-            
-            ref.child("circles").child(name).observeSingleEvent(of: .value, with: { (snapshot) in
+            let cleanName = name.clean()
+            ref.child("circles").child(cleanName).observeSingleEvent(of: .value, with: { (snapshot) in
                 let entity = snapshot.value as? NSDictionary
                 let val = entity == nil ? false : true
                 completionHandler(val)

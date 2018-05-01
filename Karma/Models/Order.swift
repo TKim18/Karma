@@ -42,11 +42,11 @@ class Order : NSObject {
         var menuURL: URL {
             switch self {
             // TODO: Add the URL strings
-            case .Summerfields: return URL(string: "")!
+            case .Summerfields: return URL(string: "www.google.com")!
             case .WesWings: return URL(string: "https://docs.wixstatic.com/ugd/5b7235_b08fe2d4d23844b5a6874c1eb813b8ce.pdf")!
             case .RedBlack: return URL(string: "https://docs.wixstatic.com/ugd/5b7235_71a4a9824d95417ea8999a547b86b911.pdf")!
-            case .WeShop: return URL(string: "")!
-            case .Custom: return URL(string: "")!
+            case .WeShop: return URL(string: "www.google.com")!
+            case .Custom: return URL(string: "www.google.com")!
             }
         }
     }

@@ -25,7 +25,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     @IBOutlet weak var requestDetailsField : UITextView!
     @IBOutlet weak var errorMessage : UILabel!
     @IBOutlet weak var requestButton : UIButton!
-    @IBOutlet weak var RequestBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var requestBottomConstraint: NSLayoutConstraint!
 
     var placeholderLabel : UILabel!
     
@@ -43,7 +43,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     }
     
     func setupView() {
-        self.reqButtonPosition = requestButton.frame.origin.y
+        self.reqButtonPosition = requestBottomConstraint.constant
         
         if let category = order.category {
             self.categoryImage.image = category.image
@@ -55,10 +55,6 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
                 self.locationField.becomeFirstResponder()
             }
         }
-    }
-    
-    @IBAction func showMenu(_ sender: UIButton){
-        self.performSegue(withIdentifier: "ShowMenu", sender: sender)
     }
     
     func setupKeyboard() {
@@ -191,10 +187,12 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     @objc func keyboardWillShow(notification: NSNotification) {
         let keyBoardFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         requestButton.frame.origin.y = keyBoardFrame.origin.y - requestButton.frame.size.height
+        requestBottomConstraint.constant = self.reqButtonPosition
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         requestButton.frame.origin.y = reqButtonPosition
+        requestBottomConstraint.constant = 0
     }
     
     // KeyboardDelegate Protocol Implementation:

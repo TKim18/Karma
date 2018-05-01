@@ -33,7 +33,8 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     @IBOutlet weak var requestButton : UIButton!
     @IBOutlet weak var payButton : UIButton!
     @IBOutlet weak var dividerLabel : UILabel!
-    
+    @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
+
     @IBAction func cancel(sender : AnyObject) {
         self.view.endEditing(true)
         
@@ -94,8 +95,7 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     }
     
     private func loadVariables() {
-        // self.origButtonPosition = 618
-        self.origButtonPosition = requestButton.frame.origin.y
+        self.origButtonPosition = self.buttonBottomConstraint.constant
         if let currentUserId = UserUtil.getCurrentId() {
             UserUtil.getCurrentUserName() { currentUserName in
                 UserUtil.getCurrentProperty(key: "name") { currentName in
@@ -259,15 +259,11 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
         let keyBoardFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let unifiedHeight = keyBoardFrame.origin.y - requestButton.frame.size.height
 
-        requestButton.frame.origin.y = unifiedHeight
-        payButton.frame.origin.y = unifiedHeight
-        dividerLabel.frame.origin.y = unifiedHeight
+        buttonBottomConstraint.constant = origButtonPosition
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        requestButton.frame.origin.y = origButtonPosition
-        payButton.frame.origin.y = origButtonPosition
-        dividerLabel.frame.origin.y = origButtonPosition
+        buttonBottomConstraint.constant = 0
     }
 
     // MARK: KeyboardDelegate Protocol Implementation
