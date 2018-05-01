@@ -15,9 +15,9 @@ import FirebaseDatabase
 class Order : NSObject {
     
     enum Category: String {
-        case Summerfields, WesWings, WeShop, RedBlack, Custom
+        case Summerfields, WesWings, WeShop, RedBlack, PiCafe, Custom
         
-        static let allCategories = [Summerfields, WesWings, WeShop, RedBlack, Custom]
+        static let allCategories = [WesWings, WeShop, Summerfields, PiCafe, RedBlack, Custom]
         
         var description: String {
             switch self {
@@ -25,6 +25,7 @@ class Order : NSObject {
             case .WesWings: return "WesWings"
             case .WeShop: return "WeShop"
             case .RedBlack: return "Red & Black"
+            case .PiCafe: return "Pi Cafe"
             case .Custom: return "Custom"
             }
         }
@@ -35,6 +36,7 @@ class Order : NSObject {
             case .WesWings: return UIImage(named: "WeShop")!
             case .WeShop: return UIImage(named: "WeShop")!
             case .RedBlack: return UIImage(named: "WeShop")!
+            case .PiCafe: return UIImage(named: "Summerfields")!
             case .Custom: return UIImage(named: "Summerfields")!
             }
         }
@@ -45,6 +47,7 @@ class Order : NSObject {
             case .Summerfields: return URL(string: "www.google.com")!
             case .WesWings: return URL(string: "https://docs.wixstatic.com/ugd/5b7235_b08fe2d4d23844b5a6874c1eb813b8ce.pdf")!
             case .RedBlack: return URL(string: "https://docs.wixstatic.com/ugd/5b7235_71a4a9824d95417ea8999a547b86b911.pdf")!
+            case .PiCafe: return URL(string: "www.google.com")!
             case .WeShop: return URL(string: "www.google.com")!
             case .Custom: return URL(string: "www.google.com")!
             }

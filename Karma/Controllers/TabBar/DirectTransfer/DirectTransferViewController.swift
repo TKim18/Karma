@@ -256,9 +256,6 @@ class DirectTransferViewController: UIViewController, KeyboardDelegate, UITextVi
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
-        let keyBoardFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let unifiedHeight = keyBoardFrame.origin.y - requestButton.frame.size.height
-
         buttonBottomConstraint.constant = origButtonPosition
     }
 

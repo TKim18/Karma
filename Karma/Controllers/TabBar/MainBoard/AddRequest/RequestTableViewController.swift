@@ -39,6 +39,10 @@ class RequestTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 102.0;//Choose your custom row height
+    }
+    
     @IBAction func dismissModal(sender: Any) {
         view.endEditing(true)
         self.dismiss(animated: true, completion: {})

@@ -25,6 +25,7 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     @IBOutlet weak var requestDetailsField : UITextView!
     @IBOutlet weak var errorMessage : UILabel!
     @IBOutlet weak var requestButton : UIButton!
+    @IBOutlet weak var menuButton : UIBarButtonItem!
     @IBOutlet weak var requestBottomConstraint: NSLayoutConstraint!
 
     var placeholderLabel : UILabel!
@@ -49,8 +50,11 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
             self.categoryImage.image = category.image
             self.titleField.text = category.description
             if category == .Custom {
+                self.menuButton.title = ""
                 self.titleField.text = ""
                 self.titleField.becomeFirstResponder()
+            } else if category == .WeShop {
+                self.menuButton.title = ""
             } else {
                 self.locationField.becomeFirstResponder()
             }
@@ -185,13 +189,10 @@ class CustomRequestViewController: UIViewController, KeyboardDelegate, UITextVie
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        let keyBoardFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        requestButton.frame.origin.y = keyBoardFrame.origin.y - requestButton.frame.size.height
-        requestBottomConstraint.constant = self.reqButtonPosition
+        requestBottomConstraint.constant = reqButtonPosition
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        requestButton.frame.origin.y = reqButtonPosition
         requestBottomConstraint.constant = 0
     }
     

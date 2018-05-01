@@ -54,3 +54,4 @@
 3. Add an App Icon Badge for unread requests
 4. Fix the image stretching
 5. Implement Wesleyan Auth
+6. Pi Cafe add to category
