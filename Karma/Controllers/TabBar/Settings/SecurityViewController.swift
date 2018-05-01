@@ -23,18 +23,6 @@ class SecurityViewController: UIViewController {
         listenFields()
     }
     
-    @IBAction func logoutButton(sender : AnyObject){
-        do {
-            try Auth.auth().signOut()
-            
-            // TODO: Memory zombie appears because deinit is never called
-            self.navigationController?.popToRootViewController(animated: true)
-            self.performSegue(withIdentifier: "logout", sender: self)
-        } catch {
-            print("Error trying to log out")
-        }
-    }
-    
     private func setupView() {
         // Make a save button
         let barButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveSecuritySettings))

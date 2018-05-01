@@ -228,7 +228,8 @@ class ViewRequestTableViewController: UITableViewController {
         cell.pointsLabel.text = String(describing: cost)	
         cell.timeLabel.text = info[Constants.Order.Fields.time] as? String
         cell.locationLabel.text = info[Constants.Order.Fields.destination] as? String
-        cell.categoryImage.image = Order.Category.Custom.image
+        let category = Order.Category(text: info["category"] as! String)
+        cell.categoryImage.image = category.image
         
         UserUtil.getProperty(key: "photoURL", id: requestId) { imageString in
             let imageString = imageString as? String ?? "default"

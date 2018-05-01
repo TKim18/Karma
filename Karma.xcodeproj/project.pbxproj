@@ -50,6 +50,8 @@
 		22A0B1B0207C01F400330DB0 /* CircleSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A0B1AF207C01F400330DB0 /* CircleSettingsViewController.swift */; };
 		22A139151FA6A60A00B21CD2 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A139141FA6A60A00B21CD2 /* Double.swift */; };
 		22ABA8691FABAB370043AB4E /* CircleCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */; };
+		22B0F30D2098254800103124 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B0F30C2098254800103124 /* SettingsViewController.swift */; };
+		22B0F30F209827A400103124 /* LOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 22B0F30E209827A300103124 /* LOG.md */; };
 		22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */; };
 		22D31D8B1FB2B28400014892 /* DirectTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D31D8A1FB2B28400014892 /* DirectTransferViewController.swift */; };
 		22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */; };
@@ -127,6 +129,8 @@
 		22A0B1AF207C01F400330DB0 /* CircleSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleSettingsViewController.swift; sourceTree = "<group>"; };
 		22A139141FA6A60A00B21CD2 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		22ABA8681FABAB370043AB4E /* CircleCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCreateViewController.swift; sourceTree = "<group>"; };
+		22B0F30C2098254800103124 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		22B0F30E209827A300103124 /* LOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LOG.md; sourceTree = SOURCE_ROOT; };
 		22B9167C1F7B367D002FCDD6 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		22D31D8A1FB2B28400014892 /* DirectTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransferViewController.swift; sourceTree = "<group>"; };
 		22D31D8C1FB2B3A600014892 /* DirectTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectTransfer.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 		224006A8204CEDFD003CE920 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				22B0F30E209827A300103124 /* LOG.md */,
 				221C9A4A207C3ECD0025C6F0 /* README.md */,
 				2296501D205EFD16008DCC2C /* GoogleService-Info.plist */,
 				224006AA204CEE0D003CE920 /* Info.plist */,
@@ -282,6 +287,7 @@
 				224158C92027BE3F00C8DE2F /* UserProfileViewController.swift */,
 				22A0B1AF207C01F400330DB0 /* CircleSettingsViewController.swift */,
 				2274A4A32079CE8E005FB6B0 /* SecurityViewController.swift */,
+				22B0F30C2098254800103124 /* SettingsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -493,6 +499,7 @@
 				221C9A4B207C3ECD0025C6F0 /* README.md in Resources */,
 				224006B0204CEE20003CE920 /* Main.storyboard in Resources */,
 				224006B3204CEE34003CE920 /* Assets.xcassets in Resources */,
+				22B0F30F209827A400103124 /* LOG.md in Resources */,
 				2296501E205EFD16008DCC2C /* GoogleService-Info.plist in Resources */,
 				2216C369207F27DE00B57463 /* MemberCell.xib in Resources */,
 			);
@@ -608,6 +615,7 @@
 				2254AD5B2079C14000A03ADF /* String.swift in Sources */,
 				22D31D8D1FB2B3A600014892 /* DirectTransfer.swift in Sources */,
 				22A0B1B0207C01F400330DB0 /* CircleSettingsViewController.swift in Sources */,
+				22B0F30D2098254800103124 /* SettingsViewController.swift in Sources */,
 				224C77952092D5A500E746CA /* RequestTableViewController.swift in Sources */,
 				22B9167D1F7B367D002FCDD6 /* NotificationTableViewCell.swift in Sources */,
 				2277E0791F744C7800AC53CB /* LoginController.swift in Sources */,

@@ -19,6 +19,17 @@ class Order : NSObject {
         
         static let allCategories = [WesWings, WeShop, Summerfields, PiCafe, RedBlack, Custom]
         
+        init(text: String) {
+            switch text {
+            case "Summerfields": self = .Summerfields
+            case "WesWings": self = .WesWings
+            case "WeShop": self = .WeShop
+            case "Red & Black": self = .RedBlack
+            case "Pi Cafe": self = .PiCafe
+            default: self = .Custom
+            }
+        }
+        
         var description: String {
             switch self {
             case .Summerfields: return "Summerfields"
@@ -32,19 +43,19 @@ class Order : NSObject {
         
         var image: UIImage {
             switch self {
-            case .Summerfields: return UIImage(named: "Summerfields")!
-            case .WesWings: return UIImage(named: "WeShop")!
-            case .WeShop: return UIImage(named: "WeShop")!
-            case .RedBlack: return UIImage(named: "WeShop")!
-            case .PiCafe: return UIImage(named: "Summerfields")!
-            case .Custom: return UIImage(named: "Summerfields")!
+            case .Summerfields: return UIImage(named: "summies")!
+            case .WesWings: return UIImage(named: "swings")!
+            case .WeShop: return UIImage(named: "weshop")!
+            case .RedBlack: return UIImage(named: "rednblack")!
+            case .PiCafe: return UIImage(named: "picafe")!
+            case .Custom: return UIImage(named: "summies")!
             }
         }
         
         var menuURL: URL {
             switch self {
             // TODO: Add the URL strings
-            case .Summerfields: return URL(string: "www.google.com")!
+            case .Summerfields: return URL(string: "https://www.karmawes.com/weswings")!
             case .WesWings: return URL(string: "https://docs.wixstatic.com/ugd/5b7235_b08fe2d4d23844b5a6874c1eb813b8ce.pdf")!
             case .RedBlack: return URL(string: "https://docs.wixstatic.com/ugd/5b7235_71a4a9824d95417ea8999a547b86b911.pdf")!
             case .PiCafe: return URL(string: "www.google.com")!
