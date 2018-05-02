@@ -122,12 +122,13 @@ class Circle : NSObject {
     func existsWithKey(completionHandler: @escaping(_ exist: Bool) -> ()) {
         let ref = Database.database().reference()
         if let name = self.joinName {
-            ref.child("circles").child(name).observeSingleEvent(of: .value, with: { (snapshot) in
+            let cleanName = name.clean()
+            ref.child("circles").child(cleanName).observeSingleEvent(of: .value, with: { (snapshot) in
                 let entity = snapshot.value as? NSDictionary
-                if let entity = entity, let joinName = self.joinName, let joinKey = self.joinKey, let name = entity["joinName"], let password = entity["joinKey"] {
+                if let entity = entity, let joinKey = self.joinKey, let name = entity["joinName"], let password = entity["joinKey"] {
                     let name = name as! String
                     let password = password as! String
-                    completionHandler(name == joinName && password == joinKey)
+                    completionHandler(name == cleanName && password == joinKey)
                 } else {
                     completionHandler(false)
                 }
